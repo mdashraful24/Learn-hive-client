@@ -1,0 +1,140 @@
+import bgImg from '../../../src/assets/auth/authentication.png'
+import { Helmet } from "react-helmet-async";
+import { Link, useNavigate } from "react-router-dom";
+import useAuth from '../../hooks/useAuth';
+import { useForm } from 'react-hook-form';
+import { toast } from 'react-toastify';
+import SocialLogin from '../../components/SocialLogin/SocialLogin';
+
+const SignUp = () => {
+    const { setUser, createUser, handleGoogleSignIn, updateUserProfile } = useAuth();
+    const navigate = useNavigate();
+    const { register, handleSubmit, reset, formState: { errors }, } = useForm();
+
+    // Submit Form
+    const onSubmit = (data) => {
+        console.log(data);
+        createUser(data.email, data.password)
+        .then(result =>{
+            const loggedUser = result.user;
+            console.log("User created:", loggedUser);
+            setUser(loggedUser);
+            updateUserProfile(data.name, data.photo);
+            return updateUserProfile({ displayName: data.name, photoURL: data.photo });
+        })
+        .then(() =>{
+            console.log('user profile info updated')
+            reset();
+            toast.success("Successfully Sign Up");
+            navigate("/");
+        })
+    }
+
+    return (
+        <div className='mt-10 mb-20'>
+            {/* Helmet */}
+            <Helmet>
+                <title>Sign Up | Bistro Boss Restaurant</title>
+            </Helmet>
+
+            {/* Bg Image */}
+            <div className="hero min-h-screen">
+                {/* Bg Image */}
+                <div className="hero-content flex-col md:flex-row-reverse gap-0 md:gap-5 lg:gap-16 pb-10 border-2 rounded-lg" style={{
+                    backgroundImage: `url('${bgImg})`
+                }}>
+                    {/* Image */}
+                    <div className="text-center md:w-1/2 lg:text-left">
+                        <img className='w-[200px] md:w-[500px]' src={bgImg} alt="" />
+                    </div>
+                    <div className="card w-full max-w-sm rounded-none lg:pr-10">
+
+                        {/* Sign In Form */}
+                        <form onSubmit={handleSubmit(onSubmit)} className="card-body p-5">
+                            <h1 className="text-3xl font-bold text-center">Sign Up</h1>
+                            {/* Name */}
+                            <div className="form-control">
+                                <label className="label font-semibold">
+                                    <span className="label-text">Name</span>
+                                </label>
+                                <input
+                                    type="text" {...register("name", { required: true })}
+                                    name="name"
+                                    placeholder="Type here" className="input input-bordered rounded-md" />
+                                {errors.name && <span className="text-sm text-red-600">Name is required</span>}
+                            </div>
+                            {/* Email */}
+                            <div className="form-control">
+                                <label className="label font-semibold">
+                                    <span className="label-text">Email</span>
+                                </label>
+                                <input
+                                    type="email" {...register("email", { required: true })}
+                                    name="email"
+                                    placeholder="Type here" className="input input-bordered rounded-md" />
+                                {errors.email && <span className="text-sm text-red-600">Email is required</span>}
+                            </div>
+
+                            {/* Photo URL */}
+                            <div className="form-control">
+                                <label className="label font-semibold">
+                                    <span className="label-text">Photo URL</span>
+                                </label>
+                                <input
+                                    type="photo" {...register("photo", { required: true })}
+                                    name="photo"
+                                    placeholder="Photo URL"
+                                    className="input input-bordered rounded-md" />
+                                {errors.photo && <span className="text-sm text-red-600">Photo URL is required</span>}
+                            </div>
+
+                            {/* Password */}
+                            <div className="form-control">
+                                <label className="label">
+                                    <span className="label-text font-semibold">Password</span>
+                                </label>
+                                <input
+                                    type="password"
+                                    {...register("password", {
+                                        required: "Password is required",
+                                        maxLength: {
+                                            value: 20,
+                                            message: "Password cannot be more than 20 characters",
+                                        },
+                                        pattern: {
+                                            value: /^(?=.*[a-z])(?=.*[A-Z]).{6,}$/,
+                                            message: "Password must contain at least one uppercase, and one lowercase, and be at least 6 characters long",
+                                        }
+                                    })}
+                                    name="password"
+                                    placeholder="Enter your password"
+                                    className="input input-bordered rounded-md"
+                                />
+                                {errors.password && <span className="text-sm text-red-600">{errors.password.message}</span>}
+                            </div>
+
+                            {/* Button */}
+                            <div className="form-control mt-6">
+                                <input
+                                    className="btn bg-[#D1A054B3] hover:bg-[#d19f54] rounded-md" type="submit"
+                                    value="Sign Up" />
+                            </div>
+
+                            {/* Other Options */}
+                            <div className='text-center font-semibold mt-2'>
+                                <p className='mb-1'><small>Already Sign Up? <span className='hover:text-red-500 mb-2'><Link to="/login">Go to log in</Link></span></small></p>
+                                <small>Or sign In with</small>
+                                
+                            </div>
+                        </form>
+
+                        {/* Social Sign-In */}
+                        <SocialLogin></SocialLogin>
+                    </div>
+                </div>
+            </div>
+        </div>
+    );
+};
+
+export default SignUp;
