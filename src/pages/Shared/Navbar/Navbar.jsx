@@ -43,8 +43,8 @@ const Navbar = () => {
     const links = (
         <>
             <li><NavLink to="/">Home</NavLink></li>
-            <li><NavLink to="/campaigns">All Classes</NavLink></li>
-            <li><NavLink to="/addCampaign">Teach on LearnHive</NavLink></li>
+            <li><NavLink to="/allClasses">All Classes</NavLink></li>
+            <li><NavLink to="/tech">Teach on LearnHive</NavLink></li>
         </>
     );
 

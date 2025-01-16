@@ -1,33 +1,47 @@
-import bgImg from '../../../src/assets/auth/authentication.png'
+import bgImg from '../../../src/assets/auth/authentication.png';
 import { Helmet } from "react-helmet-async";
 import { Link, useNavigate } from "react-router-dom";
 import useAuth from '../../hooks/useAuth';
 import { useForm } from 'react-hook-form';
 import { toast } from 'react-toastify';
 import SocialLogin from '../../components/SocialLogin/SocialLogin';
+import useAxiosPublic from '../../hooks/useAxiosPublic';
 
 const SignUp = () => {
+    const axiosPublic = useAxiosPublic();
     const { setUser, createUser, handleGoogleSignIn, updateUserProfile } = useAuth();
     const navigate = useNavigate();
     const { register, handleSubmit, reset, formState: { errors }, } = useForm();
 
     // Submit Form
     const onSubmit = (data) => {
-        console.log(data);
+
         createUser(data.email, data.password)
-        .then(result =>{
-            const loggedUser = result.user;
-            console.log("User created:", loggedUser);
-            setUser(loggedUser);
-            updateUserProfile(data.name, data.photo);
-            return updateUserProfile({ displayName: data.name, photoURL: data.photo });
-        })
-        .then(() =>{
-            console.log('user profile info updated')
-            reset();
-            toast.success("Successfully Sign Up");
-            navigate("/");
-        })
+            .then(result => {
+                const loggedUser = result.user;
+                console.log("User created:", loggedUser);
+                setUser(loggedUser);
+                updateUserProfile(data.name, data.photo);
+                return updateUserProfile({ displayName: data.name, photoURL: data.photo });
+            })
+            .then(() => {
+                // console.log('user profile info updated')
+                const userInfo = {
+                    name: data.name,
+                    email: data.email,
+                    image: data.photo,
+                    role: 'student' // Set default role to 'student'
+                }
+                axiosPublic.post('/users', userInfo)
+                    .then(res => {
+                        if (res.data.insertedId) {
+                            console.log('user added to the database');
+                            reset();
+                            toast.success("Successfully Signed Up");
+                            navigate("/");
+                        }
+                    })
+            })
     }
 
     return (
@@ -122,14 +136,13 @@ const SignUp = () => {
 
                             {/* Other Options */}
                             <div className='text-center font-semibold mt-2'>
-                                <p className='mb-1'><small>Already Sign Up? <span className='hover:text-red-500 mb-2'><Link to="/login">Go to log in</Link></span></small></p>
-                                <small>Or sign In with</small>
-                                
+                                <p className='mb-1'><small>Already Signed Up? <span className='hover:text-red-500 mb-2'><Link to="/login">Go to log in</Link></span></small></p>
+                                <small>Or sign in with</small>
                             </div>
                         </form>
 
                         {/* Social Sign-In */}
-                        <SocialLogin></SocialLogin>
+                        <SocialLogin />
                     </div>
                 </div>
             </div>

@@ -1,3 +1,4 @@
+import { Helmet } from "react-helmet-async";
 import Feedback from "../Feedback/Feedback";
 import InspireTeachers from "../InspireTeachers/InspireTeachers";
 import KeyFeatures from "../KeyFeatures/KeyFeatures";
@@ -9,6 +10,10 @@ import StatsSection from "./StatsSection/StatsSection";
 const Home = () => {
     return (
         <div>
+            <Helmet>
+                <title>Home || LearnHive</title>
+            </Helmet>
+
             <Banner></Banner>
             <Partners></Partners>
             <Feedback></Feedback>
