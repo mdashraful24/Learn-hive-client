@@ -101,7 +101,7 @@ const TeacherRequest = () => {
                 <h2 className="text-3xl font-bold text-center mb-6">Teacher Requests</h2>
 
                 <div className="overflow-x-auto rounded-t-xl mt-5">
-                    <table className="table">
+                    <table className="table min-w-full">
                         {/* Table Head */}
                         <thead>
                             <tr className="bg-[#D1A054] text-white text-center uppercase">

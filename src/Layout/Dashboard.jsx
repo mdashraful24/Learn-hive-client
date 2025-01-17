@@ -27,7 +27,7 @@ const Dashboard = () => {
                         <>
                             <li><NavLink to="/dashboard/request"><FaCodePullRequest /> Teacher Request</NavLink></li>
                             <li><NavLink to="/dashboard/users"><FaUsers /> Users</NavLink></li>
-                            <li><NavLink to="/dashboard/all-classes"><GiTeacher /> All Classes</NavLink></li>
+                            <li><NavLink to="/dashboard/admin-class"><GiTeacher /> All Classes</NavLink></li>
                             <li><NavLink to="/dashboard/users-profile"><FaUserCircle /> Profile</NavLink></li>
                         </>
                     ) : isTeacher ? (
@@ -38,7 +38,7 @@ const Dashboard = () => {
                         </>
                     ) : isStudent ? (
                         <>
-                            <li><NavLink to="/dashboard/enrolled-classes"><FaListAlt /> My Enrolled Classes</NavLink></li>
+                                    <li><NavLink to="/dashboard/my-enroll"><FaListAlt /> My Enrolled Classes</NavLink></li>
                             <li><NavLink to="/dashboard/profile"><FaUserCircle /> Profile</NavLink></li>
                         </>
                     ) : null}

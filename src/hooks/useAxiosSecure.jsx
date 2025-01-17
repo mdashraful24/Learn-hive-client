@@ -7,4 +7,4 @@ const useAxiosSecure = () => {
     return axiosSecure;
 };
 
-export default useAxiosSecure;
+export default useAxiosSecure; 

@@ -15,6 +15,11 @@ import AllUsers from "../pages/Dashboard/AllUsers/AllUsers";
 import UsersProfile from "../pages/Dashboard/UsersProfile/UsersProfile";
 import AddClass from "../pages/Dashboard/AddClass/AddClass";
 import MyClasses from "../pages/Dashboard/MyClasses/MyClasses";
+import AdminClass from "../pages/Dashboard/AdminClass/AdminClass";
+import ClassDetails from "../pages/Dashboard/ClassDetails/ClassDetails";
+import DetailsPage from "../pages/DetailsPage/DetailsPage";
+import Payment from "../pages/Payment/Payment";
+import MyEnrolled from "../pages/Dashboard/MyEnrolled/MyEnrolled";
 
 
 export const router = createBrowserRouter([
@@ -29,6 +34,15 @@ export const router = createBrowserRouter([
             {
                 path: "allClasses",
                 element: <AllClasses></AllClasses>
+            },
+            {
+                path: "details/:id",
+                element: <DetailsPage></DetailsPage>,
+                loader: ({ params }) => fetch(`http://localhost:5000/all-classes/${params.id}`)
+            },
+            {
+                path: "/payment/:id",
+                element: <Payment></Payment>
             },
             {
                 path: "tech",
@@ -58,6 +72,10 @@ export const router = createBrowserRouter([
                 element: <AllUsers></AllUsers>
             },
             {
+                path: "admin-class",
+                element: <AdminClass></AdminClass>
+            },
+            {
                 path: "users-profile",
                 element: <UsersProfile></UsersProfile>
             },
@@ -71,6 +89,15 @@ export const router = createBrowserRouter([
                 path: "my-class",
                 element: <MyClasses></MyClasses>
             },
+            {
+                path: "my-class/:id",
+                element: <ClassDetails></ClassDetails>
+            },
+            // student
+            {
+                path: "my-enroll",
+                element: <MyEnrolled></MyEnrolled>
+            }
         ]
     },
     {

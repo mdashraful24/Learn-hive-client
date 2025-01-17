@@ -42,6 +42,7 @@ const AddClass = () => {
                     description: data.description,
                     image: cloudinaryData.secure_url,
                     status: "pending",
+                    // totalEnrolment: 0,
                 };
 
                 const classRes = await axiosSecure.post("/classes", classItem);
