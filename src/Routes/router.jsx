@@ -20,6 +20,7 @@ import ClassDetails from "../pages/Dashboard/ClassDetails/ClassDetails";
 import DetailsPage from "../pages/DetailsPage/DetailsPage";
 import Payment from "../pages/Payment/Payment";
 import MyEnrolled from "../pages/Dashboard/MyEnrolled/MyEnrolled";
+import EnrolledClass from "../pages/Dashboard/EnrolledClass/EnrolledClass";
 
 
 export const router = createBrowserRouter([
@@ -42,7 +43,7 @@ export const router = createBrowserRouter([
             },
             {
                 path: "/payment/:id",
-                element: <Payment></Payment>
+                element: <Payment></Payment>,
             },
             {
                 path: "tech",
@@ -95,9 +96,13 @@ export const router = createBrowserRouter([
             },
             // student
             {
-                path: "my-enroll",
+                path: "myEnroll-class",
                 element: <MyEnrolled></MyEnrolled>
-            }
+            },
+            {
+                path: "myEnroll-class/:id",
+                element: <EnrolledClass></EnrolledClass>
+            },
         ]
     },
     {

@@ -38,7 +38,7 @@ const Dashboard = () => {
                         </>
                     ) : isStudent ? (
                         <>
-                                    <li><NavLink to="/dashboard/my-enroll"><FaListAlt /> My Enrolled Classes</NavLink></li>
+                            <li><NavLink to="/dashboard/myEnroll-class"><FaListAlt /> My Enrolled Classes</NavLink></li>
                             <li><NavLink to="/dashboard/profile"><FaUserCircle /> Profile</NavLink></li>
                         </>
                     ) : null}

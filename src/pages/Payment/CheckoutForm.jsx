@@ -276,7 +276,7 @@ const CheckoutForm = ({ price, paymentDetails }) => {
                         showConfirmButton: false,
                         timer: 1500,
                     });
-                    navigate('/dashboard/my-enroll');
+                    navigate('/dashboard/myEnroll-class');
                 }
             }
         } catch (error) {
