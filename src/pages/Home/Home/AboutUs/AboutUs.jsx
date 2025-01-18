@@ -5,7 +5,7 @@ const AboutUs = () => {
         <section className="mb-20">
             <div className="container mx-auto px-6 text-center">
                 <h2 className="text-4xl font-extrabold mb-4">About Us</h2>
-                <p className="text-xl font-medium mb-8">
+                <p className="text-lg mb-8 lg:w-2/3 mx-auto">
                     LearnHive is transforming the way education works, offering personalized learning experiences for students and educators alike.
                     Our mission is to empower learners with the skills they need to succeed in the modern world.
                 </p>
@@ -36,11 +36,11 @@ const AboutUs = () => {
                             platform that fosters growth, collaboration, and a love for learning through technology.
                         </p>
 
-                        <button
+                        {/* <button
                             className="bg-yellow-500 text-black px-6 py-3 rounded-full shadow-md font-semibold hover:bg-yellow-600 transition duration-300"
                         >
                             Join Us Today
-                        </button>
+                        </button> */}
                     </div>
                 </div>
             </div>

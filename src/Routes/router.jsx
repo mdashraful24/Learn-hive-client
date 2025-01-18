@@ -21,6 +21,7 @@ import DetailsPage from "../pages/DetailsPage/DetailsPage";
 import Payment from "../pages/Payment/Payment";
 import MyEnrolled from "../pages/Dashboard/MyEnrolled/MyEnrolled";
 import EnrolledClass from "../pages/Dashboard/EnrolledClass/EnrolledClass";
+import StudentProfile from "../pages/Dashboard/StudentProfile/StudentProfile";
 
 
 export const router = createBrowserRouter([
@@ -44,6 +45,7 @@ export const router = createBrowserRouter([
             {
                 path: "/payment/:id",
                 element: <Payment></Payment>,
+                loader: ({ params }) => fetch(`http://localhost:5000/all-classes/${params.id}`)
             },
             {
                 path: "tech",
@@ -101,7 +103,12 @@ export const router = createBrowserRouter([
             },
             {
                 path: "myEnroll-class/:id",
-                element: <EnrolledClass></EnrolledClass>
+                element: <EnrolledClass></EnrolledClass>,
+                loader: ({ params }) => fetch(`http://localhost:5000/all-classes/${params.id}`)
+            },
+            {
+                path: "profile",
+                element: <StudentProfile></StudentProfile>
             },
         ]
     },

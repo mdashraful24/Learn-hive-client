@@ -36,7 +36,6 @@ const Login = () => {
                 showConfirmButton: false,
                 timer: 1500,
             });
-
             navigate(from, { replace: true });
         } catch (err) {
             setError({ login: "Please check your email or password." });

@@ -58,7 +58,7 @@ const AllUsers = () => {
     };
 
     return (
-        <div className="mb-16">
+        <div className="mt-10 md:mt-14 mb-16">
             <div className="p-5 md:p-8 shadow-lg rounded-lg border">
                 <div className="flex justify-between items-center mb-5">
                     <h2 className="text-3xl font-bold">Total users: {users.length}</h2>

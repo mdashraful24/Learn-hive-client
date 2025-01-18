@@ -54,7 +54,7 @@ const TeachOnLearnHive = () => {
                         <img
                             src={user.photoURL}
                             alt="User Profile"
-                            className="w-24 h-24 rounded-full mx-auto mb-3"
+                            className="w-24 h-24 rounded-full mx-auto mb-3 shadow-xl border-2 border-gray-400"
                         />
                     )}
                 </div>

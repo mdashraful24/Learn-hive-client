@@ -91,12 +91,12 @@ const AdminClass = () => {
     };
 
     return (
-        <div className="mt-10 md:mt-14 mb-20 px-5 lg:px-5">
+        <div className="mt-10 md:mt-14 mb-16">
             <div className="p-5 md:p-8 shadow-lg rounded-lg border">
                 <h2 className="text-3xl font-bold text-center mb-6">Admin Classes</h2>
 
                 <div className="overflow-x-auto rounded-t-xl mt-5">
-                    <table className="table">
+                    <table className="table min-w-full">
                         {/* Table Head */}
                         <thead>
                             <tr className="bg-[#D1A054] text-white text-center uppercase">
