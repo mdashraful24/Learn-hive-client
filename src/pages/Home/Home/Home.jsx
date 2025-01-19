@@ -6,6 +6,7 @@ import AboutUs from "./AboutUs/AboutUs";
 import Banner from "./Banner/Banner";
 import Partners from "./Partners/Partners";
 import StatsSection from "./StatsSection/StatsSection";
+import Testimonials from "./Testimonials/Testimonials";
 
 const Home = () => {
     return (
@@ -21,6 +22,7 @@ const Home = () => {
             <StatsSection></StatsSection>
             <AboutUs></AboutUs>
             <KeyFeatures></KeyFeatures>
+            <Testimonials></Testimonials>
         </div>
     );
 };

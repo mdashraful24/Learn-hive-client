@@ -39,7 +39,7 @@ export const router = createBrowserRouter([
             },
             {
                 path: "details/:id",
-                element: <DetailsPage></DetailsPage>,
+                element: <PrivateRoute><DetailsPage></DetailsPage></PrivateRoute>,
                 loader: ({ params }) => fetch(`http://localhost:5000/all-classes/${params.id}`)
             },
             {
@@ -94,7 +94,8 @@ export const router = createBrowserRouter([
             },
             {
                 path: "my-class/:id",
-                element: <ClassDetails></ClassDetails>
+                element: <ClassDetails></ClassDetails>,
+                loader: ({ params }) => fetch(`http://localhost:5000/details/${params.id}`)
             },
             // student
             {

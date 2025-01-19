@@ -56,7 +56,7 @@ const StudentProfile = () => {
     return (
         <div className="container mx-auto my-10 p-6 bg-gray-50 rounded-xl shadow-lg">
             <div className="flex flex-col items-center text-center">
-                <div className="relative w-36 h-36 rounded-full overflow-hidden shadow-lg border-4 border-blue-500">
+                <div className="relative w-36 h-36 rounded-full overflow-hidden shadow-lg border-4 border-blue-500 p-5">
                     <img
                         src={userInfo.image || "https://via.placeholder.com/150"}
                         alt={userInfo.name || "User"}
