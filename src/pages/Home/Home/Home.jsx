@@ -7,6 +7,7 @@ import Banner from "./Banner/Banner";
 import Partners from "./Partners/Partners";
 import StatsSection from "./StatsSection/StatsSection";
 import Testimonials from "./Testimonials/Testimonials";
+import Highlight from "./Highlight/Highlight";
 
 const Home = () => {
     return (
@@ -17,6 +18,7 @@ const Home = () => {
 
             <Banner></Banner>
             <Partners></Partners>
+            <Highlight></Highlight>
             <Feedback></Feedback>
             <InspireTeachers></InspireTeachers>
             <StatsSection></StatsSection>

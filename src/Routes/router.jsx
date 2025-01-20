@@ -22,6 +22,7 @@ import Payment from "../pages/Payment/Payment";
 import MyEnrolled from "../pages/Dashboard/MyEnrolled/MyEnrolled";
 import EnrolledClass from "../pages/Dashboard/EnrolledClass/EnrolledClass";
 import StudentProfile from "../pages/Dashboard/StudentProfile/StudentProfile";
+import Progress from "../pages/Dashboard/Progress/Progress";
 
 
 export const router = createBrowserRouter([
@@ -77,6 +78,11 @@ export const router = createBrowserRouter([
             {
                 path: "admin-class",
                 element: <AdminClass></AdminClass>
+            },
+            {
+                path: "progress/:id",
+                element: <Progress></Progress>,
+                loader: ({ params }) => fetch(`http://localhost:5000/details/${params.id}`)
             },
             {
                 path: "users-profile",

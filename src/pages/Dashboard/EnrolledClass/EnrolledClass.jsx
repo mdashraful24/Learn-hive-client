@@ -4,25 +4,24 @@ import { useLoaderData } from "react-router-dom";
 import useAxiosPublic from "../../../hooks/useAxiosPublic";
 import { FaPlus, FaTimes } from "react-icons/fa";
 import useAuth from "../../../hooks/useAuth";
-import Swal from "sweetalert2"; // Import SweetAlert2
-import { useForm } from "react-hook-form"; // Import useForm
+import Swal from "sweetalert2";
+import { useForm } from "react-hook-form";
 
 const EnrolledClass = () => {
-    const { user } = useAuth(); // Get user information
-    const course = useLoaderData(); // Get course data
-    const { _id, title, description, assignments } = course; // Extract relevant course details
-    // console.log('all data', course)
+    const { user } = useAuth();
+    const course = useLoaderData();
+    const { _id, title, description, assignments } = course;
 
-    const { register, handleSubmit, setValue, reset } = useForm(); // useForm hooks
-    const [modalIsOpen, setModalIsOpen] = useState(false); // Modal visibility state
-    const [selectedAssignment, setSelectedAssignment] = useState(null); // Store selected assignment for submission
-    const [submittedAssignments, setSubmittedAssignments] = useState([]); // State to track submitted assignments
+    const { register, handleSubmit, setValue, reset } = useForm();
+    const [modalIsOpen, setModalIsOpen] = useState(false);
+    const [selectedAssignment, setSelectedAssignment] = useState(null);
+    const [submittedAssignments, setSubmittedAssignments] = useState([]);
 
     const axiosPublic = useAxiosPublic();
 
     const openModal = (assignment) => {
-        setSelectedAssignment(assignment); // Set the selected assignment
-        setModalIsOpen(true); // Open the modal
+        setSelectedAssignment(assignment);
+        setModalIsOpen(true);
     };
 
     const closeModal = () => {
@@ -33,13 +32,14 @@ const EnrolledClass = () => {
     const onSubmit = async (data) => {
         if (!selectedAssignment || !user) {
             console.log("Missing assignment or user data");
-            return; // Prevent submission if assignment or user is missing
+            return;
         }
 
         const submissionData = {
             courseId: _id,
             userEmail: user.email,
             submission: data.assignmentText,
+            submit: 1
         };
 
         console.log("Submission Data:", submissionData);
@@ -47,7 +47,6 @@ const EnrolledClass = () => {
         try {
             await axiosPublic.post("/assignments", submissionData);
 
-            // Update submittedAssignments state to mark the assignment as submitted
             setSubmittedAssignments((prev) => [...prev, selectedAssignment._id]);
 
             Swal.fire({

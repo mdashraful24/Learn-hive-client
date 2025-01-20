@@ -59,9 +59,10 @@
 
 import { useLoaderData } from "react-router-dom";
 import { Link } from "react-router-dom";
+import useCount from "../../hooks/useCount";
 
 const DetailsPage = () => {
-    // Destructure data from useLoaderData
+    const { totalEnrollment } = useCount();
     const { _id, title, name, price, description, image } = useLoaderData();
 
     return (
@@ -84,6 +85,9 @@ const DetailsPage = () => {
                     </p>
                     <p className="text-gray-600 mb-4">
                         <strong>Description:</strong> {description}
+                    </p>
+                    <p className="text-gray-600 mb-4">
+                        <strong>Enrollments:</strong> {totalEnrollment}
                     </p>
                     <p className="text-gray-800 font-bold text-lg mb-6">
                         Price: ${price}

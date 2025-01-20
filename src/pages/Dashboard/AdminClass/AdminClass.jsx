@@ -3,6 +3,7 @@ import { useQuery } from "@tanstack/react-query";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import useAuth from "../../../hooks/useAuth";
+import { Link } from "react-router-dom";
 
 const AdminClass = () => {
     const axiosSecure = useAxiosSecure();
@@ -101,10 +102,11 @@ const AdminClass = () => {
                         <thead>
                             <tr className="bg-[#D1A054] text-white text-center uppercase">
                                 <th className="py-5">#</th>
-                                <th className="py-5">Title</th>
                                 <th className="py-5">Image</th>
-                                <th className="py-5">Email</th>
+                                <th className="py-5">Title</th>
                                 <th className="py-5">Description</th>
+                                <th className="py-5">Teacher</th>
+                                <th className="py-5">Email</th>
                                 <th className="py-5">Status</th>
                                 <th className="py-5">Actions</th>
                             </tr>
@@ -113,7 +115,6 @@ const AdminClass = () => {
                             {data?.map((classItem, index) => (
                                 <tr key={classItem._id} className="text-center hover:bg-gray-50">
                                     <td className="py-5 font-bold">{index + 1}</td>
-                                    <td className="py-5">{classItem.title}</td>
                                     <td className="py-5">
                                         <img
                                             src={classItem.image}
@@ -121,8 +122,10 @@ const AdminClass = () => {
                                             className="w-12 h-12 rounded mx-auto"
                                         />
                                     </td>
-                                    <td className="py-5">{classItem.email}</td>
+                                    <td className="py-5">{classItem.title}</td>
                                     <td className="py-5">{classItem.description}</td>
+                                    <td className="py-5">{classItem.name}</td>
+                                    <td className="py-5">{classItem.email}</td>
                                     <td className="py-5">
                                         <span
                                             className={`text-${classItem.status === "pending"
@@ -135,58 +138,63 @@ const AdminClass = () => {
                                             {classItem.status.charAt(0).toUpperCase() + classItem.status.slice(1)}
                                         </span>
                                     </td>
-                                    <td className="py-7 flex justify-center items-center">
-                                        {classItem.status === "pending" ? (
-                                            <>
-                                                {/* Approve Button */}
-                                                <button
-                                                    className={`btn btn-sm ${loading === classItem._id
-                                                        ? "bg-gray-400 cursor-not-allowed"
-                                                        : "bg-green-600 hover:bg-green-700 text-white"
-                                                        }`}
-                                                    onClick={() => handleApprove(classItem)}
-                                                    disabled={loading === classItem._id}
-                                                >
-                                                    {loading === classItem._id ? (
-                                                        <span className="loader"></span>
-                                                    ) : (
-                                                        "Approve"
-                                                    )}
-                                                </button>
+                                    <td className="py-5">
+                                        <div className="flex flex-col md:flex-row justify-center md:justify-center items-center space-y-2 md:space-y-0 md:space-x-2">
+                                            {classItem.status === "pending" ? (
+                                                <>
+                                                    {/* Approve Button */}
+                                                    <button
+                                                        className={`btn btn-sm ${loading === classItem._id
+                                                            ? "bg-gray-400 cursor-not-allowed"
+                                                            : "bg-green-600 hover:bg-green-700 text-white"
+                                                            }`}
+                                                        onClick={() => handleApprove(classItem)}
+                                                        disabled={loading === classItem._id}
+                                                    >
+                                                        {loading === classItem._id ? (
+                                                            <span className="loader"></span>
+                                                        ) : (
+                                                            "Approve"
+                                                        )}
+                                                    </button>
 
-                                                {/* Reject Button */}
+                                                    {/* Reject Button */}
+                                                    <button
+                                                        className={`btn btn-sm ${loading === classItem._id
+                                                            ? "bg-gray-400 cursor-not-allowed"
+                                                            : "bg-red-600 hover:bg-red-700 text-white"
+                                                            }`}
+                                                        onClick={() => handleReject(classItem)}
+                                                        disabled={loading === classItem._id}
+                                                    >
+                                                        {loading === classItem._id ? (
+                                                            <span className="loader"></span>
+                                                        ) : (
+                                                            "Reject"
+                                                        )}
+                                                    </button>
+                                                </>
+                                            ) : classItem.status === "accepted" ? (
+                                                // Progress Button (Enabled)
+                                                <Link to={`/dashboard/progress/${classItem._id}`}>
+                                                    <button
+                                                        className="btn btn-sm bg-blue-600 hover:bg-blue-700 text-white"
+                                                    >
+                                                        Progress
+                                                    </button>
+                                                </Link>
+                                            ) : (
+                                                // Rejected Button (Disabled)
                                                 <button
-                                                    className={`btn btn-sm ${loading === classItem._id
-                                                        ? "bg-gray-400 cursor-not-allowed"
-                                                        : "bg-red-600 hover:bg-red-700 text-white"
-                                                        } ml-2`}
-                                                    onClick={() => handleReject(classItem)}
-                                                    disabled={loading === classItem._id}
+                                                    className="btn btn-sm bg-gray-400 cursor-not-allowed"
+                                                    disabled
                                                 >
-                                                    {loading === classItem._id ? (
-                                                        <span className="loader"></span>
-                                                    ) : (
-                                                        "Reject"
-                                                    )}
+                                                    Rejected
                                                 </button>
-                                            </>
-                                        ) : classItem.status === "accepted" ? (
-                                            // Progress Button (Enabled)
-                                            <button
-                                                className="btn btn-sm bg-blue-600 hover:bg-blue-700 text-white"
-                                            >
-                                                Progress
-                                            </button>
-                                        ) : (
-                                            // Rejected Button (Disabled)
-                                            <button
-                                                className="btn btn-sm bg-gray-400 cursor-not-allowed"
-                                                disabled
-                                            >
-                                                Rejected
-                                            </button>
-                                        )}
+                                            )}
+                                        </div>
                                     </td>
+
                                 </tr>
                             ))}
                         </tbody>

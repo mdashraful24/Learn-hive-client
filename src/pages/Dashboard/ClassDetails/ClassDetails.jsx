@@ -612,12 +612,14 @@ import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import { FaPlus } from "react-icons/fa";
+import useCount from "../../../hooks/useCount";
 
 const ClassDetails = () => {
     const classData = useLoaderData();
     const axiosSecure = useAxiosSecure();
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [assignments, setAssignments] = useState([]);
+    const { totalEnrollment, totalSubmissions } = useCount();
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
 
     if (!classData) {
@@ -662,7 +664,7 @@ const ClassDetails = () => {
                         title: data.title,
                         description: data.description,
                         deadline: data.deadline,
-                        submit: false,  // Assignment not yet submitted
+                        submit: "false",  // Assignment not yet submitted
                         assignment: 'some-assignment-id',  // This could be the ID returned from the backend
                     }
                 ]);
@@ -696,7 +698,7 @@ const ClassDetails = () => {
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                     <div className="text-center">
                         <p className="text-gray-600">Total Enrollments</p>
-                        <h4 className="text-2xl font-bold">150</h4>
+                        <h4 className="text-2xl font-bold">{totalEnrollment}</h4>
                     </div>
                     <div className="text-center">
                         <p className="text-gray-600">Total Assignments</p>
@@ -704,7 +706,7 @@ const ClassDetails = () => {
                     </div>
                     <div className="text-center">
                         <p className="text-gray-600">Total Submissions</p>
-                        <h4 className="text-2xl font-bold">120</h4>
+                        <h4 className="text-2xl font-bold">{totalSubmissions}</h4>
                     </div>
                 </div>
             </div>
