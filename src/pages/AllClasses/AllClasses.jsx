@@ -145,7 +145,7 @@ const AllClasses = () => {
                             </p>
                             <p className="text-green-600 font-bold mb-2">Price: ${classItem.price}</p>
                             <p className="text-blue-600 mb-4">
-                                Total Enrollments: {classItem.totalEnrolment}
+                                {/* Total Enrollments: {classItem.totalEnrolment} */}
                             </p>
                             <div className="mt-auto">
                                 <Link to={`/details/${classItem._id}`}>

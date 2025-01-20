@@ -1,10 +1,9 @@
 import { FaBoxOpen, FaTruck, FaUsers } from 'react-icons/fa';
 import stats from '../../../../assets/home/stats.jpeg'
+import useCount from '../../../../hooks/useCount';
 
 const StatsSection = () => {
-    const totalUsers = 1200; // Example data
-    const totalClasses = 85; // Example data
-    const totalEnrollment = 1500; // Example data
+    const { totalUsers, totalClasses, totalEnrollment } = useCount();
 
     return (
         <div className='mb-20'>
@@ -20,28 +19,28 @@ const StatsSection = () => {
                 <div className="grid grid-cols-1 gap-4">
                     {/* Revenue Card */}
                     <div className="bg-gradient-to-r from-purple-500 to-pink-300 text-white p-4 rounded-lg shadow-md flex justify-center items-center gap-5">
-                        <FaUsers className="text-4xl mb-2" />
+                        <FaUsers className="text-2xl lg:text-4xl" />
                         <div>
-                            <h2 className="text-3xl font-bold">Total User: {stats?.revenue ? stats.revenue.toFixed(2) : "0.00"}</h2>
-                            <p className="text-lg">Revenue</p>
+                            <h2 className="text-2xl lg:text-4xl font-bold">Total User: {totalUsers}</h2>
+                            {/* <p className="text-lg">Revenue</p> */}
                         </div>
                     </div>
 
                     {/* Customers Card */}
                     <div className="bg-gradient-to-r from-[#D1A054] to-orange-200 text-white p-4 rounded-lg shadow-md flex justify-center items-center gap-5">
-                        <FaUsers className="text-4xl mb-2" />
+                        <FaUsers className="text-2xl lg:text-4xl" />
                         <div>
-                            <h2 className="text-3xl font-bold">Total Classes: {stats.users}</h2>
-                            <p className="text-lg">Customers</p>
+                            <h2 className="text-2xl lg:text-4xl font-bold">Total Classes: {totalClasses}</h2>
+                            {/* <p className="text-lg">Customers</p> */}
                         </div>
                     </div>
 
                     {/* Products Card */}
                     <div className="bg-gradient-to-r from-pink-500 to-red-300 text-white p-4 rounded-lg shadow-md flex justify-center items-center gap-5">
-                        <FaBoxOpen className="text-4xl mb-2" />
+                        <FaBoxOpen className="text-2xl lg:text-4xl" />
                         <div>
-                            <h2 className="text-3xl font-bold">Total Enrollment: {stats.menuItems}</h2>
-                            <p className="text-lg">Products</p>
+                            <h2 className="text-2xl lg:text-4xl font-bold">Total Enrollment: {totalEnrollment}</h2>
+                            {/* <p className="text-lg">Products</p> */}
                         </div>
                     </div>
                 </div>

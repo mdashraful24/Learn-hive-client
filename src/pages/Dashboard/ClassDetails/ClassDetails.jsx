@@ -90,16 +90,534 @@
 
 
 // Just try new
+// import { useLoaderData } from "react-router-dom";
+// import { useState } from "react";
+// import { useForm } from "react-hook-form";
+// import Swal from "sweetalert2";
+// import useAxiosSecure from "../../../hooks/useAxiosSecure";
+
+// const ClassDetails = () => {
+//     const classData = useLoaderData();
+//     const axiosSecure = useAxiosSecure();
+//     const [isModalOpen, setIsModalOpen] = useState(false);
+//     const { register, handleSubmit, reset, formState: { errors } } = useForm();
+
+//     if (!classData) {
+//         return <div>Loading...</div>;
+//     }
+
+//     const { _id, title } = classData;
+
+//     // Handle assignment form submission
+//     const onSubmit = async (data) => {
+//         try {
+//             const response = await axiosSecure.patch(`/details/${_id}`, {
+//                 assignment: data,
+//             });
+
+//             if (response.data.modifiedCount > 0) {
+//                 Swal.fire({
+//                     icon: "success",
+//                     title: "Assignment added successfully!",
+//                     showConfirmButton: false,
+//                     timer: 1500,
+//                 });
+//                 setIsModalOpen(false);
+//                 reset(); // Reset the form
+//             }
+//         } catch (error) {
+//             console.error("Error adding assignment:", error);
+//             Swal.fire({
+//                 icon: "error",
+//                 title: "Failed to add the assignment!",
+//             });
+//         }
+//     };
+
+//     return (
+//         <div className="mt-10">
+//             <h2 className="text-xl md:text-3xl font-bold text-center mb-8">{title}</h2>
+
+//             {/* Class Progress Section */}
+//             <div className="bg-white shadow-md rounded-lg overflow-hidden border hover:shadow-lg transition mb-8 p-5">
+//                 <h3 className="text-xl font-bold mb-4">Class Progress</h3>
+//                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+//                     <div className="text-center">
+//                         <p className="text-gray-600">Total Enrollments</p>
+//                         <h4 className="text-2xl font-bold">150</h4>
+//                     </div>
+//                     <div className="text-center">
+//                         <p className="text-gray-600">Total Assignments</p>
+//                         <h4 className="text-2xl font-bold">10</h4>
+//                     </div>
+//                     <div className="text-center">
+//                         <p className="text-gray-600">Total Submissions</p>
+//                         <h4 className="text-2xl font-bold">120</h4>
+//                     </div>
+//                 </div>
+//             </div>
+
+//             {/* Class Assignments Section */}
+//             <div className="bg-white shadow-md rounded-lg overflow-hidden border hover:shadow-lg transition mb-8 p-5">
+//                 <h3 className="text-xl font-bold mb-4">Class Assignments</h3>
+//                 <button
+//                     className="btn btn-primary"
+//                     onClick={() => setIsModalOpen(true)}
+//                 >
+//                     Create Assignment
+//                 </button>
+//             </div>
+
+//             {/* Assignment Modal */}
+//             {isModalOpen && (
+//                 <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
+//                     <div className="bg-white rounded-lg shadow-lg w-full max-w-lg p-6">
+//                         <h3 className="text-xl font-bold mb-4">Add Assignment</h3>
+//                         <form onSubmit={handleSubmit(onSubmit)}>
+//                             <div className="mb-4">
+//                                 <label className="block text-sm font-medium mb-1">
+//                                     Assignment Title
+//                                 </label>
+//                                 <input
+//                                     type="text"
+//                                     {...register("title", { required: "Title is required" })}
+//                                     className="input input-bordered w-full"
+//                                     placeholder="Enter assignment title"
+//                                 />
+//                                 {errors.title && (
+//                                     <p className="text-red-500 text-sm mt-1">
+//                                         {errors.title.message}
+//                                     </p>
+//                                 )}
+//                             </div>
+//                             <div className="mb-4">
+//                                 <label className="block text-sm font-medium mb-1">
+//                                     Assignment Deadline
+//                                 </label>
+//                                 <input
+//                                     type="date"
+//                                     {...register("deadline", { required: "Deadline is required" })}
+//                                     className="input input-bordered w-full"
+//                                 />
+//                                 {errors.deadline && (
+//                                     <p className="text-red-500 text-sm mt-1">
+//                                         {errors.deadline.message}
+//                                     </p>
+//                                 )}
+//                             </div>
+//                             <div className="mb-4">
+//                                 <label className="block text-sm font-medium mb-1">
+//                                     Assignment Description
+//                                 </label>
+//                                 <textarea
+//                                     {...register("description", { required: "Description is required" })}
+//                                     className="textarea textarea-bordered w-full"
+//                                     placeholder="Enter assignment description"
+//                                 ></textarea>
+//                                 {errors.description && (
+//                                     <p className="text-red-500 text-sm mt-1">
+//                                         {errors.description.message}
+//                                     </p>
+//                                 )}
+//                             </div>
+//                             <div className="flex justify-end gap-3">
+//                                 <button
+//                                     type="button"
+//                                     className="btn btn-secondary"
+//                                     onClick={() => setIsModalOpen(false)}
+//                                 >
+//                                     Cancel
+//                                 </button>
+//                                 <button type="submit" className="btn btn-primary">
+//                                     Add Assignment
+//                                 </button>
+//                             </div>
+//                         </form>
+//                     </div>
+//                 </div>
+//             )}
+//         </div>
+//     );
+// };
+
+// export default ClassDetails;
+
+
+
+
+
+
+
+
+
+
+
+
+// count assignment
+// import { useLoaderData } from "react-router-dom";
+// import { useState } from "react";
+// import { useForm } from "react-hook-form";
+// import Swal from "sweetalert2";
+// import useAxiosSecure from "../../../hooks/useAxiosSecure";
+
+// const ClassDetails = () => {
+//     const classData = useLoaderData();
+//     const axiosSecure = useAxiosSecure();
+//     const [isModalOpen, setIsModalOpen] = useState(false);
+//     const [assignmentCount, setAssignmentCount] = useState(classData.totalAssignments || 0); // Add state for assignment count
+//     const { register, handleSubmit, reset, formState: { errors } } = useForm();
+
+//     if (!classData) {
+//         return <div>Loading...</div>;
+//     }
+
+//     const { _id, title } = classData;
+
+//     // Handle assignment form submission
+//     const onSubmit = async (data) => {
+//         try {
+//             const response = await axiosSecure.patch(`/details/${_id}`, {
+//                 assignment: data,
+//             });
+
+//             if (response.data.modifiedCount > 0) {
+//                 Swal.fire({
+//                     icon: "success",
+//                     title: "Assignment added successfully!",
+//                     showConfirmButton: false,
+//                     timer: 1500,
+//                 });
+
+//                 // Update assignment count after successful submission
+//                 setAssignmentCount((prevCount) => prevCount + 1); // Increment assignment count
+//                 setIsModalOpen(false);
+//                 reset(); // Reset the form
+//             }
+//         } catch (error) {
+//             console.error("Error adding assignment:", error);
+//             Swal.fire({
+//                 icon: "error",
+//                 title: "Failed to add the assignment!",
+//             });
+//         }
+//     };
+
+//     return (
+//         <div className="mt-10">
+//             <h2 className="text-xl md:text-3xl font-bold text-center mb-8">{title}</h2>
+
+//             {/* Class Progress Section */}
+//             <div className="bg-white shadow-md rounded-lg overflow-hidden border hover:shadow-lg transition mb-8 p-5">
+//                 <h3 className="text-xl font-bold mb-4">Class Progress</h3>
+//                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+//                     <div className="text-center">
+//                         <p className="text-gray-600">Total Enrollments</p>
+//                         <h4 className="text-2xl font-bold">150</h4>
+//                     </div>
+//                     <div className="text-center">
+//                         <p className="text-gray-600">Total Assignments</p>
+//                         <h4 className="text-2xl font-bold">{assignmentCount}</h4> {/* Display updated assignment count */}
+//                     </div>
+//                     <div className="text-center">
+//                         <p className="text-gray-600">Total Submissions</p>
+//                         <h4 className="text-2xl font-bold">120</h4>
+//                     </div>
+//                 </div>
+//             </div>
+
+//             {/* Class Assignments Section */}
+//             <div className="bg-white shadow-md rounded-lg overflow-hidden border hover:shadow-lg transition mb-8 p-5">
+//                 <h3 className="text-xl font-bold mb-4">Class Assignments</h3>
+//                 <button
+//                     className="btn btn-primary"
+//                     onClick={() => setIsModalOpen(true)}
+//                 >
+//                     Create Assignment
+//                 </button>
+//             </div>
+
+//             {/* Assignment Modal */}
+//             {isModalOpen && (
+//                 <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
+//                     <div className="bg-white rounded-lg shadow-lg w-full max-w-lg p-6">
+//                         <h3 className="text-xl font-bold mb-4">Add Assignment</h3>
+//                         <form onSubmit={handleSubmit(onSubmit)}>
+//                             <div className="mb-4">
+//                                 <label className="block text-sm font-medium mb-1">
+//                                     Assignment Title
+//                                 </label>
+//                                 <input
+//                                     type="text"
+//                                     {...register("title", { required: "Title is required" })}
+//                                     className="input input-bordered w-full"
+//                                     placeholder="Enter assignment title"
+//                                 />
+//                                 {errors.title && (
+//                                     <p className="text-red-500 text-sm mt-1">
+//                                         {errors.title.message}
+//                                     </p>
+//                                 )}
+//                             </div>
+//                             <div className="mb-4">
+//                                 <label className="block text-sm font-medium mb-1">
+//                                     Assignment Deadline
+//                                 </label>
+//                                 <input
+//                                     type="date"
+//                                     {...register("deadline", { required: "Deadline is required" })}
+//                                     className="input input-bordered w-full"
+//                                 />
+//                                 {errors.deadline && (
+//                                     <p className="text-red-500 text-sm mt-1">
+//                                         {errors.deadline.message}
+//                                     </p>
+//                                 )}
+//                             </div>
+//                             <div className="mb-4">
+//                                 <label className="block text-sm font-medium mb-1">
+//                                     Assignment Description
+//                                 </label>
+//                                 <textarea
+//                                     {...register("description", { required: "Description is required" })}
+//                                     className="textarea textarea-bordered w-full"
+//                                     placeholder="Enter assignment description"
+//                                 ></textarea>
+//                                 {errors.description && (
+//                                     <p className="text-red-500 text-sm mt-1">
+//                                         {errors.description.message}
+//                                     </p>
+//                                 )}
+//                             </div>
+//                             <div className="flex justify-end gap-3">
+//                                 <button
+//                                     type="button"
+//                                     className="btn btn-secondary"
+//                                     onClick={() => setIsModalOpen(false)}
+//                                 >
+//                                     Cancel
+//                                 </button>
+//                                 <button type="submit" className="btn btn-primary">
+//                                     Add Assignment
+//                                 </button>
+//                             </div>
+//                         </form>
+//                     </div>
+//                 </div>
+//             )}
+//         </div>
+//     );
+// };
+
+// export default ClassDetails;
+
+
+
+
+// import { useLoaderData } from "react-router-dom";
+// import { useState, useEffect } from "react";
+// import { useForm } from "react-hook-form";
+// import Swal from "sweetalert2";
+// import useAxiosSecure from "../../../hooks/useAxiosSecure";
+// import { FaPlus } from "react-icons/fa";
+
+// const ClassDetails = () => {
+//     const classData = useLoaderData();
+//     const axiosSecure = useAxiosSecure();
+//     const [isModalOpen, setIsModalOpen] = useState(false);
+//     const [assignments, setAssignments] = useState([]);
+//     const { register, handleSubmit, reset, formState: { errors } } = useForm();
+
+//     if (!classData) {
+//         return <div>Loading...</div>;
+//     }
+
+//     const { _id, title } = classData;
+
+//     // Fetch assignments for the class on component mount
+//     useEffect(() => {
+//         const fetchAssignments = async () => {
+//             try {
+//                 const response = await axiosSecure.get(`/details/${_id}`);
+//                 if (response.data.assignments) {
+//                     setAssignments(response.data.assignments);
+//                 }
+//             } catch (error) {
+//                 console.error("Error fetching assignments:", error);
+//             }
+//         };
+//         fetchAssignments();
+//     }, [_id, axiosSecure]);
+
+//     // Handle assignment form submission
+//     const onSubmit = async (data) => {
+//         try {
+//             const response = await axiosSecure.patch(`/details/${_id}`, {
+//                 assignment: data,
+//             });
+
+//             if (response.data.modifiedCount > 0) {
+//                 // Update the assignments state directly after adding the new assignment
+//                 setAssignments((prevAssignments) => [
+//                     ...prevAssignments,
+//                     { title: data.title, description: data.description, deadline: data.deadline }
+//                 ]);
+
+//                 Swal.fire({
+//                     icon: "success",
+//                     title: "Assignment added successfully!",
+//                     showConfirmButton: false,
+//                     timer: 1500,
+//                 });
+//                 setIsModalOpen(false);
+//                 reset(); // Reset the form
+//             }
+//         } catch (error) {
+//             console.error("Error adding assignment:", error);
+//             Swal.fire({
+//                 icon: "error",
+//                 title: "Failed to add the assignment!",
+//             });
+//         }
+//     };
+
+//     return (
+//         <div className="mt-10">
+//             <h2 className="text-xl md:text-3xl font-bold text-center mb-8">{title}</h2>
+
+//             {/* Class Progress Section */}
+//             <div className="bg-white shadow-md rounded-lg overflow-hidden border hover:shadow-lg transition mb-10 p-5">
+//                 <h3 className="text-xl font-bold mb-4">Class Progress</h3>
+//                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+//                     <div className="text-center">
+//                         <p className="text-gray-600">Total Enrollments</p>
+//                         <h4 className="text-2xl font-bold">150</h4>
+//                     </div>
+//                     <div className="text-center">
+//                         <p className="text-gray-600">Total Assignments</p>
+//                         <h4 className="text-2xl font-bold">{assignments.length}</h4>
+//                     </div>
+//                     <div className="text-center">
+//                         <p className="text-gray-600">Total Submissions</p>
+//                         <h4 className="text-2xl font-bold">120</h4>
+//                     </div>
+//                 </div>
+//             </div>
+
+//             {/* Create Assignment Button */}
+//             <div className="mb-5">
+//                 <button
+//                     className="btn btn-primary rounded-full"
+//                     onClick={() => setIsModalOpen(true)}
+//                 >
+//                     <FaPlus />
+//                     Create Assignment
+//                 </button>
+//             </div>
+
+//             {/* List of Class Assignments (Card View) */}
+//             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+//                 {assignments.map((assignment, index) => (
+//                     <div
+//                         key={index}
+//                         className="bg-white shadow-md rounded-lg overflow-hidden border hover:shadow-lg transition p-5"
+//                     >
+//                         <h4>Title: {assignment.title}</h4>
+//                         <p className="my-1">Description: {assignment.description}</p>
+//                         <p>Deadline: {assignment.deadline}</p>
+//                     </div>
+//                 ))}
+//             </div>
+
+//             {/* Assignment Modal */}
+//             {isModalOpen && (
+//                 <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
+//                     <div className="bg-white rounded-lg shadow-lg w-full max-w-lg p-6">
+//                         <h3 className="text-xl font-bold mb-4">Add Assignment</h3>
+//                         <form onSubmit={handleSubmit(onSubmit)}>
+//                             <div className="mb-4">
+//                                 <label className="block text-sm font-medium mb-1">
+//                                     Assignment Title
+//                                 </label>
+//                                 <input
+//                                     type="text"
+//                                     {...register("title", { required: "Title is required" })}
+//                                     className="input input-bordered w-full"
+//                                     placeholder="Enter assignment title"
+//                                 />
+//                                 {errors.title && (
+//                                     <p className="text-red-500 text-sm mt-1">
+//                                         {errors.title.message}
+//                                     </p>
+//                                 )}
+//                             </div>
+//                             <div className="mb-4">
+//                                 <label className="block text-sm font-medium mb-1">
+//                                     Assignment Deadline
+//                                 </label>
+//                                 <input
+//                                     type="date"
+//                                     {...register("deadline", { required: "Deadline is required" })}
+//                                     className="input input-bordered w-full"
+//                                 />
+//                                 {errors.deadline && (
+//                                     <p className="text-red-500 text-sm mt-1">
+//                                         {errors.deadline.message}
+//                                     </p>
+//                                 )}
+//                             </div>
+//                             <div className="mb-4">
+//                                 <label className="block text-sm font-medium mb-1">
+//                                     Assignment Description
+//                                 </label>
+//                                 <textarea
+//                                     {...register("description", { required: "Description is required" })}
+//                                     className="textarea textarea-bordered w-full"
+//                                     placeholder="Enter assignment description"
+//                                 ></textarea>
+//                                 {errors.description && (
+//                                     <p className="text-red-500 text-sm mt-1">
+//                                         {errors.description.message}
+//                                     </p>
+//                                 )}
+//                             </div>
+//                             <div className="flex justify-end gap-3">
+//                                 <button
+//                                     type="button"
+//                                     className="btn btn-secondary"
+//                                     onClick={() => setIsModalOpen(false)}
+//                                 >
+//                                     Cancel
+//                                 </button>
+//                                 <button type="submit" className="btn btn-primary">
+//                                     Add Assignment
+//                                 </button>
+//                             </div>
+//                         </form>
+//                     </div>
+//                 </div>
+//             )}
+//         </div>
+//     );
+// };
+
+// export default ClassDetails;
+
+
+
+
+
 import { useLoaderData } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
+import { FaPlus } from "react-icons/fa";
 
 const ClassDetails = () => {
     const classData = useLoaderData();
     const axiosSecure = useAxiosSecure();
     const [isModalOpen, setIsModalOpen] = useState(false);
+    const [assignments, setAssignments] = useState([]);
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
 
     if (!classData) {
@@ -108,14 +626,47 @@ const ClassDetails = () => {
 
     const { _id, title } = classData;
 
+    // Fetch assignments for the class on component mount
+    useEffect(() => {
+        const fetchAssignments = async () => {
+            try {
+                const response = await axiosSecure.get(`/details/${_id}`);
+                if (response.data.assignments) {
+                    setAssignments(response.data.assignments);
+                }
+            } catch (error) {
+                console.error("Error fetching assignments:", error);
+            }
+        };
+        fetchAssignments();
+    }, [_id, axiosSecure]);
+
     // Handle assignment form submission
     const onSubmit = async (data) => {
         try {
             const response = await axiosSecure.patch(`/details/${_id}`, {
-                assignment: data,
+                assignment: {
+                    title: data.title,
+                    description: data.description,
+                    deadline: data.deadline,
+                    submit: "false",  // Assignment is not yet submitted
+                    assignment: 'some-assignment-id',  // Use a dynamic ID or another reference as needed
+                }
             });
 
             if (response.data.modifiedCount > 0) {
+                // Update the assignments state directly after adding the new assignment
+                setAssignments((prevAssignments) => [
+                    ...prevAssignments,
+                    {
+                        title: data.title,
+                        description: data.description,
+                        deadline: data.deadline,
+                        submit: false,  // Assignment not yet submitted
+                        assignment: 'some-assignment-id',  // This could be the ID returned from the backend
+                    }
+                ]);
+
                 Swal.fire({
                     icon: "success",
                     title: "Assignment added successfully!",
@@ -134,12 +685,13 @@ const ClassDetails = () => {
         }
     };
 
+
     return (
         <div className="mt-10">
             <h2 className="text-xl md:text-3xl font-bold text-center mb-8">{title}</h2>
 
             {/* Class Progress Section */}
-            <div className="bg-white shadow-md rounded-lg overflow-hidden border hover:shadow-lg transition mb-8 p-5">
+            <div className="bg-white shadow-md rounded-lg overflow-hidden border hover:shadow-lg transition mb-10 p-5">
                 <h3 className="text-xl font-bold mb-4">Class Progress</h3>
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                     <div className="text-center">
@@ -148,7 +700,7 @@ const ClassDetails = () => {
                     </div>
                     <div className="text-center">
                         <p className="text-gray-600">Total Assignments</p>
-                        <h4 className="text-2xl font-bold">10</h4>
+                        <h4 className="text-2xl font-bold">{assignments.length}</h4>
                     </div>
                     <div className="text-center">
                         <p className="text-gray-600">Total Submissions</p>
@@ -157,15 +709,29 @@ const ClassDetails = () => {
                 </div>
             </div>
 
-            {/* Class Assignments Section */}
-            <div className="bg-white shadow-md rounded-lg overflow-hidden border hover:shadow-lg transition mb-8 p-5">
-                <h3 className="text-xl font-bold mb-4">Class Assignments</h3>
+            {/* Create Assignment Button */}
+            <div className="mb-5">
                 <button
-                    className="btn btn-primary"
+                    className="btn btn-primary rounded-full"
                     onClick={() => setIsModalOpen(true)}
                 >
+                    <FaPlus />
                     Create Assignment
                 </button>
+            </div>
+
+            {/* List of Class Assignments (Card View) */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                {assignments.map((assignment, index) => (
+                    <div
+                        key={index}
+                        className="bg-white shadow-md rounded-lg overflow-hidden border hover:shadow-lg transition p-5"
+                    >
+                        <h4>Title: {assignment.title}</h4>
+                        <p className="my-1">Description: {assignment.description}</p>
+                        <p>Deadline: {assignment.deadline}</p>
+                    </div>
+                ))}
             </div>
 
             {/* Assignment Modal */}

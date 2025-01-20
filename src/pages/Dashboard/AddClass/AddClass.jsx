@@ -261,7 +261,7 @@ const AddClass = () => {
     };
 
     return (
-        <div className="mb-16">
+        <div className="mt-10 mb-16">
             <Helmet>
                 <title>Add Class || LearnHive</title>
             </Helmet>
