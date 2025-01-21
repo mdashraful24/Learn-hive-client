@@ -17,17 +17,17 @@ const Highlight = () => {
     });
 
     if (isLoading) {
-        return <div>Loading classes...</div>;
+        return <div className="text-lg text-center mb-16">Loading classes...</div>;
     }
 
     if (isError) {
-        return <div>Error loading classes</div>;
+        return <div className="text-lg text-center mb-16">Error loading classes</div>;
     }
 
     return (
         <section className="px-3 lg:px-0">
-            <div className="mb-8">
-                <h2 className="text-3xl text-center font-bold mb-3">Currently Popular Classes</h2>
+            <div className="mb-10">
+                <h2 className="text-4xl text-center font-extrabold mb-5">Currently Popular Classes</h2>
                 <p className="text-center lg:w-1/2 mx-auto">Explore a range of skills to build and enhance your knowledge in modern technologies and creative fields. Master tools and techniques that help you develop expertise in various professional domains.</p>
             </div>
             <Swiper

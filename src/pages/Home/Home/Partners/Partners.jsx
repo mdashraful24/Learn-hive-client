@@ -9,9 +9,9 @@ import img8 from '../../../../assets/partners/learny-hive.jpeg'
 
 const Partners = () => {
     return (
-        <div className='my-20'>
-            <h2 className="text-center text-4xl font-extrabold mb-8 text-gray-800">Our Partners</h2>
-            <p className="text-center text-lg text-gray-600 max-w-3xl mx-auto mb-10">
+        <div className='mb-20'>
+            <h2 className="text-center text-4xl font-extrabold mb-5">Our Partners</h2>
+            <p className="text-center mb-10 px-3">
                 We’re proud to collaborate with these exceptional organizations to make learning accessible, efficient, and impactful.
             </p>
             <div className='px-5 lg:px-0'>

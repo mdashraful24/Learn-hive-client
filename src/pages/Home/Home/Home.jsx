@@ -8,6 +8,7 @@ import Partners from "./Partners/Partners";
 import StatsSection from "./StatsSection/StatsSection";
 import Testimonials from "./Testimonials/Testimonials";
 import Highlight from "./Highlight/Highlight";
+import Welcome from "./Welcome/Welcome";
 
 const Home = () => {
     return (
@@ -17,14 +18,15 @@ const Home = () => {
             </Helmet>
 
             <Banner></Banner>
+            <Welcome></Welcome>
+            <AboutUs></AboutUs>
             <Partners></Partners>
             <Highlight></Highlight>
-            <Feedback></Feedback>
             <InspireTeachers></InspireTeachers>
             <StatsSection></StatsSection>
-            <AboutUs></AboutUs>
             <KeyFeatures></KeyFeatures>
             <Testimonials></Testimonials>
+            <Feedback></Feedback>
         </div>
     );
 };

@@ -1,13 +1,11 @@
 import "react-responsive-carousel/lib/styles/carousel.min.css";
-import { Carousel } from 'react-responsive-carousel';
+import { Carousel } from "react-responsive-carousel";
 
-import img1 from '../../../../assets/home/img1.jpg';
-import img2 from '../../../../assets/home/02.jpg';
-import img3 from '../../../../assets/home/03.png';
-import img4 from '../../../../assets/home/04.jpg';
-import img5 from '../../../../assets/home/05.png';
-import img6 from '../../../../assets/home/06.png';
-// import './Banner.css';
+import img1 from "../../../../assets/banner/banner1.jpg";
+import img2 from "../../../../assets/banner/banner2.jpg";
+import img3 from "../../../../assets/banner/banner3.jpg";
+import img4 from "../../../../assets/banner/banner4.jpg";
+import img5 from "../../../../assets/banner/banner5.jpg";
 
 const Banner = () => {
     return (
@@ -24,7 +22,6 @@ const Banner = () => {
             interval={3000}
             transitionTime={500}
             stopOnHover
-            // Button Hidden
             renderArrowPrev={(clickHandler) => (
                 <button
                     className="absolute top-1/2 left-5 transform -translate-y-1/2 bg-black text-white p-3 rounded-full shadow-lg z-10 hidden"
@@ -42,24 +39,18 @@ const Banner = () => {
                 </button>
             )}
         >
-            <div>
-                <img src={img1} alt="Slide 1" />
-            </div>
-            <div>
-                <img src={img2} alt="Slide 2" />
-            </div>
-            <div>
-                <img src={img3} alt="Slide 3" />
-            </div>
-            <div>
-                <img src={img4} alt="Slide 4" />
-            </div>
-            <div>
-                <img src={img5} alt="Slide 5" />
-            </div>
-            <div>
-                <img src={img6} alt="Slide 6" />
-            </div>
+            {[img1, img2, img3, img4, img5].map((image, index) => (
+                <div key={index} className="relative">
+                    {/* Image */}
+                    <img
+                        className="w-full h-[250px] md:h-[500px] lg:h-[660px]"
+                        src={image}
+                        alt={`Slide ${index + 1}`}
+                    />
+                    {/* Overlay */}
+                    <div className="absolute inset-0 bg-black bg-opacity-10"></div>
+                </div>
+            ))}
         </Carousel>
     );
 };

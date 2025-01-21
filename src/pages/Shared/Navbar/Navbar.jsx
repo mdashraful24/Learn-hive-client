@@ -7,11 +7,10 @@ import useAuth from "../../../hooks/useAuth";
 const Navbar = () => {
     const { user, logOut } = useAuth();
     const [dropdownOpen, setDropdownOpen] = useState(false);
-    const dropdownRef = useRef(null); // Reference to the dropdown container
+    const dropdownRef = useRef(null);
     const navigate = useNavigate();
 
     useEffect(() => {
-        // Close dropdown if the user clicks outside
         const handleClickOutside = (event) => {
             if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
                 setDropdownOpen(false);

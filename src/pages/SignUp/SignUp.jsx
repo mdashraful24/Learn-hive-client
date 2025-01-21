@@ -45,7 +45,7 @@ const SignUp = () => {
     }
 
     return (
-        <div className='mt-10 mb-20'>
+        <div className='mt-10 mb-20 md:px-5'>
             {/* Helmet */}
             <Helmet>
                 <title>Sign Up | Bistro Boss Restaurant</title>
@@ -58,8 +58,8 @@ const SignUp = () => {
                     backgroundImage: `url('${bgImg})`
                 }}>
                     {/* Image */}
-                    <div className="text-center md:w-1/2 lg:text-left">
-                        <img className='w-[200px] md:w-[500px]' src={bgImg} alt="" />
+                    <div className="text-center w-[300px] md:w-1/2 lg:text-left">
+                        <img className='w-[200px] md:w-[500px] hidden md:block' src={bgImg} alt="" />
                     </div>
                     <div className="card w-full max-w-sm rounded-none lg:pr-10">
 

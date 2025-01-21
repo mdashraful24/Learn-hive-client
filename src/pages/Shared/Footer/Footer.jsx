@@ -2,7 +2,7 @@ import logo from '../../../../src/assets/logo.png'
 
 const Footer = () => {
     return (
-        <div className="p-10 shadow-inner border-t">
+        <div className="p-10 shadow-inner border-t -mt-14">
             <footer className="footer grid grid-cols-1 md:grid-cols-3 justify-items-center gap-8 max-w-5xl mx-auto">
                 <footer className="container mx-auto text-base-content flex flex-col justify-center items-center">
                     <div className="flex items-center gap-2">
@@ -29,7 +29,7 @@ const Footer = () => {
                     <a className="link link-hover text-base" href="https://www.instagram.com/" target="_blank">Instagram</a>
                 </nav>
             </footer>
-            <p className="text-center pt-10">&copy; {new Date().getFullYear()} LearnHive. All rights reserved.</p>
+            <p className="text-center pt-14">&copy; {new Date().getFullYear()} LearnHive. All rights reserved.</p>
             <p className="text-center">Designed, Developed and Maintained by PH Student</p>
         </div>
     );

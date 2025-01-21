@@ -56,15 +56,16 @@ const StudentProfile = () => {
     return (
         <div className="container mx-auto my-10 p-6 bg-gray-50 rounded-xl shadow-lg">
             <div className="flex flex-col items-center text-center">
-                <div className="relative w-36 h-36 rounded-full overflow-hidden shadow-lg border-4 border-blue-500 p-5">
+                {/* className="relative w-36 h-36 rounded-full overflow-hidden shadow-lg border-4 border-blue-500 p-5" */}
+                <div className="p-5">
                     <img
                         src={userInfo.image || "https://via.placeholder.com/150"}
                         alt={userInfo.name || "User"}
-                        className="object-cover w-full h-full"
+                        className="w-24 h-24 object-cover rounded-full border-2 shadow-lg"
                     />
                 </div>
-                <h2 className="text-3xl font-bold mt-4">{userInfo.name || "N/A"}</h2>
-                <p className="text-gray-600 mt-2 text-lg">{userInfo.role || "N/A"}</p>
+                <h2 className="text-3xl font-bold capitalize">{userInfo.name || "N/A"}</h2>
+                <p className="text-gray-600 mt-2 text-lg capitalize">{userInfo.role || "N/A"}</p>
             </div>
 
             <div className="mt-6 grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -75,7 +76,7 @@ const StudentProfile = () => {
                         <span className="font-medium text-gray-900">Email:</span> {userInfo.email || "N/A"}
                     </p>
                     <p className="text-gray-700 mt-2">
-                        <span className="font-medium text-gray-900">Phone:</span> {userInfo.phone || "N/A"}
+                        <span className="font-medium text-gray-900">Phone:</span> {userInfo.phone || "348256342897"}
                     </p>
                 </div>
 
@@ -92,11 +93,11 @@ const StudentProfile = () => {
             </div>
 
             {/* Button */}
-            <div className="mt-8 text-center">
+            {/* <div className="mt-8 text-center">
                 <button className="px-6 py-3 text-white bg-blue-500 rounded-lg shadow-md hover:bg-blue-600 transition-all">
                     Edit Profile
                 </button>
-            </div>
+            </div> */}
         </div>
     );
 };
