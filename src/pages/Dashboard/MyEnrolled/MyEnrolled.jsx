@@ -82,15 +82,14 @@ import useAxiosPublic from "../../../hooks/useAxiosPublic";
 import { useQuery } from "@tanstack/react-query";
 import { useNavigate } from "react-router-dom";
 import ReactPaginate from "react-paginate";
+import { Helmet } from "react-helmet-async";
 
 const MyEnrolled = () => {
     const { user } = useAuth();
     const axiosPublic = useAxiosPublic();
     const navigate = useNavigate();
-
-    // Pagination states
     const [currentPage, setCurrentPage] = useState(0);
-    const itemsPerPage = 10; // Number of classes per page
+    const itemsPerPage = 10;
 
     // Fetch enrolled classes
     const { data: approvedClasses = [], isLoading, isError } = useQuery({
@@ -120,11 +119,9 @@ const MyEnrolled = () => {
     }
 
     const handleEnrollDetails = (course) => {
-        // Navigate to the enrolled class page and pass the course ID via state
         navigate(`/dashboard/myEnroll-class/${course._id}`);
     };
 
-    // Pagination Logic: Slice the approvedClasses array for the current page
     const paginatedClasses = approvedClasses.slice(currentPage * itemsPerPage, (currentPage + 1) * itemsPerPage);
 
     // Handle page change
@@ -133,8 +130,15 @@ const MyEnrolled = () => {
     };
 
     return (
-        <div className="mt-10 mb-16">
-            <h2 className="text-2xl md:text-3xl font-bold text-center mb-5">My Enrolled Classes</h2>
+        <div className="mt-10 lg:mt-5 mb-16">
+            <Helmet>
+                <title>My Enrolled Classes | LearnHive</title>
+            </Helmet>
+
+            {/* title */}
+            <h2 className="text-3xl font-bold text-center mb-5">My Enrolled Classes</h2>
+
+            {/* enroll classes cards */}
             <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
                 {paginatedClasses.map((course) => (
                     <div key={course._id} className="bg-white shadow-md rounded-md p-4">
@@ -144,7 +148,10 @@ const MyEnrolled = () => {
                             alt={course.title}
                         />
                         <h3 className="text-xl font-bold mt-4">{course.title}</h3>
-                        <p className="text-gray-600">Posted By: {course.name}</p>
+                        <p className="text-gray-600 mt-2"><strong>Posted By:</strong> {course.name}</p>
+                        <p className="text-gray-600 mt-2">
+                            <span><strong>Enroll Date:</strong></span> {course.date ? new Date(course.date).toLocaleDateString() : "N/A"}
+                        </p>
                         <button
                             onClick={() => handleEnrollDetails(course)}
                             className="mt-4 bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600"

@@ -66,7 +66,7 @@ const DetailsPage = () => {
     const { _id, title, name, price, description, image } = useLoaderData();
 
     return (
-        <div className="max-w-2xl mx-auto px-4 py-8">
+        <div className="max-w-2xl mx-auto px-4 py-8 mb-16">
             <div className="bg-white shadow-md rounded-lg overflow-hidden">
                 {/* Class Image */}
                 <img
@@ -81,7 +81,7 @@ const DetailsPage = () => {
                         {title}
                     </h2>
                     <p className="text-gray-600 mb-4">
-                        <strong>Instructor:</strong> {name}
+                        <strong>Posted By:</strong> {name}
                     </p>
                     <p className="text-gray-600 mb-4">
                         <strong>Description:</strong> {description}

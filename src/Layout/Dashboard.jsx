@@ -145,7 +145,6 @@
 
 
 
-// Try new
 import { FaHome, FaListAlt, FaListUl, FaUserCircle } from 'react-icons/fa';
 import { FaCodePullRequest, FaUsers } from "react-icons/fa6";
 import { GiTeacher } from 'react-icons/gi';
@@ -156,6 +155,7 @@ import useAdmin from '../hooks/useAdmin';
 import useTeacher from '../hooks/useTeacher';
 import useStudent from '../hooks/useStudent';
 import { useState, useEffect } from 'react';
+import { Helmet } from 'react-helmet-async';
 
 const Dashboard = () => {
     const [isAdmin] = useAdmin();
@@ -167,7 +167,6 @@ const Dashboard = () => {
     const location = useLocation();
 
     useEffect(() => {
-        // Hide the welcome message if the user navigates to a different route
         if (location.pathname !== "/dashboard") {
             setShowWelcome(false);
         }
@@ -179,6 +178,10 @@ const Dashboard = () => {
 
     return (
         <div className="flex h-screen overflow-hidden">
+            <Helmet>
+                <title>Dashboard | LearnHive</title>
+            </Helmet>
+
             {/* Sidebar */}
             <div className={`md:w-64 min-h-screen bg-[#bd8228] p- transition-all duration-300 ${isSidebarOpen ? "block" : "hidden lg:block"}`}>
                 {/* Title */}

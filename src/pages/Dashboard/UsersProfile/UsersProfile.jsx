@@ -48,6 +48,7 @@ import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import ReactPaginate from "react-paginate";
 import { useState } from "react";
+import { Helmet } from "react-helmet-async";
 
 const UsersProfile = () => {
     const axiosSecure = useAxiosSecure();
@@ -71,8 +72,15 @@ const UsersProfile = () => {
     const paginatedUsers = users.slice(currentPage * itemsPerPage, (currentPage + 1) * itemsPerPage);
 
     return (
-        <div className="mt-10 md:mt-14 mb-16">
-            <h2 className="text-4xl font-bold text-center mb-5">Users Profile</h2>
+        <div className="mt-10 lg:mt-5 mb-16">
+            <Helmet>
+                <title>Profile | LearnHive</title>
+            </Helmet>
+
+            {/* title */}
+            <h2 className="text-3xl font-bold text-center">Users Profile</h2>
+
+            {/* card start */}
             <div className="bg-white shadow-md rounded-lg p-8">
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                     {paginatedUsers.map(user => (
@@ -84,11 +92,13 @@ const UsersProfile = () => {
                             </div>
                             <h3 className="text-xl font-bold text-center mb-2">{user.name}</h3>
                             <p className="text-center text-gray-600 mb-2"><span className="text-gray-900">Email:</span> {user.email}</p>
-                            <p className="text-center text-gray-600 mb-2"><span className="text-gray-900">Phone:</span> {user.phone}</p>
+                            <p className="text-center text-gray-600 mb-2"><span className="text-gray-900">Phone:</span> {user.phone ? user.phone : "N/A"}</p>
                             <p className="text-center text-gray-600 capitalize mb-2"><span className="text-gray-900">Role:</span> {user.role}</p>
+                            <p className="text-center text-gray-600 capitalize mb-2"><span className="text-gray-900">Joined:</span> {user.joinedDate ? new Date(user.joinedDate).toLocaleDateString() : "N/A"}</p>
                         </div>
                     ))}
                 </div>
+                
                 {/* Pagination */}
                 <ReactPaginate
                     previousLabel={

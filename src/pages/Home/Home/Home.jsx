@@ -1,5 +1,4 @@
 import { Helmet } from "react-helmet-async";
-import Feedback from "../Feedback/Feedback";
 import InspireTeachers from "../InspireTeachers/InspireTeachers";
 import KeyFeatures from "../KeyFeatures/KeyFeatures";
 import AboutUs from "./AboutUs/AboutUs";
@@ -26,7 +25,6 @@ const Home = () => {
             <StatsSection></StatsSection>
             <KeyFeatures></KeyFeatures>
             <Testimonials></Testimonials>
-            <Feedback></Feedback>
         </div>
     );
 };

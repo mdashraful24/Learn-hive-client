@@ -103,6 +103,9 @@ export const router = createBrowserRouter([
                 element: <ClassDetails></ClassDetails>,
                 loader: ({ params }) => fetch(`http://localhost:5000/details/${params.id}`)
             },
+            {
+
+            },
             // student
             {
                 path: "myEnroll-class",

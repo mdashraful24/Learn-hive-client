@@ -195,7 +195,7 @@ import { FaUtensils } from "react-icons/fa";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import Swal from "sweetalert2";
 import useAuth from "../../../hooks/useAuth";
-import { useNavigate } from "react-router-dom"; // Import useNavigate
+import { useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 
 // Cloudinary configuration
@@ -206,7 +206,7 @@ const AddClass = () => {
     const { register, handleSubmit, reset, watch, formState: { errors } } = useForm();
     const axiosSecure = useAxiosSecure();
     const { user } = useAuth();
-    const navigate = useNavigate(); // Initialize useNavigate
+    const navigate = useNavigate();
 
     const uploadedImage = watch("image");
 
@@ -229,7 +229,7 @@ const AddClass = () => {
                 const classItem = {
                     title: data.title,
                     name: user?.displayName || "Unknown User",
-                    email: user?.email || "unknown@example.com",
+                    email: user?.email || "unknown@gmail.com",
                     price: parseFloat(data.price),
                     description: data.description,
                     image: cloudinaryData.secure_url,
@@ -247,7 +247,7 @@ const AddClass = () => {
                         showConfirmButton: false,
                         timer: 1500,
                     });
-                    navigate("/dashboard/my-class"); // Redirect to My Classes page
+                    navigate("/dashboard/my-class");
                 }
             }
         } catch (error) {
@@ -261,12 +261,12 @@ const AddClass = () => {
     };
 
     return (
-        <div className="mt-10 mb-16">
+        <div className="mt-10 lg:mt-5 mb-16">
             <Helmet>
-                <title>Add Class || LearnHive</title>
+                <title>Add Class | LearnHive</title>
             </Helmet>
 
-            <h2 className="text-3xl md:text-4xl font-bold text-center mb-6 md:mb-10">Add a New Class</h2>
+            <h2 className="text-3xl font-bold text-center mb-5 md:mb-8">Add a New Class</h2>
             <div className="p-5 md:p-8 shadow-lg rounded-lg border">
                 <form onSubmit={handleSubmit(onSubmit)}>
                     {/* Title */}
@@ -284,7 +284,7 @@ const AddClass = () => {
                     </div>
 
                     {/* Name and Email */}
-                    <div className="flex gap-4 mb-4">
+                    <div className="flex flex-col md:flex-row gap-4 mb-4">
                         <div className="flex-1">
                             <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="name">
                                 Name
@@ -309,26 +309,6 @@ const AddClass = () => {
                         </div>
                     </div>
 
-                    {/* Price */}
-                    <div className="mb-4">
-                        <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="price">
-                            Price*
-                        </label>
-                        <input
-                            type="text"
-                            placeholder="Price"
-                            {...register("price", {
-                                required: "Price is required",
-                                pattern: {
-                                    value: /^[0-9]*\.?[0-9]+$/,
-                                    message: "Price must be a valid number",
-                                },
-                            })}
-                            className="px-3 py-2 border rounded shadow-sm focus:outline-none focus:ring-1 focus:ring-black"
-                        />
-                        {errors.price && <p className="text-red-500 text-sm mt-1">{errors.price.message}</p>}
-                    </div>
-
                     {/* Description */}
                     <div className="mb-4">
                         <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="description">
@@ -343,17 +323,39 @@ const AddClass = () => {
                         {errors.description && <p className="text-red-500 text-sm mt-1">{errors.description.message}</p>}
                     </div>
 
-                    {/* File Upload */}
-                    <div className="mb-8">
-                        <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="fileUpload">
-                            Upload Image
-                        </label>
-                        <input
-                            type="file"
-                            {...register("image", { required: "Image is required" })}
-                            className="block text-sm file:mr-4 file:py-2 file:px-4 file:rounded file:border-0 file:bg-gray-300"
-                        />
-                        {errors.image && <p className="text-red-500 text-sm mt-1">{errors.image.message}</p>}
+                    <div className="flex flex-col md:flex-row md:items-center gap-4 mb-10">
+                        {/* Price */}
+                        <div className="flex-1">
+                            <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="price">
+                                Price*
+                            </label>
+                            <input
+                                type="text"
+                                placeholder="Price"
+                                {...register("price", {
+                                    required: "Price is required",
+                                    pattern: {
+                                        value: /^[0-9]*\.?[0-9]+$/,
+                                        message: "Price must be a valid number",
+                                    },
+                                })}
+                                className="px-3 py-2 w-full border rounded shadow-sm focus:outline-none focus:ring-1 focus:ring-black"
+                            />
+                            {errors.price && <p className="text-red-500 text-sm mt-1">{errors.price.message}</p>}
+                        </div>
+
+                        {/* File Upload */}
+                        <div className="flex-1">
+                            <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="fileUpload">
+                                Upload Image*
+                            </label>
+                            <input
+                                type="file"
+                                {...register("image", { required: "Image is required" })}
+                                className="block text-sm file:mr-4 file:py-2 file:px-4 file:rounded file:border-0 file:bg-gray-300"
+                            />
+                            {errors.image && <p className="text-red-500 text-sm mt-1">{errors.image.message}</p>}
+                        </div>
                     </div>
 
                     {/* Submit Button */}

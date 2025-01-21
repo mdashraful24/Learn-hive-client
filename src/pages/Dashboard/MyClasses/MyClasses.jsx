@@ -442,7 +442,7 @@ const MyClasses = () => {
     const [selectedClass, setSelectedClass] = useState(null);
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [currentPage, setCurrentPage] = useState(0);
-    const itemsPerPage = 10; // Number of classes per page
+    const itemsPerPage = 9;
 
     const { data: classes = [], refetch } = useQuery({
         queryKey: ["classes", user?.email],
@@ -491,7 +491,7 @@ const MyClasses = () => {
         const isDataUnchanged =
             data.title === selectedClass.title &&
             data.description === selectedClass.description &&
-            data.price === selectedClass.price;
+            data.price === parseFloat(selectedClass.price);
 
         if (isDataUnchanged) {
             Swal.fire({
@@ -537,11 +537,15 @@ const MyClasses = () => {
     };
 
     return (
-        <div className="mt-10 mb-20">
+        <div className="mt-10 lg:mt-5 mb-20">
             <Helmet>
-                <title>My Classes || LearnHive</title>
+                <title>My Classes | LearnHive</title>
             </Helmet>
+
+            {/* title */}
             <h2 className="text-3xl font-bold text-center mb-8">My Classes</h2>
+
+            {/* classes cards */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {paginatedClasses.map((classItem) => (
                     <div
@@ -667,7 +671,7 @@ const MyClasses = () => {
                                 <input
                                     {...register("price")}
                                     className="input input-bordered w-full"
-                                    type="number"
+                                    type="text"
                                     placeholder="Enter price"
                                 />
                             </div>

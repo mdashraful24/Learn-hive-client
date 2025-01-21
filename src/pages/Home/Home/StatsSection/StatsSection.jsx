@@ -16,9 +16,9 @@ const StatsSection = () => {
 
             <div className="max-w-5xl mx-auto flex flex-col-reverse md:flex-row items-center justify-evenly gap-10 p-6">
                 {/* stats */}
-                <div className="grid grid-cols-1 gap-4">
+                <div className="grid grid-cols-1 gap-10">
                     {/* Revenue Card */}
-                    <div className="bg-gradient-to-r from-purple-500 to-pink-300 text-white p-4 rounded-lg shadow-md flex justify-center items-center gap-5">
+                    <div className="bg-gradient-to-r from-purple-500 to-pink-300 text-white p-4 rounded-lg shadow-md hover:shadow-xl flex justify-center items-center gap-5">
                         <FaUsers className="text-2xl lg:text-4xl" />
                         <div>
                             <h2 className="text-2xl lg:text-4xl font-bold">Total User: {totalUsers}</h2>
@@ -27,7 +27,7 @@ const StatsSection = () => {
                     </div>
 
                     {/* Customers Card */}
-                    <div className="bg-gradient-to-r from-[#D1A054] to-orange-200 text-white p-4 rounded-lg shadow-md flex justify-center items-center gap-5">
+                    <div className="bg-gradient-to-r from-[#D1A054] to-orange-200 text-white p-4 rounded-lg shadow-md hover:shadow-xl flex justify-center items-center gap-5">
                         <FaUsers className="text-2xl lg:text-4xl" />
                         <div>
                             <h2 className="text-2xl lg:text-4xl font-bold">Total Classes: {totalClasses}</h2>
@@ -36,7 +36,7 @@ const StatsSection = () => {
                     </div>
 
                     {/* Products Card */}
-                    <div className="bg-gradient-to-r from-pink-500 to-red-300 text-white p-4 rounded-lg shadow-md flex justify-center items-center gap-5">
+                    <div className="bg-gradient-to-r from-pink-500 to-red-300 text-white p-4 rounded-lg shadow-md hover:shadow-xl flex justify-center items-center gap-5">
                         <FaBoxOpen className="text-2xl lg:text-4xl" />
                         <div>
                             <h2 className="text-2xl lg:text-4xl font-bold">Total Enrollment: {totalEnrollment}</h2>

@@ -273,6 +273,7 @@ import useAuth from "../../../hooks/useAuth";
 import Swal from "sweetalert2";
 import { useForm } from "react-hook-form";
 import ReactStars from "react-rating-stars-component";
+import { Helmet } from "react-helmet-async";
 
 const EnrolledClass = () => {
     const { user } = useAuth();
@@ -284,10 +285,8 @@ const EnrolledClass = () => {
     const [evaluationModalIsOpen, setEvaluationModalIsOpen] = useState(false);
     const [selectedAssignment, setSelectedAssignment] = useState(null);
     const [submittedAssignments, setSubmittedAssignments] = useState([]);
-
-    // Pagination states
     const [currentPage, setCurrentPage] = useState(1);
-    const assignmentsPerPage = 5;
+    const assignmentsPerPage = 10;
 
     const axiosPublic = useAxiosPublic();
 
@@ -398,18 +397,23 @@ const EnrolledClass = () => {
 
     return (
         <div className="mb-16">
-            {/* Teaching Evaluation Report (TER) Button */}
-            <div className="text-end my-10">
+            <Helmet>
+                <title>My Enroll Class Details | LearnHive</title>
+            </Helmet>
+
+            <div className="text-end my-7">
                 <button
                     onClick={openEvaluationModal}
-                    className="btn btn-success"
+                    className={`btn px-4 py-2 rounded ${assignments.length > 0 ? "bg-purple-700 hover:bg-purple-800 text-white" : "bg-gray-300 text-gray-500 cursor-not-allowed"}`}
+                    disabled={assignments.length === 0}
                 >
                     <FaPlus />
                     Teaching Evaluation
                 </button>
             </div>
 
-            <h2 className="text-2xl md:text-3xl font-bold text-center mb-4">List of all Assignments</h2>
+
+            <h2 className="text-2xl md:text-3xl font-bold text-center mb-7 lg:-mt-7">List of all Assignments</h2>
 
             <div className="overflow-x-auto">
                 <table className="min-w-full border">
@@ -452,17 +456,50 @@ const EnrolledClass = () => {
             </div>
 
             {/* Pagination Controls */}
-            <div className="flex justify-center mt-4">
+            {/* <div className="flex justify-center mt-7">
                 {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
                     <button
                         key={page}
                         onClick={() => handlePageChange(page)}
-                        className={`px-4 py-2 mx-1 rounded ${currentPage === page ? "bg-blue-500 text-white" : "bg-gray-200 text-gray-800 hover:bg-gray-300"}`}
+                        className={`px-3 py-1 mx-1 rounded ${currentPage === page ? "border border-black rounded-full" : "bg-gray-200 text-gray-800 hover:bg-gray-300"}`}
                     >
                         {page}
                     </button>
                 ))}
+            </div> */}
+            <div className="flex justify-between mt-7 items-center">
+                <span className="text-gray-800">Page {currentPage} of {totalPages}</span>
+
+                <div>
+                    <button
+                        onClick={() => handlePageChange(currentPage - 1)}
+                        disabled={currentPage === 1}
+                        className="px-2 py-1 mx-1 rounded bg-gray-200 text-gray-800 hover:bg-gray-300"
+                    >
+                        &lt; Prev
+                    </button>
+
+                    {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
+                        <button
+                            key={page}
+                            onClick={() => handlePageChange(page)}
+                            className={`px-3 py-1 mx-1 rounded ${currentPage === page ? "bg-blue-500 text-white" : "bg-gray-200 text-gray-800 hover:bg-gray-300"}`}
+                        >
+                            {page}
+                        </button>
+                    ))}
+
+                    <button
+                        onClick={() => handlePageChange(currentPage + 1)}
+                        disabled={currentPage === totalPages}
+                        className="px-2 py-1 mx-1 rounded bg-gray-200 text-gray-800 hover:bg-gray-300"
+                    >
+                        Next &gt;
+                    </button>
+                </div>
             </div>
+
+
 
             {/* Modal for Assignment Submission */}
             {modalIsOpen && selectedAssignment && (

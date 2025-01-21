@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import useAuth from "../../../hooks/useAuth";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
+import { Helmet } from "react-helmet-async";
 
 const StudentProfile = () => {
     const { user } = useAuth();
@@ -55,8 +56,12 @@ const StudentProfile = () => {
 
     return (
         <div className="container mx-auto my-10 p-6 bg-gray-50 rounded-xl shadow-lg">
+            <Helmet>
+                <title>Profile | LearnHive</title>
+            </Helmet>
+
+            {/* section starts */}
             <div className="flex flex-col items-center text-center">
-                {/* className="relative w-36 h-36 rounded-full overflow-hidden shadow-lg border-4 border-blue-500 p-5" */}
                 <div className="p-5">
                     <img
                         src={userInfo.image || "https://via.placeholder.com/150"}
@@ -76,7 +81,7 @@ const StudentProfile = () => {
                         <span className="font-medium text-gray-900">Email:</span> {userInfo.email || "N/A"}
                     </p>
                     <p className="text-gray-700 mt-2">
-                        <span className="font-medium text-gray-900">Phone:</span> {userInfo.phone || "348256342897"}
+                        <span className="font-medium text-gray-900">Phone:</span> {userInfo.phone || "N/A"}
                     </p>
                 </div>
 
@@ -84,20 +89,13 @@ const StudentProfile = () => {
                 <div className="bg-white p-6 rounded-lg shadow-md">
                     <h3 className="text-xl font-bold text-blue-600 mb-4">Other Details</h3>
                     <p className="text-gray-700">
-                        <span className="font-medium text-gray-900">Joined Date:</span> {userInfo.joinedDate || "N/A"}
+                        <span className="font-medium text-gray-900">Joined Date:</span> {userInfo.joinedDate ? new Date(userInfo.joinedDate).toLocaleDateString() : "N/A"}
                     </p>
                     <p className="text-gray-700 mt-2">
-                        <span className="font-medium text-gray-900">Address:</span> {userInfo.address || "N/A"}
+                        <span className="font-medium text-gray-900">Joined Time:</span> {userInfo.joinedDate ? new Date(userInfo.joinedDate).toLocaleTimeString() : "N/A"}
                     </p>
                 </div>
             </div>
-
-            {/* Button */}
-            {/* <div className="mt-8 text-center">
-                <button className="px-6 py-3 text-white bg-blue-500 rounded-lg shadow-md hover:bg-blue-600 transition-all">
-                    Edit Profile
-                </button>
-            </div> */}
         </div>
     );
 };

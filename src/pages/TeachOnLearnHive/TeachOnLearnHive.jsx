@@ -39,7 +39,7 @@ const TeachOnLearnHive = () => {
     };
 
     return (
-        <div className="mt-10 md:mt-14 mb-20 px-5 lg:px-5">
+        <div className="mt-10 md:mt-14 mb-24 px-5 lg:px-5">
             <div className="max-w-3xl mx-auto p-5 md:p-8 shadow-lg rounded-lg border">
                 {/* Helmet */}
                 <Helmet>

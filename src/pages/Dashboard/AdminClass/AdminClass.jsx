@@ -218,13 +218,12 @@ import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import useAuth from "../../../hooks/useAuth";
 import { Link } from "react-router-dom";
 import ReactPaginate from "react-paginate";
+import { Helmet } from "react-helmet-async";
 
 const AdminClass = () => {
     const axiosSecure = useAxiosSecure();
     const { loading, setLoading } = useAuth();
     const [progressButtonEnabled, setProgressButtonEnabled] = useState(false);
-
-    // Pagination state
     const [currentPage, setCurrentPage] = useState(0);
     const itemsPerPage = 10;
 
@@ -245,7 +244,7 @@ const AdminClass = () => {
 
     // Handle Approve
     const handleApprove = (classItem) => {
-        setLoading(classItem._id); // Set loading state for the specific class
+        setLoading(classItem._id);
         Swal.fire({
             title: "Are you sure?",
             text: "Do you want to approve this class?",
@@ -260,7 +259,7 @@ const AdminClass = () => {
                     .patch(`/classes/approve/${classItem._id}`, { status: "accepted" })
                     .then(() => {
                         refetch();
-                        setProgressButtonEnabled(true); // Enable the progress button
+                        setProgressButtonEnabled(true);
                         Swal.fire(
                             "Approved!",
                             "The class has been approved and is now visible on the All Classes page.",
@@ -274,16 +273,16 @@ const AdminClass = () => {
                             icon: "error",
                         });
                     })
-                    .finally(() => setLoading(null)); // Reset loading state
+                    .finally(() => setLoading(null));
             } else {
-                setLoading(null); // Reset loading state
+                setLoading(null);
             }
         });
     };
 
     // Handle Reject
     const handleReject = (classItem) => {
-        setLoading(classItem._id); // Set loading state for the specific class
+        setLoading(classItem._id);
         Swal.fire({
             title: "Are you sure?",
             text: "Do you want to reject this class?",
@@ -298,7 +297,7 @@ const AdminClass = () => {
                     .patch(`/classes/reject/${classItem._id}`, { status: "rejected" })
                     .then(() => {
                         refetch();
-                        setProgressButtonEnabled(false); // Disable progress button for rejected classes
+                        setProgressButtonEnabled(false);
                         Swal.fire("Rejected!", "The class has been rejected.", "error");
                     })
                     .catch(() => {
@@ -308,9 +307,9 @@ const AdminClass = () => {
                             icon: "error",
                         });
                     })
-                    .finally(() => setLoading(null)); // Reset loading state
+                    .finally(() => setLoading(null));
             } else {
-                setLoading(null); // Reset loading state
+                setLoading(null);
             }
         });
     };
@@ -321,10 +320,16 @@ const AdminClass = () => {
     };
 
     return (
-        <div className="mt-10 md:mt-14 mb-16">
+        <div className="mt-10 lg:mt-5 mb-16">
+            <Helmet>
+                <title>All Classes | LearnHive</title>
+            </Helmet>
+
             <div className="p-5 md:p-8 shadow-lg rounded-lg border">
+                {/* Title */}
                 <h2 className="text-3xl font-bold text-center mb-6">Admin Classes</h2>
 
+                {/* Table start */}
                 <div className="overflow-x-auto rounded-t-xl mt-5">
                     <table className="table min-w-full">
                         {/* Table Head */}

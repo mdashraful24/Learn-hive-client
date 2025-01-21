@@ -30,8 +30,10 @@ const SignUp = () => {
                     name: data.name,
                     email: data.email,
                     image: data.photo,
-                    role: 'student' // Set default role to 'student'
-                }
+                    phone: data.phone,
+                    role: 'student', // Set default role to 'student'
+                    joinedDate: new Date().toISOString() // Add current date and time
+                };
                 axiosPublic.post('/users', userInfo)
                     .then(res => {
                         if (res.data.insertedId) {
@@ -74,7 +76,7 @@ const SignUp = () => {
                                 <input
                                     type="text" {...register("name", { required: true })}
                                     name="name"
-                                    placeholder="Type here" className="input input-bordered rounded-md" />
+                                    placeholder="Type here your name" className="input input-bordered rounded-md" />
                                 {errors.name && <span className="text-sm text-red-600">Name is required</span>}
                             </div>
                             {/* Email */}
@@ -85,8 +87,29 @@ const SignUp = () => {
                                 <input
                                     type="email" {...register("email", { required: true })}
                                     name="email"
-                                    placeholder="Type here" className="input input-bordered rounded-md" />
+                                    placeholder="Type here your email" className="input input-bordered rounded-md" />
                                 {errors.email && <span className="text-sm text-red-600">Email is required</span>}
+                            </div>
+
+                            {/* Phone Number */}
+                            <div className="form-control">
+                                <label className="label font-semibold">
+                                    <span className="label-text">Phone Number</span>
+                                </label>
+                                <input
+                                    type="tel"
+                                    {...register("phone", {
+                                        required: "Phone number is required",
+                                        pattern: {
+                                            value: /^[0-9]{6}$/,
+                                            message: "Phone number must be exactly 6 digits"
+                                        }
+                                    })}
+                                    name="phone"
+                                    placeholder="Type here your phone number"
+                                    className="input input-bordered rounded-md"
+                                />
+                                {errors.phone && <span className="text-sm text-red-600">{errors.phone.message}</span>}
                             </div>
 
                             {/* Photo URL */}
@@ -97,7 +120,7 @@ const SignUp = () => {
                                 <input
                                     type="photo" {...register("photo", { required: true })}
                                     name="photo"
-                                    placeholder="Photo URL"
+                                    placeholder="Enter your photo URL"
                                     className="input input-bordered rounded-md" />
                                 {errors.photo && <span className="text-sm text-red-600">Photo URL is required</span>}
                             </div>
@@ -121,7 +144,7 @@ const SignUp = () => {
                                         }
                                     })}
                                     name="password"
-                                    placeholder="Enter your password"
+                                    placeholder="Type here strong password"
                                     className="input input-bordered rounded-md"
                                 />
                                 {errors.password && <span className="text-sm text-red-600">{errors.password.message}</span>}
