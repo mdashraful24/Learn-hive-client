@@ -164,7 +164,11 @@ const AllUsers = () => {
     const { data: users = [], refetch } = useQuery({
         queryKey: ["users", search, currentPage],
         queryFn: async () => {
-            const res = await axiosSecure.get(`/users?search=${search}&page=${currentPage + 1}&limit=${itemsPerPage}`);
+            const res = await axiosSecure.get(`/users?search=${search}&page=${currentPage + 1}&limit=${itemsPerPage}`, {
+                headers: {
+                    authorization: `Bearer ${localStorage.getItem('access-token')}`
+                }
+            });
             return res.data;
         }
     });

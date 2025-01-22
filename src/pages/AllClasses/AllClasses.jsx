@@ -109,7 +109,8 @@ const AllClasses = () => {
     }
 
     if (isError) {
-        return <div className="flex justify-center items-center mt-10 text-red-600 min-h-screen">Failed to load classes.</div>;
+        // return <div className="flex justify-center items-center mt-10 text-red-600 min-h-screen">Failed to load classes.</div>;
+        return <div className="flex justify-center items-center mt-10 text-lg text-black font-bold min-h-screen">No classes available at the moment. Check back later!</div>;
     }
 
     // Calculate total pages based on total classes and classes per page
