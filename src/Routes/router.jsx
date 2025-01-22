@@ -26,6 +26,7 @@ import Progress from "../pages/Dashboard/Progress/Progress";
 import AdminRoute from "./AdminRoute";
 import TeacherRoute from "./TeacherRoute";
 import StudentRoute from "./StudentRoute";
+import TeacherProfile from "../pages/Dashboard/TeacherProfile/TeacherProfile";
 
 
 export const router = createBrowserRouter([
@@ -107,7 +108,8 @@ export const router = createBrowserRouter([
                 loader: ({ params }) => fetch(`https://mw-assignments12-server.vercel.app/details/${params.id}`)
             },
             {
-
+                path: "teacher-profile",
+                element: <TeacherRoute><TeacherProfile></TeacherProfile></TeacherRoute>
             },
             // student
             {
@@ -120,7 +122,7 @@ export const router = createBrowserRouter([
                 loader: ({ params }) => fetch(`https://mw-assignments12-server.vercel.app/all-classes/${params.id}`)
             },
             {
-                path: "profile",
+                path: "student-profile",
                 element: <StudentRoute><StudentProfile></StudentProfile></StudentRoute>
             },
         ]

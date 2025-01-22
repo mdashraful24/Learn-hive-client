@@ -203,12 +203,12 @@ const Dashboard = () => {
                         <>
                             <li><NavLink to="/dashboard/add-class"><IoIosAddCircle /> Add Class</NavLink></li>
                             <li><NavLink to="/dashboard/my-class"><FaListUl /> My Classes</NavLink></li>
-                            <li><NavLink to="/dashboard/profile"><FaUserCircle /> Profile</NavLink></li>
+                            <li><NavLink to="/dashboard/teacher-profile"><FaUserCircle /> Profile</NavLink></li>
                         </>
                     ) : isStudent ? (
                         <>
                             <li><NavLink to="/dashboard/myEnroll-class"><FaListAlt /> My Enrolled Classes</NavLink></li>
-                            <li><NavLink to="/dashboard/profile"><FaUserCircle /> Profile</NavLink></li>
+                            <li><NavLink to="/dashboard/student-profile"><FaUserCircle /> Profile</NavLink></li>
                         </>
                     ) : null}
 

@@ -21,8 +21,9 @@ const TeacherRoute = ({ children }) => {
         Swal.fire({
             icon: "error",
             title: "Access Denied",
-            text: "You do not have teacher privileges to access this page.",
-            confirmButtonText: "OK",
+            text: "Sorry! You do not have teacher privileges to access this page.",
+            showConfirmButton: false,
+            timer: 2000
         });
     }
 

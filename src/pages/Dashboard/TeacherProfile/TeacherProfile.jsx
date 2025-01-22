@@ -3,7 +3,7 @@ import useAuth from "../../../hooks/useAuth";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import { Helmet } from "react-helmet-async";
 
-const StudentProfile = () => {
+const TeacherProfile = () => {
     const { user } = useAuth();
     const axiosSecure = useAxiosSecure();
 
@@ -32,7 +32,7 @@ const StudentProfile = () => {
 
     if (isLoading) {
         return (
-            <div className="container mx-auto text-center mb-5">
+            <div className="container mx-auto text-center mt-7">
                 <p className="text-gray-500">Loading your profile...</p>
             </div>
         );
@@ -40,7 +40,7 @@ const StudentProfile = () => {
 
     if (error) {
         return (
-            <div className="container mx-auto text-center mb-5">
+            <div className="container mx-auto text-center mt-7">
                 <p className="text-red-500">Error loading profile. Please try again later.</p>
             </div>
         );
@@ -48,7 +48,7 @@ const StudentProfile = () => {
 
     if (!userInfo) {
         return (
-            <div className="container mx-auto text-center mb-5">
+            <div className="container mx-auto text-center mt-7">
                 <p className="text-gray-500">No profile data found for this user.</p>
             </div>
         );
@@ -89,10 +89,10 @@ const StudentProfile = () => {
                 <div className="bg-white p-6 rounded-lg shadow-md">
                     <h3 className="text-xl font-bold text-blue-600 mb-4">Other Details</h3>
                     <p className="text-gray-700">
-                        <span className="font-medium text-gray-900">Register Date:</span> {userInfo.joinedDate ? new Date(userInfo.joinedDate).toLocaleDateString() : "N/A"}
+                        <span className="font-medium text-gray-900">Joined Date:</span> {userInfo.joinedDate ? new Date(userInfo.joinedDate).toLocaleDateString() : "N/A"}
                     </p>
                     <p className="text-gray-700 mt-2">
-                        <span className="font-medium text-gray-900">Register Time:</span> {userInfo.joinedDate ? new Date(userInfo.joinedDate).toLocaleTimeString() : "N/A"}
+                        <span className="font-medium text-gray-900">Joined Time:</span> {userInfo.joinedDate ? new Date(userInfo.joinedDate).toLocaleTimeString() : "N/A"}
                     </p>
                 </div>
             </div>
@@ -100,4 +100,4 @@ const StudentProfile = () => {
     );
 };
 
-export default StudentProfile;
+export default TeacherProfile;

@@ -1,4 +1,5 @@
 import logo from '../../../assets/logo.png'
+import alt from '../../../assets/auth/profile.png'
 import { useState, useEffect, useRef } from "react";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
@@ -87,13 +88,14 @@ const Navbar = () => {
                         {user ? (
                             <div
                                 className="relative dropdown-container"
-                                ref={dropdownRef} // Attach ref here
+                                ref={dropdownRef}
                             >
                                 <img
                                     className="rounded-full w-12 h-12 object-cover cursor-pointer hover:bg-gray-300 p-1"
-                                    src={user?.photoURL}
+                                    // src={user?.photoURL}
+                                    src={user?.photoURL || alt}
                                     alt="User profile"
-                                    onClick={() => setDropdownOpen(!dropdownOpen)} // Toggle dropdown on click
+                                    onClick={() => setDropdownOpen(!dropdownOpen)}
                                 />
                                 {dropdownOpen && (
                                     <div className="absolute -right-2 mt-2 w-36 shadow-lg z-10 bg-white rounded-lg border">

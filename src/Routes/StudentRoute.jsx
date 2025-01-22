@@ -1,12 +1,12 @@
 import { Navigate, useLocation } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
-import useTeacher from "../hooks/useTeacher";
 import Loading from "../pages/Shared/Loading/Loading";
 import Swal from "sweetalert2";
+import useStudent from "../hooks/useStudent";
 
 const StudentRoute = ({ children }) => {
     const { user, loading } = useAuth();
-    const [isStudent, isStudentLoading] = useTeacher();
+    const [isStudent, isStudentLoading] = useStudent();
     const location = useLocation();
 
     if (loading || isStudentLoading) {
@@ -21,8 +21,9 @@ const StudentRoute = ({ children }) => {
         Swal.fire({
             icon: "error",
             title: "Access Denied",
-            text: "You do not have teacher privileges to access this page.",
-            confirmButtonText: "OK",
+            text: "Sorry! You do not have privileges to access this page.",
+            showConfirmButton: false,
+            timer: 2000
         });
     }
 
