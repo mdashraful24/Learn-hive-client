@@ -292,27 +292,34 @@ const AllUsers = () => {
                     </table>
                 </div>
                 {/* Pagination */}
-                <ReactPaginate
-                    previousLabel={
-                        <button className="px-4 py-2 bg-gray-300 hover:bg-gray-400 text-gray-700 rounded-l-lg">
-                            Previous
-                        </button>
-                    }
-                    nextLabel={
-                        <button className="px-4 py-2 bg-gray-300 hover:bg-gray-400 text-gray-700 rounded-r-lg">
-                            Next
-                        </button>
-                    }
-                    pageCount={Math.ceil(users.length / itemsPerPage)}
-                    onPageChange={handlePageChange}
-                    containerClassName={"flex justify-center items-center mt-6 space-x-2"}
-                    pageClassName={"px-4 py-2 mx-1 border cursor-pointer rounded-lg"}
-                    activeClassName={"bg-blue-600 text-white"}
-                    disabledClassName={"cursor-not-allowed"}
-                    pageLinkClassName="block text-center"
-                    previousLinkClassName="block text-center"
-                    nextLinkClassName="block text-center"
-                />
+                <div className="mt-10 flex flex-col md:flex-row justify-center md:justify-between items-center gap-3">
+                    <div>
+                        <span className="text-gray-800">Page {currentPage + 1} of {Math.ceil(users.length / itemsPerPage)}</span>
+                    </div>
+                    <div>
+                        <ReactPaginate
+                            previousLabel={
+                                <button className="px-3 py-1 bg-gray-300 hover:bg-gray-400 text-gray-700 rounded-l-lg">
+                                    Prev
+                                </button>
+                            }
+                            nextLabel={
+                                <button className="px-3 py-1 bg-gray-300 hover:bg-gray-400 text-gray-700 rounded-r-lg">
+                                    Next
+                                </button>
+                            }
+                            pageCount={Math.ceil(users.length / itemsPerPage)}
+                            onPageChange={handlePageChange}
+                            containerClassName={"flex justify-center items-center space-x-2"}
+                            pageClassName={"px-3 py-1 mx-1 border cursor-pointer rounded-lg"}
+                            activeClassName={"bg-blue-600 text-white"}
+                            disabledClassName={"cursor-not-allowed"}
+                            pageLinkClassName="block text-center"
+                            previousLinkClassName="block text-center"
+                            nextLinkClassName="block text-center"
+                        />
+                    </div>
+                </div>
             </div>
         </div>
     );

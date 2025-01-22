@@ -72,7 +72,7 @@ const DetailsPage = () => {
                 <img
                     src={image}
                     alt={title}
-                    className="w-full h-64 object-cover"
+                    className="w-full h-64 md:object-cover"
                 />
 
                 <div className="p-6">

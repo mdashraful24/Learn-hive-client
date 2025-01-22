@@ -467,7 +467,7 @@ const EnrolledClass = () => {
                     </button>
                 ))}
             </div> */}
-            <div className="flex justify-between mt-7 items-center">
+            <div className="mt-10 flex flex-col md:flex-row justify-center md:justify-between items-center gap-3">
                 <span className="text-gray-800">Page {currentPage} of {totalPages}</span>
 
                 <div>
@@ -476,7 +476,7 @@ const EnrolledClass = () => {
                         disabled={currentPage === 1}
                         className="px-2 py-1 mx-1 rounded bg-gray-200 text-gray-800 hover:bg-gray-300"
                     >
-                        &lt; Prev
+                        Prev
                     </button>
 
                     {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
@@ -494,7 +494,7 @@ const EnrolledClass = () => {
                         disabled={currentPage === totalPages}
                         className="px-2 py-1 mx-1 rounded bg-gray-200 text-gray-800 hover:bg-gray-300"
                     >
-                        Next &gt;
+                        Next
                     </button>
                 </div>
             </div>

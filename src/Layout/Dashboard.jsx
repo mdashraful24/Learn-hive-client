@@ -185,8 +185,8 @@ const Dashboard = () => {
             {/* Sidebar */}
             <div className={`md:w-64 min-h-screen bg-[#bd8228] p- transition-all duration-300 ${isSidebarOpen ? "block" : "hidden lg:block"}`}>
                 {/* Title */}
-                <div className="px-5 pt-16 lg:p-5">
-                    <h2 className="md:text-3xl font-extrabold">LearnHive</h2>
+                <div className="px-5 pt-14 md:pt-16 lg:p-5">
+                    <h2 className="text-xl md:text-3xl font-extrabold">LearnHive</h2>
                 </div>
 
                 {/* Dashboard menus */}
@@ -236,7 +236,7 @@ const Dashboard = () => {
             {/* Hamburger Menu Button */}
             <button
                 onClick={toggleSidebar}
-                className="lg:hidden fixed top-2 left-2 z-50 bg-[#bd8228] p-3 rounded-full text-white">
+                className="lg:hidden fixed top-2 left-2 z-50 bg-[#bd8228] p-3 rounded-full text-white shadow-xl">
                 <IoReorderThreeOutline />
             </button>
         </div>

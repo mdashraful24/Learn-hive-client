@@ -44,16 +44,18 @@ const Login = () => {
     };
 
     return (
-        <div className="pt-8 pb-20">
+        <div className="pt-8 pb-20 mb-5 px-3">
             {/* Helmet */}
             <Helmet>
                 <title>Sign In | LearnHive</title>
             </Helmet>
 
-            <div className="card w-full max-w-lg mx-auto">
-                {/* Login Form */}
-                <form onSubmit={handleSubmit(onSubmit)} className="card-body md:p-5">
-                    <h1 className="text-4xl font-bold text-center">Sign In</h1>
+            {/* title */}
+            <h1 className="text-4xl font-bold text-center mb-5">Sign In</h1>
+
+            {/* Login Form */}
+            <div className="card w-full max-w-lg mx-auto border shadow-xl pb-5">
+                <form onSubmit={handleSubmit(onSubmit)} className="card-body p-5">
 
                     {/* Email Field */}
                     <div className="form-control">
@@ -106,7 +108,7 @@ const Login = () => {
                     <div className="form-control mt-6">
                         <button
                             type="submit"
-                            className="btn bg-[#D1A054B3] hover:bg-[#d19f54] rounded-md"
+                            className="btn bg-[#d19f54ee] hover:bg-[#c29249] rounded-md"
                         >
                             Sign In
                         </button>
@@ -116,9 +118,9 @@ const Login = () => {
                     <div className="text-center font-semibold mt-2">
                         <p className="mb-1">
                             <small>
-                                New here?{" "}
-                                <span className="hover:text-red-500 mb-2">
-                                    <Link to="/signUp">Create a New Account</Link>
+                                New here?{" "}Create a
+                                <span className="text-blue-500 mb-2">
+                                    <Link to="/signUp"> New Account</Link>
                                 </span>
                             </small>
                         </p>

@@ -88,8 +88,8 @@ import { useState } from "react";
 
 const AllClasses = () => {
     const axiosPublic = useAxiosPublic();
-    const [currentPage, setCurrentPage] = useState(1); // State for current page
-    const classesPerPage = 6; // Number of classes per page
+    const [currentPage, setCurrentPage] = useState(1);
+    const classesPerPage = 9;
 
     // Fetch approved classes with pagination
     const { data: approvedClasses = [], isLoading, isError } = useQuery({
@@ -131,7 +131,7 @@ const AllClasses = () => {
                         <img
                             src={classItem.image}
                             alt={classItem.title}
-                            className="w-full h-60 object-cover"
+                            className="w-full h-60 md:object-cover"
                         />
                         <div className="p-5 flex flex-col flex-grow">
                             <h3 className="text-xl font-bold mb-2">{classItem.title}</h3>
@@ -145,7 +145,6 @@ const AllClasses = () => {
                             </p>
                             <p className="text-green-600 font-bold mb-2">Price: ${classItem.price}</p>
                             <p className="text-blue-600 mb-4">
-                                {/* Total Enrollments: {classItem.totalEnrolment} */}
                             </p>
                             <div className="mt-auto">
                                 <Link to={`/details/${classItem._id}`}>
@@ -160,30 +159,36 @@ const AllClasses = () => {
             </div>
 
             {/* Pagination Controls */}
-            <div className="flex justify-center mt-10">
-                <button
-                    onClick={() => setCurrentPage(prev => Math.max(prev - 1, 1))}
-                    disabled={currentPage === 1}
-                    className="px-4 py-2 mx-1 bg-gray-200 rounded hover:bg-gray-300 disabled:bg-gray-100"
-                >
-                    Previous
-                </button>
-                {Array.from({ length: totalPages }, (_, index) => (
+            <div className="mt-10 flex flex-col md:flex-row justify-center md:justify-between items-center gap-3">
+                <div>
+                    <span className="text-gray-800">Page {currentPage} of {totalPages}</span>
+                </div>
+
+                <div>
                     <button
-                        key={index}
-                        onClick={() => setCurrentPage(index + 1)}
-                        className={`px-4 py-2 mx-1 ${currentPage === index + 1 ? "bg-blue-600 text-white" : "bg-gray-200 hover:bg-gray-300"}`}
+                        onClick={() => setCurrentPage(prev => Math.max(prev - 1, 1))}
+                        disabled={currentPage === 1}
+                        className="px-3 py-1 mx-1 bg-gray-200 rounded hover:bg-gray-300 disabled:bg-gray-100"
                     >
-                        {index + 1}
+                        Prev
                     </button>
-                ))}
-                <button
-                    onClick={() => setCurrentPage(prev => Math.min(prev + 1, totalPages))}
-                    disabled={currentPage === totalPages}
-                    className="px-4 py-2 mx-1 bg-gray-200 rounded hover:bg-gray-300 disabled:bg-gray-100"
-                >
-                    Next
-                </button>
+                    {Array.from({ length: totalPages }, (_, index) => (
+                        <button
+                            key={index}
+                            onClick={() => setCurrentPage(index + 1)}
+                            className={`px-3 py-1 mx-1 ${currentPage === index + 1 ? "bg-blue-600 text-white" : "bg-gray-200 hover:bg-gray-300"}`}
+                        >
+                            {index + 1}
+                        </button>
+                    ))}
+                    <button
+                        onClick={() => setCurrentPage(prev => Math.min(prev + 1, totalPages))}
+                        disabled={currentPage === totalPages}
+                        className="px-3 py-1 mx-1 bg-gray-200 rounded hover:bg-gray-300 disabled:bg-gray-100"
+                    >
+                        Next
+                    </button>
+                </div>
             </div>
         </div>
     );

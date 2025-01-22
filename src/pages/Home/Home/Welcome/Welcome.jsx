@@ -12,7 +12,7 @@ const Welcome = () => {
     }, []);
 
     return (
-        <div className="my-10 px-5">
+        <div className="md:my-10 px-5">
             <section className="container mx-auto text-center py-12">
                 <div
                     data-aos="fade-up"

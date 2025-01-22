@@ -215,7 +215,7 @@ const TeacherRequest = () => {
     const axiosSecure = useAxiosSecure();
 
     const [currentPage, setCurrentPage] = useState(1);
-    const itemsPerPage = 10; // Adjust the number of items per page
+    const itemsPerPage = 10;
 
     const { data, refetch } = useQuery({
         queryKey: ['teacherRequests'],
@@ -406,31 +406,37 @@ const TeacherRequest = () => {
                     </div>
 
                     {/* Pagination */}
-                    <div className="flex justify-center mt-6">
-                        <button
-                            onClick={() => setCurrentPage(1)}
-                            disabled={currentPage === 1}
-                            className="px-4 py-2 mx-1 bg-gray-300 rounded hover:bg-gray-400"
-                        >
-                            &lt;
-                        </button>
-                        {[...Array(totalPages)].map((_, index) => (
+                        <div className="mt-8 flex flex-col md:flex-row justify-center md:justify-between items-center gap-3">
+                        <div>
+                            <span className="text-gray-800">Page {currentPage} of {totalPages}</span>
+                        </div>
+                        <div className="flex justify-center">
                             <button
-                                key={index}
-                                onClick={() => setCurrentPage(index + 1)}
-                                className={`px-4 py-2 mx-1 rounded ${currentPage === index + 1 ? 'bg-blue-600 text-white' : 'bg-gray-200 hover:bg-gray-300'}`}
+                                onClick={() => setCurrentPage(1)}
+                                disabled={currentPage === 1}
+                                className="px-3 py-1 mx-1 bg-gray-300 rounded hover:bg-gray-400"
                             >
-                                {index + 1}
+                                Prev
                             </button>
-                        ))}
-                        <button
-                            onClick={() => setCurrentPage(totalPages)}
-                            disabled={currentPage === totalPages}
-                            className="px-4 py-2 mx-1 bg-gray-300 rounded hover:bg-gray-400"
-                        >
-                            &gt;
-                        </button>
+                            {[...Array(totalPages)].map((_, index) => (
+                                <button
+                                    key={index}
+                                    onClick={() => setCurrentPage(index + 1)}
+                                    className={`px-3 py-1 mx-1 rounded ${currentPage === index + 1 ? 'bg-blue-600 text-white' : 'bg-gray-200 hover:bg-gray-300'}`}
+                                >
+                                    {index + 1}
+                                </button>
+                            ))}
+                            <button
+                                onClick={() => setCurrentPage(totalPages)}
+                                disabled={currentPage === totalPages}
+                                    className="px-3 py-1 mx-1 bg-gray-300 rounded hover:bg-gray-400"
+                            >
+                                Next
+                            </button>
+                        </div>
                     </div>
+
                 </div>
             )}
         </div>

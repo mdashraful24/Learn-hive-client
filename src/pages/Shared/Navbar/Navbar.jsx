@@ -74,8 +74,8 @@ const Navbar = () => {
                             </ul>
                         </div>
                         <div className="flex items-center gap-2 pl-2">
-                            <img src={logo} alt="siteLogo" className="w-12" />
-                            <h2 className="text-3xl font-extrabold">LearnHive</h2>
+                            <img src={logo} alt="siteLogo" className="w-8 md:w-12" />
+                            <h2 className="text-xl md:text-3xl font-extrabold">LearnHive</h2>
                         </div>
                     </div>
                     <div className="navbar-center hidden lg:flex">
@@ -96,7 +96,7 @@ const Navbar = () => {
                                     onClick={() => setDropdownOpen(!dropdownOpen)} // Toggle dropdown on click
                                 />
                                 {dropdownOpen && (
-                                    <div className="absolute -right-4 mt-2 w-36 shadow-lg z-10 bg-white rounded-lg border">
+                                    <div className="absolute -right-2 mt-2 w-36 shadow-lg z-10 bg-white rounded-lg border">
                                         <div className="py-2 px-3 text-center">
                                             <p className="font-semibold text-sm text-gray-800 cursor-not-allowed">
                                                 {user?.displayName || "User"}

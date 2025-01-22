@@ -5,7 +5,9 @@ import img1 from "../../../../assets/banner/banner1.jpg";
 import img2 from "../../../../assets/banner/banner2.jpg";
 import img3 from "../../../../assets/banner/banner3.jpg";
 import img4 from "../../../../assets/banner/banner4.jpg";
-import img5 from "../../../../assets/banner/banner5.jpg";
+import img5 from "../../../../assets/banner/banner6.jpg";
+import img6 from "../../../../assets/banner/banner7.png";
+import img7 from "../../../../assets/banner/banner5.jpg";
 
 const Banner = () => {
     return (
@@ -39,7 +41,7 @@ const Banner = () => {
                 </button>
             )}
         >
-            {[img1, img2, img3, img4, img5].map((image, index) => (
+            {[img1, img2, img3, img4, img5, img6, img7].map((image, index) => (
                 <div key={index} className="relative">
                     {/* Image */}
                     <img

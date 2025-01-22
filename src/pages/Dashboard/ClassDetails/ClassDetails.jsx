@@ -441,7 +441,7 @@ const ClassDetails = () => {
 
 
     return (
-        <div className="mt-10">
+        <div className="my-16">
             <Helmet>
                 <title>See Details | LearnHive</title>
             </Helmet>
