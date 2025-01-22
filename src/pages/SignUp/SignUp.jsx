@@ -240,7 +240,7 @@ const SignUp = () => {
         createUser(data.email, data.password)
             .then(result => {
                 const loggedUser = result.user;
-                console.log("User created:", loggedUser);
+                // console.log("User created:", loggedUser);
                 setUser(loggedUser);
                 updateUserProfile(data.name, data.photo);
                 return updateUserProfile({ displayName: data.name, photoURL: data.photo });
@@ -258,7 +258,7 @@ const SignUp = () => {
                 axiosPublic.post('/users', userInfo)
                     .then(res => {
                         if (res.data.insertedId) {
-                            console.log('user added to the database');
+                            // console.log('user added to the database');
                             reset();
                             toast.success("Successfully Signed Up");
                             navigate("/");

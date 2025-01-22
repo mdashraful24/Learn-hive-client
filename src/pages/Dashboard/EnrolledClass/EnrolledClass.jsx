@@ -310,7 +310,7 @@ const EnrolledClass = () => {
 
     const onSubmitAssignment = async (data) => {
         if (!selectedAssignment || !user) {
-            console.log("Missing assignment or user data");
+            // console.log("Missing assignment or user data");
             return;
         }
 
@@ -321,7 +321,7 @@ const EnrolledClass = () => {
             submit: 1
         };
 
-        console.log("Submission Data:", submissionData);
+        // console.log("Submission Data:", submissionData);
 
         try {
             await axiosPublic.post("/assignments", submissionData);
@@ -349,7 +349,7 @@ const EnrolledClass = () => {
 
     const onSubmitEvaluation = async (data) => {
         if (!user) {
-            console.log("User data missing");
+            // console.log("User data missing");
             return;
         }
 

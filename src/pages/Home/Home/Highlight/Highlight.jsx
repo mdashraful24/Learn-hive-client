@@ -11,7 +11,7 @@ const Highlight = () => {
     const { data: classesData, isLoading, isError } = useQuery({
         queryKey: ["sixClasses"],
         queryFn: async () => {
-            const res = await axiosPublic.get("http://localhost:5000/all-classes?limit=6");
+            const res = await axiosPublic.get("/all-classes?limit=6");
             return res.data;
         },
     });

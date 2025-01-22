@@ -8,7 +8,7 @@
 //     const { data: classesData, isLoading: isLoadingClasses, isError: isErrorClasses } = useQuery({
 //         queryKey: ["classCounts"], // Query key for classes and assignments data
 //         queryFn: async () => {
-//             const res = await axiosPublic.get("http://localhost:5000/all-classes");
+//             const res = await axiosPublic.get("https://mw-assignments12-server.vercel.app/all-classes");
 //             return res.data;
 //         },
 //     });
@@ -17,7 +17,7 @@
 //     const { data: usersData, isLoading: isLoadingUsers, isError: isErrorUsers } = useQuery({
 //         queryKey: ["userCounts"], // Query key for users data
 //         queryFn: async () => {
-//             const res = await axiosPublic.get("http://localhost:5000/users");
+//             const res = await axiosPublic.get("https://mw-assignments12-server.vercel.app/users");
 //             return res.data;
 //         },
 //     });
@@ -26,7 +26,7 @@
 //     const { data: enrollmentData, isLoading: isLoadingEnrollment, isError: isErrorEnrollment } = useQuery({
 //         queryKey: ["enrollmentCounts"], // Query key for enrollment data
 //         queryFn: async () => {
-//             const res = await axiosPublic.get("http://localhost:5000/enroll");
+//             const res = await axiosPublic.get("https://mw-assignments12-server.vercel.app/enroll");
 //             return res.data;
 //         },
 //     });
@@ -65,7 +65,7 @@
 //     const { data: classesData, isLoading: isLoadingClasses, isError: isErrorClasses } = useQuery({
 //         queryKey: ["classCounts"], // Query key for classes and assignments data
 //         queryFn: async () => {
-//             const res = await axiosPublic.get("http://localhost:5000/all-classes");
+//             const res = await axiosPublic.get("https://mw-assignments12-server.vercel.app/all-classes");
 //             return res.data;
 //         },
 //     });
@@ -74,7 +74,7 @@
 //     const { data: usersData, isLoading: isLoadingUsers, isError: isErrorUsers } = useQuery({
 //         queryKey: ["userCounts"], // Query key for users data
 //         queryFn: async () => {
-//             const res = await axiosPublic.get("http://localhost:5000/users");
+//             const res = await axiosPublic.get("https://mw-assignments12-server.vercel.app/users");
 //             return res.data;
 //         },
 //     });
@@ -83,7 +83,7 @@
 //     const { data: enrollmentData, isLoading: isLoadingEnrollment, isError: isErrorEnrollment } = useQuery({
 //         queryKey: ["enrollmentCounts"], // Query key for enrollment data
 //         queryFn: async () => {
-//             const res = await axiosPublic.get("http://localhost:5000/enroll");
+//             const res = await axiosPublic.get("https://mw-assignments12-server.vercel.app/enroll");
 //             return res.data;
 //         },
 //     });
@@ -92,7 +92,7 @@
 //     const { data: submissionsData, isLoading: isLoadingSubmissions, isError: isErrorSubmissions } = useQuery({
 //         queryKey: ["submissionCounts"], // Query key for submission data
 //         queryFn: async () => {
-//             const res = await axiosPublic.get("http://localhost:5000/assignments");
+//             const res = await axiosPublic.get("https://mw-assignments12-server.vercel.app/assignments");
 //             return res.data;
 //         },
 //     });
@@ -131,7 +131,7 @@ const useCount = () => {
     const { data: classesData, isLoading: isLoadingClasses, isError: isErrorClasses } = useQuery({
         queryKey: ["classCounts"], // Query key for classes and assignments data
         queryFn: async () => {
-            const res = await axiosPublic.get("http://localhost:5000/all-classes");
+            const res = await axiosPublic.get("/all-classes");
             return res.data;
         },
     });
@@ -140,7 +140,7 @@ const useCount = () => {
     const { data: sixClassesData, isLoading: isLoadingSixClasses, isError: isErrorSixClasses } = useQuery({
         queryKey: ["sixClassCounts"], // Query key for fetching the latest 6 classes
         queryFn: async () => {
-            const res = await axiosPublic.get("http://localhost:5000/all-classes?limit=6");
+            const res = await axiosPublic.get("/all-classes?limit=6");
             return res.data;
         },
     });
@@ -149,7 +149,7 @@ const useCount = () => {
     const { data: usersData, isLoading: isLoadingUsers, isError: isErrorUsers } = useQuery({
         queryKey: ["userCounts"], // Query key for users data
         queryFn: async () => {
-            const res = await axiosPublic.get("http://localhost:5000/users");
+            const res = await axiosPublic.get("/totalUsers");
             return res.data;
         },
     });
@@ -158,7 +158,7 @@ const useCount = () => {
     const { data: enrollmentData, isLoading: isLoadingEnrollment, isError: isErrorEnrollment } = useQuery({
         queryKey: ["enrollmentCounts"], // Query key for enrollment data
         queryFn: async () => {
-            const res = await axiosPublic.get("http://localhost:5000/enroll");
+            const res = await axiosPublic.get("/enroll");
             return res.data;
         },
     });
@@ -167,7 +167,7 @@ const useCount = () => {
     const { data: submissionsData, isLoading: isLoadingSubmissions, isError: isErrorSubmissions } = useQuery({
         queryKey: ["submissionCounts"], // Query key for submission data
         queryFn: async () => {
-            const res = await axiosPublic.get("http://localhost:5000/assignments");
+            const res = await axiosPublic.get("/assignments");
             return res.data;
         },
     });

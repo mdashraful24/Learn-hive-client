@@ -23,6 +23,9 @@ import MyEnrolled from "../pages/Dashboard/MyEnrolled/MyEnrolled";
 import EnrolledClass from "../pages/Dashboard/EnrolledClass/EnrolledClass";
 import StudentProfile from "../pages/Dashboard/StudentProfile/StudentProfile";
 import Progress from "../pages/Dashboard/Progress/Progress";
+import AdminRoute from "./AdminRoute";
+import TeacherRoute from "./TeacherRoute";
+import StudentRoute from "./StudentRoute";
 
 
 export const router = createBrowserRouter([
@@ -41,12 +44,12 @@ export const router = createBrowserRouter([
             {
                 path: "details/:id",
                 element: <PrivateRoute><DetailsPage></DetailsPage></PrivateRoute>,
-                loader: ({ params }) => fetch(`http://localhost:5000/all-classes/${params.id}`)
+                loader: ({ params }) => fetch(`https://mw-assignments12-server.vercel.app/all-classes/${params.id}`)
             },
             {
                 path: "/payment/:id",
                 element: <PrivateRoute><Payment></Payment></PrivateRoute>,
-                loader: ({ params }) => fetch(`http://localhost:5000/all-classes/${params.id}`)
+                loader: ({ params }) => fetch(`https://mw-assignments12-server.vercel.app/all-classes/${params.id}`)
             },
             {
                 path: "tech",
@@ -64,44 +67,44 @@ export const router = createBrowserRouter([
     },
     {
         path: "dashboard",
-        element: <Dashboard></Dashboard>,
+        element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
         children: [
             // admin panel
             {
                 path: "request",
-                element: <TeacherRequest></TeacherRequest>
+                element: <AdminRoute><TeacherRequest></TeacherRequest></AdminRoute>
             },
             {
                 path: "users",
-                element: <AllUsers></AllUsers>
+                element: <AdminRoute><AllUsers></AllUsers></AdminRoute>
             },
             {
                 path: "admin-class",
-                element: <AdminClass></AdminClass>
+                element: <AdminRoute><AdminClass></AdminClass></AdminRoute>
             },
             {
                 path: "progress/:id",
-                element: <Progress></Progress>,
-                loader: ({ params }) => fetch(`http://localhost:5000/details/${params.id}`)
+                element: <AdminRoute><Progress></Progress></AdminRoute>,
+                loader: ({ params }) => fetch(`https://mw-assignments12-server.vercel.app/details/${params.id}`)
             },
             {
                 path: "users-profile",
-                element: <UsersProfile></UsersProfile>
+                element: <AdminRoute><UsersProfile></UsersProfile></AdminRoute>
             },
 
             // teacher panel
             {
                 path: "add-class",
-                element: <AddClass></AddClass>
+                element: <TeacherRoute><AddClass></AddClass></TeacherRoute>
             },
             {
                 path: "my-class",
-                element: <MyClasses></MyClasses>
+                element: <TeacherRoute><MyClasses></MyClasses></TeacherRoute>
             },
             {
                 path: "my-class/:id",
-                element: <ClassDetails></ClassDetails>,
-                loader: ({ params }) => fetch(`http://localhost:5000/details/${params.id}`)
+                element: <TeacherRoute><ClassDetails></ClassDetails></TeacherRoute>,
+                loader: ({ params }) => fetch(`https://mw-assignments12-server.vercel.app/details/${params.id}`)
             },
             {
 
@@ -109,16 +112,16 @@ export const router = createBrowserRouter([
             // student
             {
                 path: "myEnroll-class",
-                element: <MyEnrolled></MyEnrolled>
+                element: <StudentRoute><MyEnrolled></MyEnrolled></StudentRoute>
             },
             {
                 path: "myEnroll-class/:id",
-                element: <EnrolledClass></EnrolledClass>,
-                loader: ({ params }) => fetch(`http://localhost:5000/all-classes/${params.id}`)
+                element: <StudentRoute><EnrolledClass></EnrolledClass></StudentRoute>,
+                loader: ({ params }) => fetch(`https://mw-assignments12-server.vercel.app/all-classes/${params.id}`)
             },
             {
                 path: "profile",
-                element: <StudentProfile></StudentProfile>
+                element: <StudentRoute><StudentProfile></StudentProfile></StudentRoute>
             },
         ]
     },

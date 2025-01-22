@@ -11,7 +11,7 @@ const useTeacher = () => {
         enabled: !loading,
         queryFn: async () => {
             const res = await axiosSecure.get(`/users/teacher/${user.email}`);
-            console.log(res.data);
+            // console.log(res.data);
             return res.data?.teacher;
         }
     })
