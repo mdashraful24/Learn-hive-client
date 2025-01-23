@@ -7,14 +7,20 @@ import useAuth from "../../../hooks/useAuth";
 
 const Navbar = () => {
     const { user, logOut } = useAuth();
-    const [dropdownOpen, setDropdownOpen] = useState(false);
-    const dropdownRef = useRef(null);
+    const [menuOpen, setMenuOpen] = useState(false);
+    const [profileDropdownOpen, setProfileDropdownOpen] = useState(false);
+    const profileDropdownRef = useRef(null);
     const navigate = useNavigate();
+
+    // Close the profile dropdown when the user changes
+    useEffect(() => {
+        setProfileDropdownOpen(false);
+    }, [user]);
 
     useEffect(() => {
         const handleClickOutside = (event) => {
-            if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
-                setDropdownOpen(false);
+            if (profileDropdownRef.current && !profileDropdownRef.current.contains(event.target)) {
+                setProfileDropdownOpen(false);
             }
         };
         document.addEventListener("mousedown", handleClickOutside);
@@ -22,10 +28,6 @@ const Navbar = () => {
             document.removeEventListener("mousedown", handleClickOutside);
         };
     }, []);
-
-    useEffect(() => {
-        setDropdownOpen(false);
-    }, [user]);
 
     const handleSignOut = () => {
         logOut()
@@ -43,17 +45,17 @@ const Navbar = () => {
     const links = (
         <>
             <li>
-                <NavLink to="/" onClick={() => setDropdownOpen(false)}>
+                <NavLink to="/" onClick={() => setMenuOpen(false)}>
                     Home
                 </NavLink>
             </li>
             <li>
-                <NavLink to="/allClasses" onClick={() => setDropdownOpen(false)}>
+                <NavLink to="/allClasses" onClick={() => setMenuOpen(false)}>
                     All Classes
                 </NavLink>
             </li>
             <li>
-                <NavLink to="/tech" onClick={() => setDropdownOpen(false)}>
+                <NavLink to="/tech" onClick={() => setMenuOpen(false)}>
                     Teach on LearnHive
                 </NavLink>
             </li>
@@ -70,7 +72,7 @@ const Navbar = () => {
                                 tabIndex={0}
                                 role="button"
                                 className="btn btn-ghost lg:hidden"
-                                onClick={() => setDropdownOpen(!dropdownOpen)}
+                                onClick={() => setMenuOpen(!menuOpen)}
                             >
                                 <svg
                                     xmlns="http://www.w3.org/2000/svg"
@@ -87,11 +89,11 @@ const Navbar = () => {
                                     />
                                 </svg>
                             </div>
-                            {dropdownOpen && (
+                            {menuOpen && (
                                 <ul
                                     tabIndex={0}
                                     className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
-                                    onClick={() => setDropdownOpen(false)}
+                                    onClick={() => setMenuOpen(false)}
                                 >
                                     {links}
                                 </ul>
@@ -109,14 +111,14 @@ const Navbar = () => {
                     </div>
                     <div className="navbar-end">
                         {user ? (
-                            <div className="relative dropdown-container" ref={dropdownRef}>
+                            <div className="relative dropdown-container" ref={profileDropdownRef}>
                                 <img
                                     className="rounded-full w-12 h-12 object-cover cursor-pointer hover:bg-gray-300 p-1"
                                     src={user?.photoURL || alt}
                                     alt="User profile"
-                                    onClick={() => setDropdownOpen(!dropdownOpen)}
+                                    onClick={() => setProfileDropdownOpen(!profileDropdownOpen)}
                                 />
-                                {dropdownOpen && (
+                                {profileDropdownOpen && (
                                     <div className="absolute -right-2 mt-2 w-36 shadow-lg z-10 bg-white rounded-lg border">
                                         <div className="py-2 px-3 text-center">
                                             <p className="font-semibold text-sm text-gray-800 cursor-not-allowed">
@@ -128,7 +130,7 @@ const Navbar = () => {
                                                 <NavLink
                                                     className="block py-2 px-3 text-gray-800 hover:font-medium hover:bg-gray-200"
                                                     to="/dashboard"
-                                                    onClick={() => setDropdownOpen(false)}
+                                                    onClick={() => setProfileDropdownOpen(false)}
                                                 >
                                                     Dashboard
                                                 </NavLink>
@@ -161,6 +163,8 @@ const Navbar = () => {
 };
 
 export default Navbar;
+
+
 
 
 
