@@ -21,7 +21,7 @@ const StatsSection = () => {
                     <div className="bg-gradient-to-r from-purple-500 to-pink-300 text-white p-4 rounded-lg shadow-md hover:shadow-xl flex justify-center items-center gap-5">
                         <FaUsers className="text-2xl lg:text-4xl" />
                         <div>
-                            <h2 className="text-2xl lg:text-4xl font-bold">Total User: {totalUsers}</h2>
+                            <h2 className="text-2xl lg:text-4xl font-bold">Total User: {totalUsers ?? 'N/A'}</h2>
                         </div>
                     </div>
 
@@ -29,7 +29,7 @@ const StatsSection = () => {
                     <div className="bg-gradient-to-r from-[#D1A054] to-orange-200 text-white p-4 rounded-lg shadow-md hover:shadow-xl flex justify-center items-center gap-5">
                         <FaUsers className="text-2xl lg:text-4xl" />
                         <div>
-                            <h2 className="text-2xl lg:text-4xl font-bold">Total Classes: {totalClasses}</h2>
+                            <h2 className="text-2xl lg:text-4xl font-bold">Total Classes: {totalClasses ?? 'N/A'}</h2>
                         </div>
                     </div>
 
@@ -37,7 +37,7 @@ const StatsSection = () => {
                     <div className="bg-gradient-to-r from-pink-500 to-red-300 text-white p-4 rounded-lg shadow-md hover:shadow-xl flex justify-center items-center gap-5">
                         <FaBoxOpen className="text-2xl lg:text-4xl" />
                         <div>
-                            <h2 className="text-2xl lg:text-4xl font-bold">Total Enrollment: {totalEnrollment}</h2>
+                            <h2 className="text-2xl lg:text-4xl font-bold">Total Enrollment: {totalEnrollment ?? 'N/A'}</h2>
                         </div>
                     </div>
                 </div>

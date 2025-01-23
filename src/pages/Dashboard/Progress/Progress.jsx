@@ -73,9 +73,8 @@ const Progress = () => {
             {/* Assignments Section */}
             {data.assignments.length > 0 ? (
                 <>
-                    <h3 className="text-xl font-semibold mb-2">Assignments</h3>
                     <p className="mb-2">
-                        <strong>Enrollments:</strong> {totalEnrollment}
+                        <strong>Enrollments:</strong> {totalEnrollment ?? 'N/A'}
                     </p>
                     <p className="mb-3">
                         <strong>Total Assignments:</strong>{" "}
@@ -118,7 +117,7 @@ const Progress = () => {
                                                 {assignment.deadline}
                                             </td>
                                             <td className="border border-gray-300 px-4 py-2">
-                                                {assignment.submit === "true"
+                                                {assignment.submit === "false"
                                                     ? "Yes"
                                                     : "No"}
                                             </td>
@@ -158,7 +157,7 @@ const Progress = () => {
                 </>
             ) : (
                 // Relevant message when no assignments are available
-                <p className="text-gray-600 text-center mt-10">
+                <p className="text-center font-semibold mt-10">
                     No progress available at the moment. Please check back later.
                 </p>
             )}

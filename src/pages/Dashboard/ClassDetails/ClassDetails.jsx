@@ -455,7 +455,7 @@ const ClassDetails = () => {
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                     <div className="text-center">
                         <p className="text-gray-600">Total Enrollments</p>
-                        <h4 className="text-2xl font-bold">{totalEnrollment}</h4>
+                        <h4 className="text-2xl font-bold">{totalEnrollment ?? 'N/A'}</h4>
                     </div>
                     <div className="text-center">
                         <p className="text-gray-600">Total Assignments</p>
@@ -463,7 +463,7 @@ const ClassDetails = () => {
                     </div>
                     <div className="text-center">
                         <p className="text-gray-600">Total Submissions</p>
-                        <h4 className="text-2xl font-bold">{totalSubmissions}</h4>
+                        <h4 className="text-2xl font-bold">{totalSubmissions ?? 'N/A'}</h4>
                     </div>
                 </div>
             </div>

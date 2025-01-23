@@ -87,7 +87,7 @@ const DetailsPage = () => {
                         <strong>Description:</strong> {description}
                     </p>
                     <p className="text-gray-600 mb-4">
-                        <strong>Enrollments:</strong> {totalEnrollment}
+                        <strong>Enrollments:</strong> {totalEnrollment ?? 'N/A'}
                     </p>
                     <p className="text-gray-800 font-bold text-lg mb-6">
                         Price: ${price}
