@@ -56,7 +56,19 @@ const UsersProfile = () => {
                             <p className="text-center text-gray-600 mb-2"><span className="text-gray-900">Email:</span> {user.email}</p>
                             <p className="text-center text-gray-600 mb-2"><span className="text-gray-900">Phone:</span> {user.phone ? user.phone : "N/A"}</p>
                             <p className="text-center text-gray-600 capitalize mb-2"><span className="text-gray-900">Role:</span> {user.role}</p>
-                            <p className="text-center text-gray-600 capitalize mb-2"><span className="text-gray-900">Joined:</span> {user.joinedDate ? new Date(user.joinedDate).toLocaleDateString() : "N/A"}</p>
+                            <p className="text-center text-gray-600 capitalize mb-2">
+                                <span className="text-gray-900">
+                                    {user.role === "admin"
+                                        ? "Admin creation:"
+                                        : user.role === "teacher"
+                                            ? "Joined:"
+                                            : user.role === "student"
+                                                ? "Registration:"
+                                                : "Date:"}
+                                </span>{" "}
+                                {user.joinedDate ? new Date(user.joinedDate).toLocaleDateString() : "N/A"}
+                            </p>
+
                         </div>
                     ))}
                 </div>
