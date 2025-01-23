@@ -191,37 +191,6 @@ const EnrolledClass = () => {
             </div>
 
             {/* Pagination Controls */}
-            {/* <div className="mt-10 flex flex-col md:flex-row justify-center md:justify-between items-center gap-3">
-                <span className="text-gray-800">Page {currentPage} of {totalPages}</span>
-
-                <div>
-                    <button
-                        onClick={() => handlePageChange(currentPage - 1)}
-                        disabled={currentPage === 1}
-                        className="px-2 py-1 mx-1 rounded bg-gray-200 text-gray-800 hover:bg-gray-300"
-                    >
-                        Prev
-                    </button>
-
-                    {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
-                        <button
-                            key={page}
-                            onClick={() => handlePageChange(page)}
-                            className={`px-3 py-1 mx-1 rounded ${currentPage === page ? "bg-blue-500 text-white" : "bg-gray-200 text-gray-800 hover:bg-gray-300"}`}
-                        >
-                            {page}
-                        </button>
-                    ))}
-
-                    <button
-                        onClick={() => handlePageChange(currentPage + 1)}
-                        disabled={currentPage === totalPages}
-                        className="px-2 py-1 mx-1 rounded bg-gray-200 text-gray-800 hover:bg-gray-300"
-                    >
-                        Next
-                    </button>
-                </div>
-            </div> */}
             {assignments.length > 0 && (
                 <div className="mt-10 flex flex-col md:flex-row justify-center md:justify-between items-center gap-3">
                     <span className="text-gray-800">Page {currentPage} of {totalPages}</span>
@@ -293,6 +262,15 @@ const EnrolledClass = () => {
                     <div className="bg-white p-6 rounded-md shadow-xl w-[500px] mx-auto relative max-h-[90vh] overflow-y-auto">
                         <h2 className="text-lg md:text-2xl font-bold text-center mb-3">Teaching Evaluation Report</h2>
                         <form onSubmit={handleSubmit(onSubmitEvaluation)}>
+                            <div className="mb-2">
+                                <label className="block text-sm font-medium text-gray-700">Rating</label>
+                                <ReactStars
+                                    count={5}
+                                    onChange={(rating) => setValue("rating", rating)}
+                                    size={30}
+                                    activeColor="#ffd700"
+                                />
+                            </div>
                             <div className="mb-4">
                                 <label htmlFor="description" className="block text-sm font-medium text-gray-700">Description</label>
                                 <textarea
@@ -301,15 +279,6 @@ const EnrolledClass = () => {
                                     rows="4"
                                     className="w-full p-2 border border-gray-300 rounded-md"
                                     placeholder="Enter your feedback..."
-                                />
-                            </div>
-                            <div className="mb-4">
-                                <label className="block text-sm font-medium text-gray-700">Rating</label>
-                                <ReactStars
-                                    count={5}
-                                    onChange={(rating) => setValue("rating", rating)}
-                                    size={30}
-                                    activeColor="#ffd700"
                                 />
                             </div>
                             <button
