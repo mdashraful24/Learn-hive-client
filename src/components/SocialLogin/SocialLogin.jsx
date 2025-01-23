@@ -38,7 +38,7 @@ const SocialLogin = () => {
         <div className="text-center w-11/12 mx-auto">
             <button
                 onClick={handleGoogleSignIn}
-                className="btn w-full text-white font-medium bg-gradient-to-r from-orange-500 to-red-500 hover:from-red-600 hover:to-orange-600 focus:outline-none focus:ring-2 focus:ring-red-400 shadow-md transition-all duration-200 border-none rounded-md"
+                className="btn w-full text-white font-medium bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-700 hover:to-purple-800 focus:outline-none focus:ring-2 focus:ring-purple-500 shadow-md transition-all duration-200 border-none rounded-md"
             >
                 Sign in with Google
             </button>

@@ -108,7 +108,7 @@ const Login = () => {
                     <div className="form-control mt-6">
                         <button
                             type="submit"
-                            className="btn bg-[#d19f54ee] hover:bg-[#c29249] rounded-md"
+                            className="btn btn-primary rounded-md"
                         >
                             Sign In
                         </button>

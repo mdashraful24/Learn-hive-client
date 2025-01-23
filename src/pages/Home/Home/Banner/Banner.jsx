@@ -2,8 +2,8 @@ import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from "react-responsive-carousel";
 
 import img1 from "../../../../assets/banner/banner1.jpg";
-import img2 from "../../../../assets/banner/banner2.jpg";
-import img3 from "../../../../assets/banner/banner3.jpg";
+import img2 from "../../../../assets/banner/banner3.jpg";
+import img3 from "../../../../assets/banner/banner2.jpg";
 import img4 from "../../../../assets/banner/banner4.jpg";
 import img5 from "../../../../assets/banner/banner6.jpg";
 import img6 from "../../../../assets/banner/banner7.png";
