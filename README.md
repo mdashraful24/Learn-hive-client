@@ -1,8 +1,34 @@
-# React + Vite
+# LearnHive
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**LearnHive** is a MERN stack platform designed to enhance interactions between educational institutions, tutors, and students, making skill learning and class management more efficient and accessible. It offers features for course management, personalized dashboards, and a user-friendly environment for managing educational content.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **User Authentication**: Sign up and login functionality for students, tutors, and educational institutions.
+- **Course Management**: Institutions can create and manage courses, while tutors can update content and track student progress.
+- **Profile Management**: Users can manage their profiles, including skills, experience, and course preferences.
+- **Dashboard**: Personalized dashboards for students and tutors to track progress, manage schedules, and access learning resources.
+- **Admin Panel**: Admins can oversee all user activities, manage content, and monitor progress.
+
+## Technologies Used
+
+- **Frontend**:
+  - React.js
+  - React Router (for navigation)
+  - Tailwind CSS (for styling)
+  - Axios (for API requests)
+  - React Icons (for icons)
+
+- **Backend**:
+  - Node.js
+  - Express.js
+  - MongoDB (Database)
+  - JWT (for user authentication)
+  - dotenv (for environment variables)
+
+## Live Demo
+
+You can view the live version of **LearnHive** at the following link:
+
+- **[Link 1](https://learnhive-4ed81.web.app/)**
+- **[Link 2](https://learnhive-4ed81.firebaseapp.com/)**
