@@ -32,7 +32,7 @@ const StudentProfile = () => {
 
     if (isLoading) {
         return (
-            <div className="container mx-auto text-center mb-5">
+            <div className="container mx-auto text-center mt-10">
                 <p className="text-gray-500">Loading your profile...</p>
             </div>
         );
@@ -40,7 +40,7 @@ const StudentProfile = () => {
 
     if (error) {
         return (
-            <div className="container mx-auto text-center mb-5">
+            <div className="container mx-auto text-center mt-10">
                 <p className="text-red-500">Error loading profile. Please try again later.</p>
             </div>
         );
@@ -48,14 +48,14 @@ const StudentProfile = () => {
 
     if (!userInfo) {
         return (
-            <div className="container mx-auto text-center mb-5">
+            <div className="container mx-auto text-center mt-10">
                 <p className="text-gray-500">No profile data found for this user.</p>
             </div>
         );
     }
 
     return (
-        <div className="container mx-auto my-10 p-6 bg-gray-50 rounded-xl shadow-lg">
+        <div className="container mx-auto my-14 p-6 bg-gray-50 rounded-xl shadow-lg">
             <Helmet>
                 <title>Profile | LearnHive</title>
             </Helmet>
