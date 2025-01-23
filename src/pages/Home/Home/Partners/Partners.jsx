@@ -35,7 +35,7 @@ export default Partners;
 
 
 
-// Unique Style
+// reserve (unique Style)
 // import img1 from '../../../../assets/partners/coursera.png';
 // import img2 from '../../../../assets/partners/duolingo.png';
 // import img3 from '../../../../assets/partners/khan-academy.png';

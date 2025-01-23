@@ -1,7 +1,6 @@
 import React from "react";
 import { Parallax } from "react-parallax";
 import { FaChalkboardTeacher, FaUserGraduate, FaUsers, FaChartLine, FaAward, FaGlobe } from "react-icons/fa";
-// import features from "../../../assets/features.jpg";
 import features from "../../../assets/home/image.jpg";
 
 const KeyFeatures = () => {

@@ -89,10 +89,10 @@ const StudentProfile = () => {
                 <div className="bg-white p-6 rounded-lg shadow-md">
                     <h3 className="text-xl font-bold text-blue-600 mb-4">Other Details</h3>
                     <p className="text-gray-700">
-                        <span className="font-medium text-gray-900">Register Date:</span> {userInfo.joinedDate ? new Date(userInfo.joinedDate).toLocaleDateString() : "N/A"}
+                        <span className="font-medium text-gray-900">Registration Date:</span> {userInfo.joinedDate ? new Date(userInfo.joinedDate).toLocaleDateString() : "N/A"}
                     </p>
                     <p className="text-gray-700 mt-2">
-                        <span className="font-medium text-gray-900">Register Time:</span> {userInfo.joinedDate ? new Date(userInfo.joinedDate).toLocaleTimeString() : "N/A"}
+                        <span className="font-medium text-gray-900">Registration Time:</span> {userInfo.joinedDate ? new Date(userInfo.joinedDate).toLocaleTimeString() : "N/A"}
                     </p>
                 </div>
             </div>

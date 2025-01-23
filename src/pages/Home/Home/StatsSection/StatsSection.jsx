@@ -22,7 +22,6 @@ const StatsSection = () => {
                         <FaUsers className="text-2xl lg:text-4xl" />
                         <div>
                             <h2 className="text-2xl lg:text-4xl font-bold">Total User: {totalUsers}</h2>
-                            {/* <p className="text-lg">Revenue</p> */}
                         </div>
                     </div>
 
@@ -31,7 +30,6 @@ const StatsSection = () => {
                         <FaUsers className="text-2xl lg:text-4xl" />
                         <div>
                             <h2 className="text-2xl lg:text-4xl font-bold">Total Classes: {totalClasses}</h2>
-                            {/* <p className="text-lg">Customers</p> */}
                         </div>
                     </div>
 
@@ -40,12 +38,11 @@ const StatsSection = () => {
                         <FaBoxOpen className="text-2xl lg:text-4xl" />
                         <div>
                             <h2 className="text-2xl lg:text-4xl font-bold">Total Enrollment: {totalEnrollment}</h2>
-                            {/* <p className="text-lg">Products</p> */}
                         </div>
                     </div>
                 </div>
 
-                {/* Right side - Image */}
+                {/* Right side image */}
                 <div className="md:w-1/2">
                     <img
                         src={stats}

@@ -77,7 +77,7 @@ const Highlight = () => {
                         </SwiperSlide>
                     ))
                 ) : (
-                    <div>No classes available</div> // Handle the case if the data is not an array
+                    <div>No classes available</div>
                 )}
             </Swiper>
         </section>
