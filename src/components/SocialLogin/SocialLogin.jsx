@@ -19,7 +19,7 @@ const SocialLogin = () => {
                     email: result.user?.email,
                     name: result.user?.displayName,
                     image: result.user?.photoURL,
-                    phone: data.phone,
+                    phone: "888888",
                     role: 'student',
                     joinedDate: new Date().toISOString()
                 };
