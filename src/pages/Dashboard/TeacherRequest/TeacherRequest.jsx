@@ -142,7 +142,7 @@ const TeacherRequest = () => {
                                         <td className="py-5">{request.category}</td>
                                         <td className="py-5">
                                             <span
-                                                className={`text-${request.status === 'pending' ? 'yellow' : 'red'}-600`}
+                                                className={`text-${request.status === 'pending' ? 'blue' : 'red'}-600`}
                                             >
                                                 {request.status.charAt(0).toUpperCase() + request.status.slice(1)}
                                             </span>
@@ -350,24 +350,24 @@ export default TeacherRequest;
 //         });
 //     };
 
-//     const handleRequestAgain = (request) => {
-//         axiosSecure.patch(`/applications/request-again/${request._id}`, { status: 'pending' })
-//             .then(() => {
-//                 refetch();
-//                 Swal.fire(
-//                     'Request accepted!',
-//                     'The request status has been set to pending again.',
-//                     'success'
-//                 );
-//             })
-//             .catch((error) => {
-//                 Swal.fire({
-//                     title: 'Error!',
-//                     text: 'There was an issue setting the request status to pending.',
-//                     icon: 'error',
-//                 });
+// const handleRequestAgain = (request) => {
+//     axiosSecure.patch(`/applications/request-again/${request._id}`, { status: 'pending' })
+//         .then(() => {
+//             refetch();
+//             Swal.fire(
+//                 'Request accepted!',
+//                 'The request status has been set to pending again.',
+//                 'success'
+//             );
+//         })
+//         .catch((error) => {
+//             Swal.fire({
+//                 title: 'Error!',
+//                 text: 'There was an issue setting the request status to pending.',
+//                 icon: 'error',
 //             });
-//     };
+//         });
+// };
 
 //     const allRequestsApproved = data?.every((request) => request.status === 'accepted');
 

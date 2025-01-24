@@ -19,7 +19,9 @@ const SocialLogin = () => {
                     email: result.user?.email,
                     name: result.user?.displayName,
                     image: result.user?.photoURL,
-                    role: 'student' // Set default role to 'student'
+                    phone: data.phone,
+                    role: 'student',
+                    joinedDate: new Date().toISOString()
                 };
                 axiosPublic.post('/users', userInfo)
                     .then(res => {
