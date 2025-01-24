@@ -9,6 +9,12 @@
 - **Profile Management**: Users can manage their profiles, including skills, experience, and course preferences.
 - **Dashboard**: Personalized dashboards for students and tutors to track progress, manage schedules, and access learning resources.
 - **Admin Panel**: Admins can oversee all user activities, manage content, and monitor progress.
+- **Teacher Panel**: Teachers can oversee all student activities, add class content, and monitor classes.
+- **Student Panel**: Students can oversee all his/her enrolled classes.
+- **Stripe Payment Methods**
+- **Currently Popular Classes**
+- **Website statistic**
+- **Pagination, Parallax, etc**
 
 ## Technologies Used
 
@@ -25,6 +31,12 @@
   - MongoDB (Database)
   - JWT (for user authentication)
   - dotenv (for environment variables)
+
+## Admin Related Info:
+
+  - **Username**: Ashraful Islam
+  - **Email**: admin@gmail.com
+  - **Password**: 123456As
 
 ## Live Demo
 
