@@ -11,8 +11,8 @@ const Partners = () => {
     return (
         <div className='mb-20'>
             <h2 className="text-center text-4xl font-extrabold mb-5">Our Partners</h2>
-            <p className="text-center mb-10 px-3">
-                We’re proud to collaborate with these exceptional organizations to make learning accessible, efficient, and impactful.
+            <p className="text-center lg:w-2/3 mx-auto mb-10 px-3">
+                We’re proud to collaborate with these exceptional organizations to make learning accessible, efficient, and impactful. Together, we’re creating a brighter future for all learners.
             </p>
             <div className='px-5 lg:px-0'>
                 <div className='grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-5 border-2 p-10 rounded-2xl'>

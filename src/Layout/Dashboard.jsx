@@ -1,6 +1,7 @@
 import { FaHome, FaListAlt, FaListUl, FaUserCircle } from 'react-icons/fa';
 import { FaCodePullRequest, FaUsers } from "react-icons/fa6";
 import { GiTeacher } from 'react-icons/gi';
+import { MdSettingsApplications } from "react-icons/md";
 import { NavLink, Outlet, useLocation } from "react-router-dom";
 import { IoIosAddCircle } from 'react-icons/io';
 import { IoReorderThreeOutline } from "react-icons/io5";
@@ -61,11 +62,13 @@ const Dashboard = () => {
                             <li><NavLink to="/dashboard/add-class" onClick={closeSidebar}><IoIosAddCircle /> Add Class</NavLink></li>
                             <li><NavLink to="/dashboard/my-class" onClick={closeSidebar}><FaListUl /> My Classes</NavLink></li>
                             <li><NavLink to="/dashboard/teacher-profile" onClick={closeSidebar}><FaUserCircle /> Profile</NavLink></li>
+                            <li><NavLink to="/dashboard/approve" onClick={closeSidebar}><MdSettingsApplications /> My Request</NavLink></li>
                         </>
                     ) : isStudent ? (
                         <>
                             <li><NavLink to="/dashboard/myEnroll-class" onClick={closeSidebar}><FaListAlt /> My Enrolled Classes</NavLink></li>
                             <li><NavLink to="/dashboard/student-profile" onClick={closeSidebar}><FaUserCircle /> Profile</NavLink></li>
+                            <li><NavLink to="/dashboard/my-request" onClick={closeSidebar}><MdSettingsApplications /> My Request</NavLink></li>
                         </>
                     ) : null}
 

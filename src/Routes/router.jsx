@@ -27,6 +27,8 @@ import AdminRoute from "./AdminRoute";
 import TeacherRoute from "./TeacherRoute";
 import StudentRoute from "./StudentRoute";
 import TeacherProfile from "../pages/Dashboard/TeacherProfile/TeacherProfile";
+import MyRequest from "../pages/Dashboard/MyRequest/MyRequest";
+import ApproveJob from "../pages/Dashboard/ApproveJob/ApproveJob";
 
 
 export const router = createBrowserRouter([
@@ -111,6 +113,10 @@ export const router = createBrowserRouter([
                 path: "teacher-profile",
                 element: <TeacherRoute><TeacherProfile></TeacherProfile></TeacherRoute>
             },
+            {
+                path: "approve",
+                element: <TeacherRoute><ApproveJob></ApproveJob></TeacherRoute>
+            },
             // student
             {
                 path: "myEnroll-class",
@@ -125,6 +131,10 @@ export const router = createBrowserRouter([
                 path: "student-profile",
                 element: <StudentRoute><StudentProfile></StudentProfile></StudentRoute>
             },
+            {
+                path: "my-request",
+                element: <StudentRoute><MyRequest></MyRequest></StudentRoute>
+            }
         ]
     },
     {

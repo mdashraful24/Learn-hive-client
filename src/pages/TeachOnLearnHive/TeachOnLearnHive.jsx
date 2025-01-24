@@ -98,6 +98,18 @@ const TeachOnLearnHive = () => {
                             {errors.image && <span className="text-red-600">Image URL is required</span>}
                         </div>
 
+                        {/* Title */}
+                        <div className="form-group mb-4">
+                            <label className="block mb-2">Title</label>
+                            <input
+                                type="text"
+                                {...register("title", { required: true })}
+                                className="w-full p-3 border border-black rounded-md"
+                                placeholder="Enter title"
+                            />
+                            {errors.title && <span className="text-red-600">Title is required</span>}
+                        </div>
+
                         {/* Experience */}
                         <div className="form-group mb-4">
                             <label className="block mb-2">Experience Level</label>
@@ -114,17 +126,7 @@ const TeachOnLearnHive = () => {
                             </select>
                             {errors.experience && <span className="text-red-600">Experience level is required</span>}
                         </div>
-                        {/* Title */}
-                        <div className="form-group mb-4">
-                            <label className="block mb-2">Title</label>
-                            <input
-                                type="text"
-                                {...register("title", { required: true })}
-                                className="w-full p-3 border border-black rounded-md"
-                                placeholder="Enter title"
-                            />
-                            {errors.title && <span className="text-red-600">Title is required</span>}
-                        </div>
+                        
                         {/* Category */}
                         <div className="form-group mb-4">
                             <label className="block mb-2">Category</label>
