@@ -66,7 +66,7 @@ const Dashboard = () => {
                         </>
                     ) : isStudent ? (
                         <>
-                            <li><NavLink to="/dashboard/myEnroll-class" onClick={closeSidebar}><FaListAlt /> My Enrolled Classes</NavLink></li>
+                            <li><NavLink to="/dashboard/myEnroll-class" onClick={closeSidebar}><FaListAlt /> My Enroll Classes</NavLink></li>
                             <li><NavLink to="/dashboard/student-profile" onClick={closeSidebar}><FaUserCircle /> Profile</NavLink></li>
                             <li><NavLink to="/dashboard/my-request" onClick={closeSidebar}><MdSettingsApplications /> My Request</NavLink></li>
                         </>

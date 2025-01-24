@@ -41,14 +41,7 @@ const SignUp = () => {
                         if (res.data.insertedId) {
                             // console.log('user added to the database');
                             reset();
-                            // toast.success("Successfully Signed Up");
-                            Swal.fire({
-                                icon: "success",
-                                title: "Welcome to LearnHive!",
-                                text: "Your account has been successfully created.",
-                                showConfirmButton: false,
-                                timer: 1500,
-                            });
+                            toast.success("Successfully Signed Up");
                             navigate("/");
                         }
                     })
