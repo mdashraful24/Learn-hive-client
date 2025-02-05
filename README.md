@@ -37,7 +37,7 @@
 | ------------------ | ----------------------------------------------------------------- |
 | **Frontend**       | React, Tailwind CSS, DaisyUI, React Router DOM                   |
 | **Backend**        | Node.js, Express.js                                              |
-| **Database**       | MongoDB (Mongoose)                                               |
+| **Database**       | MongoDB (Atlas)                                               |
 | **Authentication** | Firebase Authentication                                          |
 | **File Uploads**   | Cloudinary, ImgBB                                                |
 | **Payments**       | Stripe                                                           |
