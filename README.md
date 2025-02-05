@@ -130,7 +130,7 @@ The admin panel provides:
 - **Tailwind CSS** and **DaisyUI** for building a modern, responsive interface.
 - **React** and its ecosystem for making frontend development easier.
 
-```This format includes detailed sections like Features, Technologies, Installation, Usage, Contributing, and more. You can personalize it by updating the placeholders (like `your-username` in the repository URL) and adjusting any other specific details for your project.```
+This format includes detailed sections like Features, Technologies, Installation, Usage, Contributing, and more. You can personalize it by updating the placeholders (like `your-username` in the repository URL) and adjusting any other specific details for your project.
 
 ## Admin Related Info:
 
@@ -143,6 +143,5 @@ The admin panel provides:
 You can view the live version of **LearnHive** at the following link:
 
 - **Live Site:** [LearnHive](https://learnhive-4ed81.web.app/)
-- **[Link 2](https://learnhive-4ed81.firebaseapp.com/)**
 
 🚀 **Transform the way education works with LearnHive!** 📚✨
