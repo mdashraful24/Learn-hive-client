@@ -2,7 +2,7 @@
 
 ![LearnHive Banner](https://i.ibb.co.com/wZVSgzSt/Screenshot-27.png)
 
-**LearnHive** is a cutting-edge MERN stack platform designed to revolutionize interactions between educational institutions, tutors, and students. It streamlines skill learning and class management, providing an intuitive and user-friendly environment for course management, personalized dashboards, and educational content distribution.
+**LearnHive** is a MERN stack platform designed to enhance interactions between educational institutions, tutors, and students, making skill learning and class management more efficient and accessible. It offers features for course management, personalized dashboards, and a user-friendly environment for managing educational content.
 
 🚀 **Live Demo:** [LearnHive](https://learnhive-4ed81.web.app/)
 
