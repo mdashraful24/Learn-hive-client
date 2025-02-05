@@ -59,7 +59,7 @@
 1. **Clone the repository**
 
    ```sh
-   git clone https://github.com/yourusername/learnhive.git
+   git clone https://github.com/mdashraful24/Learn-hive-client.git
    cd learnhive
    ```
 
