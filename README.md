@@ -62,16 +62,15 @@ bash
 npm install
 
 ### 3. Set up environment variables
-Create a `.env` file in the root directory and configure the following:
+Create a `.env` file in the root directory and make sure to add the following environment variables to your `.env` file:
 
-env
-VITE_apiKey=YOUR_FIREBASE_API_KEY
-VITE_authDomain=YOUR_FIREBASE_AUTH_DOMAIN
-VITE_projectId=YOUR_FIREBASE_PROJECT_ID
-VITE_IMAGE_HOSTING_KEY=YOUR_IMGBB_KEY
-VITE_CLOUDINARY_UPLOAD_PRESET=YOUR_CLOUDINARY_UPLOAD_PRESET
-VITE_CLOUDINARY_CLOUD_NAME=YOUR_CLOUDINARY_CLOUD_NAME
-VITE_Payment_Gateway_PK=YOUR_STRIPE_PAYMENT_PK
+- **VITE_apiKey**: Your Firebase API key.
+- **VITE_authDomain**: Your Firebase authentication domain.
+- **VITE_projectId**: Your Firebase project ID.
+- **VITE_IMAGE_HOSTING_KEY**: Your ImgBB image hosting key.
+- **VITE_CLOUDINARY_UPLOAD_PRESET**: Your Cloudinary upload preset.
+- **VITE_CLOUDINARY_CLOUD_NAME**: Your Cloudinary cloud name.
+- **VITE_Payment_Gateway_PK**: Your Stripe payment gateway public key.
 
 ### 4. Run the app
 - To start the frontend, run the following:
