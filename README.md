@@ -60,7 +60,7 @@
 
    ```sh
    git clone https://github.com/mdashraful24/Learn-hive-client.git
-   cd learnhive
+   cd learn-hive-client
    ```
 
 2. **Install dependencies**
