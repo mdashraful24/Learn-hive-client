@@ -42,7 +42,7 @@
 | **File Uploads**   | Cloudinary, ImgBB                                                |
 | **Payments**       | Stripe                                                           |
 | **State Management** | React Context API, React Query                              |
-| **Hosting**        | Vercel (Frontend), Render (Backend)                              |
+| **Hosting**        | Firebase (Frontend), Vercel (Backend)                              |
 
 ---
 
