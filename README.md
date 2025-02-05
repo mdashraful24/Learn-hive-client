@@ -59,7 +59,6 @@ cd Learn-hive-client
 Run the following command in both client and server directories:
 
 bash
-
 npm install
 
 ### 3. Set up environment variables
@@ -78,13 +77,11 @@ VITE_Payment_Gateway_PK=YOUR_STRIPE_PAYMENT_PK
 - To start the frontend, run the following:
 
 bash
-
 npm run dev
 
 - To start the backend server, use:
 
 bash
-
 npm run server
 
 Visit the app at [http://localhost:3000](http://localhost:3000).
@@ -115,7 +112,7 @@ We welcome contributions to LearnHive! Whether you're fixing bugs, adding new fe
 - **Tailwind CSS** and **DaisyUI** for building a modern, responsive interface.
 - **React** and its ecosystem for making frontend development easier.
 
-This format includes detailed sections like Features, Technologies, Installation, Usage, Contributing, and more. You can personalize it by updating the placeholders (like `your-username` in the repository URL) and adjusting any other specific details for your project.
+```This format includes detailed sections like Features, Technologies, Installation, Usage, Contributing, and more. You can personalize it by updating the placeholders (like `your-username` in the repository URL) and adjusting any other specific details for your project.```
 
 ## Admin Related Info:
 
