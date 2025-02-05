@@ -51,13 +51,15 @@ Make sure you have the following installed:
 Clone the repository to your local machine:
 
 bash
-git clone https://github.com/your-username/learnhive.git
-cd learnhive
+
+git clone https://github.com/mdashraful24/Learn-hive-client.git
+cd Learn-hive-client
 
 ### 2. Install dependencies
 Run the following command in both client and server directories:
 
 bash
+
 npm install
 
 ### 3. Set up environment variables
@@ -76,11 +78,13 @@ VITE_Payment_Gateway_PK=YOUR_STRIPE_PAYMENT_PK
 - To start the frontend, run the following:
 
 bash
+
 npm run dev
 
 - To start the backend server, use:
 
 bash
+
 npm run server
 
 Visit the app at [http://localhost:3000](http://localhost:3000).
@@ -102,10 +106,6 @@ We welcome contributions to LearnHive! Whether you're fixing bugs, adding new fe
 3. Commit your changes (`git commit -m 'Add new feature'`).
 4. Push to the branch (`git push origin feature-branch`).
 5. Open a Pull Request with a detailed explanation of your changes.
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ## Acknowledgments
 
