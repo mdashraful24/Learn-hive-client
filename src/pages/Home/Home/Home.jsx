@@ -1,7 +1,7 @@
 import { Helmet } from "react-helmet-async";
 import InspireTeachers from "../InspireTeachers/InspireTeachers";
 import KeyFeatures from "../KeyFeatures/KeyFeatures";
-import AboutUs from "./AboutUs/AboutUs";
+// import AboutUs from "./AboutUs/AboutUs";
 import Banner from "./Banner/Banner";
 import Partners from "./Partners/Partners";
 import StatsSection from "./StatsSection/StatsSection";
@@ -10,6 +10,9 @@ import Highlight from "./Highlight/Highlight";
 import Welcome from "./Welcome/Welcome";
 
 const Home = () => {
+    // Scroll to the top when the component mounts
+    window.scrollTo(0, 0);
+    
     return (
         <div>
             <Helmet>
@@ -18,7 +21,7 @@ const Home = () => {
 
             <Banner></Banner>
             <Welcome></Welcome>
-            <AboutUs></AboutUs>
+            {/* <AboutUs></AboutUs> */}
             <Partners></Partners>
             <Highlight></Highlight>
             <InspireTeachers></InspireTeachers>

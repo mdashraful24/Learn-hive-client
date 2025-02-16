@@ -29,6 +29,7 @@ import StudentRoute from "./StudentRoute";
 import TeacherProfile from "../pages/Dashboard/TeacherProfile/TeacherProfile";
 import MyRequest from "../pages/Dashboard/MyRequest/MyRequest";
 import ApproveJob from "../pages/Dashboard/ApproveJob/ApproveJob";
+import AboutUs from "../pages/AboutUs/AboutUs";
 
 
 export const router = createBrowserRouter([
@@ -39,6 +40,10 @@ export const router = createBrowserRouter([
             {
                 path: "/",
                 element: <Home></Home>
+            },
+            {
+                path: "aboutUs",
+                element: <AboutUs></AboutUs>
             },
             {
                 path: "allClasses",

@@ -23,12 +23,12 @@ const Testimonials = () => {
     }, []);
 
     return (
-        <div className="mt-16 mb-32">
+        <div className="container mx-auto mt-16 mb-32 px-2.5">
             <h2 className="text-3xl font-bold text-center mb-16 text-gray-800">What Our Users Say</h2>
 
             {reviews.length > 0 ? (
                 <Swiper
-                    navigation={true}
+                    navigation={false}
                     autoplay={{
                         delay: 3000,
                         disableOnInteraction: false,
@@ -58,7 +58,7 @@ const Testimonials = () => {
                                     </p>
 
                                     {/* Quote and Description */}
-                                    <div className="flex justify-center gap-1 text-center px-16">
+                                    <div className="flex justify-center gap-1 text-center px-10 md:px-16">
                                         {/* Quote Icon */}
                                         <FontAwesomeIcon icon={faQuoteLeft} />
                                         <p className="text-sm sm:text-base md:text-lg text-gray-600">

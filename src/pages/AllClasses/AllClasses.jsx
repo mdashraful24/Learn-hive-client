@@ -5,6 +5,9 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 
 const AllClasses = () => {
+    // Scroll to the top when the component mounts
+    window.scrollTo(0, 0);
+    
     const axiosPublic = useAxiosPublic();
     const [currentPage, setCurrentPage] = useState(1);
     const classesPerPage = 9;

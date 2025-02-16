@@ -62,6 +62,9 @@ import { Link } from "react-router-dom";
 import useCount from "../../hooks/useCount";
 
 const DetailsPage = () => {
+    // Scroll to the top when the component mounts
+    window.scrollTo(0, 0);
+    
     const { totalEnrollment } = useCount();
     const { _id, title, name, price, description, image } = useLoaderData();
 
