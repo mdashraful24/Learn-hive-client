@@ -26,7 +26,7 @@ const Banner = () => {
             stopOnHover
             renderArrowPrev={(clickHandler) => (
                 <button
-                    className="absolute top-1/2 left-5 transform -translate-y-1/2 bg-black text-white p-3 rounded-full shadow-lg z-10 hidden"
+                    className="absolute top-1/2 left-5 transform -translate-y-1/2 bg-black text-white p-3 rounded-full shadow-lg z-10"
                     onClick={clickHandler}
                 >
                     &lt;
@@ -34,7 +34,7 @@ const Banner = () => {
             )}
             renderArrowNext={(clickHandler) => (
                 <button
-                    className="absolute top-1/2 right-5 transform -translate-y-1/2 bg-black text-white p-3 rounded-full shadow-lg z-10 hidden"
+                    className="absolute top-1/2 right-5 transform -translate-y-1/2 bg-black text-white p-3 rounded-full shadow-lg z-10"
                     onClick={clickHandler}
                 >
                     &gt;
@@ -45,7 +45,7 @@ const Banner = () => {
                 <div key={index} className="relative">
                     {/* Image */}
                     <img
-                        className="w-full h-[250px] md:h-[500px] lg:h-[660px]"
+                        className="w-full h-[250px] md:h-[500px] lg:h-[840px]"
                         src={image}
                         alt={`Slide ${index + 1}`}
                     />

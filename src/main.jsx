@@ -21,10 +21,8 @@ createRoot(document.getElementById('root')).render(
     <HelmetProvider>
       <AuthProvider>
         <QueryClientProvider client={queryClient}>
-          <div className='container mx-auto'>
-            <RouterProvider router={router} />
-            <ToastContainer position="top-center" autoClose={1700} />
-          </div>
+          <RouterProvider router={router} />
+          <ToastContainer position="top-center" autoClose={1700} />
         </QueryClientProvider>
       </AuthProvider>
     </HelmetProvider>

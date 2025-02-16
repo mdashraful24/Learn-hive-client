@@ -9,13 +9,13 @@ import img8 from '../../../../assets/partners/learny-hive.jpeg'
 
 const Partners = () => {
     return (
-        <div className='mb-20'>
-            <h2 className="text-center text-4xl font-extrabold mb-5">Our Partners</h2>
+        <div className='container mx-auto mb-20 px-2.5'>
+            <h2 className="text-center text-2xl md:text-4xl font-extrabold mb-5">Our Partners</h2>
             <p className="text-center lg:w-2/3 mx-auto mb-10 px-3">
                 We’re proud to collaborate with these exceptional organizations to make learning accessible, efficient, and impactful. Together, we’re creating a brighter future for all learners.
             </p>
-            <div className='px-5 lg:px-0'>
-                <div className='grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-5 border-2 p-10 rounded-2xl'>
+            <div>
+                <div className='grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-5 border-2 p-5 lg:p-10 rounded-xl'>
                     <img src={img1} alt="" />
                     <img src={img2} alt="" />
                     <img src={img3} alt="" />
