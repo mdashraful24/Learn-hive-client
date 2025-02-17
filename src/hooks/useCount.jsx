@@ -58,6 +58,7 @@ const useCount = () => {
             totalAssignments: 0,
             totalClasses: 0,
             totalUsers: 0,
+            totalTeachers: 0,
             totalEnrollment: 0,
             totalSubmissions: 0,
             latestSixClasses: [],
@@ -72,24 +73,27 @@ const useCount = () => {
             totalAssignments: 0,
             totalClasses: 0,
             totalUsers: 0,
+            totalTeachers: 0,
             totalEnrollment: 0,
             totalSubmissions: 0,
             latestSixClasses: [],
         };
     }
 
-    // Extract the total number of assignments, classes, users, total enrollment, and submissions
-    const totalAssignments = classesData.totalAssignments || 0;
-    const totalClasses = classesData.totalClasses || 0;
-    const totalUsers = usersData.length || 0;
-    const totalEnrollment = enrollmentData.reduce((sum, enrollment) => sum + enrollment.totalEnrolment, 0);
-    const totalSubmissions = submissionsData.reduce((sum, submission) => sum + submission.submit, 0);
+    // Extract total counts
+    const totalAssignments = classesData?.totalAssignments || 0;
+    const totalClasses = classesData?.totalClasses || 0;
+    const totalUsers = usersData?.length || 0;
+    const totalTeachers = usersData?.filter(user => user.role === "teacher").length || 0;
+    const totalEnrollment = enrollmentData?.reduce((sum, enrollment) => sum + enrollment.totalEnrolment, 0) || 0;
+    const totalSubmissions = submissionsData?.reduce((sum, submission) => sum + submission.submit, 0) || 0;
     const latestSixClasses = sixClassesData || [];
 
     return {
         totalAssignments,
         totalClasses,
         totalUsers,
+        totalTeachers,
         totalEnrollment,
         totalSubmissions,
         latestSixClasses,
