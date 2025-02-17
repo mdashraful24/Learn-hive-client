@@ -23,8 +23,8 @@ const Testimonials = () => {
     }, []);
 
     return (
-        <div className="container mx-auto mt-16 mb-32 px-2.5">
-            <h2 className="text-3xl font-bold text-center mb-16 text-gray-800">What Our Users Say</h2>
+        <div className="container mx-auto mt-20 mb-40 px-2.5">
+            <h2 className="text-3xl font-extrabold text-center mb-16 text-gray-800">What Our Users Say</h2>
 
             {reviews.length > 0 ? (
                 <Swiper

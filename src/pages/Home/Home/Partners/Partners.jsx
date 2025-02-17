@@ -11,7 +11,7 @@ const Partners = () => {
     return (
         <div className='container mx-auto mb-20 px-2.5'>
             <h2 className="text-center text-2xl md:text-4xl font-extrabold mb-5">Our Partners</h2>
-            <p className="text-center lg:w-2/3 mx-auto mb-10 px-3">
+            <p className="md:text-lg text-center lg:w-2/3 mx-auto mb-10 px-3">
                 We’re proud to collaborate with these exceptional organizations to make learning accessible, efficient, and impactful. Together, we’re creating a brighter future for all learners.
             </p>
             <div>

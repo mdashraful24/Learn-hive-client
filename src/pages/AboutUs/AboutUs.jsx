@@ -19,7 +19,7 @@ const AboutUs = () => {
                 </p>
 
                 {/* Main Content */}
-                <div className="flex flex-col lg:flex-row gap-8 md:gap-12 bg-white dark:bg-gray-900 p-7 md:p-10 rounded-2xl shadow-lg">
+                <div className="flex flex-col lg:flex-row gap-8 md:gap-12 bg-white dark:bg-gray-900 p-7 md:p-10 rounded-xl shadow-lg">
                     {/* Left Section - Image */}
                     <div className="w-full lg:w-1/2 relative">
                         <div className="rounded-xl overflow-hidden shadow-lg">

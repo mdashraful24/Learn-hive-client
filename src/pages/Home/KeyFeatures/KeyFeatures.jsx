@@ -41,9 +41,9 @@ const KeyFeatures = () => {
         >
             <div className="bg-black bg-opacity-60 py-12">
                 <div className="text-center">
-                    <div className="text-white">
+                    <div className="text-white px-3 md:px-5 lg:px-0">
                         <h2 className="text-4xl font-extrabold mb-5">Key Features</h2>
-                        <p className="lg:w-1/2 text-lg mx-auto mb-12">
+                        <p className="lg:w-1/2 md:text-lg mx-auto mb-12">
                             Discover the powerful features that make LearnHive a leading platform for online education. We offer tools and resources to help you learn and grow.
                         </p>
                     </div>

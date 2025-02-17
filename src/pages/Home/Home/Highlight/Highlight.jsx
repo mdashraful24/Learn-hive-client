@@ -24,7 +24,7 @@ const Highlight = () => {
         <div className="container mx-auto px-2.5">
             <div className="mb-10">
                 <h2 className="text-4xl text-center font-extrabold mb-5">Currently Popular Classes</h2>
-                <p className="text-center lg:w-1/2 mx-auto">
+                <p className="md:text-lg text-center lg:w-1/2 mx-auto">
                     Explore a range of skills to build and enhance your knowledge in modern technologies and creative fields. Master tools and techniques that help you develop expertise in various professional domains.
                 </p>
             </div>
