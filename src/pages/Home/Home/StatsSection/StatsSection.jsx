@@ -3,7 +3,7 @@ import stats from '../../../../assets/home/stats.jpeg';
 import useCount from '../../../../hooks/useCount';
 
 const StatsSection = () => {
-    const { totalUsers, totalClasses, totalEnrollment, totalInstructors } = useCount();
+    const { totalUsers, totalClasses, totalEnrollment, totalTeachers } = useCount();
 
     return (
         <div className='mb-20 px-2.5'>
@@ -14,11 +14,11 @@ const StatsSection = () => {
                 </p>
             </div>
 
-            <div className="max-w-5xl mx-auto flex flex-col-reverse md:flex-row items-center justify-evenly gap-10 lg:p-6">
+            <div className="max-w-5xl mx-auto flex flex-col-reverse md:flex-row items-center justify-center gap-10 lg:p-6">
                 {/* stats */}
-                <div className="grid grid-cols-1 gap-10">
+                <div className="w-full lg:max-w-lg grid grid-cols-1 gap-5 md:gap-10">
                     {/* Total Users Card */}
-                    <div className="bg-gradient-to-r from-blue-600 to-blue-400 text-white p-4 rounded-xl shadow-md hover:shadow-xl flex justify-center items-center gap-5">
+                    <div className="bg-gradient-to-r from-blue-600 to-blue-400 text-white p-4 rounded-xl shadow-md hover:shadow-xl flex justify-center items-center gap-5 transform hover:scale-105 transition duration-500 ease-in-out">
                         <FaUsers className="text-xl lg:text-4xl" />
                         <div>
                             <h2 className="text-xl lg:text-4xl font-bold">Total Users: {totalUsers ?? 'N/A'}</h2>
@@ -26,7 +26,7 @@ const StatsSection = () => {
                     </div>
 
                     {/* Total Classes Card */}
-                    <div className="bg-gradient-to-r from-blue-700 to-blue-500 text-white p-4 rounded-xl shadow-md hover:shadow-xl flex justify-center items-center gap-5">
+                    <div className="bg-gradient-to-r from-blue-700 to-blue-500 text-white p-4 rounded-xl shadow-md hover:shadow-xl flex justify-center items-center gap-5 transform hover:scale-105 transition duration-500 ease-in-out">
                         <FaUsers className="text-xl lg:text-4xl" />
                         <div>
                             <h2 className="text-xl lg:text-4xl font-bold">Total Classes: {totalClasses ?? 'N/A'}</h2>
@@ -34,7 +34,7 @@ const StatsSection = () => {
                     </div>
 
                     {/* Total Enrollment Card */}
-                    <div className="bg-gradient-to-r from-blue-800 to-blue-600 text-white p-4 rounded-xl shadow-md hover:shadow-xl flex justify-center items-center gap-5">
+                    <div className="bg-gradient-to-r from-blue-800 to-blue-600 text-white p-4 rounded-xl shadow-md hover:shadow-xl flex justify-center items-center gap-5 transform hover:scale-105 transition duration-500 ease-in-out">
                         <FaBoxOpen className="text-xl lg:text-4xl" />
                         <div>
                             <h2 className="text-xl lg:text-4xl font-bold">Total Enrollment: {totalEnrollment ?? 'N/A'}</h2>
@@ -42,10 +42,10 @@ const StatsSection = () => {
                     </div>
 
                     {/* Total Instructors Card */}
-                    <div className="bg-gradient-to-r from-blue-900 to-blue-700 text-white p-4 rounded-xl shadow-md hover:shadow-xl flex justify-center items-center gap-5">
+                    <div className="bg-gradient-to-r from-blue-900 to-blue-700 text-white p-4 rounded-xl shadow-md hover:shadow-xl flex justify-center items-center gap-5 transform hover:scale-105 transition duration-500 ease-in-out">
                         <FaChalkboardTeacher className="text-xl lg:text-4xl" />
                         <div>
-                            <h2 className="text-xl lg:text-4xl font-bold">Total Instructors: {totalInstructors ?? 'N/A'}</h2>
+                            <h2 className="text-xl lg:text-4xl font-bold">Total Instructors: {totalTeachers ?? 'N/A'}</h2>
                         </div>
                     </div>
                 </div>
