@@ -18,7 +18,7 @@ const Welcome = () => {
                     data-aos="fade-up"
                     className="mx-auto w-full p-6 bg-gradient-to-r from-blue-100 to-purple-100 rounded-lg shadow-xl"
                 >
-                    <h2 className="text-2xl md:text-4xl font-extrabold text-[#491558] mb-4">
+                    <h2 className="text-3xl md:text-5xl font-extrabold text-[#491558] mb-4">
                         Welcome to LearnHive!
                     </h2>
                     <p className="lg:max-w-6xl mx-auto md:text-lg text-gray-700 mb-4 leading-relaxed">

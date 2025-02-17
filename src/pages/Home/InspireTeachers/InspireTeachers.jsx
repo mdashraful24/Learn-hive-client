@@ -3,7 +3,7 @@ import inspire from '../../../assets/home/inspire.jpg'
 const InspireTeachers = () => {
     return (
         <div className="mb-20 border p-5 md:p-8 lg:p-12 bg-base-200">
-            <h2 className="text-center text-3xl md:text-4xl font-extrabold mb-3">Become a Teacher at LearnHive</h2>
+            <h2 className="text-2xl md:text-4xl text-center font-extrabold mb-3">Become a Teacher at LearnHive</h2>
             <p className="lg:w-1/2 md:text-lg mx-auto text-center mb-10">
                 Join our platform and help students achieve their learning goals. With LearnHive, you get the flexibility to teach the skills you’re passionate about, from anywhere in the world.
             </p>
