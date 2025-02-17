@@ -67,11 +67,20 @@ const Navbar = () => {
                     All Classes
                 </NavLink>
             </li>
-            <li>
-                <NavLink to="/tech" onClick={() => setMenuOpen(false)}>
-                    Teach on LearnHive
-                </NavLink>
-            </li>
+            {user && (
+                <li>
+                    <NavLink to="/tech" onClick={() => setMenuOpen(false)}>
+                        Teach on LearnHive
+                    </NavLink>
+                </li>
+            )}
+            {user && (
+                <li>
+                    <NavLink to="/dashboard" onClick={() => setMenuOpen(false)}>
+                        Dashboard
+                    </NavLink>
+                </li>
+            )}
         </>
     );
 
@@ -83,7 +92,7 @@ const Navbar = () => {
                         <div
                             tabIndex={0}
                             role="button"
-                            className="btn btn-ghost md:hidden"
+                            className="btn btn-ghost md:hidden pl-0"
                             onClick={() => setMenuOpen(!menuOpen)}
                         >
                             <svg
@@ -143,7 +152,7 @@ const Navbar = () => {
                                         </p>
                                     </div>
                                     <ul className="dropdown-menu text-center">
-                                        <li>
+                                        {/* <li>
                                             <NavLink
                                                 className="block py-2 px-3 text-gray-800 hover:font-medium hover:bg-gray-200"
                                                 to="/dashboard"
@@ -151,7 +160,7 @@ const Navbar = () => {
                                             >
                                                 Dashboard
                                             </NavLink>
-                                        </li>
+                                        </li> */}
                                         <li>
                                             <button
                                                 className="block w-full py-2 rounded-b-lg text-gray-800 hover:text-white hover:font-medium hover:bg-red-700"

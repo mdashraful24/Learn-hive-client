@@ -23,8 +23,8 @@ const Testimonials = () => {
     }, []);
 
     return (
-        <div className="container mx-auto mt-20 mb-40 px-2.5">
-            <h2 className="text-3xl font-extrabold text-center mb-16 text-gray-800">What Our Users Say</h2>
+        <div className="container mx-auto mt-20 px-2.5">
+            <h2 className="text-2xl md:text-4xl font-extrabold text-center mb-16 text-gray-800">What Our Users Say</h2>
 
             {reviews.length > 0 ? (
                 <Swiper
@@ -43,7 +43,7 @@ const Testimonials = () => {
                                 <div className="flex flex-col justify-center items-center space-y-3">
                                     {/* User Image */}
                                     <img
-                                        className="w-24 h-24 object-cover rounded-full border-2 shadow-lg"
+                                        className="w-24 h-24 md:w-32 md:h-32 object-cover rounded-full border-2 shadow-lg"
                                         src={review.image}
                                         alt={review.userName}
                                     />

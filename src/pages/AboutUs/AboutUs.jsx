@@ -6,7 +6,7 @@ const AboutUs = () => {
     window.scrollTo(0, 0);
     
     return (
-        <section className="relative mt-8 md:mt-10 mb-28 px-2.5">
+        <section className="relative mt-8 md:mt-10 mb-28 pb-5 px-2.5">
             <Helmet>
                 <title>About Us | LearnHive</title>
             </Helmet>
@@ -19,10 +19,10 @@ const AboutUs = () => {
                 </p>
 
                 {/* Main Content */}
-                <div className="flex flex-col lg:flex-row gap-8 md:gap-12 bg-white dark:bg-gray-900 p-7 md:p-10 rounded-xl shadow-lg">
+                <div className="flex flex-col lg:flex-row items-center gap-8 md:gap-12 bg-white dark:bg-gray-900 p-7 rounded-xl shadow-lg">
                     {/* Left Section - Image */}
                     <div className="w-full lg:w-1/2 relative">
-                        <div className="rounded-xl overflow-hidden shadow-lg">
+                        <div className="rounded-lg overflow-hidden shadow-lg">
                             <img
                                 src={team}
                                 alt="Our Team"
@@ -48,10 +48,17 @@ const AboutUs = () => {
                             </p>
                         </div>
 
-                        <div>
+                        <div className="mb-8">
                             <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-3">Our Values</h3>
                             <p className="text-gray-700 dark:text-gray-300">
                                 Integrity, innovation, and inclusivity drive us. We believe in empowering learners and educators through a supportive and inspiring environment.
+                            </p>
+                        </div>
+
+                        <div>
+                            <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-3">Our Commitment</h3>
+                            <p className="text-gray-700 dark:text-gray-300">
+                                At LearnHive, we are committed to continuous learning, embracing technological advancements, and fostering a community of lifelong learners.
                             </p>
                         </div>
                     </div>

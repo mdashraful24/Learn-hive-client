@@ -63,9 +63,9 @@ const AllClasses = () => {
 
             {/* Sorting Dropdown */}
             <div className="flex justify-end items-center gap-2 font-medium mb-6">
-                <label className="text-gray-800">Sort by Price:</label>
+                <label>Sort by Price:</label>
                 <select
-                    className="border px-3 py-1.5 rounded border-black bg-white text-gray-700"
+                    className="border px-3 py-1.5 rounded border-black bg-white"
                     value={sortOrder}
                     onChange={(e) => setSortOrder(e.target.value)}
                 >

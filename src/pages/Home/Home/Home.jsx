@@ -1,13 +1,14 @@
 import { Helmet } from "react-helmet-async";
 import InspireTeachers from "../InspireTeachers/InspireTeachers";
 import KeyFeatures from "../KeyFeatures/KeyFeatures";
-// import AboutUs from "./AboutUs/AboutUs";
 import Banner from "./Banner/Banner";
 import Partners from "./Partners/Partners";
 import StatsSection from "./StatsSection/StatsSection";
 import Testimonials from "./Testimonials/Testimonials";
-import Highlight from "./Highlight/Highlight";
+// import Highlight from "./Highlight/Highlight";
 import Welcome from "./Welcome/Welcome";
+import Contacts from "../Contacts/Contacts";
+import TopClasses from "./TopClasses/TopClasses";
 
 const Home = () => {
     // Scroll to the top when the component mounts
@@ -21,13 +22,14 @@ const Home = () => {
 
             <Banner></Banner>
             <Welcome></Welcome>
-            {/* <AboutUs></AboutUs> */}
+            {/* <Highlight></Highlight> */}
+            <TopClasses></TopClasses>
             <Partners></Partners>
-            <Highlight></Highlight>
-            <InspireTeachers></InspireTeachers>
             <StatsSection></StatsSection>
+            <InspireTeachers></InspireTeachers>
             <KeyFeatures></KeyFeatures>
             <Testimonials></Testimonials>
+            <Contacts></Contacts>
         </div>
     );
 };
