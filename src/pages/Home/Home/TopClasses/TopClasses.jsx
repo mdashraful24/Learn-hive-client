@@ -21,7 +21,7 @@ const TopClasses = () => {
         <div className="container mx-auto mb-20 px-2.5">
             <div className="mb-10">
                 <h2 className="text-2xl md:text-4xl text-center font-extrabold mb-5">Currently Popular Classes</h2>
-                <p className="md:text-lg text-center lg:w-1/2 mx-auto">
+                <p className="md:text-lg text-center">
                     Explore a range of skills to build and enhance your knowledge in modern technologies and creative fields.
                 </p>
             </div>
@@ -45,11 +45,11 @@ const TopClasses = () => {
 
                             {/* Card Content */}
                             <div className="">
-                                <h3 className="text-lg font-bold text-gray-900">{classItem.title}</h3>
-                                <p className="text-sm text-gray-600 mt-2 line-clamp-3">{classItem.description || "No description available."}</p>
+                                <h3 className="text-lg md:text-xl font-bold">{classItem.title}</h3>
+                                <p className="text-sm md:text-base mt-2 line-clamp-3">{classItem.description || "No description available."}</p>
 
                                 {/* "See More" Button */}
-                                <Link to={`/details/${classItem._id}`} className="inline-block mt-4 bg-blue-600 text-white px-4 py-2 rounded-lg text-sm font-semibold transition duration-300 hover:bg-blue-700">
+                                <Link to={`/details/${classItem._id}`} className="inline-block mt-4 bg-blue-600 text-white px-4 py-2 rounded-lg text-sm font-semibold hover:bg-blue-700">
                                     See More
                                 </Link>
                             </div>

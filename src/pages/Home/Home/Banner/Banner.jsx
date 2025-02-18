@@ -47,7 +47,7 @@ const Banner = () => {
                     <img
                         src={image}
                         alt={`Slide ${index + 1}`}
-                        className="w-full h-[250px] md:h-[500px] lg:h-[750px]"
+                        className="w-full h-[250px] md:h-[500px] lg:h-[770px]"
                     />
                     {/* Overlay */}
                     <div className="absolute inset-0 bg-black bg-opacity-10"></div>

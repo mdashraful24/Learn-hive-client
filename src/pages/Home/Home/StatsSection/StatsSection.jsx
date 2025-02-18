@@ -8,8 +8,8 @@ const StatsSection = () => {
     return (
         <div className='mb-20 px-2.5'>
             <div className="text-center mb-8">
-                <h2 className="text-2xl md:text-4xl font-extrabold text-gray-800">Website Overview</h2>
-                <p className="mt-2 md:text-lg">
+                <h2 className="text-2xl md:text-4xl font-extrabold">Website Overview</h2>
+                <p className="mt-4 md:text-lg">
                     Here’s a quick glance at the current statistics of our platform, showing the number of users, classes, enrollments, and instructors.
                 </p>
             </div>
