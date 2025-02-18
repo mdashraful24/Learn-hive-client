@@ -18,7 +18,7 @@ const TopClasses = () => {
     }
 
     return (
-        <div className="container mx-auto mb-20 px-2.5">
+        <div className="container mx-auto mb-20 md:mb-28 px-2.5">
             <div className="mb-10">
                 <h2 className="text-2xl md:text-4xl text-center font-extrabold mb-5">Currently Popular Classes</h2>
                 <p className="md:text-lg text-center">

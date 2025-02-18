@@ -3,16 +3,21 @@ import { Helmet } from "react-helmet-async";
 import useAuth from "../../hooks/useAuth";
 import { useForm } from "react-hook-form";
 import useAxiosPublic from '../../hooks/useAxiosPublic';
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 // Cloudinary configuration
 const uploadPreset = import.meta.env.VITE_CLOUDINARY_UPLOAD_PRESET;
 const cloudName = import.meta.env.VITE_CLOUDINARY_CLOUD_NAME;
 
 const TeachOnLearnHive = () => {
+    // Scroll to the top when the component mounts
+    window.scrollTo(0, 0);
+    
     const { user } = useAuth();
     const axiosPublic = useAxiosPublic();
-    const { register, handleSubmit, formState: { errors }, reset, setValue, watch } = useForm();
+    const { register, handleSubmit, formState: { errors, isValid }, reset, setValue, watch } = useForm({
+        mode: 'onChange' // ensures form state is updated on field change
+    });
 
     const [uploadedImage, setUploadedImage] = useState(user?.photoURL || "");
 
@@ -32,8 +37,8 @@ const TeachOnLearnHive = () => {
             const data = await response.json();
 
             if (data.secure_url) {
-                setUploadedImage(data.secure_url); // Update state
-                setValue("image", data.secure_url); // Update form field
+                setUploadedImage(data.secure_url);
+                setValue("image", data.secure_url);
             }
         } catch (error) {
             console.error("Image upload failed", error);
@@ -47,12 +52,12 @@ const TeachOnLearnHive = () => {
     };
 
     const onSubmit = async (data) => {
-        const finalImage = watch("image") || uploadedImage || user?.photoURL; // Ensure updated image is sent
+        const finalImage = watch("image") || uploadedImage || user?.photoURL;
 
         const newApplication = {
             ...data,
             userEmail: user?.email,
-            image: finalImage, // Correctly set the image field
+            image: finalImage,
             status: "pending",
         };
 
@@ -66,7 +71,7 @@ const TeachOnLearnHive = () => {
                     confirmButtonText: "Cool",
                 });
                 reset();
-                setUploadedImage(user?.photoURL || ""); // Reset state
+                setUploadedImage(user?.photoURL || "");
             }
         } catch (error) {
             console.error("Error submitting application", error);
@@ -79,10 +84,8 @@ const TeachOnLearnHive = () => {
         }
     };
 
-
-
     return (
-        <div className="mt-10 md:mt-14 mb-24 px-2.5">
+        <div className="px-2.5 pt-14 pb-20">
             <div className="max-w-3xl mx-auto p-5 md:p-8 shadow-lg rounded-lg border">
                 <Helmet>
                     <title>Teach on LearnHive | LearnHive</title>
@@ -127,7 +130,7 @@ const TeachOnLearnHive = () => {
                         </div>
 
                         <div className="form-group mb-4">
-                            <label className="block mb-2">Title</label>
+                            <label className="block mb-2">Title <span className='text-red-500'>*</span></label>
                             <input
                                 type="text"
                                 {...register("title", { required: true })}
@@ -138,7 +141,7 @@ const TeachOnLearnHive = () => {
                         </div>
 
                         <div className="form-group mb-4">
-                            <label className="block mb-2">Experience Level</label>
+                            <label className="block mb-2">Experience Level <span className='text-red-500'>*</span></label>
                             <select defaultValue=""
                                 {...register("experience", { required: true })}
                                 className="w-full p-3 border border-black rounded-md"
@@ -152,7 +155,7 @@ const TeachOnLearnHive = () => {
                         </div>
 
                         <div className="form-group mb-4">
-                            <label className="block mb-2">Category</label>
+                            <label className="block mb-2">Category <span className='text-red-500'>*</span></label>
                             <select defaultValue=""
                                 {...register("category", { required: true })}
                                 className="w-full p-3 border border-black rounded-md"
@@ -174,7 +177,7 @@ const TeachOnLearnHive = () => {
                                 type="file"
                                 accept="image/*"
                                 onChange={handleImageUpload}
-                                className="block text-sm file:mr-4 file:py-2 md:file:py-3.5 file:px-4 file:rounded file:border-0 file:bg-gray-300"
+                                className="block text-sm file:mr-4 file:py-2 md:file:py-3.5 file:px-4 file:rounded-md file:border-0 file:bg-base-300"
                             />
                         </div>
 
@@ -195,25 +198,26 @@ const TeachOnLearnHive = () => {
                                 Choose File
                             </button>
                         </div> */}
-
                     </div>
 
                     <button
                         type="submit"
-                        className="btn w-full mt-5 bg-blue-600 text-base text-white rounded-lg hover:bg-blue-700 transition-all duration-500"
+                        disabled={!isValid}
+                        className={`btn w-full mt-5 ${!isValid ? "bg-gray-400 cursor-not-allowed" : "bg-blue-600"} text-base text-white rounded-lg hover:bg-blue-700 transition-all duration-500`}
                     >
                         Submit for Review
                     </button>
                 </form>
             </div>
             <p className='max-w-3xl mx-auto mt-5'>
-                <span className='text-red-600 font-bold'>Note:</span> If you want to change your profile picture, upload a new one.
+                <span className='text-red-600 font-bold'>Note:</span> If you want to change your name and profile picture, upload a new one.
             </p>
         </div>
     );
 };
 
 export default TeachOnLearnHive;
+
 
 
 

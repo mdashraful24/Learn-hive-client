@@ -24,8 +24,8 @@ const Home = () => {
             <Welcome></Welcome>
             {/* <Highlight></Highlight> */}
             <TopClasses></TopClasses>
-            <Partners></Partners>
             <StatsSection></StatsSection>
+            <Partners></Partners>
             <InspireTeachers></InspireTeachers>
             <KeyFeatures></KeyFeatures>
             <Testimonials></Testimonials>

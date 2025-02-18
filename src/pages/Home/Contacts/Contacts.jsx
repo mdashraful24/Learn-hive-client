@@ -34,7 +34,7 @@ const Contacts = () => {
     };
 
     return (
-        <div className="container mx-auto mt-14 md:mt-20 mb-32 lg:mb-40 px-2.5">
+        <div className="container mx-auto mb-20 md:mb-28 px-2.5">
             <div>
                 <h1 className="text-2xl md:text-4xl text-center font-extrabold mb-10">Contact Us</h1>
             </div>
@@ -84,7 +84,7 @@ const Contacts = () => {
                         <h2 className="text-xl md:text-2xl font-bold mb-4">Contact Us in Another Way</h2>
                         <div className="w-16 border-b-2 border-blue-700 mb-4"></div>
                         <p className="text-sm md:text-base">
-                            If you prefer to contact us in another way, please feel free to reach out via <strong>Facebook, GitHub</strong>, or <strong>LinkedIn</strong>. I'm happy to assist you!
+                            If you prefer to contact us in another way, please feel free to reach out via <strong className="text-blue-600">Facebook, GitHub</strong>, or <strong className="text-blue-600">LinkedIn</strong>. I'm happy to assist you!
                         </p>
 
                         {/* Social Icons */}

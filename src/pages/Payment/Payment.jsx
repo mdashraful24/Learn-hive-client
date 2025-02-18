@@ -11,15 +11,15 @@ const Payment = () => {
     const { _id, title, price, description, name, image } = useLoaderData();
 
     return (
-        <div className="md:max-w-4xl lg:max-w-5xl mx-auto px-2.5 pt-10 pb-16 mb-16">
+        <div className="md:max-w-4xl lg:max-w-5xl mx-auto px-2.5 pt-10 pb-20">
             <Helmet>
                 <title>Payment | LearnHive</title>
             </Helmet>
-            <h2 className="text-2xl md:text-4xl font-extrabold text-center mb-8">Complete Your Payment</h2>
+            <h2 className="text-2xl md:text-4xl font-extrabold text-center mb-10">Complete Your Payment</h2>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:border lg:p-5 lg:rounded-xl">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {/* Class Details */}
-                <div className="bg-white shadow-lg rounded-lg overflow-hidden">
+                <div className="shadow-lg rounded-xl border overflow-hidden">
                     <img
                         src={image}
                         alt={title}
@@ -27,10 +27,10 @@ const Payment = () => {
                     />
                     <div className="text-justify p-6">
                         <h3 className="text-lg md:text-xl font-bold mb-2">{title}</h3>
-                        <p className="text-gray-600 mb-2">
+                        <p className="mb-2">
                             <strong>Posted By:</strong> {name}
                         </p>
-                        <p className="text-gray-700 mb-4"><strong>Description:</strong> {description}</p>
+                        <p className="mb-4"><strong>Description:</strong> {description}</p>
                         <p className="font-bold">
                             Total Price: <span className="text-blue-700">${price}</span>
                         </p>
@@ -38,7 +38,7 @@ const Payment = () => {
                 </div>
 
                 {/* Payment Form */}
-                <div className="bg-white shadow-lg rounded-lg p-6">
+                <div className="shadow-lg border rounded-xl p-6">
                     <h4 className="text-lg font-bold mb-4">Payment Details</h4>
                     <Elements stripe={stripePromise}>
                         <CheckoutForm price={price} paymentDetails={{ _id, title, description, name, image }} />
