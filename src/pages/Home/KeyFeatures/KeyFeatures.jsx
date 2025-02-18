@@ -58,10 +58,10 @@ const KeyFeatures = () => {
                         ) : (
                             featuresData.map((feature) => (
                                 <div key={feature._id} className="bg-gray-50 bg-opacity-90 p-8 rounded-xl shadow-lg hover:scale-105 transform transition duration-300 ease-in-out">
-                                    <div className="flex items-center justify-center mb-6">
+                                    <div className="flex items-center justify-center text-gray-700 mb-6">
                                         {icons[feature.icon] || <FaGlobe size={64} />}
                                     </div>
-                                    <h3 className="text-xl md:text-2xl font-semibold mb-4">{feature.title}</h3>
+                                    <h3 className="text-xl md:text-2xl text-gray-700 font-semibold mb-4">{feature.title}</h3>
                                     <p className="md:text-lg text-gray-700">{feature.description}</p>
                                 </div>
                             ))

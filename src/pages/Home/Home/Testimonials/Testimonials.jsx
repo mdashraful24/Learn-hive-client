@@ -24,7 +24,7 @@ const Testimonials = () => {
 
     return (
         <div className="container mx-auto mt-20 px-2.5">
-            <h2 className="text-2xl md:text-4xl font-extrabold text-center mb-16 text-gray-800">What Our Users Say</h2>
+            <h2 className="text-2xl md:text-4xl font-extrabold text-center mb-16">What Our Users Say</h2>
 
             {reviews.length > 0 ? (
                 <Swiper
@@ -49,10 +49,10 @@ const Testimonials = () => {
                                     />
 
                                     {/* User Name */}
-                                    <h3 className="text-xl font-semibold text-gray-800">{review.userName}</h3>
+                                    <h3 className="text-xl font-semibold">{review.userName}</h3>
 
                                     {/* Title */}
-                                    <p className="font-medium text-gray-700">
+                                    <p className="font-medium">
                                         <strong>Title: </strong>
                                         {review.title}
                                     </p>
@@ -61,7 +61,7 @@ const Testimonials = () => {
                                     <div className="flex justify-center gap-1 text-center px-10 md:px-16">
                                         {/* Quote Icon */}
                                         <FontAwesomeIcon icon={faQuoteLeft} />
-                                        <p className="text-sm sm:text-base md:text-lg text-gray-600">
+                                        <p className="text-sm sm:text-base md:text-lg">
                                             {review.description}
                                         </p>
                                     </div>
