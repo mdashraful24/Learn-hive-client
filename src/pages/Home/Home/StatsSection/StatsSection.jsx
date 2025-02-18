@@ -6,15 +6,15 @@ const StatsSection = () => {
     const { totalUsers, totalClasses, totalEnrollment, totalTeachers } = useCount();
 
     return (
-        <div className='mb-20 px-2.5'>
-            <div className="text-center mb-8">
+        <div className='mb-20 md:mb-28 px-2.5'>
+            <div className="text-center mb-8 md:mb-14">
                 <h2 className="text-2xl md:text-4xl font-extrabold">Website Overview</h2>
                 <p className="mt-4 md:text-lg">
                     Here’s a quick glance at the current statistics of our platform, showing the number of users, classes, enrollments, and instructors.
                 </p>
             </div>
 
-            <div className="max-w-5xl mx-auto flex flex-col-reverse md:flex-row items-center justify-center gap-10 lg:p-6">
+            <div className="max-w-5xl mx-auto flex flex-col-reverse md:flex-row items-center justify-center gap-10">
                 {/* stats */}
                 <div className="w-full lg:max-w-lg grid grid-cols-1 gap-5 md:gap-10">
                     {/* Total Users Card */}

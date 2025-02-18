@@ -86,7 +86,7 @@ const Navbar = () => {
     );
 
     return (
-        <div className="sticky top-0 z-50 bg-gradient-to-r from-blue-800 to-blue-700 shadow-lg">
+        <div className="sticky top-0 z-50 bg-gradient-to-r from-blue-600 to-blue-500 shadow-lg">
             <div className="navbar container mx-auto">
                 <div className="navbar-start">
                     <div className="dropdown">
@@ -98,7 +98,7 @@ const Navbar = () => {
                         >
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
-                                className="h-5 w-5"
+                                className="h-5 w-5 text-white"
                                 fill="none"
                                 viewBox="0 0 24 24"
                                 stroke="currentColor"
@@ -146,16 +146,16 @@ const Navbar = () => {
                                 onClick={() => setProfileDropdownOpen(!profileDropdownOpen)}
                             />
                             {profileDropdownOpen && (
-                                <div className="absolute -right-2 mt-2 w-36 shadow-lg z-10 bg-white rounded-lg border">
+                                <div className="absolute -right-2 mt-2 w-36 shadow-lg z-10 bg-base-200 rounded-lg">
                                     <div className="py-2 px-3 text-center">
-                                        <p className="font-semibold text-sm text-gray-800 cursor-not-allowed">
+                                        <p className="font-semibold text-sm cursor-not-allowed">
                                             {user?.displayName || "User"}
                                         </p>
                                     </div>
                                     <ul className="dropdown-menu text-center">
                                         <li>
                                             <button
-                                                className="block w-full py-2 rounded-b-lg text-gray-800 hover:text-white hover:font-medium hover:bg-red-700"
+                                                className="block w-full py-2 rounded-b-lg hover:text-white hover:font-medium hover:bg-red-700"
                                                 onClick={handleSignOut}
                                             >
                                                 Log out
@@ -168,7 +168,7 @@ const Navbar = () => {
                     ) : (
                         <Link
                             to="/login"
-                            className="bg-primary text-xs md:text-base text-white font-medium px-3 md:px-4 py-2 rounded-md transition-transform duration-500 ease-in-out hover:scale-110"
+                                className="btn btn-sm bg-blue-900 hover:bg-blue-950 text-white hover:dark:text-white border-none"
                         >
                             Sign In
                         </Link>
