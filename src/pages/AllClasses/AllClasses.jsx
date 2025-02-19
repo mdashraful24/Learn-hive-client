@@ -67,7 +67,7 @@ const AllClasses = () => {
                     </select>
                     <FontAwesomeIcon
                         icon={faChevronDown}
-                        className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-600 pointer-events-none"
+                        className="absolute right-3 top-1/2 transform -translate-y-1/2 pointer-events-none"
                     />
                 </div>
             </div>
@@ -78,7 +78,7 @@ const AllClasses = () => {
                 </div>
             ) : (
                 approvedClasses.classes.length === 0 ? (
-                    <div className="flex justify-center items-center mt-10 text-lg text-gray-700 font-medium min-h-screen">
+                    <div className="flex justify-center items-center mt-10 text-lg font-medium min-h-screen">
                         No classes are available at the moment. Please check back later!
                     </div>
                 ) : (
@@ -86,7 +86,7 @@ const AllClasses = () => {
                         {approvedClasses.classes.map((classItem) => (
                             <div
                                 key={classItem._id}
-                                className="bg-white shadow-md rounded-xl overflow-hidden border hover:shadow-lg transition flex flex-col"
+                                className="shadow-md rounded-xl overflow-hidden border hover:shadow-lg transition flex flex-col"
                             >
                                 <img
                                     src={classItem.image}
@@ -95,10 +95,10 @@ const AllClasses = () => {
                                 />
                                 <div className="p-5 flex flex-col flex-grow">
                                     <h3 className="text-lg md:text-xl font-bold mb-2">{classItem.title}</h3>
-                                    <p className="text-gray-600 text-sm mb-2">
+                                    <p className="text-sm mb-2">
                                         <span className="font-medium">Posted by:</span> {classItem.name}
                                     </p>
-                                    <p className="text-gray-700 text-sm mb-3">
+                                    <p className="text-sm mb-3">
                                         {classItem.description.length > 100
                                             ? `${classItem.description.slice(0, 100)}...`
                                             : classItem.description}
@@ -120,7 +120,7 @@ const AllClasses = () => {
 
             <div className="mt-10 flex flex-col md:flex-row justify-center md:justify-between items-center gap-3">
                 <div>
-                    <span className="text-gray-800">Page {currentPage} of {totalPages}</span>
+                    <span className="">Page {currentPage} of {totalPages}</span>
                 </div>
 
                 <div>

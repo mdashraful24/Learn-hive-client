@@ -30,6 +30,7 @@ import TeacherProfile from "../pages/Dashboard/TeacherProfile/TeacherProfile";
 import MyRequest from "../pages/Dashboard/MyRequest/MyRequest";
 import ApproveJob from "../pages/Dashboard/ApproveJob/ApproveJob";
 import AboutUs from "../pages/AboutUs/AboutUs";
+import AdminProfile from "../pages/Dashboard/AdminProfile/AdminProfile";
 
 
 export const router = createBrowserRouter([
@@ -98,6 +99,10 @@ export const router = createBrowserRouter([
             {
                 path: "users-profile",
                 element: <AdminRoute><UsersProfile></UsersProfile></AdminRoute>
+            },
+            {
+                path: "my-profile",
+                element: <AdminRoute><AdminProfile></AdminProfile></AdminRoute>
             },
 
             // teacher panel

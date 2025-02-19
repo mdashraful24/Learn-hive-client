@@ -69,17 +69,17 @@ const AddClass = () => {
     };
 
     return (
-        <div className="mt-10 lg:mt-5 mb-16">
+        <div className="mt-7 mb-16">
             <Helmet>
                 <title>Add Class | LearnHive</title>
             </Helmet>
 
-            <h2 className="text-3xl font-bold text-center mb-5 md:mb-8">Add a New Class</h2>
+            <h2 className="text-xl md:text-4xl font-extrabold text-center mb-5 md:mb-8">Add a New Class</h2>
             <div className="p-5 md:p-8 shadow-lg rounded-lg border">
                 <form onSubmit={handleSubmit(onSubmit)}>
                     {/* Title */}
                     <div className="mb-4">
-                        <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="title">
+                        <label className="block text-sm font-bold mb-2" htmlFor="title">
                             Title*
                         </label>
                         <input
@@ -94,32 +94,32 @@ const AddClass = () => {
                     {/* Name and Email */}
                     <div className="flex flex-col md:flex-row gap-4 mb-4">
                         <div className="flex-1">
-                            <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="name">
+                            <label className="block text-sm font-bold mb-2" htmlFor="name">
                                 Name
                             </label>
                             <input
                                 type="text"
                                 value={user?.displayName || "Unknown User"}
                                 disabled
-                                className="w-full px-3 py-2 border rounded shadow-sm bg-gray-200 cursor-not-allowed"
+                                className="w-full px-3 py-2 border rounded shadow-sm bg-base-200 cursor-not-allowed"
                             />
                         </div>
                         <div className="flex-1">
-                            <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="email">
+                            <label className="block text-sm font-bold mb-2" htmlFor="email">
                                 Email
                             </label>
                             <input
                                 type="text"
                                 value={user?.email || "unknown@example.com"}
                                 disabled
-                                className="w-full px-3 py-2 border rounded shadow-sm bg-gray-200 cursor-not-allowed"
+                                className="w-full px-3 py-2 border rounded shadow-sm bg-base-200 cursor-not-allowed"
                             />
                         </div>
                     </div>
 
                     {/* Description */}
                     <div className="mb-4">
-                        <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="description">
+                        <label className="block text-sm font-bold mb-2" htmlFor="description">
                             Description*
                         </label>
                         <textarea
@@ -134,7 +134,7 @@ const AddClass = () => {
                     <div className="flex flex-col md:flex-row md:items-center gap-4 mb-10">
                         {/* Price */}
                         <div className="flex-1">
-                            <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="price">
+                            <label className="block text-sm font-bold mb-2" htmlFor="price">
                                 Price*
                             </label>
                             <input
@@ -154,13 +154,13 @@ const AddClass = () => {
 
                         {/* File Upload */}
                         <div className="flex-1">
-                            <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="fileUpload">
+                            <label className="block text-sm font-bold mb-2" htmlFor="fileUpload">
                                 Upload Image*
                             </label>
                             <input
                                 type="file"
                                 {...register("image", { required: "Image is required" })}
-                                className="block text-sm file:mr-4 file:py-2 file:px-4 file:rounded file:border-0 file:bg-gray-300"
+                                className="block text-sm file:mr-4 file:py-2 md:file:py-3 file:px-4 file:rounded-md file:border-0 file:bg-base-300"
                             />
                             {errors.image && <p className="text-red-500 text-sm mt-1">{errors.image.message}</p>}
                         </div>
@@ -171,7 +171,7 @@ const AddClass = () => {
                         <button
                             type="submit"
                             disabled={!uploadedImage || uploadedImage.length === 0}
-                            className="btn w-full flex items-center gap-2 bg-[#835D23] hover:bg-[#835D23] text-white font-bold rounded-none"
+                            className="btn w-full flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-bold"
                         >
                             Add Class
                         </button>

@@ -153,7 +153,7 @@ const EnrolledClass = () => {
             <div className="overflow-x-auto">
                 <table className="min-w-full border">
                     <thead>
-                        <tr className="bg-[#D1A054] text-white text-center rounded-t-xl uppercase">
+                        <tr className="bg-blue-700 text-white text-center rounded-t-xl uppercase">
                             <th className="py-2 px-4 border-b">Title</th>
                             <th className="py-2 px-4 border-b">Description</th>
                             <th className="py-2 px-4 border-b">Deadline</th>
@@ -163,7 +163,7 @@ const EnrolledClass = () => {
                     <tbody>
                         {currentAssignments.length > 0 ? (
                             currentAssignments.map((assignment, index) => (
-                                <tr key={index} className="text-center capitalize hover:bg-gray-50">
+                                <tr key={index} className="text-center capitalize hover:bg-base-200">
                                     <td className="py-2 px-4 border-b">{assignment.title}</td>
                                     <td className="py-2 px-4 border-b">{assignment.description}</td>
                                     <td className="py-2 px-4 border-b">{assignment.deadline}</td>
@@ -193,12 +193,12 @@ const EnrolledClass = () => {
             {/* Pagination Controls */}
             {assignments.length > 0 && (
                 <div className="mt-10 flex flex-col md:flex-row justify-center md:justify-between items-center gap-3">
-                    <span className="text-gray-800">Page {currentPage} of {totalPages}</span>
+                    <span className="">Page {currentPage} of {totalPages}</span>
                     <div>
                         <button
                             onClick={() => handlePageChange(currentPage - 1)}
                             disabled={currentPage === 1}
-                            className="px-2 py-1 mx-1 rounded bg-gray-200 text-gray-800 hover:bg-gray-300"
+                            className="px-2 py-1 mx-1 rounded bg-base-200 hover:bg-base-300"
                         >
                             Prev
                         </button>
@@ -214,7 +214,7 @@ const EnrolledClass = () => {
                         <button
                             onClick={() => handlePageChange(currentPage + 1)}
                             disabled={currentPage === totalPages}
-                            className="px-2 py-1 mx-1 rounded bg-gray-200 text-gray-800 hover:bg-gray-300"
+                            className="px-2 py-1 mx-1 rounded bg-base-200 hover:bg-base-300"
                         >
                             Next
                         </button>
@@ -226,7 +226,7 @@ const EnrolledClass = () => {
             {/* Modal for Assignment Submission */}
             {modalIsOpen && selectedAssignment && (
                 <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center transition-opacity duration-500 opacity-100 px-5 md:px-0">
-                    <div className="bg-white p-6 rounded-md shadow-xl w-[500px] mx-auto relative transition-all duration-500 opacity-100">
+                    <div className="bg-base-300 p-6 rounded-md shadow-xl w-[500px] mx-auto relative transition-all duration-500 opacity-100 border">
                         <h2 className="text-lg md:text-2xl font-bold text-center mb-3">Submit Assignment</h2>
                         <form onSubmit={handleSubmit(onSubmitAssignment)}>
                             <div className="mb-2">
@@ -239,7 +239,7 @@ const EnrolledClass = () => {
                             </div>
                             <button
                                 type="submit"
-                                className="btn bg-zinc-800 hover:bg-zinc-950 text-white w-full"
+                                className="btn bg-blue-600 hover:bg-blue-700 text-white w-full"
                             >
                                 Submit
                             </button>
@@ -247,7 +247,7 @@ const EnrolledClass = () => {
 
                         <button
                             onClick={closeModal}
-                            className="absolute top-2 right-2 text-gray-500 hover:text-red-700"
+                            className="absolute top-2 right-2 hover:text-red-700"
                             style={{ background: "transparent", border: "none" }}
                         >
                             <FaTimes size={24} />
@@ -259,11 +259,11 @@ const EnrolledClass = () => {
             {/* Modal for Teaching Evaluation Report */}
             {evaluationModalIsOpen && (
                 <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center px-5 md:px-0 overflow-y-auto">
-                    <div className="bg-white p-6 rounded-md shadow-xl w-[500px] mx-auto relative max-h-[90vh] overflow-y-auto">
+                    <div className="bg-base-300 p-6 rounded-md shadow-xl w-[500px] mx-auto relative max-h-[90vh] overflow-y-auto border">
                         <h2 className="text-lg md:text-2xl font-bold text-center mb-3">Teaching Evaluation Report</h2>
                         <form onSubmit={handleSubmit(onSubmitEvaluation)}>
                             <div className="mb-2">
-                                <label className="block text-sm font-medium text-gray-700">Rating</label>
+                                <label className="block font-medium">Rating</label>
                                 <ReactStars
                                     count={5}
                                     onChange={(rating) => setValue("rating", rating)}
@@ -272,7 +272,7 @@ const EnrolledClass = () => {
                                 />
                             </div>
                             <div className="mb-4">
-                                <label htmlFor="description" className="block text-sm font-medium text-gray-700">Description</label>
+                                <label htmlFor="description" className="block font-medium mb-1">Description</label>
                                 <textarea
                                     id="description"
                                     {...register("description", { required: true })}
@@ -283,14 +283,14 @@ const EnrolledClass = () => {
                             </div>
                             <button
                                 type="submit"
-                                className="btn bg-zinc-800 hover:bg-zinc-950 text-white w-full"
+                                className="btn bg-blue-600 hover:bg-blue-700 text-white w-full"
                             >
                                 Submit Evaluation
                             </button>
                         </form>
                         <button
                             onClick={closeEvaluationModal}
-                            className="absolute top-2 right-2 text-gray-500 hover:text-red-700"
+                            className="absolute top-2 right-2 hover:text-red-700"
                             style={{ background: "transparent", border: "none" }}
                         >
                             <FaTimes size={24} />

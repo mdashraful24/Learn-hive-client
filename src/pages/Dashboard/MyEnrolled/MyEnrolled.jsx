@@ -33,7 +33,7 @@ const MyEnrolled = () => {
     if (approvedClasses.length === 0) {
         return (
             <div className="text-center mt-10">
-                <p className="text-lg font-semibold text-gray-600">
+                <p className="text-lg font-semibold">
                     No enrolled classes found. Please explore our courses and start learning!
                 </p>
             </div>
@@ -52,26 +52,26 @@ const MyEnrolled = () => {
     };
 
     return (
-        <div className="mt-10 lg:mt-5 mb-16">
+        <div className="mt-6 mb-16">
             <Helmet>
                 <title>My Enrolled Classes | LearnHive</title>
             </Helmet>
 
             {/* title */}
-            <h2 className="text-3xl font-bold text-center mb-5">My Enrolled Classes</h2>
+            <h2 className="text-2xl md:text-4xl font-extrabold text-center mb-10">My Enrolled Classes</h2>
 
             {/* enroll classes cards */}
             <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
                 {paginatedClasses.map((course) => (
-                    <div key={course._id} className="bg-white shadow-md rounded-md p-4">
+                    <div key={course._id} className="shadow-md rounded-lg p-4 border">
                         <img
                             className="w-full h-48 md:object-cover rounded-md"
                             src={course.image}
                             alt={course.title}
                         />
                         <h3 className="text-xl font-bold mt-4">{course.title}</h3>
-                        <p className="text-gray-600 mt-2"><strong>Posted By:</strong> {course.name}</p>
-                        <p className="text-gray-600 mt-2">
+                        <p className="mt-2"><strong>Posted By:</strong> {course.name}</p>
+                        <p className="mt-2">
                             <span><strong>Enroll Date:</strong></span> {course.date ? new Date(course.date).toLocaleDateString() : "N/A"}
                         </p>
                         <button
@@ -87,17 +87,17 @@ const MyEnrolled = () => {
             {/* Pagination */}
             <div className="mt-10 flex flex-col md:flex-row justify-center md:justify-between items-center gap-3">
                 <div>
-                    <span className="text-gray-800">Page {currentPage + 1} of {Math.ceil(approvedClasses.length / itemsPerPage)}</span>
+                    <span className="">Page {currentPage + 1} of {Math.ceil(approvedClasses.length / itemsPerPage)}</span>
                 </div>
                 <div>
                     <ReactPaginate
                         previousLabel={
-                            <button className="px-2 py-1 bg-gray-300 hover:bg-gray-400 text-gray-700 rounded-l-lg">
+                            <button className="px-2 py-1 bg-base-300 hover:bg-base-300 rounded-l-lg">
                                 Prev
                             </button>
                         }
                         nextLabel={
-                            <button className="px-2 py-1 bg-gray-300 hover:bg-gray-400 text-gray-700 rounded-r-lg">
+                            <button className="px-2 py-1 bg-base-300 hover:bg-base-300 rounded-r-lg">
                                 Next
                             </button>
                         }

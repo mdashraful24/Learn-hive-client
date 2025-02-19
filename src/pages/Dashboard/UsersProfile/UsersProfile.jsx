@@ -28,36 +28,36 @@ const UsersProfile = () => {
     if (isLoading) {
         return (
             <div className="container mx-auto text-center mt-10">
-                <p className="text-gray-500">Loading users profile...</p>
+                <p className="">Loading users profile...</p>
             </div>
         );
     }
 
     return (
-        <div className="mt-10 lg:mt-5 mb-16">
+        <div className="mt-6 mb-10">
             <Helmet>
                 <title>Profile | LearnHive</title>
             </Helmet>
 
             {/* title */}
-            <h2 className="text-3xl font-bold text-center">Users Profile</h2>
+            <h2 className="text-2xl md:text-4xl font-extrabold text-center mb-4">Users Profile</h2>
 
             {/* card start */}
-            <div className="bg-white shadow-md rounded-lg p-8">
+            <div className="rounded-lg p-4">
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                     {paginatedUsers.map(user => (
-                        <div key={user._id} className="bg-gray-100 p-6 rounded-lg shadow-md">
+                        <div key={user._id} className="bg-base-200 p-6 rounded-lg shadow-md">
                             <div className="flex justify-center mb-4">
                                 <div>
                                     <img src={user.image} alt={user.name} className="w-24 h-24 object-cover rounded-full border-2 shadow-lg" />
                                 </div>
                             </div>
                             <h3 className="text-xl font-bold text-center mb-2">{user.name}</h3>
-                            <p className="text-center text-gray-600 mb-2"><span className="text-gray-900">Email:</span> {user.email}</p>
-                            <p className="text-center text-gray-600 mb-2"><span className="text-gray-900">Phone:</span> {user.phone ? user.phone : "N/A"}</p>
-                            <p className="text-center text-gray-600 capitalize mb-2"><span className="text-gray-900">Role:</span> {user.role}</p>
-                            <p className="text-center text-gray-600 capitalize mb-2">
-                                <span className="text-gray-900">
+                            <p className="text-center mb-2"><span className="">Email:</span> {user.email}</p>
+                            <p className="text-center mb-2"><span className="">Phone:</span> {user.phone ? user.phone : "N/A"}</p>
+                            <p className="text-center capitalize mb-2"><span className="">Role:</span> {user.role}</p>
+                            <p className="text-center capitalize mb-2">
+                                <span className="">
                                     {user.role === "admin"
                                         ? "Admin creation:"
                                         : user.role === "teacher"
@@ -76,17 +76,17 @@ const UsersProfile = () => {
                 {/* Pagination */}
                 <div className="mt-10 flex flex-col md:flex-row justify-center md:justify-between items-center gap-3">
                     <div>
-                        <span className="text-gray-800">Page {currentPage + 1} of {Math.ceil(users.length / itemsPerPage)}</span>
+                        <span className="">Page {currentPage + 1} of {Math.ceil(users.length / itemsPerPage)}</span>
                     </div>
                     <div>
                         <ReactPaginate
                             previousLabel={
-                                <button className="px-3 py-1 bg-gray-300 hover:bg-gray-400 text-gray-700 rounded-l-lg">
+                                <button className="px-3 py-1 bg-base-300 hover:bg-base-300 rounded-l-lg">
                                     Prev
                                 </button>
                             }
                             nextLabel={
-                                <button className="px-3 py-1 bg-gray-300 hover:bg-gray-400 text-gray-700 rounded-r-lg">
+                                <button className="px-3 py-1 bg-base-300 hover:bg-base-300 rounded-r-lg">
                                     Next
                                 </button>
                             }

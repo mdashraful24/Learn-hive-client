@@ -3,7 +3,7 @@ import useAuth from "../../../hooks/useAuth";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import { Helmet } from "react-helmet-async";
 
-const TeacherProfile = () => {
+const AdminProfile = () => {
     const { user } = useAuth();
     const axiosSecure = useAxiosSecure();
 
@@ -100,4 +100,4 @@ const TeacherProfile = () => {
     );
 };
 
-export default TeacherProfile;
+export default AdminProfile;

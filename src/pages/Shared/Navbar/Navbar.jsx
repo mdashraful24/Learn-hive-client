@@ -127,7 +127,7 @@ const Navbar = () => {
                             className="flex items-center gap-2"
                         >
                             <img src={logo} alt="siteLogo" className="w-8 md:w-12" />
-                            <h2 className="hidden lg:block text-xl md:text-3xl font-extrabold text-white">LearnHive</h2>
+                            <h2 className="block md:hidden lg:block text-lg md:text-3xl font-extrabold text-white">LearnHive</h2>
                         </button>
                     </div>
                 </div>
