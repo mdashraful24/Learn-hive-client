@@ -4,6 +4,8 @@ import useAuth from "../../hooks/useAuth";
 import { useForm } from "react-hook-form";
 import useAxiosPublic from '../../hooks/useAxiosPublic';
 import { useState, useEffect } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
 
 // Cloudinary configuration
 const uploadPreset = import.meta.env.VITE_CLOUDINARY_UPLOAD_PRESET;
@@ -16,7 +18,7 @@ const TeachOnLearnHive = () => {
     const { user } = useAuth();
     const axiosPublic = useAxiosPublic();
     const { register, handleSubmit, formState: { errors, isValid }, reset, setValue, watch } = useForm({
-        mode: 'onChange' // ensures form state is updated on field change
+        mode: 'onChange'
     });
 
     const [uploadedImage, setUploadedImage] = useState(user?.photoURL || "");
@@ -140,7 +142,8 @@ const TeachOnLearnHive = () => {
                             {errors.title && <span className="text-red-600">Title is required</span>}
                         </div>
 
-                        <div className="form-group mb-4">
+{/* Choses option */}
+                        {/* <div className="form-group mb-4">
                             <label className="block mb-2">Experience Level <span className='text-red-500'>*</span></label>
                             <select defaultValue=""
                                 {...register("experience", { required: true })}
@@ -167,6 +170,49 @@ const TeachOnLearnHive = () => {
                                 <option value="data science">Data Science</option>
                                 <option value="cyber security">Cyber Security</option>
                             </select>
+                            {errors.category && <span className="text-red-600">Category is required</span>}
+                        </div> */}
+                        <div className="form-group mb-4">
+                            <label className="block mb-2">Experience Level <span className='text-red-500'>*</span></label>
+                            <div className="relative">
+                                <select
+                                    defaultValue=""
+                                    {...register("experience", { required: true })}
+                                    className="w-full p-3 border border-black rounded-md appearance-none pr-10"
+                                >
+                                    <option value="" disabled>Select your experience level</option>
+                                    <option value="beginner">Beginner</option>
+                                    <option value="experienced">Experienced</option>
+                                    <option value="mid-level">Mid-level</option>
+                                </select>
+                                <FontAwesomeIcon
+                                    icon={faChevronDown}
+                                    className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-600 pointer-events-none"
+                                />
+                            </div>
+                            {errors.experience && <span className="text-red-600">Experience level is required</span>}
+                        </div>
+
+                        <div className="form-group mb-4">
+                            <label className="block mb-2">Category <span className='text-red-500'>*</span></label>
+                            <div className="relative">
+                                <select
+                                    defaultValue=""
+                                    {...register("category", { required: true })}
+                                    className="w-full p-3 border border-black rounded-md appearance-none pr-10"
+                                >
+                                    <option value="" disabled>Select a category</option>
+                                    <option value="web development">Web Development</option>
+                                    <option value="digital marketing">Digital Marketing</option>
+                                    <option value="graphic design">Graphic Design</option>
+                                    <option value="data science">Data Science</option>
+                                    <option value="cyber security">Cyber Security</option>
+                                </select>
+                                <FontAwesomeIcon
+                                    icon={faChevronDown}
+                                    className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-600 pointer-events-none"
+                                />
+                            </div>
                             {errors.category && <span className="text-red-600">Category is required</span>}
                         </div>
 

@@ -3,6 +3,8 @@ import useAxiosPublic from "../../hooks/useAxiosPublic";
 import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
 import { useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
 
 const AllClasses = () => {
     // Scroll to the top when the component mounts
@@ -44,7 +46,7 @@ const AllClasses = () => {
 
             <div className="flex justify-end items-center gap-2 font-medium mb-6">
                 <label>Sort by Price:</label>
-                <select
+                {/* <select
                     className="border px-3 py-1.5 rounded border-black"
                     value={sortOrder}
                     onChange={(e) => setSortOrder(e.target.value)}
@@ -52,7 +54,22 @@ const AllClasses = () => {
                     <option className="font-medium" value="">Default</option>
                     <option className="font-medium" value="asc">Low to High</option>
                     <option className="font-medium" value="desc">High to Low</option>
-                </select>
+                </select> */}
+                <div className="relative inline-block w-36">
+                    <select
+                        className="border px-3 py-1.5 rounded border-black appearance-none pr-10 w-full"
+                        value={sortOrder}
+                        onChange={(e) => setSortOrder(e.target.value)}
+                    >
+                        <option className="font-medium" value="">Default</option>
+                        <option className="font-medium" value="asc">Low to High</option>
+                        <option className="font-medium" value="desc">High to Low</option>
+                    </select>
+                    <FontAwesomeIcon
+                        icon={faChevronDown}
+                        className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-600 pointer-events-none"
+                    />
+                </div>
             </div>
 
             {isLoading ? (
