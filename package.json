@@ -46,6 +46,7 @@
     "react-router-dom": "^7.1.1",
     "react-simple-star-rating": "^5.1.7",
     "react-toastify": "^11.0.2",
+    "recharts": "^2.15.1",
     "sort-by": "^1.2.0",
     "sweetalert2": "^11.15.10",
     "swiper": "^11.2.1"

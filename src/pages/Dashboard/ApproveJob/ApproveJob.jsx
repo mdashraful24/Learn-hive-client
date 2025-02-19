@@ -18,7 +18,7 @@ const ApproveJob = () => {
     if (isLoading) {
         return (
             <div className="flex items-center justify-center min-h-screen">
-                <p className="text-lg text-gray-600 animate-pulse">Loading application request...</p>
+                <p className="text-lg animate-pulse">Loading application request...</p>
             </div>
         );
     }
@@ -29,7 +29,7 @@ const ApproveJob = () => {
                 <title>My Request | LearnHive</title>
             </Helmet>
 
-            <div className="max-w-4xl mx-auto p-6 md:p-10 shadow-xl rounded-lg bg-white border border-gray-200">
+            <div className="max-w-4xl mx-auto p-6 md:p-10 shadow-xl rounded-lg border">
                 <h2 className="text-2xl md:text-4xl font-bold text-center mb-10">Job Application Details</h2>
 
                 {data ? (
@@ -44,32 +44,32 @@ const ApproveJob = () => {
                         </div>
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                             {/* Name */}
-                            <div className="bg-gradient-to-r from-indigo-50 to-white shadow-md rounded-lg p-5 hover:shadow-lg transition-shadow duration-300">
+                            <div className="shadow-md rounded-lg p-5 hover:shadow-lg transition-shadow duration-300">
                                 <h3 className="text-lg font-semibold mb-2">Name</h3>
-                                <p className="text-gray-700 capitalize">{data.name}</p>
+                                <p className="capitalize">{data.name}</p>
                             </div>
                             {/* Email */}
-                            <div className="bg-gradient-to-r from-indigo-50 to-white shadow-md rounded-lg p-5 hover:shadow-lg transition-shadow duration-300">
+                            <div className="shadow-md rounded-lg p-5 hover:shadow-lg transition-shadow duration-300">
                                 <h3 className="text-lg font-semibold mb-2">Email</h3>
-                                <p className="text-gray-700">{data.userEmail}</p>
+                                <p className="">{data.userEmail}</p>
                             </div>
                             {/* Experience */}
-                            <div className="bg-gradient-to-r from-indigo-50 to-white shadow-md rounded-lg p-5 hover:shadow-lg transition-shadow duration-300">
+                            <div className="shadow-md rounded-lg p-5 hover:shadow-lg transition-shadow duration-300">
                                 <h3 className="text-lg font-semibold mb-2">Experience</h3>
-                                <p className="text-gray-700 capitalize">{data.experience}</p>
+                                <p className=" capitalize">{data.experience}</p>
                             </div>
                             {/* Title */}
-                            <div className="bg-gradient-to-r from-indigo-50 to-white shadow-md rounded-lg p-5 hover:shadow-lg transition-shadow duration-300">
+                            <div className="shadow-md rounded-lg p-5 hover:shadow-lg transition-shadow duration-300">
                                 <h3 className="text-lg font-semibold mb-2">Title</h3>
-                                <p className="text-gray-700 capitalize">{data.title}</p>
+                                <p className=" capitalize">{data.title}</p>
                             </div>
                             {/* Category */}
-                            <div className="bg-gradient-to-r from-indigo-50 to-white shadow-md rounded-lg p-5 hover:shadow-lg transition-shadow duration-300">
+                            <div className="shadow-md rounded-lg p-5 hover:shadow-lg transition-shadow duration-300">
                                 <h3 className="text-lg font-semibold mb-2">Category</h3>
-                                <p className="text-gray-700 capitalize">{data.category}</p>
+                                <p className=" capitalize">{data.category}</p>
                             </div>
                             {/* Status */}
-                            <div className="bg-gradient-to-r from-indigo-50 to-white shadow-md rounded-lg p-5 hover:shadow-lg transition-shadow duration-300">
+                            <div className="shadow-md rounded-lg p-5 hover:shadow-lg transition-shadow duration-300">
                                 <h3 className="text-lg font-semibold mb-2">Status</h3>
                                 <p
                                     className={`text-sm font-medium px-4 py-2 rounded-full inline-block ${data.status === 'approved' || data.status === 'accepted'
@@ -86,7 +86,7 @@ const ApproveJob = () => {
                     </>
                 ) : (
                     <div className="text-center">
-                        <p className="text-lg text-gray-600">No job application data found.</p>
+                        <p className="text-lg">No job application data found.</p>
                     </div>
                 )}
             </div>

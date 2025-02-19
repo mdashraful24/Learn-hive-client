@@ -83,17 +83,17 @@ const AllUsers = () => {
                             placeholder="Search by name or email"
                             className="input input-bordered w-full pr-10"
                         />
-                        <button className="absolute inset-y-0 right-0 px-4 text-gray-500">
+                        <button className="absolute inset-y-0 right-0 px-4">
                             <FaSearch />
                         </button>
                     </div>
                 </div>
                 {/* Table */}
-                <div className="overflow-x-auto rounded-t-xl mt-5">
+                <div className="overflow-x-auto rounded-t-lg mt-5">
                     <table className="table">
                         {/* head */}
                         <thead>
-                            <tr className="bg-[#D1A054] text-white text-center uppercase">
+                            <tr className="bg-blue-600 text-white text-center uppercase">
                                 <th className="py-5">#</th>
                                 <th className="py-5">Image</th>
                                 <th className="py-5">NAME</th>
@@ -105,7 +105,7 @@ const AllUsers = () => {
                         </thead>
                         <tbody>
                             {users.map((user, index) => (
-                                <tr key={user._id} className="text-center hover:bg-gray-50">
+                                <tr key={user._id} className="text-center hover:bg-base-200">
                                     <td className="py-5 font-bold">{index + 1 + currentPage * itemsPerPage}</td>
                                     <td className="py-5">
                                         <div className="flex justify-center items-center gap-3">
@@ -123,7 +123,7 @@ const AllUsers = () => {
                                     <td className="py-5">{user.role}</td>
                                     <td className="py-5">
                                         <button
-                                            className="btn btn-sm bg-[#D1A054] hover:bg-[#D1A054] text-white"
+                                            className="btn btn-sm bg-blue-500 hover:bg-blue-600 text-white"
                                             onClick={() => handleMakeAdmin(user)}
                                             disabled={user.role === 'admin'}
                                         >
@@ -146,17 +146,17 @@ const AllUsers = () => {
                 {/* Pagination */}
                 <div className="mt-10 flex flex-col md:flex-row justify-center md:justify-between items-center gap-3">
                     <div>
-                        <span className="text-gray-800">Page {currentPage + 1} of {Math.ceil(users.length / itemsPerPage)}</span>
+                        <span className="">Page {currentPage + 1} of {Math.ceil(users.length / itemsPerPage)}</span>
                     </div>
                     <div>
                         <ReactPaginate
                             previousLabel={
-                                <button className="px-3 py-1 bg-gray-300 hover:bg-gray-400 text-gray-700 rounded-l-lg">
+                                <button className="px-3 py-1 bg-base-300 hover:bg-base-300 rounded-l-lg">
                                     Prev
                                 </button>
                             }
                             nextLabel={
-                                <button className="px-3 py-1 bg-gray-300 hover:bg-gray-400 text-gray-700 rounded-r-lg">
+                                <button className="px-3 py-1 bg-base-300 hover:bg-base-300 rounded-r-lg">
                                     Next
                                 </button>
                             }

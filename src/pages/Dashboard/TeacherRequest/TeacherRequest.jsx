@@ -96,7 +96,7 @@ const TeacherRequest = () => {
     if (isLoading) {
         return (
             <div className="container mx-auto text-center mt-10">
-                <p className="text-gray-500">Loading teacher requests...</p>
+                <p className="">Loading teacher requests...</p>
             </div>
         );
     }
@@ -111,10 +111,10 @@ const TeacherRequest = () => {
 
                 {filteredData?.length > 0 ? (
                     <div className="overflow-x-auto rounded-t-xl" id="teacherRequestTable">
-                        <h2 className="text-3xl font-bold text-center mb-6">Teacher Requests</h2>
+                        <h2 className="text-2xl md:text-4xl font-extrabold text-center mb-6">Teacher Requests</h2>
                         <table className="table min-w-full">
                             <thead>
-                                <tr className="bg-[#D1A054] text-white text-center uppercase">
+                                <tr className="bg-blue-600 text-white text-center uppercase">
                                     <th className="py-5">#</th>
                                     <th className="py-5">Image</th>
                                     <th className="py-5">Name</th>
@@ -127,7 +127,7 @@ const TeacherRequest = () => {
                             </thead>
                             <tbody>
                                 {currentData?.map((request, index) => (
-                                    <tr key={request._id} className="text-center hover:bg-gray-50 capitalize">
+                                    <tr key={request._id} className="text-center hover:bg-base-200 capitalize">
                                         <td className="py-5 font-bold">{index + 1 + (currentPage - 1) * itemsPerPage}</td>
                                         <td className="py-5">
                                             <img
@@ -214,13 +214,13 @@ const TeacherRequest = () => {
                 {totalRequests > 0 && (
                     <div className="mt-8 flex flex-col md:flex-row justify-center md:justify-between items-center gap-3">
                         <div>
-                            <span className="text-gray-800">Page {currentPage} of {totalPages}</span>
+                            <span className="">Page {currentPage} of {totalPages}</span>
                         </div>
                         <div className="flex justify-center">
                             <button
                                 onClick={() => setCurrentPage(1)}
                                 disabled={currentPage === 1}
-                                className="px-3 py-1 mx-1 bg-gray-300 rounded hover:bg-gray-400"
+                                className="px-3 py-1 mx-1 bg-base-300 rounded hover:bg-base-300"
                             >
                                 Prev
                             </button>
@@ -237,7 +237,7 @@ const TeacherRequest = () => {
                             <button
                                 onClick={() => setCurrentPage(totalPages)}
                                 disabled={currentPage === totalPages}
-                                className="px-3 py-1 mx-1 bg-gray-300 rounded hover:bg-gray-400"
+                                className="px-3 py-1 mx-1 bg-base-300 rounded hover:bg-base-300"
                             >
                                 Next
                             </button>

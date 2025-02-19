@@ -80,28 +80,28 @@ const ClassDetails = () => {
 
 
     return (
-        <div className="my-16">
+        <div className="my-8">
             <Helmet>
                 <title>See Details | LearnHive</title>
             </Helmet>
 
             {/* title */}
-            <h2 className="text-xl md:text-3xl font-bold text-center mb-8">{title}</h2>
+            <h2 className="text-xl md:text-4xl font-bold text-center mb-8">{title}</h2>
 
             {/* Class Progress Section */}
-            <div className="bg-white shadow-md rounded-lg overflow-hidden border hover:shadow-lg transition mb-10 p-5">
+            <div className="shadow-md rounded-lg overflow-hidden border hover:shadow-lg transition mb-10 p-5">
                 <h3 className="text-xl font-bold mb-4">Class Progress:</h3>
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                     <div className="text-center">
-                        <p className="text-gray-600">Total Enrollments</p>
+                        <p className="">Total Enrollments</p>
                         <h4 className="text-2xl font-bold">{totalEnrollment ?? 'N/A'}</h4>
                     </div>
                     <div className="text-center">
-                        <p className="text-gray-600">Total Assignments</p>
+                        <p className="">Total Assignments</p>
                         <h4 className="text-2xl font-bold">{assignments.length}</h4>
                     </div>
                     <div className="text-center">
-                        <p className="text-gray-600">Total Submissions</p>
+                        <p className="">Total Submissions</p>
                         <h4 className="text-2xl font-bold">{totalSubmissions ?? 'N/A'}</h4>
                     </div>
                 </div>
@@ -123,7 +123,7 @@ const ClassDetails = () => {
                 {assignments.map((assignment, index) => (
                     <div
                         key={index}
-                        className="bg-white shadow-md rounded-lg overflow-hidden border hover:shadow-lg transition p-5"
+                        className="shadow-md rounded-lg overflow-hidden border hover:shadow-lg transition p-5"
                     >
                         <h4><strong>Title:</strong> {assignment.title}</h4>
                         <p className="my-1"><strong>Description:</strong> {assignment.description}</p>
@@ -135,7 +135,7 @@ const ClassDetails = () => {
             {/* Assignment Modal */}
             {isModalOpen && (
                 <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 px-3 ">
-                    <div className="bg-white rounded-lg shadow-lg w-full max-w-lg p-6 max-h-screen overflow-y-auto">
+                    <div className="bg-base-300 rounded-lg shadow-lg w-full max-w-lg p-6 max-h-screen overflow-y-auto">
                         <h3 className="text-xl font-bold mb-4">Add Assignment</h3>
                         <form onSubmit={handleSubmit(onSubmit)}>
                             <div className="mb-4">
@@ -185,7 +185,7 @@ const ClassDetails = () => {
                                 )}
                             </div>
                             <div className="flex justify-between gap-3">
-                                <button type="submit" className="btn btn-active btn-neutral">
+                                <button type="submit" className="btn btn-active btn-primary">
                                     Add Assignment
                                 </button>
                                 <button

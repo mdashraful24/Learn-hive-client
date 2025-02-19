@@ -113,7 +113,7 @@ const MyClasses = () => {
     if (isLoading) {
         return (
             <div className="container mx-auto text-center mt-10">
-                <p className="text-gray-500">Loading classes...</p>
+                <p className="">Loading classes...</p>
             </div>
         );
     }
@@ -133,32 +133,32 @@ const MyClasses = () => {
             </Helmet>
 
             {/* title */}
-            <h2 className="text-3xl font-bold text-center mb-8">My Classes</h2>
+            <h2 className="text-xl md:text-4xl font-extrabold text-center mb-8">My Classes</h2>
 
             {/* classes cards */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {paginatedClasses.map((classItem) => (
                     <div
                         key={classItem._id}
-                        className="bg-white shadow-md rounded-lg overflow-hidden border hover:shadow-lg transition flex flex-col"
+                        className="shadow-md rounded-lg overflow-hidden border hover:shadow-lg transition flex flex-col"
                     >
                         <img
                             src={classItem.image}
                             alt={classItem.title}
-                            className="w-full h-48 md:object-cover"
+                            className="w-full h-48 lg:object-cover"
                         />
                         <div className="p-5 flex flex-col flex-grow">
                             <h3 className="text-lg font-bold mb-2">{classItem.title}</h3>
-                            <p className="text-gray-600 mb-1">
+                            <p className="mb-1">
                                 <strong>Name:</strong> {classItem.name}
                             </p>
-                            <p className="text-gray-600 mb-1">
+                            <p className="mb-1">
                                 <strong>Email:</strong> {classItem.email}
                             </p>
-                            <p className="text-gray-600 mb-1">
+                            <p className="mb-1">
                                 <strong>Price:</strong> ${classItem.price}
                             </p>
-                            <p className="text-gray-600 mb-3">
+                            <p className="mb-3">
                                 <strong>Description:</strong> {classItem.description}
                             </p>
                             <p
@@ -236,11 +236,11 @@ const MyClasses = () => {
             {/* Modal */}
             {isModalOpen && (
                 <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
-                    <div className="bg-white rounded-lg shadow-lg w-11/12 sm:w-96 max-h-screen overflow-y-auto p-6 relative">
+                    <div className="bg-base-300 rounded-lg shadow-lg w-11/12 sm:w-96 max-h-screen overflow-y-auto p-6 relative">
                         {/* Close Icon */}
                         <button
                             onClick={closeModal}
-                            className="absolute top-2 right-2 text-gray-600 text-xl"
+                            className="absolute top-3 right-3 text-xl hover:text-red-600"
                         >
                             <FaTimes />
                         </button>
@@ -248,7 +248,7 @@ const MyClasses = () => {
                         <h3 className="text-lg font-semibold mb-4">Update Class Details</h3>
                         <form onSubmit={handleSubmit(handleUpdate)}>
                             <div className="mb-4">
-                                <label htmlFor="title" className="block text-sm font-semibold text-gray-700">
+                                <label htmlFor="title" className="block text-sm font-semibold">
                                     Title
                                 </label>
                                 <input
@@ -260,7 +260,7 @@ const MyClasses = () => {
                                 />
                             </div>
                             <div className="mb-4">
-                                <label htmlFor="description" className="block text-sm font-semibold text-gray-700">
+                                <label htmlFor="description" className="block text-sm font-semibold">
                                     Description
                                 </label>
                                 <textarea
@@ -271,7 +271,7 @@ const MyClasses = () => {
                                 ></textarea>
                             </div>
                             <div className="mb-4">
-                                <label htmlFor="price" className="block text-sm font-semibold text-gray-700">
+                                <label htmlFor="price" className="block text-sm font-semibold">
                                     Price
                                 </label>
                                 <input

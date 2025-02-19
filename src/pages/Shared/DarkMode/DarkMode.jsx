@@ -5,12 +5,14 @@ export function DarkMode() {
     const { theme, toggleTheme } = useThemeContext();
 
     return (
-        <button
-            className="ml-2 p-2 rounded-full bg-gray-300 dark:bg-gray-700 text-black dark:text-white transition-all"
-            onClick={toggleTheme}
-        >
-            {theme === "dark" ? <FaSun size={22} /> : <FaMoon size={22} />}
-        </button>
+        <div>
+            <button
+                className="ml-2 p-2 rounded-full bg-gray-300 dark:bg-gray-700 text-black dark:text-white transition-all"
+                onClick={toggleTheme}
+            >
+                {theme === "dark" ? <FaSun size={22} /> : <FaMoon size={22} />}
+            </button>
+        </div>
     );
 }
 

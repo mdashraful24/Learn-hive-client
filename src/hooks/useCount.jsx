@@ -31,11 +31,20 @@ const useCount = () => {
         },
     });
 
-    // Fetch the enrollment data to calculate total enrolment
+    // Fetch the enrollment data to calculate total enrollment
     const { data: enrollmentData, isLoading: isLoadingEnrollment, isError: isErrorEnrollment } = useQuery({
         queryKey: ["enrollmentCounts"],
         queryFn: async () => {
             const res = await axiosPublic.get("/enroll");
+            return res.data;
+        },
+    });
+
+    // Fetch the total assignments
+    const { data: assignmentsData, isLoading: isLoadingAssignments, isError: isErrorAssignments } = useQuery({
+        queryKey: ["assignmentCounts"],
+        queryFn: async () => {
+            const res = await axiosPublic.get("/assignments"); // Assuming there's an endpoint to fetch assignments
             return res.data;
         },
     });
@@ -49,9 +58,23 @@ const useCount = () => {
         },
     });
 
+    // Fetch the reviews data
+    const { data: reviewsData, isLoading: isLoadingReviews, isError: isErrorReviews } = useQuery({
+        queryKey: ["reviewCounts"],
+        queryFn: async () => {
+            const res = await axiosPublic.get("/reviews");
+            return res.data;
+        },
+    });
+
     // Combine loading and error states
     if (
-        isLoadingClasses || isLoadingSixClasses || isLoadingUsers || isLoadingEnrollment || isLoadingSubmissions
+        isLoadingClasses || 
+        isLoadingSixClasses || 
+        isLoadingUsers || 
+        isLoadingEnrollment || 
+        isLoadingSubmissions || 
+        isLoadingReviews
     ) {
         return {
             isLoading: true,
@@ -59,14 +82,21 @@ const useCount = () => {
             totalClasses: 0,
             totalUsers: 0,
             totalTeachers: 0,
+            totalStudents: 0,
             totalEnrollment: 0,
             totalSubmissions: 0,
+            totalReviews: 0, // Add review count to the loading state
             latestSixClasses: [],
         };
     }
 
     if (
-        isErrorClasses || isErrorSixClasses || isErrorUsers || isErrorEnrollment || isErrorSubmissions
+        isErrorClasses || 
+        isErrorSixClasses || 
+        isErrorUsers || 
+        isErrorEnrollment || 
+        isErrorSubmissions || 
+        isErrorReviews
     ) {
         return {
             isError: true,
@@ -74,19 +104,23 @@ const useCount = () => {
             totalClasses: 0,
             totalUsers: 0,
             totalTeachers: 0,
+            totalStudents: 0,
             totalEnrollment: 0,
             totalSubmissions: 0,
+            totalReviews: 0, // Add review count to the error state
             latestSixClasses: [],
         };
     }
 
     // Extract total counts
-    const totalAssignments = classesData?.totalAssignments || 0;
+    const totalAssignments = assignmentsData?.length || 0;
     const totalClasses = classesData?.totalClasses || 0;
     const totalUsers = usersData?.length || 0;
     const totalTeachers = usersData?.filter(user => user.role === "teacher").length || 0;
+    const totalStudents = usersData?.filter(user => user.role === "student").length || 0;
     const totalEnrollment = enrollmentData?.reduce((sum, enrollment) => sum + enrollment.totalEnrolment, 0) || 0;
     const totalSubmissions = submissionsData?.reduce((sum, submission) => sum + submission.submit, 0) || 0;
+    const totalReviews = reviewsData?.length || 0; // Total review count
     const latestSixClasses = sixClassesData || [];
 
     return {
@@ -94,13 +128,16 @@ const useCount = () => {
         totalClasses,
         totalUsers,
         totalTeachers,
+        totalStudents,
         totalEnrollment,
         totalSubmissions,
+        totalReviews, // Return the review count
         latestSixClasses,
     };
 };
 
 export default useCount;
+
 
 
 

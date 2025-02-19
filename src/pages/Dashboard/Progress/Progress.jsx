@@ -28,7 +28,7 @@ const Progress = () => {
     if (isLoading) {
         return (
             <div className="container mx-auto text-center mt-10">
-                <p className="text-gray-500">Loading progress details...</p>
+                <p className="">Loading progress details...</p>
             </div>
             // <div className="flex items-center justify-center min-h-screen">
             //     <div className="animate-spin rounded-full h-16 w-16 border-t-4 border-blue-500 border-solid"></div>
@@ -43,7 +43,7 @@ const Progress = () => {
     );
 
     return (
-        <div className="p-5 mt-10 lg:mt-0 mb-14">
+        <div className="py-5 mt-10 lg:mt-0 mb-14">
             <Helmet>
                 <title>Progress Details | LearnHive</title>
             </Helmet>
@@ -56,7 +56,7 @@ const Progress = () => {
                 <img
                     src={data.image}
                     alt={data.title}
-                    className="w-full h-72 rounded-lg shadow-md"
+                    className="w-full h-60 md:h-96 rounded-lg shadow-md"
                 />
             </div>
 
@@ -85,7 +85,7 @@ const Progress = () => {
                     <div className="overflow-x-auto">
                         <table className="table-auto w-full border-collapse border border-gray-300">
                             <thead>
-                                <tr className="bg-gray-200">
+                                <tr className="">
                                     <th className="border border-gray-300 px-4 py-2">
                                         Title
                                     </th>
@@ -131,17 +131,17 @@ const Progress = () => {
                     {/* Pagination Controls */}
                     <div className="mt-10 flex flex-col md:flex-row justify-center md:justify-between items-center gap-3">
                         <div>
-                            <span className="text-gray-800">Page {currentPage + 1} of {Math.ceil(data.assignments.length / itemsPerPage)}</span>
+                            <span className="">Page {currentPage + 1} of {Math.ceil(data.assignments.length / itemsPerPage)}</span>
                         </div>
                         <div>
                             <ReactPaginate
                                 previousLabel={
-                                    <button className="px-3 py-1 bg-gray-300 hover:bg-gray-400 text-gray-700 rounded-l-lg">
+                                    <button className="px-3 py-1 rounded-l-lg">
                                         Prev
                                     </button>
                                 }
                                 nextLabel={
-                                    <button className="px-3 py-1 bg-gray-300 hover:bg-gray-400 text-gray-700 rounded-r-lg">
+                                    <button className="px-3 py-1 rounded-r-lg">
                                         Next
                                     </button>
                                 }

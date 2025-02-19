@@ -123,14 +123,14 @@ const AdminClass = () => {
 
             <div className="p-5 md:p-8 shadow-lg rounded-lg border">
                 {/* Title */}
-                <h2 className="text-3xl font-bold text-center mb-6">Admin Classes</h2>
+                <h2 className="text-2xl md:text-4xl font-extrabold text-center mb-6">Admin Classes</h2>
 
                 {/* Table start */}
                 <div className="overflow-x-auto rounded-t-xl mt-5">
                     <table className="table min-w-full">
                         {/* Table Head */}
                         <thead>
-                            <tr className="bg-[#D1A054] text-white text-center uppercase">
+                            <tr className="bg-blue-600 text-white text-center uppercase">
                                 <th className="py-5">#</th>
                                 <th className="py-5">Image</th>
                                 <th className="py-5">Title</th>
@@ -143,7 +143,7 @@ const AdminClass = () => {
                         </thead>
                         <tbody>
                             {paginatedClasses?.map((classItem, index) => (
-                                <tr key={classItem._id} className="text-center hover:bg-gray-50">
+                                <tr key={classItem._id} className="text-center hover:bg-base-200">
                                     <td className="py-5 font-bold">{index + 1 + currentPage * itemsPerPage}</td>
                                     <td className="py-5">
                                         <img
@@ -228,19 +228,19 @@ const AdminClass = () => {
                 {filteredData && (
                     <div className="mt-10 flex flex-col md:flex-row justify-center md:justify-between items-center gap-3">
                         <div>
-                            <span className="text-gray-800">
+                            <span className="">
                                 Page {currentPage + 1} of {Math.ceil(filteredData.length / itemsPerPage)}
                             </span>
                         </div>
                         <div>
                             <ReactPaginate
                                 previousLabel={
-                                    <button className="px-3 py-1 bg-gray-300 hover:bg-gray-400 text-gray-700 rounded-l-lg">
+                                    <button className="px-3 py-1 bg-base-300 hover:bg-base-300 rounded-l-lg">
                                         Prev
                                     </button>
                                 }
                                 nextLabel={
-                                    <button className="px-3 py-1 bg-gray-300 hover:bg-gray-400 text-gray-700 rounded-r-lg">
+                                    <button className="px-3 py-1 bg-base-300 hover:bg-base-300 rounded-r-lg">
                                         Next
                                     </button>
                                 }
