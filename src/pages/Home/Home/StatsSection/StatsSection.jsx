@@ -6,7 +6,7 @@ const StatsSection = () => {
     const { totalUsers, totalClasses, totalEnrollment, totalTeachers } = useCount();
 
     return (
-        <div className='mb-20 md:mb-28 px-2.5'>
+        <div className='mb-20 md:mb-28 px-2 md:px-3 lg:px-2.5'>
             <div className="text-center mb-8 md:mb-14">
                 <h2 className="text-2xl md:text-4xl font-extrabold">Website Overview</h2>
                 <p className="mt-4 md:text-lg">
@@ -18,7 +18,7 @@ const StatsSection = () => {
                 {/* stats */}
                 <div className="w-full lg:max-w-lg grid grid-cols-1 gap-5 md:gap-10">
                     {/* Total Users Card */}
-                    <div className="bg-gradient-to-r from-blue-600 to-blue-400 text-white p-4 rounded-xl shadow-md hover:shadow-xl flex justify-center items-center gap-5 transform hover:scale-105 transition duration-500 ease-in-out">
+                    <div className="bg-gradient-to-r from-blue-600 to-blue-500 text-white p-4 rounded-xl shadow-md hover:shadow-xl flex justify-center items-center gap-5 transform hover:scale-105 transition duration-500 ease-in-out">
                         <FaUsers className="text-xl lg:text-4xl" />
                         <div>
                             <h2 className="text-xl lg:text-4xl font-bold">Total Users: {totalUsers ?? 'N/A'}</h2>
@@ -26,7 +26,7 @@ const StatsSection = () => {
                     </div>
 
                     {/* Total Classes Card */}
-                    <div className="bg-gradient-to-r from-blue-700 to-blue-500 text-white p-4 rounded-xl shadow-md hover:shadow-xl flex justify-center items-center gap-5 transform hover:scale-105 transition duration-500 ease-in-out">
+                    <div className="bg-gradient-to-r from-blue-700 to-blue-600 text-white p-4 rounded-xl shadow-md hover:shadow-xl flex justify-center items-center gap-5 transform hover:scale-105 transition duration-500 ease-in-out">
                         <FaUsers className="text-xl lg:text-4xl" />
                         <div>
                             <h2 className="text-xl lg:text-4xl font-bold">Total Classes: {totalClasses ?? 'N/A'}</h2>
@@ -55,7 +55,7 @@ const StatsSection = () => {
                     <img
                         src={stats}
                         alt="Educational Image"
-                        className="rounded-xl shadow-md w-full h-auto"
+                        className="rounded-xl shadow-md hover:shadow-lg w-full h-auto"
                     />
                 </div>
             </div>
@@ -89,7 +89,7 @@ export default StatsSection;
 //     const { totalUsers, totalClasses, totalEnrollment } = useCount();
 
 //     return (
-//         <div className='mb-20 px-2.5'>
+//         <div className='mb-20 px-2 md:px-3 lg:px-2.5'>
 //             <div className="text-center mb-8">
 //                 <h2 className="text-2xl md:text-4xl font-extrabold text-gray-800">Website Overview</h2>
 //                 <p className="mt-2 md:text-lg">

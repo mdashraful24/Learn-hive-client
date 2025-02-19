@@ -2,16 +2,16 @@ import team from '../../../assets/home/team.jpg';
 
 const Introduction = () => {
     return (
-        <section className="relative mt-8 md:mt-10 container mx-auto mb-20 md:mb-28 px-2.5">
+        <section className="relative mt-8 md:mt-10 container mx-auto mb-20 md:mb-28 px-2 md:px-3 lg:px-2.5">
             <div className="text-center">
                 {/* Header Section */}
-                <h2 className="text-2xl md:text-4xl font-extrabold mb-5">About Us</h2>
-                <p className="md:text-lg">
+                <h2 className="text-2xl md:text-4xl font-extrabold mb-3">About Us</h2>
+                <p className="md:text-lg mb-8">
                     LearnHive is transforming education by offering personalized learning experiences that empower students and educators alike.
                 </p>
 
                 {/* Main Content */}
-                <div className="flex flex-col lg:flex-row items-center gap-8 md:gap-12 p-7 rounded-xl shadow-lg">
+                <div className="flex flex-col lg:flex-row items-center gap-8 md:gap-12 p-7 border rounded-xl shadow-lg">
                     {/* Left Section - Image */}
                     <div className="w-full lg:w-1/2 relative">
                         <div className="rounded-lg overflow-hidden shadow-lg">

@@ -21,7 +21,7 @@ const Highlight = () => {
     }
 
     return (
-        <div className="container mx-auto px-2.5">
+        <div className="container mx-auto px-2 md:px-3 lg:px-2.5">
             <div className="mb-10">
                 <h2 className="text-2xl md:text-4xl text-center font-extrabold mb-5">Currently Popular Classes</h2>
                 <p className="md:text-lg text-center lg:w-1/2 mx-auto">

@@ -42,7 +42,7 @@ const KeyFeatures = () => {
                     </div>
 
                     {/* Features Grid */}
-                    <div className="container mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-8 px-2.5">
+                    <div className="container mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-8 px-2 md:px-3 lg:px-2.5">
                         {isLoading ? (
                             <div className="col-span-1 md:col-span-2 lg:col-span-3 flex justify-center items-center py-12">
                                 {/* <div className="w-12 h-12 border-4 border-gray-200 rounded-full animate-spin"></div> */}

@@ -18,10 +18,10 @@ const TopClasses = () => {
     }
 
     return (
-        <div className="container mx-auto mb-20 md:mb-28 px-2.5">
+        <div className="container mx-auto mb-20 md:mb-28 px-2 md:px-3 lg:px-2.5">
             <div className="mb-10">
                 <h2 className="text-2xl md:text-4xl text-center font-extrabold mb-5">Currently Popular Classes</h2>
-                <p className="md:text-lg text-center">
+                <p className="md:text-lg text-center mb-12">
                     Explore a range of skills to build and enhance your knowledge in modern technologies and creative fields.
                 </p>
             </div>

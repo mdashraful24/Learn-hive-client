@@ -32,7 +32,7 @@ const HowItWorks = () => {
     ];
 
     return (
-        <div ref={ref} className="mb-20 md:mb-24 px-2.5">
+        <div ref={ref} className="mb-20 md:mb-24 px-2 md:px-3 lg:px-2.5">
             <h2 className="text-2xl md:text-4xl font-extrabold text-center mb-4">How LearnHive Works</h2>
             <div className="w-28 mx-auto border-b-4 border-blue-700 mb-8"></div>
 

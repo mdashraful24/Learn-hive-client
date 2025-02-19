@@ -16,14 +16,14 @@ const Partners = () => {
     const partnerLogos = [img1, img2, img3, img4, img5, img6, img7, img8, img9, img10, img11, img12];
 
     return (
-        <div className='container mx-auto mb-20 md:mb-28 px-2.5'>
+        <div className='container mx-auto mb-20 md:mb-28 px-2 md:px-3 lg:px-2.5'>
             <h2 className="text-2xl md:text-4xl text-center font-extrabold mb-5">Our Partners</h2>
-            <p className="md:text-lg text-center lg:w-2/3 mx-auto mb-10 px-3">
+            <p className="md:text-lg text-center lg:max-w-3xl mx-auto mb-14 px-3">
                 We’re proud to collaborate with these exceptional organizations to make learning accessible, efficient, and impactful. Together, we’re creating a brighter future for all learners.
             </p>
 
             {/* Marquee for Partner Logos */}
-            <Marquee pauseOnHover speed={50} gradient={true} gradientWidth={50}>
+            <Marquee pauseOnHover speed={50} gradient={true} gradientWidth={30}>
                 {partnerLogos.map((logo, index) => (
                     <div key={index} className="mx-6 flex justify-center">
                         <img src={logo} alt={`Partner ${index + 1}`} className="h-16 md:h-20 lg:h-24 object-contain" />
@@ -62,7 +62,7 @@ export default Partners;
 
 // const Partners = () => {
 //     return (
-//         <div className='container mx-auto mb-20 px-2.5'>
+//         <div className='container mx-auto mb-20 px-2 md:px-3 lg:px-2.5'>
 //             <h2 className="text-2xl md:text-4xl text-center font-extrabold mb-5">Our Partners</h2>
 //             <p className="md:text-lg text-center lg:w-2/3 mx-auto mb-10 px-3">
 //                 We’re proud to collaborate with these exceptional organizations to make learning accessible, efficient, and impactful. Together, we’re creating a brighter future for all learners.
