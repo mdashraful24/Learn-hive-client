@@ -12,7 +12,7 @@ const Contacts = () => {
         const formData = new FormData(form.current);
         const formObject = Object.fromEntries(formData.entries());
 
-        console.log("Form Data:", formObject);
+        // console.log("Form Data:", formObject);
 
         emailjs.sendForm(
             import.meta.env.VITE_EMAILJS_SERVICE_ID,
