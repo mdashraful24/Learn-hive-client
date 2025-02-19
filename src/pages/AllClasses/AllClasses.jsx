@@ -36,7 +36,7 @@ const AllClasses = () => {
     const totalPages = Math.ceil(approvedClasses.totalClasses / classesPerPage);
 
     return (
-        <div className="container mx-auto mt-7 md:mt-10 mb-16 px-2.5">
+        <div className="container mx-auto mt-7 md:mt-10 mb-16 px-2 md:px-3 lg:px-2.5">
             <Helmet>
                 <title>All Classes | LearnHive</title>
             </Helmet>
@@ -206,7 +206,7 @@ export default AllClasses;
 //     const totalPages = Math.ceil(approvedClasses.totalClasses / classesPerPage);
 
 //     return (
-//         <div className="container mx-auto mt-7 md:mt-10 mb-24 px-2.5">
+//         <div className="container mx-auto mt-7 md:mt-10 mb-24 px-2 md:px-3 lg:px-2.5">
 //             <Helmet>
 //                 <title>All Classes | LearnHive</title>
 //             </Helmet>
@@ -359,7 +359,7 @@ export default AllClasses;
 //     const totalPages = Math.ceil(approvedClasses.totalClasses / classesPerPage);
 
 //     return (
-//         <div className="container mx-auto mt-7 md:mt-10 mb-20 px-2.5">
+//         <div className="container mx-auto mt-7 md:mt-10 mb-20 px-2 md:px-3 lg:px-2.5">
 //             <Helmet>
 //                 <title>All Classes | LearnHive</title>
 //             </Helmet>

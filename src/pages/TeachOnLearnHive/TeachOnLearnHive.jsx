@@ -85,7 +85,7 @@ const TeachOnLearnHive = () => {
     };
 
     return (
-        <div className="px-2.5 pt-14 pb-20">
+        <div className="px-2 md:px-3 lg:px-2.5 pt-14 pb-20">
             <div className="max-w-3xl mx-auto p-5 md:p-8 shadow-lg rounded-lg border">
                 <Helmet>
                     <title>Teach on LearnHive | LearnHive</title>
@@ -272,7 +272,7 @@ export default TeachOnLearnHive;
 //     };
 
 //     return (
-//         <div className="mt-10 md:mt-14 mb-24 px-2.5">
+//         <div className="mt-10 md:mt-14 mb-24 px-2 md:px-3 lg:px-2.5">
 //             <div className="max-w-3xl mx-auto p-5 md:p-8 shadow-lg rounded-lg border">
 //                 {/* Helmet */}
 //                 <Helmet>

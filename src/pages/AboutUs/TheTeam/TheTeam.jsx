@@ -30,7 +30,7 @@ const TheTeam = () => {
 
     return (
         <div className="bg-base-200 mb-20 md:mb-28 pt-10 pb-14">
-            <div className="px-2.5">
+            <div className="px-2 md:px-3 lg:px-2.5">
                 <h2 className="text-2xl md:text-4xl font-extrabold text-center mb-4">Meet Our Team</h2>
                 <div className="w-28 mx-auto border-b-4 border-blue-700 mb-8"></div>
                 <div className="flex flex-col lg:flex-row flex-wrap justify-center gap-8">

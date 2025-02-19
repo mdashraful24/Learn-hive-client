@@ -11,7 +11,7 @@ const Payment = () => {
     const { _id, title, price, description, name, image } = useLoaderData();
 
     return (
-        <div className="md:max-w-4xl lg:max-w-5xl mx-auto px-2.5 pt-10 pb-20">
+        <div className="md:max-w-4xl lg:max-w-5xl mx-auto px-2 md:px-3 lg:px-2.5 pt-10 pb-20">
             <Helmet>
                 <title>Payment | LearnHive</title>
             </Helmet>

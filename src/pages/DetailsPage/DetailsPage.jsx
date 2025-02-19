@@ -11,7 +11,7 @@ const DetailsPage = () => {
     const { _id, title, name, price, description, image } = useLoaderData();
 
     return (
-        <div className="md:max-w-3xl lg:max-w-2xl mx-auto px-2.5 pt-10 pb-20">
+        <div className="md:max-w-3xl lg:max-w-2xl mx-auto px-2 md:px-3 lg:px-2.5 pt-10 pb-20">
             <Helmet>
                 <title>Class Details | LearnHive</title>
             </Helmet>
