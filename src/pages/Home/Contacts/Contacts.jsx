@@ -34,7 +34,7 @@ const Contacts = () => {
     };
 
     return (
-        <div className="container mx-auto mb-20 md:mb-28 px-2 md:px-3 lg:px-2.5">
+        <div className="container mx-auto mb-20 md:mb-32 px-2 md:px-3 lg:px-2.5">
             <div>
                 <h1 className="text-2xl md:text-4xl text-center font-extrabold mb-10">Contact Us</h1>
             </div>

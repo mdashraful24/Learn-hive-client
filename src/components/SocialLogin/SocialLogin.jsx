@@ -2,6 +2,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import useAuth from "../../hooks/useAuth";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
+import google from '../../assets/auth/google.png'
 
 const SocialLogin = () => {
     const { googleSignIn } = useAuth();
@@ -40,8 +41,9 @@ const SocialLogin = () => {
         <div className="text-center w-11/12 mx-auto">
             <button
                 onClick={handleGoogleSignIn}
-                className="btn btn-outline w-full font-medium border-blue-600"
+                className="btn btn-outline hover:bg-white w-full hover:text-black font-medium border-blue-600"
             >
+                <img src={google} alt="google" className="w-5 h-5" />
                 Sign in with Google
             </button>
         </div>

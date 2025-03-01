@@ -1,5 +1,7 @@
 import { FaUsers, FaBoxOpen, FaTruck, FaFileAlt } from 'react-icons/fa';
 import { BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid, PieChart, Pie, Legend } from 'recharts';
+import { SiGoogleclassroom } from "react-icons/si";
+import { MdClass } from "react-icons/md";
 import useCount from '../../../hooks/useCount';
 
 const colors = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042', 'red', 'green'];
@@ -80,7 +82,7 @@ const DashboardStats = () => {
 
                 {/* Classes Card */}
                 <div className="bg-gradient-to-r from-blue-500 to-blue-700 text-white p-4 rounded-lg shadow-md flex justify-center items-center gap-5">
-                    <FaBoxOpen className="text-4xl mb-2" />
+                    <MdClass className="text-4xl mb-2" />
                     <div>
                         <h2 className="text-3xl font-bold">{stats.classes}</h2>
                         <p className="text-lg">Classes</p>
@@ -89,7 +91,7 @@ const DashboardStats = () => {
 
                 {/* Enrollment Card */}
                 <div className="bg-gradient-to-r from-blue-500 to-blue-600 text-white p-4 rounded-lg shadow-md flex justify-center items-center gap-5">
-                    <FaTruck className="text-4xl mb-2" />
+                    <SiGoogleclassroom className="text-4xl mb-2" />
                     <div>
                         <h2 className="text-3xl font-bold">{stats.enrollment}</h2>
                         <p className="text-lg">Enrollments</p>

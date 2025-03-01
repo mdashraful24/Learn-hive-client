@@ -12,8 +12,10 @@ import { useState, useEffect } from 'react';
 import { Helmet } from 'react-helmet-async';
 import DashboardStats from '../pages/Dashboard/DashboardStats/DashboardStats';
 import DashboardDark from '../pages/Dashboard/DashboardDark/DashboardDark';
+import useAuth from '../hooks/useAuth';
 
 const Dashboard = () => {
+    const { user } = useAuth();
     const [isAdmin] = useAdmin();
     const [isTeacher] = useTeacher();
     const [isStudent] = useStudent();
@@ -169,9 +171,21 @@ const Dashboard = () => {
                             <GoSidebarExpand />
                         </button>
                     </div>
-                    <div className="flex items-center">
-                        {/* Dark Mode Toggle */}
-                        <DashboardDark />
+
+                    <div className='flex items-center gap-3'>
+                        <div>
+                            <img
+                                className="rounded-full w-12 h-12 object-cover"
+                                src={user?.photoURL || alt}
+                                alt="User profile"
+                                onClick={() => setProfileDropdownOpen(!profileDropdownOpen)}
+                            />
+                        </div>
+
+                        <div className="flex items-center">
+                            {/* Dark Mode Toggle */}
+                            <DashboardDark />
+                        </div>
                     </div>
                 </div>
 

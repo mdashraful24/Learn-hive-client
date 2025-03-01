@@ -22,7 +22,7 @@ const Testimonials = () => {
     }, []);
 
     return (
-        <div className="container mx-auto mb-20 md:mb-28 px-2 md:px-3 lg:px-2.5">
+        <div className="container mx-auto mb-20 md:mb-24 px-2 md:px-3 lg:px-2.5">
             <h2 className="text-2xl md:text-4xl font-extrabold text-center mb-4">
                 What Our Users Say
             </h2>

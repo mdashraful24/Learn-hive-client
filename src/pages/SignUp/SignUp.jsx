@@ -8,131 +8,166 @@ import useAxiosPublic from '../../hooks/useAxiosPublic';
 import { useState } from 'react';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
 
+// Cloudinary configuration
+const uploadPreset = import.meta.env.VITE_CLOUDINARY_UPLOAD_PRESET;
+const cloudName = import.meta.env.VITE_CLOUDINARY_CLOUD_NAME;
+
 const SignUp = () => {
+    window.scrollTo(0, 0);
     const axiosPublic = useAxiosPublic();
     const { setUser, createUser, updateUserProfile } = useAuth();
     const [showPassWord, setShowPassword] = useState(false);
     const navigate = useNavigate();
-    const { register, handleSubmit, reset, formState: { errors }, } = useForm();
+    const { register, handleSubmit, reset, watch, formState: { errors } } = useForm();
 
     // Submit Form
-    const onSubmit = (data) => {
+    const onSubmit = async (data) => {
+        const imageFile = data.image[0];
 
-        createUser(data.email, data.password)
-            .then(result => {
-                const loggedUser = result.user;
-                // console.log("User created:", loggedUser);
-                setUser(loggedUser);
-                updateUserProfile(data.name, data.photo);
-                return updateUserProfile({ displayName: data.name, photoURL: data.photo });
-            })
-            .then(() => {
-                // console.log('user profile info updated')
-                const userInfo = {
-                    name: data.name,
-                    email: data.email,
-                    image: data.photo,
-                    phone: data.phone,
-                    role: 'student',
-                    joinedDate: new Date().toISOString()
-                };
-                axiosPublic.post('/users', userInfo)
-                    .then(res => {
-                        if (res.data.insertedId) {
-                            // console.log('user added to the database');
-                            reset();
-                            toast.success("Successfully Signed Up");
-                            navigate("/");
-                        }
-                    })
-            })
-            .catch(error => {
-                toast.error("Email has already been used.");
+        // Upload image to Cloudinary
+        const formData = new FormData();
+        formData.append("file", imageFile);
+        formData.append("upload_preset", uploadPreset);
+
+        try {
+            const cloudinaryRes = await fetch(`https://api.cloudinary.com/v1_1/${cloudName}/image/upload`, {
+                method: "POST",
+                body: formData,
             });
-    }
+
+            const cloudinaryData = await cloudinaryRes.json();
+
+            if (cloudinaryData.secure_url) {
+                // Create user with the uploaded image URL
+                createUser(data.email, data.password)
+                    .then((result) => {
+                        const loggedUser = result.user;
+                        setUser(loggedUser);
+                        return updateUserProfile({ displayName: data.name, photoURL: cloudinaryData.secure_url });
+                    })
+                    .then(() => {
+                        // Save user info to the database
+                        const userInfo = {
+                            name: data.name,
+                            email: data.email,
+                            image: cloudinaryData.secure_url,
+                            phone: data.phone,
+                            role: 'student',
+                            joinedDate: new Date().toISOString(),
+                        };
+                        axiosPublic.post('/users', userInfo)
+                            .then((res) => {
+                                if (res.data.insertedId) {
+                                    reset();
+                                    toast.success("Successfully Signed Up", {
+                                        position: "top-center"
+                                    });
+                                    navigate("/");
+                                }
+                            });
+                    })
+                    .catch((error) => {
+                        toast.error("Email has already been used.", {
+                            position: "top-center"
+                        });
+                    });
+            }
+        } catch (error) {
+            console.error("Error uploading image or signing up:", error);
+            toast.error("Something went wrong! Please try again.", {
+                position: "top-right"
+            });
+        }
+    };
 
     return (
         <div className='mt-10 mb-28 px-3'>
             {/* Helmet */}
             <Helmet>
-                <title>Sign Up | Bistro Boss Restaurant</title>
+                <title>Sign Up | LearnHive</title>
             </Helmet>
 
             {/* title */}
-            <h1 className="text-3xl font-bold text-center mb-5">Create a new account</h1>
+            <h1 className="text-2xl md:text-4xl font-extrabold text-center mb-5">Create a new account</h1>
 
             {/* Sign In Form */}
             <div className="card w-full max-w-xl mx-auto border shadow-xl pb-5">
-                <form onSubmit={handleSubmit(onSubmit)} className="card-body p-5">
+                <form onSubmit={handleSubmit(onSubmit)} className="card-body px-5 py-1.5">
                     {/* Name */}
                     <div className="form-control">
                         <label className="label font-semibold">
-                            <span className="label-text">Name</span>
+                            <span className="label-text">Name<span className="text-base text-red-500">*</span></span>
                         </label>
                         <input
                             type="text" {...register("name", { required: true })}
                             name="name"
-                            placeholder="Type here your name" className="input input-bordered border-black rounded-md" />
-                        {errors.name && <span className="text-sm text-red-600">Name is required</span>}
+                            placeholder="Type here your full name" className="input input-bordered border-black rounded-md focus:ring-2 focus:ring-blue-500 focus:outline-none" />
+                        {errors.name && <span className="text-sm text-red-600 mt-1">Name is required</span>}
                     </div>
+
                     {/* Email */}
                     <div className="form-control">
                         <label className="label font-semibold">
-                            <span className="label-text">Email</span>
+                            <span className="label-text">Email<span className="text-base text-red-500">*</span></span>
                         </label>
                         <input
                             type="email" {...register("email", { required: true })}
                             name="email"
-                            placeholder="Type here your email" className="input input-bordered border-black rounded-md" />
-                        {errors.email && <span className="text-sm text-red-600">Email is required</span>}
+                            placeholder="Type here your email" className="input input-bordered border-black rounded-md focus:ring-2 focus:ring-blue-500 focus:outline-none" />
+                        {errors.email && <span className="text-sm text-red-600 mt-1">Email is required</span>}
                     </div>
 
-                    {/* Phone Number */}
-                    <div className="form-control">
-                        <label className="label font-semibold">
-                            <span className="label-text">Phone Number</span>
-                        </label>
-                        <input
-                            type="tel"
-                            {...register("phone", {
-                                required: "Phone number is required",
-                                validate: {
-                                    minLength: (value) =>
-                                        value.length >= 6 || "Phone number must be at least 6 digits",
-                                    maxLength: (value) =>
-                                        value.length <= 11 || "Phone number cannot exceed 11 digits",
-                                },
-                                pattern: {
-                                    value: /^[0-9]+$/,
-                                    message: "Phone number can only contain digits",
-                                },
-                            })}
-                            name="phone"
-                            placeholder="Type here your phone number"
-                            className="input input-bordered border-black rounded-md"
-                        />
-                        {errors.phone && (
-                            <span className="text-sm text-red-600">{errors.phone.message}</span>
-                        )}
-                    </div>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-2 md:gap-5">
+                        {/* Phone Number */}
+                        <div className="form-control">
+                            <label className="label font-semibold">
+                                <span className="label-text">Phone Number<span className="text-base text-red-500">*</span></span>
+                            </label>
+                            <input
+                                type="tel"
+                                {...register("phone", {
+                                    required: "Phone number is required",
+                                    validate: {
+                                        minLength: (value) =>
+                                            value.length >= 6 || "Phone number must be at least 6 digits",
+                                        maxLength: (value) =>
+                                            value.length <= 11 || "Phone number cannot exceed 11 digits",
+                                    },
+                                    pattern: {
+                                        value: /^[0-9]+$/,
+                                        message: "Phone number can only contain digits",
+                                    },
+                                })}
+                                name="phone"
+                                placeholder="Type here your phone number"
+                                className="input input-bordered border-black rounded-md focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                            />
+                            {errors.phone && (
+                                <span className="text-sm text-red-600 mt-1">{errors.phone.message}</span>
+                            )}
+                        </div>
 
-                    {/* Photo URL */}
-                    <div className="form-control">
-                        <label className="label font-semibold">
-                            <span className="label-text">Photo URL</span>
-                        </label>
-                        <input
-                            type="photo" {...register("photo", { required: true })}
-                            name="photo"
-                            placeholder="Enter your photo URL"
-                            className="input input-bordered border-black rounded-md" />
-                        {errors.photo && <span className="text-sm text-red-600">Photo URL is required</span>}
+                        {/* Photo Upload */}
+                        <div className="form-control">
+                            <label className="label font-semibold">
+                                <span className="label-text">Profile Photo<span className="text-base text-red-500">*</span></span>
+                            </label>
+                            <input
+                                type="file"
+                                {...register("image", { required: "Profile photo is required" })}
+                                name="image"
+                                className="file-input file-input-bordered border-black rounded-md focus:outline-none"
+                            />
+                            {errors.image && (
+                                <span className="text-sm text-red-600 mt-1">{errors.image.message}</span>
+                            )}
+                        </div>
                     </div>
 
                     {/* Password */}
                     <div className="form-control relative">
                         <label className="label">
-                            <span className="label-text font-semibold">Password</span>
+                            <span className="label-text font-semibold">Password<span className="text-base text-red-500">*</span></span>
                         </label>
                         <input
                             type={showPassWord ? "text" : "password"}
@@ -144,21 +179,21 @@ const SignUp = () => {
                                 },
                                 pattern: {
                                     value: /^(?=.*[a-z])(?=.*[A-Z]).{6,}$/,
-                                    message: "Password must contain at least one uppercase, and one lowercase, and be at least 6 characters long",
+                                    message: "Password must contain at least one uppercase, one lowercase, and be at least 6 characters long",
                                 }
                             })}
                             name="password"
                             placeholder="Type here strong password"
-                            className="input input-bordered border-black rounded-md"
+                            className="input input-bordered border-black rounded-md focus:ring-2 focus:ring-blue-500 focus:outline-none"
                         />
                         <button
                             type="button"
                             onClick={() => setShowPassword(!showPassWord)}
-                            className="absolute right-4 top-[52px]"
+                            className="absolute right-4 top-[56px]"
                         >
                             {showPassWord ? <FaEyeSlash /> : <FaEye />}
                         </button>
-                        {errors.password && <span className="text-sm text-red-600">{errors.password.message}</span>}
+                        {errors.password && <span className="text-sm text-red-600 mt-1">{errors.password.message}</span>}
                     </div>
 
                     {/* Button */}
@@ -177,7 +212,9 @@ const SignUp = () => {
                 </form>
 
                 {/* Social Sign-In */}
-                <SocialLogin />
+                <div className="px-2 md:px-0 mt-3">
+                    <SocialLogin></SocialLogin>
+                </div>
             </div>
         </div>
     );
