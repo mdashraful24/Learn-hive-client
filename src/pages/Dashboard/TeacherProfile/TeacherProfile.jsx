@@ -57,7 +57,7 @@ const TeacherProfile = () => {
     return (
         <div className="container mx-auto my-5 px-3 rounded-xl">
             <Helmet>
-                <title>Profile | LearnHive</title>
+                <title>My Profile | LearnHive</title>
             </Helmet>
 
             {/* section starts */}

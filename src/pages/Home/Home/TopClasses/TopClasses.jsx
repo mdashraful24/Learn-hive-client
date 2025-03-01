@@ -33,7 +33,7 @@ const TopClasses = () => {
             ) : Array.isArray(classesData?.classes) && classesData.classes.length > 0 ? (
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                     {classesData.classes.map((classItem) => (
-                        <div key={classItem._id} className="rounded-xl shadow-lg md:border overflow-hidden p-3 md:p-5">
+                        <div key={classItem._id} className="rounded-xl shadow-lg md:border overflow-hidden p-3 md:p-5 flex flex-col h-full">
                             <div className="rounded-xl overflow-hidden mb-5">
                                 {/* Image */}
                                 <img
@@ -43,15 +43,17 @@ const TopClasses = () => {
                                 />
                             </div>
 
-                            {/* Card Content */}
-                            <div className="">
+                            {/* Card Content (Title, Description, Button) */}
+                            <div className="flex flex-col flex-grow">
                                 <h3 className="text-lg md:text-xl font-bold">{classItem.title}</h3>
-                                <p className="text-sm md:text-base mt-2 line-clamp-3">{classItem.description || "No description available."}</p>
+                                <p className="text-sm md:text-base mt-2 flex-grow">{classItem.description || "No description available."}</p>
 
-                                {/* "See More" Button */}
-                                <Link to={`/details/${classItem._id}`} className="inline-block mt-4 bg-blue-600 text-white px-4 py-2 rounded-lg text-sm font-semibold hover:bg-blue-700">
-                                    See More
-                                </Link>
+                                {/* Button Wrapper to Keep Alignment */}
+                                <div className="mt-10">
+                                    <Link to={`/details/${classItem._id}`} className="bg-blue-600 text-white px-4 py-2 rounded-lg text-sm font-semibold hover:bg-blue-700 self-start">
+                                        See More
+                                    </Link>
+                                </div>
                             </div>
                         </div>
                     ))}

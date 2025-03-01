@@ -12,7 +12,7 @@ const Welcome = () => {
     }, []);
 
     return (
-        <div className="my-20 md:my-28">
+        <div className="my-20 md:mt-32 md:mb-28">
             <section className="container mx-auto text-center px-2 md:px-3 lg:px-2.5">
                 <div
                     data-aos="fade-up"
