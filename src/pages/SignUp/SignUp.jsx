@@ -150,7 +150,7 @@ const SignUp = () => {
                         {/* Photo Upload */}
                         <div className="form-control">
                             <label className="label font-semibold">
-                                <span className="label-text">Profile Photo<span className="text-base text-red-500">*</span></span>
+                                <span className="label-text">Upload Profile Picture<span className="text-base text-red-500">*</span></span>
                             </label>
                             <input
                                 type="file"

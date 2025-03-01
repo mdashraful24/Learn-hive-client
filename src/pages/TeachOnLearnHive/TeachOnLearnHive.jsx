@@ -109,76 +109,47 @@ const TeachOnLearnHive = () => {
 
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <div className='grid grid-cols-1 md:grid-cols-2 gap-5'>
-                        <div className="form-group mb-4">
-                            <label className="block mb-2">Name</label>
+                        <div className="form-group">
+                            <label className="block font-medium mb-1">Name<span className="text-base text-red-500">*</span></label>
                             <input
                                 type="text"
                                 defaultValue={user?.displayName || ""}
                                 {...register("name", { required: true })}
-                                className="w-full p-3 border border-black rounded-md"
+                                className="w-full p-3 border border-black rounded-md focus:ring-1 focus:ring-blue-500 focus:outline-none"
                                 placeholder="Enter your name"
                             />
-                            {errors.name && <span className="text-red-600">Name is required</span>}
+                            {errors.name && <span className="text-red-600 mt-1">Name is required</span>}
                         </div>
 
-                        <div className="form-group mb-4">
-                            <label className="block mb-2">Email</label>
+                        <div className="form-group">
+                            <label className="block font-medium mb-1">Email</label>
                             <input
                                 type="email"
                                 value={user?.email || ""}
                                 readOnly
-                                className="w-full p-3 border border-black rounded-md cursor-not-allowed"
+                                className="w-full p-3 border border-black rounded-md cursor-not-allowed focus:ring-1 focus:ring-blue-500 focus:outline-none"
                             />
                         </div>
 
-                        <div className="form-group mb-4">
-                            <label className="block mb-2">Title <span className='text-red-500'>*</span></label>
+                        <div className="form-group">
+                            <label className="block font-medium mb-1">Title<span className="text-base text-red-500">*</span></label>
                             <input
                                 type="text"
                                 {...register("title", { required: true })}
-                                className="w-full p-3 border border-black rounded-md"
+                                className="w-full p-3 border border-black rounded-md focus:ring-1 focus:ring-blue-500 focus:outline-none"
                                 placeholder="Enter title"
                             />
-                            {errors.title && <span className="text-red-600">Title is required</span>}
+                            {errors.title && <span className="text-red-600 mt-1">Title is required</span>}
                         </div>
 
-{/* Choses option */}
-                        {/* <div className="form-group mb-4">
-                            <label className="block mb-2">Experience Level <span className='text-red-500'>*</span></label>
-                            <select defaultValue=""
-                                {...register("experience", { required: true })}
-                                className="w-full p-3 border border-black rounded-md"
-                            >
-                                <option value="" disabled>Select your experience level</option>
-                                <option value="beginner">Beginner</option>
-                                <option value="experienced">Experienced</option>
-                                <option value="mid-level">Mid-level</option>
-                            </select>
-                            {errors.experience && <span className="text-red-600">Experience level is required</span>}
-                        </div>
-
-                        <div className="form-group mb-4">
-                            <label className="block mb-2">Category <span className='text-red-500'>*</span></label>
-                            <select defaultValue=""
-                                {...register("category", { required: true })}
-                                className="w-full p-3 border border-black rounded-md"
-                            >
-                                <option value="" disabled>Select a category</option>
-                                <option value="web development">Web Development</option>
-                                <option value="digital marketing">Digital Marketing</option>
-                                <option value="graphic design">Graphic Design</option>
-                                <option value="data science">Data Science</option>
-                                <option value="cyber security">Cyber Security</option>
-                            </select>
-                            {errors.category && <span className="text-red-600">Category is required</span>}
-                        </div> */}
-                        <div className="form-group mb-4">
-                            <label className="block mb-2">Experience Level <span className='text-red-500'>*</span></label>
+                        {/* Choses option */}
+                        <div className="form-group">
+                            <label className="block font-medium mb-1">Experience Level<span className="text-base text-red-500">*</span></label>
                             <div className="relative">
                                 <select
                                     defaultValue=""
                                     {...register("experience", { required: true })}
-                                    className="w-full p-3 border border-black rounded-md appearance-none pr-10"
+                                    className="w-full p-3 border border-black rounded-md appearance-none pr-10 focus:ring-1 focus:ring-blue-500 focus:outline-none"
                                 >
                                     <option value="" disabled>Select your experience level</option>
                                     <option value="beginner">Beginner</option>
@@ -190,16 +161,16 @@ const TeachOnLearnHive = () => {
                                     className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-600 pointer-events-none"
                                 />
                             </div>
-                            {errors.experience && <span className="text-red-600">Experience level is required</span>}
+                            {errors.experience && <span className="text-red-600 mt-1">Experience level is required</span>}
                         </div>
 
                         <div className="form-group mb-4">
-                            <label className="block mb-2">Category <span className='text-red-500'>*</span></label>
+                            <label className="block font-medium mb-1">Category<span className="text-base text-red-500">*</span></label>
                             <div className="relative">
                                 <select
                                     defaultValue=""
                                     {...register("category", { required: true })}
-                                    className="w-full p-3 border border-black rounded-md appearance-none pr-10"
+                                    className="w-full p-3 border border-black rounded-md appearance-none pr-10 focus:ring-1 focus:ring-blue-500 focus:outline-none"
                                 >
                                     <option value="" disabled>Select a category</option>
                                     <option value="web development">Web Development</option>
@@ -213,12 +184,12 @@ const TeachOnLearnHive = () => {
                                     className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-600 pointer-events-none"
                                 />
                             </div>
-                            {errors.category && <span className="text-red-600">Category is required</span>}
+                            {errors.category && <span className="text-red-600 mt-1">Category is required</span>}
                         </div>
 
                         {/* Image Upload */}
                         <div className="form-group mb-4">
-                            <label className="block text-base mb-2">Upload Profile Picture</label>
+                            <label className="block font-medium mb-1">Upload Profile Picture<span className="text-base text-red-500">*</span></label>
                             <input
                                 type="file"
                                 accept="image/*"
@@ -226,24 +197,6 @@ const TeachOnLearnHive = () => {
                                 className="block text-sm file:mr-4 file:py-2 md:file:py-3.5 file:px-4 file:rounded-md file:border-0 file:bg-base-300"
                             />
                         </div>
-
-                        {/* <div className="form-group mb-4">
-                            <label className="block text-base mb-2">Upload Profile Picture</label>
-                            <input
-                                type="file"
-                                accept="image/*"
-                                id="file-upload"
-                                onChange={handleImageUpload}
-                                className="hidden"
-                            />
-                            <button
-                                type="button"
-                                onClick={() => document.getElementById('file-upload').click()}
-                                className="text-sm bg-blue-500 text-white px-4 py-2 rounded"
-                            >
-                                Choose File
-                            </button>
-                        </div> */}
                     </div>
 
                     <button
