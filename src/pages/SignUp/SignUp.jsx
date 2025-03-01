@@ -81,7 +81,7 @@ const SignUp = () => {
     };
 
     return (
-        <div className='mt-10 mb-28 px-3'>
+        <div className='mt-10 pb-16 px-3'>
             {/* Helmet */}
             <Helmet>
                 <title>Sign Up | LearnHive</title>
@@ -91,7 +91,7 @@ const SignUp = () => {
             <h1 className="text-2xl md:text-4xl font-extrabold text-center mb-5">Create a new account</h1>
 
             {/* Sign In Form */}
-            <div className="card w-full max-w-xl mx-auto border shadow-xl pb-5">
+            <div className="card w-full max-w-xl mx-auto border shadow-md pb-5">
                 <form onSubmit={handleSubmit(onSubmit)} className="card-body px-5 py-1.5">
                     {/* Name */}
                     <div className="form-control">
