@@ -175,7 +175,7 @@ const Dashboard = () => {
                     <div className='flex items-center gap-3'>
                         <div>
                             <img
-                                className="rounded-full w-12 h-12 object-cover"
+                                className="rounded-full w-8 h-8 object-cover"
                                 src={user?.photoURL || alt}
                                 alt="User profile"
                                 onClick={() => setProfileDropdownOpen(!profileDropdownOpen)}
@@ -191,12 +191,12 @@ const Dashboard = () => {
 
                 {/* Welcome message and dashboard stats */}
                 {showWelcome && (
-                    <div className="mt-14 md:mt-7 text-center px-5 overflow-auto">
+                    <div className="mt-7 text-center px-5 overflow-auto">
                         <div className='mb-10'>
-                            <h1 className="text-xl md:text-4xl font-bold mb-4">Welcome to the Dashboard!</h1>
+                            <h1 className="text-xl md:text-4xl font-extrabold mb-4">Welcome to the Dashboard!</h1>
                             <p>We're glad to have you here. Explore the features using the sidebar.</p>
                         </div>
-
+                        {/* Stat */}
                         <div>
                             <DashboardStats />
                         </div>
