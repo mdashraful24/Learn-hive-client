@@ -73,37 +73,37 @@ const DashboardStats = () => {
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-14">
                 {/* Users Card */}
                 <div className="bg-gradient-to-r from-blue-400 to-blue-600 text-white p-4 rounded-lg shadow-md flex justify-center items-center gap-5">
-                    <FaUsers className="text-4xl mb-2" />
+                    <FaUsers className="text-3xl md:text-4xl mb-2" />
                     <div>
-                        <h2 className="text-3xl font-bold">{stats.users}</h2>
-                        <p className="text-lg">Users</p>
+                        <h2 className="text-xl md:text-3xl font-bold">{stats.users}</h2>
+                        <p className="md:text-lg">Users</p>
                     </div>
                 </div>
 
                 {/* Classes Card */}
                 <div className="bg-gradient-to-r from-blue-500 to-blue-700 text-white p-4 rounded-lg shadow-md flex justify-center items-center gap-5">
-                    <MdClass className="text-4xl mb-2" />
+                    <MdClass className="text-3xl md:text-4xl mb-2" />
                     <div>
-                        <h2 className="text-3xl font-bold">{stats.classes}</h2>
-                        <p className="text-lg">Classes</p>
+                        <h2 className="text-xl md:text-3xl font-bold">{stats.classes}</h2>
+                        <p className="md:text-lg">Classes</p>
                     </div>
                 </div>
 
                 {/* Enrollment Card */}
                 <div className="bg-gradient-to-r from-blue-500 to-blue-600 text-white p-4 rounded-lg shadow-md flex justify-center items-center gap-5">
-                    <SiGoogleclassroom className="text-4xl mb-2" />
+                    <SiGoogleclassroom className="text-3xl md:text-4xl mb-2" />
                     <div>
-                        <h2 className="text-3xl font-bold">{stats.enrollment}</h2>
-                        <p className="text-lg">Enrollments</p>
+                        <h2 className="text-xl md:text-3xl font-bold">{stats.enrollment}</h2>
+                        <p className="md:text-lg">Enrollments</p>
                     </div>
                 </div>
 
                 {/* Reviews Card */}
                 <div className="bg-gradient-to-r from-blue-600 to-blue-500 text-white p-4 rounded-lg shadow-md flex justify-center items-center gap-5">
-                    <FaFileAlt className="text-4xl mb-2" />
+                    <FaFileAlt className="text-3xl md:text-4xl mb-2" />
                     <div>
-                        <h2 className="text-3xl font-bold">{stats.reviews}</h2>
-                        <p className="text-lg">Reviews</p>
+                        <h2 className="text-xl md:text-3xl font-bold">{stats.reviews}</h2>
+                        <p className="md:text-lg">Reviews</p>
                     </div>
                 </div>
             </div>
