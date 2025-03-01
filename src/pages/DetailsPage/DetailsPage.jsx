@@ -40,7 +40,7 @@ const DetailsPage = () => {
                         <strong>Enrollments:</strong> {totalEnrollment ?? 'N/A'}
                     </p>
                     <p className="font-bold mb-6">
-                        Total Price: <span className="text-blue-700">${price}</span>
+                        Total Price: <span className="text-blue-500">${price}</span>
                     </p>
 
                     {/* Pay Button */}

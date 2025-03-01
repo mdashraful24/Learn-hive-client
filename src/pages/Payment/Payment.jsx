@@ -32,7 +32,7 @@ const Payment = () => {
                         </p>
                         <p className="mb-4"><strong>Description:</strong> {description}</p>
                         <p className="font-bold">
-                            Total Price: <span className="text-blue-700">${price}</span>
+                            Total Price: <span className="text-blue-500">${price}</span>
                         </p>
                     </div>
                 </div>
