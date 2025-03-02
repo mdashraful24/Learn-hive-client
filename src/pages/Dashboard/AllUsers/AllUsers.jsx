@@ -10,16 +10,31 @@ const AllUsers = () => {
     const axiosSecure = useAxiosSecure();
     const [search, setSearch] = useState("");
     const [currentPage, setCurrentPage] = useState(0);
-    const itemsPerPage = 10;
+    const [itemsPerPage] = useState(10);
 
-    // Fetch users with search and pagination
+    // Fetch all users (without pagination parameters)
     const { data: users = [], refetch } = useQuery({
-        queryKey: ["users", search, currentPage],
+        queryKey: ["users", search],
         queryFn: async () => {
-            const res = await axiosSecure.get(`/users?search=${search}&page=${currentPage + 1}&limit=${itemsPerPage}`);
+            const res = await axiosSecure.get(`/users?search=${search}`);
             return res.data;
         }
     });
+
+    // Pagination logic
+    const pageCount = Math.ceil(users.length / itemsPerPage);
+    const startIndex = currentPage * itemsPerPage;
+    const endIndex = startIndex + itemsPerPage;
+    const currentUsers = users.slice(startIndex, endIndex);
+
+    // Calculate "Page X of Y" text
+    const currentPageNumber = currentPage + 1;
+    const paginationText = `Page ${currentPageNumber} of ${pageCount}`;
+
+    // Handle page change
+    const handlePageClick = (data) => {
+        setCurrentPage(data.selected);
+    };
 
     const handleMakeAdmin = (user) => {
         axiosSecure.patch(`/users/admin/${user._id}`)
@@ -62,19 +77,15 @@ const AllUsers = () => {
         });
     };
 
-    const handlePageChange = (selectedPage) => {
-        setCurrentPage(selectedPage.selected);
-    };
-
     return (
-        <div className="mt-10 lg:mt-5 mb-16">
+        <div className="mt-5 mb-10">
             <Helmet>
                 <title>Users | LearnHive</title>
             </Helmet>
 
-            <div className="p-5 md:p-8 shadow-lg rounded-lg border">
+            <div>
                 <div className="flex flex-col md:flex-row justify-between items-center gap-5 mb-5">
-                    <h2 className="text-3xl font-bold">Total users: {users.length}</h2>
+                    <h2 className="text-xl md:text-2xl font-extrabold">Total Users: {users.length}</h2>
                     <div className="relative w-full max-w-xs">
                         <input
                             type="text"
@@ -94,20 +105,20 @@ const AllUsers = () => {
                         {/* head */}
                         <thead>
                             <tr className="bg-blue-600 text-white text-center uppercase">
-                                <th className="py-5">#</th>
-                                <th className="py-5">Image</th>
-                                <th className="py-5">NAME</th>
-                                <th className="py-5">EMAIL</th>
-                                <th className="py-5">Role</th>
-                                <th className="py-5">Make admin</th>
-                                <th className="py-5">ACTION</th>
+                                <th className="py-4">#</th>
+                                <th className="py-4">Image</th>
+                                <th className="py-4">NAME</th>
+                                <th className="py-4">EMAIL</th>
+                                <th className="py-4">Role</th>
+                                <th className="py-4">Make admin</th>
+                                <th className="py-4">ACTION</th>
                             </tr>
                         </thead>
                         <tbody>
-                            {users.map((user, index) => (
+                            {currentUsers.map((user, index) => (
                                 <tr key={user._id} className="text-center hover:bg-base-200">
-                                    <td className="py-5 font-bold">{index + 1 + currentPage * itemsPerPage}</td>
-                                    <td className="py-5">
+                                    <td className="py-3 font-bold">{startIndex + index + 1}</td>
+                                    <td className="py-3">
                                         <div className="flex justify-center items-center gap-3">
                                             <div className="avatar">
                                                 <div className="h-12 w-12">
@@ -118,10 +129,10 @@ const AllUsers = () => {
                                             </div>
                                         </div>
                                     </td>
-                                    <td className="py-5">{user.name}</td>
-                                    <td className="py-5">{user.email}</td>
-                                    <td className="py-5">{user.role}</td>
-                                    <td className="py-5">
+                                    <td className="py-3">{user.name}</td>
+                                    <td className="py-3">{user.email}</td>
+                                    <td className="py-3">{user.role}</td>
+                                    <td className="py-3">
                                         <button
                                             className="btn btn-sm bg-blue-500 hover:bg-blue-600 text-white"
                                             onClick={() => handleMakeAdmin(user)}
@@ -130,7 +141,7 @@ const AllUsers = () => {
                                             <FaUsers />
                                         </button>
                                     </td>
-                                    <td className="py-5">
+                                    <td className="py-3">
                                         <button
                                             className="btn btn-sm bg-red-600 hover:bg-red-700 text-white"
                                             onClick={() => handleDeleteUser(user)}
@@ -143,34 +154,30 @@ const AllUsers = () => {
                         </tbody>
                     </table>
                 </div>
+
                 {/* Pagination */}
-                <div className="mt-10 flex flex-col md:flex-row justify-center md:justify-between items-center gap-3">
-                    <div>
-                        <span className="">Page {currentPage + 1} of {Math.ceil(users.length / itemsPerPage)}</span>
+                <div className="flex flex-col md:flex-row justify-between items-center gap-5 mt-7">
+                    {/* Left side: "Page X of Y" */}
+                    <div className="text-sm">
+                        {paginationText}
                     </div>
-                    <div>
-                        <ReactPaginate
-                            previousLabel={
-                                <button className="px-3 py-1 bg-base-300 hover:bg-base-300 rounded-l-lg">
-                                    Prev
-                                </button>
-                            }
-                            nextLabel={
-                                <button className="px-3 py-1 bg-base-300 hover:bg-base-300 rounded-r-lg">
-                                    Next
-                                </button>
-                            }
-                            pageCount={Math.ceil(users.length / itemsPerPage)}
-                            onPageChange={handlePageChange}
-                            containerClassName={"flex justify-center items-center space-x-2"}
-                            pageClassName={"px-3 py-1 mx-1 border cursor-pointer rounded-lg"}
-                            activeClassName={"bg-blue-600 text-white"}
-                            disabledClassName={"cursor-not-allowed"}
-                            pageLinkClassName="block text-center"
-                            previousLinkClassName="block text-center"
-                            nextLinkClassName="block text-center"
-                        />
-                    </div>
+
+                    {/* Right side: Pagination controls */}
+                    <ReactPaginate
+                        previousLabel={"Previous"}
+                        nextLabel={"Next"}
+                        breakLabel={"..."}
+                        pageCount={pageCount}
+                        marginPagesDisplayed={2}
+                        pageRangeDisplayed={5}
+                        onPageChange={handlePageClick}
+                        containerClassName={"pagination flex gap-2"}
+                        activeClassName={"active bg-blue-500 text-white"}
+                        pageClassName={"px-3 py-1 rounded-md"}
+                        previousClassName={"px-3 py-1 rounded-md bg-base-300"}
+                        nextClassName={"px-3 py-1 rounded-md bg-base-300"}
+                        disabledClassName={"opacity-50 cursor-not-allowed"}
+                    />
                 </div>
             </div>
         </div>

@@ -9,7 +9,7 @@ const OrderPage = () => {
     const { user } = useAuth();
     const axiosSecure = useAxiosSecure();
     const [currentPage, setCurrentPage] = useState(1);
-    const [itemsPerPage] = useState(10);
+    const [itemsPerPage] = useState(1);
 
     // Fetch orders for the logged-in student
     const { data: classes = [], isLoading, refetch } = useQuery({
@@ -106,9 +106,9 @@ const OrderPage = () => {
         );
 
         // Show ellipsis if current page is far from the first page
-        if (currentPage > maxButtons) {
-            paginationButtons.push(<span key="ellipsis-start">...</span>);
-        }
+        // if (currentPage > maxButtons) {
+        //     paginationButtons.push(<span key="ellipsis-start">...</span>);
+        // }
 
         // Show buttons around the current page
         for (let i = Math.max(2, currentPage - 2); i <= Math.min(totalPages - 1, currentPage + 2); i++) {
