@@ -4,6 +4,7 @@ import jsPDF from "jspdf";
 import autoTable from "jspdf-autotable";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import useAuth from "../../../hooks/useAuth";
+import { Helmet } from "react-helmet-async";
 
 const OrderPage = () => {
     const { user } = useAuth();
@@ -106,9 +107,9 @@ const OrderPage = () => {
         );
 
         // Show ellipsis if current page is far from the first page
-        // if (currentPage > maxButtons) {
-        //     paginationButtons.push(<span key="ellipsis-start">...</span>);
-        // }
+        if (currentPage > maxButtons) {
+            paginationButtons.push(<span key="ellipsis-start">...</span>);
+        }
 
         // Show buttons around the current page
         for (let i = Math.max(2, currentPage - 2); i <= Math.min(totalPages - 1, currentPage + 2); i++) {
@@ -148,6 +149,10 @@ const OrderPage = () => {
 
     return (
         <div className="mt-3">
+            <Helmet>
+                <title>Order Page | LearnHive</title>
+            </Helmet>
+
             <h2 className="text-xl md:text-3xl text-center font-extrabold mb-4">My Orders</h2>
 
             {isLoading ? (
