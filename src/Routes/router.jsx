@@ -31,6 +31,7 @@ import MyRequest from "../pages/Dashboard/MyRequest/MyRequest";
 import ApproveJob from "../pages/Dashboard/ApproveJob/ApproveJob";
 import AboutUs from "../pages/AboutUs/AboutUs";
 import AdminProfile from "../pages/Dashboard/AdminProfile/AdminProfile";
+import OrderPage from "../pages/Dashboard/OrderPage/OrderPage";
 
 
 export const router = createBrowserRouter([
@@ -144,6 +145,10 @@ export const router = createBrowserRouter([
             {
                 path: "my-request",
                 element: <StudentRoute><MyRequest></MyRequest></StudentRoute>
+            },
+            {
+                path: "order-page",
+                element: <StudentRoute><OrderPage></OrderPage></StudentRoute>
             }
         ]
     },
