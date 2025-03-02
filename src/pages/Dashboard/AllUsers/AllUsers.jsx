@@ -116,7 +116,7 @@ const AllUsers = () => {
                         </thead>
                         <tbody>
                             {currentUsers.map((user, index) => (
-                                <tr key={user._id} className="text-center hover:bg-base-200">
+                                <tr key={user._id} className="text-center hover:bg-base-200 border-b border-base-300">
                                     <td className="py-3 font-bold">{startIndex + index + 1}</td>
                                     <td className="py-3">
                                         <div className="flex justify-center items-center gap-3">

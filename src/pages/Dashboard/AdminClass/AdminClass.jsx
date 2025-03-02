@@ -143,7 +143,7 @@ const AdminClass = () => {
                         </thead>
                         <tbody>
                             {paginatedClasses?.map((classItem, index) => (
-                                <tr key={classItem._id} className="text-center hover:bg-base-200 border-b">
+                                <tr key={classItem._id} className="text-center hover:bg-base-200 border-b border-base-300">
                                     <td className="py-3 font-bold">{index + 1 + currentPage * itemsPerPage}</td>
                                     <td className="py-3">
                                         <img

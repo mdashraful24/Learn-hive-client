@@ -7,7 +7,7 @@ import { Helmet } from "react-helmet-async";
 const UsersProfile = () => {
     const axiosSecure = useAxiosSecure();
     const [currentPage, setCurrentPage] = useState(0);
-    const itemsPerPage = 10;
+    const itemsPerPage = 12;
 
     // Fetch all users
     const { data: users = [], isLoading } = useQuery({
@@ -34,7 +34,7 @@ const UsersProfile = () => {
     }
 
     return (
-        <div className="mt-6 mb-10">
+        <div className="mt-5 mb-10">
             <Helmet>
                 <title>Profile | LearnHive</title>
             </Helmet>
@@ -43,8 +43,8 @@ const UsersProfile = () => {
             <h2 className="text-2xl md:text-4xl font-extrabold text-center mb-4">Users Profile</h2>
 
             {/* card start */}
-            <div className="rounded-lg p-4">
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="rounded-lg">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                     {paginatedUsers.map(user => (
                         <div key={user._id} className="bg-base-200 p-6 rounded-lg shadow-md">
                             <div className="flex justify-center mb-4">
