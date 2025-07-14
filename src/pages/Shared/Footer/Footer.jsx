@@ -2,7 +2,7 @@ import logo from '../../../../src/assets/logo.png'
 
 const Footer = () => {
     return (
-        <div className="p-10 pb-5 bg-black">
+        <div className="p-10 pb-3 bg-black">
             <footer className="footer grid grid-cols-1 md:grid-cols-3 justify-items-center gap-8 max-w-5xl mx-auto">
                 <footer className="container mx-auto text-base-content flex flex-col justify-center items-center -mt-3">
                     <div className="flex items-center gap-2 text-gray-300">
