@@ -11,7 +11,7 @@ const Testimonials = () => {
     const [reviews, setReviews] = useState([]);
 
     useEffect(() => {
-        fetch("https://mw-assignments12-server.vercel.app/reviews")
+        fetch("http://localhost:5000/reviews")
             .then((res) => res.json())
             .then((data) => {
                 setReviews(data);
@@ -113,7 +113,7 @@ export default Testimonials;
 //     const [reviews, setReviews] = useState([]);
 
 //     useEffect(() => {
-//         fetch('https://mw-assignments12-server.vercel.app/reviews')
+//         fetch('http://localhost:5000/reviews')
 //             .then((res) => res.json())
 //             .then((data) => {
 //                 setReviews(data);
