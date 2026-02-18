@@ -54,12 +54,12 @@ export const router = createBrowserRouter([
             {
                 path: "details/:id",
                 element: <PrivateRoute><DetailsPage></DetailsPage></PrivateRoute>,
-                loader: ({ params }) => fetch(`http://localhost:5000/all-classes/${params.id}`)
+                loader: ({ params }) => fetch(`${import.meta.env.VITE_API_URL}/all-classes/${params.id}`)
             },
             {
                 path: "/payment/:id",
                 element: <PrivateRoute><Payment></Payment></PrivateRoute>,
-                loader: ({ params }) => fetch(`http://localhost:5000/all-classes/${params.id}`)
+                loader: ({ params }) => fetch(`${import.meta.env.VITE_API_URL}/all-classes/${params.id}`)
             },
             {
                 path: "tech",
@@ -95,7 +95,7 @@ export const router = createBrowserRouter([
             {
                 path: "progress/:id",
                 element: <AdminRoute><Progress></Progress></AdminRoute>,
-                loader: ({ params }) => fetch(`http://localhost:5000/details/${params.id}`)
+                loader: ({ params }) => fetch(`${import.meta.env.VITE_API_URL}/details/${params.id}`)
             },
             {
                 path: "users-profile",
@@ -118,7 +118,7 @@ export const router = createBrowserRouter([
             {
                 path: "my-class/:id",
                 element: <TeacherRoute><ClassDetails></ClassDetails></TeacherRoute>,
-                loader: ({ params }) => fetch(`http://localhost:5000/details/${params.id}`)
+                loader: ({ params }) => fetch(`${import.meta.env.VITE_API_URL}/details/${params.id}`)
             },
             {
                 path: "teacher-profile",
@@ -136,7 +136,7 @@ export const router = createBrowserRouter([
             {
                 path: "myEnroll-class/:id",
                 element: <StudentRoute><EnrolledClass></EnrolledClass></StudentRoute>,
-                loader: ({ params }) => fetch(`http://localhost:5000/all-classes/${params.id}`)
+                loader: ({ params }) => fetch(`${import.meta.env.VITE_API_URL}/all-classes/${params.id}`)
             },
             {
                 path: "student-profile",
