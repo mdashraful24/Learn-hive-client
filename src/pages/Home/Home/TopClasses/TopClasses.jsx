@@ -31,30 +31,36 @@ const TopClasses = () => {
                     <div className="w-12 h-12 border-4 border-blue-400 border-t-transparent rounded-full animate-spin"></div>
                 </div>
             ) : Array.isArray(classesData?.classes) && classesData.classes.length > 0 ? (
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
                     {classesData.classes.map((classItem) => (
-                        <div key={classItem._id} className="rounded-xl shadow-lg md:border overflow-hidden p-3 md:p-5 flex flex-col h-full">
-                            <div className="rounded-xl overflow-hidden mb-5">
-                                {/* Image */}
-                                <img
-                                    src={classItem.image || "/path/to/default-image.jpg"}
-                                    alt={classItem.title}
-                                    className="w-full h-64"
-                                />
-                            </div>
+                        <div key={classItem._id} className="rounded-xl shadow-lg overflow-hidden flex flex-col h-full group">
+                            {/* Image */}
+                            <img
+                                src={classItem.image || "/path/to/default-image.jpg"}
+                                alt={classItem.title}
+                                className="w-full h-60 object-cover transition duration-500 group-hover:scale-105"
+                            />
 
                             {/* Card Content (Title, Description, Button) */}
-                            <div className="flex flex-col flex-grow">
-                                <h3 className="text-lg md:text-xl font-bold">{classItem.title}</h3>
-                                <p className="text-sm md:text-base mt-2 flex-grow">{classItem.description || "No description available."}</p>
+                            <div className="flex flex-col flex-grow px-4 py-6">
+                                <h3 className="text-lg font-bold">{classItem.title}</h3>
+                                <p className="text-sm mt-2 flex-grow">{classItem.description || "No description available."}</p>
 
                                 {/* Button Wrapper to Keep Alignment */}
-                                <div className="flex justify-between items-center mt-8">
-                                    <span className="text-blue-600 font-bold text-lg">
-                                        ${classItem.price}
-                                    </span>
+                                <div className="flex justify-between items-center mt-5">
+                                    {/* Price */}
+                                    <p className="text-xl font-semibold">
+                                        <span>$</span>
+                                        <span className="text-blue-600 ml-1">
+                                            {classItem.price}
+                                        </span>
+                                    </p>
 
-                                    <Link to={`/details/${classItem._id}`} className="bg-blue-600 text-white px-4 py-2 rounded-lg text-sm font-semibold hover:bg-blue-700 self-start">
+                                    {/* Button */}
+                                    <Link
+                                        to={`/details/${classItem._id}`}
+                                        className="bg-blue-600 hover:bg-blue-700 text-white px-3 py-2 rounded-lg text-sm font-medium transition duration-300 shadow-sm hover:shadow-md"
+                                    >
                                         See More
                                     </Link>
                                 </div>
