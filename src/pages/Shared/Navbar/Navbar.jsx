@@ -87,7 +87,7 @@ const Navbar = () => {
 
     return (
         <div className="sticky top-0 z-50 bg-gradient-to-r from-blue-600 to-blue-500 shadow-lg">
-            <div className="navbar container mx-auto">
+            <div className="navbar gap-3 container mx-auto">
                 <div className="navbar-start">
                     <div className="dropdown">
                         <div
@@ -140,7 +140,7 @@ const Navbar = () => {
                     {user ? (
                         <div className="relative dropdown-container" ref={profileDropdownRef}>
                             <img
-                                className="rounded-full w-12 h-12 object-cover cursor-pointer hover:bg-gray-300 p-1"
+                                className="rounded-full w-10 h-10 object-cover cursor-pointer hover:bg-gray-300 p-0.5"
                                 src={user?.photoURL || alt}
                                 alt="User profile"
                                 referrerPolicy="no-referrer"
