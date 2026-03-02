@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Helmet } from "react-helmet-async";
-import { FaEye, FaEyeSlash } from "react-icons/fa";
+import { FaEye, FaEyeSlash, FaEnvelope, FaLock } from "react-icons/fa";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import useAuth from "../../hooks/useAuth";
@@ -51,87 +51,114 @@ const Login = () => {
                 <title>Sign In | LearnHive</title>
             </Helmet>
 
-            {/* title */}
-            <h1 className="text-2xl md:text-4xl font-extrabold text-center mb-5">Sign In</h1>
+            {/* Login Card */}
+            <div className="max-w-md mx-auto">
+                {/* Logo/Brand Section */}
+                <div className="text-center mb-8">
+                    <h2 className="text-4xl font-bold mb-2">
+                        Welcome Back
+                    </h2>
+                    <p>
+                        Sign in to continue your learning journey
+                    </p>
+                </div>
 
-            {/* Login Form */}
-            <div className="card w-full max-w-lg mx-auto border shadow-md pb-5">
-                <form onSubmit={handleSubmit(onSubmit)} className="card-body px-5 py-1.5">
+                {/* Main Card */}
+                <div className="bg-white rounded-2xl shadow-xl overflow-hidden">
+                    {/* Social Login - Top Section */}
+                    <div className="bg-gray-50 px-8 pt-6 pb-6 border-b border-gray-200">
+                        <h3 className="text-lg font-semibold text-gray-900 mb-4 text-center">
+                            Continue with
+                        </h3>
+                        <SocialLogin />
 
-                    {/* Email Field */}
-                    <div className="form-control">
-                        <label className="label font-semibold">
-                            <span className="label-text">Email</span>
-                        </label>
-                        <input
-                            type="email"
-                            placeholder="Type here"
-                            {...register("email", { required: "Email is required" })}
-                            className={`input input-bordered border-black rounded-md focus:ring-2 focus:ring-blue-500 focus:outline-none ${errors.email}`}
-                        />
-                        {errors.email && (
-                            <p className="text-sm text-red-600 mt-1">{errors.email.message}</p>
-                        )}
-                    </div>
-
-                    {/* Password Field */}
-                    <div className="form-control relative">
-                        <label className="label">
-                            <span className="label-text font-semibold">Password</span>
-                        </label>
-                        <input
-                            type={showPassWord ? "text" : "password"}
-                            placeholder="Enter your password"
-                            {...register("password", { required: "Password is required" })}
-                            className={`input input-bordered border-black rounded-md focus:ring-2 focus:ring-blue-500 focus:outline-none ${errors.password}`}
-                        />
-                        <button
-                            type="button"
-                            onClick={() => setShowPassword(!showPassWord)}
-                            className="absolute right-4 top-[52px]"
-                        >
-                            {showPassWord ? <FaEyeSlash /> : <FaEye />}
-                        </button>
-                        {errors.password && (
-                            <p className="text-sm text-red-600 mt-1">{errors.password.message}</p>
-                        )}
-                        {error.login && (
-                            <p className="label text-sm text-red-600 mt-1">{error.login}</p>
-                        )}
-                        <label className="label">
-                            <a href="#" className="text-sm label-text-alt link link-hover mt-1">
-                                Forgot password?
-                            </a>
-                        </label>
-                    </div>
-
-                    {/* Submit Button */}
-                    <div className="form-control mt-2">
-                        <button
-                            type="submit"
-                            className="btn bg-blue-600 hover:bg-blue-600 text-white rounded-md"
-                        >
-                            Sign In
-                        </button>
-                    </div>
-
-                    {/* Other Options */}
-                    <div className="text-center font-semibold mt-2">
-                        <p className="mb-1">
-                            <small>
-                                New here?{" "}Create a
-                                <span className="text-blue-500">
-                                    <Link to="/signUp"> New Account</Link>
+                        <div className="relative mt-6">
+                            {/* <div className="absolute inset-0 flex items-center">
+                                <div className="w-full border-t border-gray-300"></div>
+                            </div> */}
+                            <div className="relative flex justify-center text-sm">
+                                <span className="px-4 bg-gray-50 text-gray-600">
+                                    Or sign in with email
                                 </span>
-                            </small>
-                        </p>
-                        <small>Or sign in with</small>
+                            </div>
+                        </div>
                     </div>
-                </form>
 
-                {/* Social Sign-In */}
-                <div className="px-2 md:px-0 mt-3">
-                    <SocialLogin></SocialLogin>
+                    {/* Login Form */}
+                    <div className="px-8 py-6">
+                        <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
+                            {/* Email Field */}
+                            <div>
+                                <label className="block text-sm font-medium text-gray-900 mb-2">
+                                    Email Address
+                                </label>
+                                <div className="relative">
+                                    <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                        <FaEnvelope className="h-4 w-4 text-gray-400" />
+                                    </div>
+                                    <input
+                                        type="email"
+                                        placeholder="you@example.com"
+                                        {...register("email", { required: "Email is required" })}
+                                        className={`block w-full pl-9 pr-3 py-2 border ${errors.email ? 'border-red-500' : 'border-gray-300'} rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-150 ease-in-out`}
+                                    />
+                                </div>
+                                {errors.email && (
+                                    <p className="mt-1 text-sm text-red-600">{errors.email.message}</p>
+                                )}
+                            </div>
+
+                            {/* Password Field */}
+                            <div>
+                                <label className="block text-sm font-medium text-gray-900 mb-2">
+                                    Password
+                                </label>
+                                <div className="relative">
+                                    <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                        <FaLock className="h-4 w-4 text-gray-400" />
+                                    </div>
+                                    <input
+                                        type={showPassWord ? "text" : "password"}
+                                        placeholder="Enter your password"
+                                        {...register("password", { required: "Password is required" })}
+                                        className={`block w-full pl-9 pr-12 py-2 border ${errors.password ? 'border-red-500' : 'border-gray-300'} rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-150 ease-in-out`}
+                                    />
+                                    <button
+                                        type="button"
+                                        onClick={() => setShowPassword(!showPassWord)}
+                                        className="absolute inset-y-0 right-0 pr-3 flex items-center text-gray-400 hover:text-gray-600"
+                                    >
+                                        {showPassWord ? <FaEyeSlash className="h-5 w-5" /> : <FaEye className="h-5 w-5" />}
+                                    </button>
+                                </div>
+                                {errors.password && (
+                                    <p className="mt-1 text-sm text-red-600">{errors.password.message}</p>
+                                )}
+                                {error.login && (
+                                    <p className="mt-1 text-sm text-red-600">{error.login}</p>
+                                )}
+                            </div>
+
+                            {/* Submit Button */}
+                            <button
+                                type="submit"
+                                className="w-full bg-gradient-to-r from-blue-600 to-indigo-600 text-white py-2.5 px-4 rounded-lg font-semibold hover:from-blue-700 hover:to-indigo-700 focus:outline-none"
+                            >
+                                Sign In
+                            </button>
+
+                            {/* Sign Up Link */}
+                            <p className="text-center text-sm text-gray-600">
+                                Don't have an account?{" "}
+                                <Link
+                                    to="/signUp"
+                                    className="font-semibold text-blue-600 hover:text-blue-500 transition duration-150 ease-in-out"
+                                >
+                                    Create an account
+                                </Link>
+                            </p>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>

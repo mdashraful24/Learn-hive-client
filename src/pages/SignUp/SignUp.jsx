@@ -1,9 +1,8 @@
 import { Helmet } from "react-helmet-async";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import useAuth from '../../hooks/useAuth';
 import { useForm } from 'react-hook-form';
 import { toast } from 'react-toastify';
-import SocialLogin from '../../components/SocialLogin/SocialLogin';
 import useAxiosPublic from '../../hooks/useAxiosPublic';
 import { useState } from 'react';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
@@ -88,7 +87,8 @@ const SignUp = () => {
             </Helmet>
 
             {/* title */}
-            <h1 className="text-2xl md:text-4xl font-extrabold text-center mb-5">Create a new account</h1>
+            <h1 className="text-2xl md:text-4xl font-bold text-center mb-3">Sign Up your account</h1>
+            <p className="text-lg text-center mb-5">Please enter your details to sign Up.</p>
 
             {/* Sign In Form */}
             <div className="card w-full max-w-xl mx-auto border shadow-md pb-5">
@@ -101,7 +101,8 @@ const SignUp = () => {
                         <input
                             type="text" {...register("name", { required: true })}
                             name="name"
-                            placeholder="Type here your full name" className="input input-bordered border-black rounded-md focus:ring-2 focus:ring-blue-500 focus:outline-none" />
+                            placeholder="Type here your full name" 
+                            className={`block w-full px-3 py-2 border ${errors.email ? 'border-red-500' : 'border-gray-300'} rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-150 ease-in-out`} />
                         {errors.name && <span className="text-sm text-red-600 mt-1">Name is required</span>}
                     </div>
 
@@ -113,7 +114,8 @@ const SignUp = () => {
                         <input
                             type="email" {...register("email", { required: true })}
                             name="email"
-                            placeholder="Type here your email" className="input input-bordered border-black rounded-md focus:ring-2 focus:ring-blue-500 focus:outline-none" />
+                            placeholder="Type here your email" 
+                            className={`block w-full px-3 py-2 border ${errors.email ? 'border-red-500' : 'border-gray-300'} rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-150 ease-in-out`} />
                         {errors.email && <span className="text-sm text-red-600 mt-1">Email is required</span>}
                     </div>
 
@@ -140,7 +142,7 @@ const SignUp = () => {
                                 })}
                                 name="phone"
                                 placeholder="Type here your phone number"
-                                className="input input-bordered border-black rounded-md focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                                className={`block w-full px-3 py-2 border ${errors.email ? 'border-red-500' : 'border-gray-300'} rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-150 ease-in-out`}
                             />
                             {errors.phone && (
                                 <span className="text-sm text-red-600 mt-1">{errors.phone.message}</span>
@@ -156,7 +158,7 @@ const SignUp = () => {
                                 type="file"
                                 {...register("image", { required: "Profile photo is required" })}
                                 name="image"
-                                className="file-input file-input-bordered border-black rounded-md focus:outline-none"
+                                className="file-input file-input-bordered h-[2.5rem] border-black rounded-md focus:outline-none"
                             />
                             {errors.image && (
                                 <span className="text-sm text-red-600 mt-1">{errors.image.message}</span>
@@ -184,12 +186,12 @@ const SignUp = () => {
                             })}
                             name="password"
                             placeholder="Type here strong password"
-                            className="input input-bordered border-black rounded-md focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                            className={`block w-full px-3 py-2 border ${errors.email ? 'border-red-500' : 'border-gray-300'} rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-150 ease-in-out`}
                         />
                         <button
                             type="button"
                             onClick={() => setShowPassword(!showPassWord)}
-                            className="absolute right-4 top-[56px]"
+                            className="absolute right-4 top-[53px]"
                         >
                             {showPassWord ? <FaEyeSlash /> : <FaEye />}
                         </button>
@@ -203,18 +205,7 @@ const SignUp = () => {
                             type="submit"
                             value="Sign Up" />
                     </div>
-
-                    {/* Other Options */}
-                    <div className='text-center font-semibold mt-2'>
-                        <p className='mb-1'><small>Already Signed Up? Go to <span className='text-blue-500 mb-2'><Link to="/login">log in</Link></span></small></p>
-                        <small>Or sign in with</small>
-                    </div>
                 </form>
-
-                {/* Social Sign-In */}
-                <div className="px-2 md:px-0 mt-3">
-                    <SocialLogin></SocialLogin>
-                </div>
             </div>
         </div>
     );

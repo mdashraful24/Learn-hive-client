@@ -39,12 +39,12 @@ const Banner = () => {
             )}
         >
             {[img1, img2, img3, img4].map((image, index) => (
-                <div key={index} className="relative">
+                <div key={index} className="relative lg:h-[calc(100vh-4rem)]">
                     {/* Image */}
                     <img
                         src={image}
                         alt={`Slide ${index + 1}`}
-                        className="w-full h-[250px] md:h-[500px] lg:h-[770px]"
+                        className="w-full h-[250px] md:h-[450px] lg:h-full"
                     />
                     {/* Overlay */}
                     <div className="absolute inset-0 bg-black bg-opacity-10"></div>
