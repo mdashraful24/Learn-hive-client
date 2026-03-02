@@ -66,6 +66,7 @@ const StudentProfile = () => {
                     <img
                         src={userInfo.image || "https://via.placeholder.com/150"}
                         alt={userInfo.name || "User"}
+                        referrerPolicy="no-referrer"
                         className="w-24 h-24 md:w-32 md:h-32 object-cover rounded-full border-2 shadow-lg"
                     />
                 </div>

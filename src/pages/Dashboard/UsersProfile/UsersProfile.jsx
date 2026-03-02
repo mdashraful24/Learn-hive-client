@@ -49,7 +49,11 @@ const UsersProfile = () => {
                         <div key={user._id} className="bg-base-200 p-6 rounded-lg shadow-md">
                             <div className="flex justify-center mb-4">
                                 <div>
-                                    <img src={user.image} alt={user.name} className="w-24 h-24 object-cover rounded-full border-2 shadow-lg" />
+                                    <img src={user.image}
+                                        alt={user.name}
+                                        referrerPolicy="no-referrer"
+                                        className="w-24 h-24 object-cover rounded-full border-2 shadow-lg"
+                                    />
                                 </div>
                             </div>
                             <h3 className="text-xl font-bold text-center mb-2">{user.name}</h3>
@@ -72,7 +76,7 @@ const UsersProfile = () => {
                         </div>
                     ))}
                 </div>
-                
+
                 {/* Pagination */}
                 <div className="mt-10 flex flex-col md:flex-row justify-center md:justify-between items-center gap-3">
                     <div>
