@@ -41,7 +41,7 @@ const SocialLogin = () => {
         <div className="text-center w-11/12 mx-auto">
             <button
                 onClick={handleGoogleSignIn}
-                className="btn btn-outline hover:bg-white w-full hover:text-black font-medium border-blue-600"
+                className="btn btn-outline w-full text-gray-900 font-medium border-blue-600"
             >
                 <img src={google} alt="google" className="w-5 h-5" />
                 Sign in with Google

@@ -7,10 +7,10 @@ export function DarkMode() {
     return (
         <div>
             <button
-                className="ml-2 p-2 rounded-full bg-gray-300 dark:bg-gray-700 text-black dark:text-white transition-all"
+                className="ml-4 p-1.5 rounded-full bg-gray-300 dark:bg-gray-700 text-black dark:text-white transition-all"
                 onClick={toggleTheme}
             >
-                {theme === "dark" ? <FaSun size={22} /> : <FaMoon size={22} />}
+                {theme === "dark" ? <FaSun size={20} /> : <FaMoon size={20} />}
             </button>
         </div>
     );
