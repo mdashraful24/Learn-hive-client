@@ -38,11 +38,15 @@ const DetailsPage = () => {
                     <p className="text-justify mb-4">
                         <strong>Description:</strong> {description}
                     </p>
-                    <p className="mb-4">
+                    <p className="mb-2">
                         <strong>Enrollments:</strong> {totalEnrollment ?? 'N/A'}
                     </p>
-                    <p className="font-bold">
-                        Total Price: <span className="text-blue-500">${price}</span>
+                    <p className="font-semibold">
+                        Price:
+                        <span className="ml-1.5">$</span>
+                        <span className="text-blue-600 ml-1">
+                            {price}
+                        </span>
                     </p>
 
                     {/* Pay Button */}

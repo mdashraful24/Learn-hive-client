@@ -117,9 +117,12 @@ const AllClasses = () => {
                                         </p>
 
                                         <div className="flex justify-between items-center mt-auto">
-                                            <span className="text-blue-600 font-bold text-lg">
-                                                ${classItem.price}
-                                            </span>
+                                            <p className="text-xl font-semibold">
+                                                <span>$</span>
+                                                <span className="text-blue-600 ml-1">
+                                                    {classItem.price}
+                                                </span>
+                                            </p>
 
                                             <Link to={`/details/${classItem._id}`}>
                                                 <button className="bg-blue-600 hover:bg-blue-700 text-white px-3 py-2 rounded-lg transition">
