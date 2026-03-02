@@ -2,16 +2,18 @@ import { useLoaderData } from "react-router-dom";
 import { Link } from "react-router-dom";
 import useCount from "../../hooks/useCount";
 import { Helmet } from "react-helmet-async";
+import useStudent from "../../hooks/useStudent";
 
 const DetailsPage = () => {
     // Scroll to the top when the component mounts
     window.scrollTo(0, 0);
 
+    const [isStudent] = useStudent();
     const { totalEnrollment } = useCount();
     const { _id, title, name, price, description, image } = useLoaderData();
 
     return (
-        <div className="md:max-w-3xl lg:max-w-2xl mx-auto px-2 md:px-3 lg:px-2.5 pt-10 pb-20">
+        <div className="min-h-screen md:max-w-3xl lg:max-w-2xl mx-auto px-2 md:px-3 lg:px-2.5 pt-10 pb-20">
             <Helmet>
                 <title>Class Details | LearnHive</title>
             </Helmet>
@@ -39,17 +41,19 @@ const DetailsPage = () => {
                     <p className="mb-4">
                         <strong>Enrollments:</strong> {totalEnrollment ?? 'N/A'}
                     </p>
-                    <p className="font-bold mb-6">
+                    <p className="font-bold">
                         Total Price: <span className="text-blue-500">${price}</span>
                     </p>
 
                     {/* Pay Button */}
-                    <Link
-                        to={`/payment/${_id}`}
-                        className="btn btn-primary w-full bg-blue-500 hover:bg-blue-600 text-white rounded-lg"
-                    >
-                        Pay Now
-                    </Link>
+                    {isStudent &&
+                        <Link
+                            to={`/payment/${_id}`}
+                            className="btn btn-primary w-full bg-blue-500 hover:bg-blue-600 text-white rounded-lg mt-6"
+                        >
+                            Pay Now
+                        </Link>
+                    }
                 </div>
             </div>
         </div>
