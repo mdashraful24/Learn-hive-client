@@ -49,7 +49,11 @@ const TopClasses = () => {
                                 <p className="text-sm md:text-base mt-2 flex-grow">{classItem.description || "No description available."}</p>
 
                                 {/* Button Wrapper to Keep Alignment */}
-                                <div className="mt-10">
+                                <div className="flex justify-between items-center mt-8">
+                                    <span className="text-blue-600 font-bold text-lg">
+                                        ${classItem.price}
+                                    </span>
+
                                     <Link to={`/details/${classItem._id}`} className="bg-blue-600 text-white px-4 py-2 rounded-lg text-sm font-semibold hover:bg-blue-700 self-start">
                                         See More
                                     </Link>
