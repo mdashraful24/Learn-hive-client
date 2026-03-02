@@ -184,6 +184,7 @@ const Dashboard = () => {
                                 className="rounded-full w-8 h-8 object-cover"
                                 src={user?.photoURL || alt}
                                 alt="User profile"
+                                referrerPolicy="no-referrer"
                                 onClick={() => setProfileDropdownOpen(!profileDropdownOpen)}
                             />
                         </div>

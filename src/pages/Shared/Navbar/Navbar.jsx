@@ -143,6 +143,7 @@ const Navbar = () => {
                                 className="rounded-full w-12 h-12 object-cover cursor-pointer hover:bg-gray-300 p-1"
                                 src={user?.photoURL || alt}
                                 alt="User profile"
+                                referrerPolicy="no-referrer"
                                 onClick={() => setProfileDropdownOpen(!profileDropdownOpen)}
                             />
                             {profileDropdownOpen && (

@@ -124,7 +124,9 @@ const AllUsers = () => {
                                                 <div className="h-12 w-12">
                                                     <img
                                                         src={user.image}
-                                                        alt={user.name} />
+                                                        alt={user.name}
+                                                        referrerPolicy="no-referrer"
+                                                    />
                                                 </div>
                                             </div>
                                         </div>
