@@ -13,6 +13,7 @@ import { Helmet } from 'react-helmet-async';
 import DashboardStats from '../pages/Dashboard/DashboardStats/DashboardStats';
 import DashboardDark from '../pages/Dashboard/DashboardDark/DashboardDark';
 import useAuth from '../hooks/useAuth';
+import DarkMode from '../pages/Shared/DarkMode/DarkMode';
 
 const Dashboard = () => {
     const { user } = useAuth();
@@ -181,7 +182,7 @@ const Dashboard = () => {
                     <div className='flex items-center gap-3'>
                         <div>
                             <img
-                                className="rounded-full w-8 h-8 object-cover"
+                                className="rounded-full w-9 h-9 object-cover"
                                 src={user?.photoURL || alt}
                                 alt="User profile"
                                 referrerPolicy="no-referrer"
@@ -191,7 +192,7 @@ const Dashboard = () => {
 
                         <div className="flex items-center">
                             {/* Dark Mode Toggle */}
-                            <DashboardDark />
+                            <DarkMode />
                         </div>
                     </div>
                 </div>
