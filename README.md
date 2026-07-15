@@ -1,4 +1,4 @@
-# 📚 LearnHive - Interactive MERN Educational Platform
+# 📚 LearnHive - Online Educational Platform
 
 [![React](https://img.shields.io/badge/React-19-blue.svg?style=flat&logo=react)](https://react.dev/)
 [![Vite](https://img.shields.io/badge/Vite-6-purple.svg?style=flat&logo=vite)](https://vitejs.dev/)
@@ -10,14 +10,11 @@
 
 **LearnHive** is a MERN stack education and course management platform designed to connect tutors, student learners, and educational administrators in a modern, interactive workspace. It streamlines course enrollment, schedules classes, facilitates secure payments, hosts educational materials, and provides dashboard controls customized for each user role.
 
-<!-- --- -->
+<div align="center">
+  <img height="500" src="https://drive.google.com/uc?export=view&id=19I04j34fJMtb7L8URSBoHSdbyGTfIScg" />
+</div>
 
-<!-- ## 🖼️ Application Preview -->
-
-![LearnHive Banner](https://i.ibb.co.com/wZVSgzSt/Screenshot-27.png)
-<!-- *LearnHive Home Banner & Course Finder Interface* -->
-
-<!-- --- -->
+---
 
 ## 🌍 Relevant Links & Live Demos
 
