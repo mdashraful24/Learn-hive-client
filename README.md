@@ -10,14 +10,14 @@
 
 **LearnHive** is a MERN stack education and course management platform designed to connect tutors, student learners, and educational administrators in a modern, interactive workspace. It streamlines course enrollment, schedules classes, facilitates secure payments, hosts educational materials, and provides dashboard controls customized for each user role.
 
----
+<!-- --- -->
 
-## 🖼️ Application Preview
+<!-- ## 🖼️ Application Preview -->
 
 ![LearnHive Banner](https://i.ibb.co.com/wZVSgzSt/Screenshot-27.png)
-*LearnHive Home Banner & Course Finder Interface*
+<!-- *LearnHive Home Banner & Course Finder Interface* -->
 
----
+<!-- --- -->
 
 ## 🌍 Relevant Links & Live Demos
 
