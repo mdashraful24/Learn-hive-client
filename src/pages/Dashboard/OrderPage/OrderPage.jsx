@@ -156,11 +156,11 @@ const OrderPage = () => {
             <h2 className="text-xl md:text-3xl text-center font-extrabold mb-4">My Orders</h2>
 
             {isLoading ? (
-                <div className="flex min-h-screen justify-center items-center">
+                <div className="flex min-h-[70vh] justify-center items-center">
                     <div className="w-12 h-12 border-4 border-blue-400 border-t-transparent rounded-full animate-spin"></div>
                 </div>
             ) : classes.length === 0 ? (
-                <div className="flex min-h-screen justify-center items-center">
+                <div className="flex min-h-[70vh] justify-center items-center">
                     <p>No orders found.</p>
                 </div>
             ) : (
