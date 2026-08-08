@@ -16,7 +16,7 @@ const Partners = () => {
     const partnerLogos = [img1, img2, img3, img4, img5, img6, img7, img8, img9, img10, img11, img12];
 
     return (
-        <div className='container mx-auto mb-20 md:mb-28 px-2 md:px-3 lg:px-2.5'>
+        <div className='container mx-auto mb-20 md:mb-24 px-2 md:px-3 lg:px-2.5'>
             <h2 className="text-2xl md:text-4xl text-center font-extrabold mb-5">Our Partners</h2>
             <p className="md:text-lg text-center lg:max-w-3xl mx-auto mb-14 px-3">
                 We’re proud to collaborate with these exceptional organizations to make learning accessible, efficient, and impactful. Together, we’re creating a brighter future for all learners.

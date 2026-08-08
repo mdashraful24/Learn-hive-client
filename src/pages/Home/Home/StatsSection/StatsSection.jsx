@@ -6,7 +6,7 @@ const StatsSection = () => {
     const { totalUsers, totalClasses, totalEnrollment, totalTeachers } = useCount();
 
     return (
-        <div className='mb-20 md:mb-28 px-2 md:px-3 lg:px-2.5'>
+        <div className='mb-20 md:mb-24 px-2 md:px-3 lg:px-2.5'>
             <div className="text-center mb-8 md:mb-14">
                 <h2 className="text-2xl md:text-4xl font-extrabold">Website Overview</h2>
                 <p className="mt-4 md:text-lg">
