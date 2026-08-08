@@ -8,23 +8,44 @@ import { GoSidebarExpand } from "react-icons/go";
 import useAdmin from '../hooks/useAdmin';
 import useTeacher from '../hooks/useTeacher';
 import useStudent from '../hooks/useStudent';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Helmet } from 'react-helmet-async';
 import DashboardStats from '../pages/Dashboard/DashboardStats/DashboardStats';
 import DashboardDark from '../pages/Dashboard/DashboardDark/DashboardDark';
 import useAuth from '../hooks/useAuth';
 import DarkMode from '../pages/Shared/DarkMode/DarkMode';
+import { toast } from 'react-toastify';
+import { useNavigate } from 'react-router-dom';
+import alt from '../assets/auth/profile.png';
+import useAxiosSecure from '../hooks/useAxiosSecure';
+import { useQuery } from '@tanstack/react-query';
 
 const Dashboard = () => {
-    const { user } = useAuth();
+    const { user, logOut } = useAuth();
+    const axiosSecure = useAxiosSecure();
     const [isAdmin] = useAdmin();
     const [isTeacher] = useTeacher();
     const [isStudent] = useStudent();
     const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
     const [isSidebarOpen, setIsSidebarOpen] = useState(false);
     const [showWelcome, setShowWelcome] = useState(true);
+    const [profileDropdownOpen, setProfileDropdownOpen] = useState(false);
+    const profileDropdownRef = useRef(null);
 
     const location = useLocation();
+    const navigate = useNavigate();
+
+    const { data: userInfo, isLoading, error } = useQuery({
+        queryKey: ["user", user?.email],
+        queryFn: async () => {
+            if (user?.email) {
+                const res = await axiosSecure.get(`/users/${user.email}`);
+                return res.data;
+            }
+            return null;
+        },
+        enabled: !!user?.email,
+    });
 
     useEffect(() => {
         if (location.pathname !== "/dashboard") {
@@ -32,12 +53,38 @@ const Dashboard = () => {
         }
     }, [location]);
 
+    // Close profile dropdown when clicking outside
+    useEffect(() => {
+        const handleClickOutside = (event) => {
+            if (profileDropdownRef.current && !profileDropdownRef.current.contains(event.target)) {
+                setProfileDropdownOpen(false);
+            }
+        };
+        document.addEventListener("mousedown", handleClickOutside);
+        return () => {
+            document.removeEventListener("mousedown", handleClickOutside);
+        };
+    }, []);
+
     const toggleSidebar = () => {
         setIsSidebarOpen(!isSidebarOpen);
     };
 
     const toggleCollapseSidebar = () => {
         setIsSidebarCollapsed(!isSidebarCollapsed);
+    };
+
+    const handleSignOut = () => {
+        logOut()
+            .then(() => {
+                toast.success("User signed out successfully", {
+                    position: "top-right",
+                });
+                navigate("/");
+            })
+            .catch((error) => {
+                toast.error(error.message);
+            });
     };
 
     return (
@@ -180,14 +227,55 @@ const Dashboard = () => {
                     </div>
 
                     <div className='flex items-center gap-3'>
-                        <div>
+                        {/* User Profile Dropdown */}
+                        <div className="relative" ref={profileDropdownRef}>
                             <img
-                                className="rounded-full w-9 h-9 object-cover"
+                                className="rounded-full w-9 h-9 object-cover cursor-pointer border-2 border-white hover:border-gray-300 transition-all duration-200"
                                 src={user?.photoURL || alt}
                                 alt="User profile"
                                 referrerPolicy="no-referrer"
                                 onClick={() => setProfileDropdownOpen(!profileDropdownOpen)}
                             />
+
+                            {/* Profile Dropdown */}
+                            {profileDropdownOpen && (
+                                <div className="absolute -right-5 mt-2 w-72 shadow-xl z-50 bg-base-200 rounded-lg overflow-hidden">
+                                    <div className="flex items-center gap-3 p-3">
+                                        <img
+                                            className="rounded-full w-12 h-12 object-cover border-2 border-gray-300"
+                                            src={user?.photoURL || alt}
+                                            alt="User profile"
+                                            referrerPolicy="no-referrer"
+                                        />
+                                        <div className="flex-1 min-w-0">
+                                            <p className="text-sm font-semibold truncate">
+                                                {user?.displayName || "User"}
+                                            </p>
+                                            <p className="text-sm truncate">
+                                                {user?.email || "No email"}
+                                            </p>
+                                            <span className="text-xs font-medium text-blue-500 uppercase">
+                                                {isLoading ? (
+                                                    <span className="inline-block w-12 h-3 animate-pulse rounded"></span>
+                                                ) : (
+                                                    userInfo?.role || "Student"
+                                                )}
+                                            </span>
+                                        </div>
+                                    </div>
+
+                                    {/* Logout Button */}
+                                    <button
+                                        className="w-full px-4 py-2.5 text-sm font-medium text-red-600 hover:bg-red-200 hover:text-red-700 transition-colors duration-150 flex items-center gap-2"
+                                        onClick={handleSignOut}
+                                    >
+                                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
+                                        </svg>
+                                        Logout
+                                    </button>
+                                </div>
+                            )}
                         </div>
 
                         <div className="flex items-center">

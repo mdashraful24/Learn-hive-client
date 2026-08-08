@@ -1,5 +1,5 @@
 import { Fade } from 'react-awesome-reveal';
-import inspire from '../../../assets/home/inspire.jpg'
+import inspire from '../../../../assets/home/inspire.jpg'
 
 const InspireTeachers = () => {
     return (

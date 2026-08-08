@@ -1,19 +1,20 @@
 import { Helmet } from "react-helmet-async";
-import InspireTeachers from "../InspireTeachers/InspireTeachers";
-import KeyFeatures from "../KeyFeatures/KeyFeatures";
+import InspireTeachers from "./InspireTeachers/InspireTeachers";
+import KeyFeatures from "./KeyFeatures/KeyFeatures";
 import Banner from "./Banner/Banner";
 import Partners from "./Partners/Partners";
 import StatsSection from "./StatsSection/StatsSection";
 import Testimonials from "./Testimonials/Testimonials";
 // import Highlight from "./Highlight/Highlight";
 import Welcome from "./Welcome/Welcome";
-import Contacts from "../Contacts/Contacts";
+// import Contacts from "../../Contacts/Contacts";
 import TopClasses from "./TopClasses/TopClasses";
+import FAQ from "./FAQ/FAQ";
 
 const Home = () => {
     // Scroll to the top when the component mounts
     window.scrollTo(0, 0);
-    
+
     return (
         <div>
             <Helmet>
@@ -24,12 +25,13 @@ const Home = () => {
             <Welcome></Welcome>
             {/* <Highlight></Highlight> */}
             <TopClasses></TopClasses>
-            <StatsSection></StatsSection>
-            <Partners></Partners>
-            <InspireTeachers></InspireTeachers>
             <KeyFeatures></KeyFeatures>
+            <StatsSection></StatsSection>
+            <InspireTeachers></InspireTeachers>
+            <Partners></Partners>
             <Testimonials></Testimonials>
-            <Contacts></Contacts>
+            <FAQ></FAQ>
+            {/* <Contacts></Contacts> */}
         </div>
     );
 };

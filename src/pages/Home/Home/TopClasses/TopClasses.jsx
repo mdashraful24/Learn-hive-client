@@ -13,10 +13,6 @@ const TopClasses = () => {
         },
     });
 
-    if (isError) {
-        return <div className="text-lg text-center mb-16">Error loading classes</div>;
-    }
-
     return (
         <div className="container mx-auto mb-20 md:mb-28 px-2 md:px-3 lg:px-2.5">
             <div className="mb-10">
@@ -29,6 +25,10 @@ const TopClasses = () => {
             {isLoading ? (
                 <div className="flex justify-center items-center w-full h-72">
                     <div className="w-12 h-12 border-4 border-blue-400 border-t-transparent rounded-full animate-spin"></div>
+                </div>
+            ) : isError ? (
+                <div className="text-red-600 bg-red-100 max-w-sm md:max-w-lg mx-auto text-center py-3 text-lg font-semibold rounded-lg">
+                    Error loading classes. Please try again later.
                 </div>
             ) : Array.isArray(classesData?.classes) && classesData.classes.length > 0 ? (
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
@@ -69,7 +69,9 @@ const TopClasses = () => {
                     ))}
                 </div>
             ) : (
-                <div className="text-center py-12">No classes available</div>
+                <div className="text-blue-600 bg-blue-100 max-w-sm md:max-w-xl mx-auto text-center py-3 text-lg font-semibold rounded-lg mb-16">
+                    No classes available at the moment. <br className="block md:hidden" /> Please, check back later!
+                </div>
             )}
         </div>
     );
