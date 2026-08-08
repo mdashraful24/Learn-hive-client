@@ -185,7 +185,7 @@ const TeacherRequest = () => {
                         </table>
                     </div>
                 ) : (
-                    <div className="text-center">
+                    <div className="text-center py-20">
                         <h2 className="text-lg md:text-3xl font-bold">All Teacher Requests Approved!</h2>
                         <p className="mt-2">All requests have been approved, and they are now teachers.</p>
                     </div>

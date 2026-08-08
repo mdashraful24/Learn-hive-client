@@ -29,7 +29,7 @@ const Contacts = () => {
                 },
                 (error) => {
                     setStatus("Failed to send message. Please try again.");
-                    console.error("Email sending error:", error);
+                    // console.error("Email sending error:", error);
                 }
             )
             .finally(() => {

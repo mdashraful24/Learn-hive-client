@@ -1,47 +1,10 @@
-import React, { useEffect, useRef, useState } from "react";
+import React from "react";
 
 const Welcome = () => {
-    const sectionRef = useRef(null);
-    const [isVisible, setIsVisible] = useState(false);
-
-    useEffect(() => {
-        const element = sectionRef.current;
-
-        if (!element) return;
-
-        const observer = new IntersectionObserver(
-            ([entry]) => {
-                if (entry.isIntersecting) {
-                    setIsVisible(true);
-                    observer.unobserve(element);
-                }
-            },
-            {
-                threshold: 0.1,
-            }
-        );
-
-        observer.observe(element);
-
-        return () => observer.disconnect();
-    }, []);
-
     return (
         <section className="my-20 px-4 md:my-24">
             <div className="container mx-auto">
-                <div
-                    ref={sectionRef}
-                    className={`
-                        relative overflow-hidden rounded-3xl
-                        px-6 py-12 text-center
-                        shadow-lg
-                        transition-all duration-1000 ease-out
-                        md:px-12 md:py-16 border
-                        ${isVisible
-                            ? "translate-y-0 opacity-100"
-                            : "translate-y-10 opacity-0"
-                        }
-                    `}
+                <div className="relative overflow-hidden rounded-3xl px-6 py-12 text-center shadow-md md:px-12 md:py-16 bg-base-200"
                 >
                     {/* Background decoration */}
                     <div className="absolute -right-20 -top-20 h-56 w-56 rounded-full bg-blue-200/40 blur-3xl" />
@@ -56,9 +19,7 @@ const Welcome = () => {
 
                         <h2 className="mb-5 text-3xl font-extrabold tracking-tight md:text-4xl lg:text-5xl">
                             Welcome to{" "}
-                            <span className="text-blue-600">
-                                LearnHive
-                            </span>
+                            <span className="text-blue-600">LearnHive</span>
                         </h2>
 
                         <p className="mx-auto max-w-4xl text-base leading-7 md:text-lg md:leading-8">
@@ -70,15 +31,15 @@ const Welcome = () => {
                         </p>
 
                         <div className="mt-6 flex flex-wrap justify-center gap-4">
-                            <span className="rounded-full px-4 py-2 text-md font-medium border-b shadow-md">
+                            <span className="rounded-full border-b px-4 py-2 text-md font-medium shadow-md">
                                 🎓 Personalized Learning
                             </span>
 
-                            <span className="rounded-full px-4 py-2 text-md font-medium border-b shadow-md">
+                            <span className="rounded-full border-b px-4 py-2 text-md font-medium shadow-md">
                                 👨‍🏫 Expert Educators
                             </span>
 
-                            <span className="rounded-full px-4 py-2 text-md font-medium border-b shadow-md">
+                            <span className="rounded-full border-b px-4 py-2 text-md font-medium shadow-md">
                                 🚀 Smarter Education
                             </span>
                         </div>

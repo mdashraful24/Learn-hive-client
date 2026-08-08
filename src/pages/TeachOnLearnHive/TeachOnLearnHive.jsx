@@ -43,7 +43,7 @@ const TeachOnLearnHive = () => {
                 setValue("image", data.secure_url);
             }
         } catch (error) {
-            console.error("Image upload failed", error);
+            // console.error("Image upload failed", error);
             Swal.fire({
                 title: "Error!",
                 text: "Image upload failed. Please try again.",
@@ -76,7 +76,7 @@ const TeachOnLearnHive = () => {
                 setUploadedImage(user?.photoURL || "");
             }
         } catch (error) {
-            console.error("Error submitting application", error);
+            // console.error("Error submitting application", error);
             Swal.fire({
                 title: "Error!",
                 text: "There was an error submitting your application. Please try again later.",

@@ -76,7 +76,7 @@ const SignUp = () => {
                     });
             }
         } catch (error) {
-            console.error("Error uploading image or signing up:", error);
+            // console.error("Error uploading image or signing up:", error);
             toast.error("Something went wrong! Please try again.", {
                 position: "top-right"
             });

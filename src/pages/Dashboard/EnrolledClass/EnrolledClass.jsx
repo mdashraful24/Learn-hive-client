@@ -71,7 +71,7 @@ const EnrolledClass = () => {
             reset();
             closeModal();
         } catch (error) {
-            console.error("Error submitting assignment:", error);
+            // console.error("Error submitting assignment:", error);
             Swal.fire({
                 icon: "error",
                 title: "Oops!",
@@ -108,7 +108,7 @@ const EnrolledClass = () => {
             reset();
             closeEvaluationModal();
         } catch (error) {
-            console.error("Error submitting evaluation:", error);
+            // console.error("Error submitting evaluation:", error);
             Swal.fire({
                 icon: "error",
                 title: "Oops!",

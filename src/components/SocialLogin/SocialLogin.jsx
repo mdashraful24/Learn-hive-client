@@ -31,7 +31,7 @@ const SocialLogin = () => {
                         navigate(from, { replace: true });
                     })
                     .catch(error => {
-                        console.error("Google Sign-In Error:", error);
+                        // console.error("Google Sign-In Error:", error);
                         toast.error(error.message || "Google Sign-In failed.");
                     });
             });

@@ -59,7 +59,7 @@ const AddClass = () => {
                 }
             }
         } catch (error) {
-            console.error("Error uploading image or adding class item:", error);
+            // console.error("Error uploading image or adding class item:", error);
             Swal.fire({
                 icon: "error",
                 title: "Oops...",
