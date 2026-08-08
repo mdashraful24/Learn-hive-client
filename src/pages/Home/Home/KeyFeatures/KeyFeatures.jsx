@@ -26,7 +26,7 @@ const KeyFeatures = () => {
 
     return (
         <Parallax
-            className="mb-20 md:mb-28"
+            className="mb-20 md:mb-24"
             bgImage={features}
             strength={300}
             bgImageAlt="Key Features Background"

@@ -1,201 +1,269 @@
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from "react-responsive-carousel";
-import { FaArrowLeft, FaArrowRight, FaArrowUp } from "react-icons/fa";
+import { motion } from "framer-motion";
+import { useNavigate } from "react-router-dom";
 
 import img1 from "../../../../assets/banner/banner1.jpg";
 import img2 from "../../../../assets/banner/banner3.jpg";
 import img3 from "../../../../assets/banner/banner6.jpg";
-import img4 from "../../../../assets/banner/banner5.jpg";
-
-const slides = [
-    {
-        image: img1,
-        badge: "Learn Without Limits",
-        title: "Build Skills That Shape Your Future.",
-        description:
-            "Learn from experienced tutors, explore engaging courses, and take your skills to the next level with LearnHive.",
-    },
-    {
-        image: img2,
-        badge: "Learn From Experts",
-        title: "Knowledge From the Right People.",
-        description:
-            "Connect with skilled tutors who make learning practical, interactive, and easier to understand.",
-    },
-    {
-        image: img3,
-        badge: "Explore & Grow",
-        title: "Discover Courses Made for You.",
-        description:
-            "Explore thoughtfully designed courses and learn at your own pace with resources that support your goals.",
-    },
-    {
-        image: img4,
-        badge: "Your Journey Starts Here",
-        title: "Learn Today. Grow Tomorrow.",
-        description:
-            "Join a modern learning community where students and tutors connect, collaborate, and grow together.",
-    },
-];
+import useAuth from "../../../../hooks/useAuth";
 
 const Banner = () => {
+    const { user } = useAuth();
+    const navigate = useNavigate();
+
+    const scrollToNext = () => {
+        const next = document.getElementById("next-section");
+        if (next) next.scrollIntoView({ behavior: "smooth" });
+    };
+
+    const handleGetStarted = () => {
+        if (user) {
+            scrollToNext();
+        } else {
+            navigate("/login");
+        }
+    };
+
+    const handleAllClasses = () => {
+        navigate("/aboutUs");
+    };
+
+    const handleContactUs = () => {
+        navigate("/contact");
+    };
+
+    const handleBrowseCourses = () => {
+        navigate("/allClasses");
+    };
+
+    const handleViewCommunity = () => {
+        navigate("/signUp");
+    };
+
+    // Slide data with unique titles, descriptions, and conditional buttons
+    const slides = [
+        {
+            image: img1,
+            title: "Start Your Learning Journey",
+            description: "Explore multiple courses from expert instructors. Learn at your own pace and achieve your goals.",
+            buttons: user ? [
+                {
+                    text: "About Us",
+                    onClick: handleAllClasses,
+                    className: "bg-white text-gray-800 hover:bg-gray-100",
+                },
+            ] : [
+                {
+                    text: "About Us",
+                    onClick: handleAllClasses,
+                    className: "bg-indigo-600 text-white hover:bg-indigo-700",
+                },
+                {
+                    text: "Get Started",
+                    onClick: handleGetStarted,
+                    className: "bg-white text-gray-800 hover:bg-gray-100",
+                },
+            ]
+        },
+        {
+            image: img2,
+            title: "Master New Skills Today",
+            description: "From programming to design, find the perfect course to boost your career and personal growth.",
+            buttons: user ? [
+                {
+                    text: "Explore Courses",
+                    onClick: handleBrowseCourses,
+                    className: "bg-emerald-600 text-white hover:bg-emerald-700",
+                }
+            ] : [
+                {
+                    text: "Explore Courses",
+                    onClick: handleBrowseCourses,
+                    className: "bg-emerald-600 text-white hover:bg-emerald-700",
+                },
+                {
+                    text: "Contact Us",
+                    onClick: handleContactUs,
+                    className: "bg-white text-gray-800 hover:bg-gray-100",
+                },
+            ]
+        },
+        {
+            image: img3,
+            title: "Join Our Community",
+            description: "Connect with millions of learners worldwide. Share knowledge, collaborate, and grow together.",
+            buttons: user ? [
+                {
+                    text: "Contact Us",
+                    onClick: handleContactUs,
+                    className: "bg-rose-600 text-white hover:bg-rose-700",
+                },
+            ] : [
+                {
+                    text: "Join Community",
+                    onClick: handleViewCommunity,
+                    className: "bg-rose-600 text-white hover:bg-rose-700",
+                },
+                {
+                    text: "Contact Us",
+                    onClick: handleContactUs,
+                    className: "bg-white text-gray-800 hover:bg-gray-100",
+                },
+            ]
+        },
+    ];
+
+    // Animation variants
+    const containerVariants = {
+        hidden: { opacity: 0 },
+        visible: {
+            opacity: 1,
+            transition: {
+                staggerChildren: 0.2,
+                delayChildren: 0.3,
+            },
+        },
+    };
+
+    const itemVariants = {
+        hidden: { opacity: 0, y: 30 },
+        visible: {
+            opacity: 1,
+            y: 0,
+            transition: {
+                duration: 0.6,
+                ease: "easeOut",
+            },
+        },
+    };
+
+    const buttonVariants = {
+        hidden: { opacity: 0, y: 20, scale: 0.9 },
+        visible: {
+            opacity: 1,
+            y: 0,
+            scale: 1,
+            transition: {
+                duration: 0.5,
+                ease: "easeOut",
+            },
+        },
+    };
+
     return (
-        <section className="relative overflow-hidden bg-slate-50">
-            {/* Decorative Background */}
-            <div className="pointer-events-none absolute -left-40 -top-40 h-96 w-96 rounded-full bg-primary/10 blur-3xl" />
-            <div className="pointer-events-none absolute -bottom-40 -right-40 h-96 w-96 rounded-full bg-blue-500/10 blur-3xl" />
+        <section id="banner" className="relative overflow-hidden">
+            <Carousel
+                infiniteLoop
+                useKeyboardArrows
+                autoPlay
+                showThumbs={false}
+                showStatus={false}
+                showIndicators={false}
+                dynamicHeight={false}
+                swipeable
+                emulateTouch
+                interval={4000}
+                transitionTime={600}
+                stopOnHover
+                renderArrowPrev={(clickHandler) => (
+                    <button
+                        className="hidden md:block absolute top-1/2 left-5 -translate-y-1/2 bg-black bg-opacity-50 text-white p-3 rounded-full shadow-lg z-20 hover:bg-opacity-70 transition-all"
+                        onClick={clickHandler}
+                    >
+                        &lt;
+                    </button>
+                )}
+                renderArrowNext={(clickHandler) => (
+                    <button
+                        className="hidden md:block absolute top-1/2 right-5 -translate-y-1/2 bg-black bg-opacity-50 text-white p-3 rounded-full shadow-lg z-20 hover:bg-opacity-70 transition-all"
+                        onClick={clickHandler}
+                    >
+                        &gt;
+                    </button>
+                )}
+            >
+                {slides.map((slide, index) => (
+                    <div
+                        key={index}
+                        className="relative h-[60vh] md:h-[70vh] flex items-center justify-center"
+                    >
+                        <img
+                            src={slide.image}
+                            alt={`Slide ${index + 1}`}
+                            className="w-full h-full"
+                        />
+                        {/* Dark overlay for contrast */}
+                        <div className="absolute inset-0 bg-black bg-opacity-50"></div>
 
-            <div className="relative mx-auto max-w-7xl px-4 py-8 sm:px-6 md:py-12 lg:px-8 lg:py-16">
-                <Carousel
-                    infiniteLoop
-                    autoPlay
-                    interval={4500}
-                    transitionTime={600}
-                    stopOnHover
-                    swipeable
-                    emulateTouch
-                    useKeyboardArrows
-                    showThumbs={false}
-                    showStatus={false}
-                    showIndicators
-                    renderArrowPrev={(clickHandler, hasPrev) =>
-                        hasPrev && (
-                            <button
-                                type="button"
-                                onClick={clickHandler}
-                                aria-label="Previous slide"
-                                className="absolute bottom-5 left-5 z-20 flex h-10 w-10 items-center justify-center rounded-full border border-slate-200 bg-white text-slate-700 shadow-sm transition-all duration-300 hover:bg-slate-900 hover:text-white md:bottom-8 md:left-auto md:right-20"
-                            >
-                                <FaArrowLeft className="text-xs" />
-                            </button>
-                        )
-                    }
-                    renderArrowNext={(clickHandler, hasNext) =>
-                        hasNext && (
-                            <button
-                                type="button"
-                                onClick={clickHandler}
-                                aria-label="Next slide"
-                                className="absolute bottom-5 right-5 z-20 flex h-10 w-10 items-center justify-center rounded-full border border-slate-200 bg-white text-slate-700 shadow-sm transition-all duration-300 hover:bg-slate-900 hover:text-white md:bottom-8 md:right-8"
-                            >
-                                <FaArrowRight className="text-xs" />
-                            </button>
-                        )
-                    }
-                >
-                    {slides.map((slide, index) => (
-                        <div
-                            key={index}
-                            className="grid min-h-[500px] items-center gap-10 pb-20 text-left md:min-h-[560px] lg:grid-cols-2 lg:gap-16 lg:pb-8"
+                        {/* Gradient overlay for better text readability */}
+                        <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-60"></div>
+
+                        {/* Content with animations */}
+                        <motion.div
+                            className="absolute inset-0 flex flex-col items-center justify-center text-white text-center px-4 max-w-4xl mx-auto"
+                            variants={containerVariants}
+                            initial="hidden"
+                            animate="visible"
+                            key={index} // Re-trigger animation on slide change
                         >
-                            {/* Left Content */}
-                            <div className="order-2 lg:order-1">
-                                {/* Badge */}
-                                <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/5 px-4 py-2 text-sm font-medium text-primary">
-                                    <span className="h-2 w-2 rounded-full bg-primary" />
-                                    {slide.badge}
-                                </div>
+                            <motion.h1
+                                variants={itemVariants}
+                                className="text-3xl md:text-5xl lg:text-6xl font-bold mb-4 leading-tight"
+                            >
+                                {slide.title}
+                            </motion.h1>
 
-                                {/* Heading */}
-                                <h1 className="max-w-2xl text-4xl font-bold leading-[1.08] tracking-tight text-slate-900 sm:text-5xl md:text-6xl lg:text-[4rem]">
-                                    {slide.title}
-                                </h1>
+                            <motion.p
+                                variants={itemVariants}
+                                className="text-base md:text-xl lg:text-2xl mb-8 max-w-2xl text-gray-200"
+                            >
+                                {slide.description}
+                            </motion.p>
 
-                                {/* Description */}
-                                <p className="mt-6 max-w-xl text-base leading-7 text-slate-600 md:text-lg">
-                                    {slide.description}
-                                </p>
-
-                                {/* CTA */}
-                                <div className="mt-8 flex flex-wrap items-center gap-4">
-                                    <button
-                                        type="button"
-                                        className="rounded-xl bg-slate-900 px-6 py-3.5 text-sm font-semibold text-white shadow-lg shadow-slate-900/10 transition-all duration-300 hover:-translate-y-0.5 hover:bg-primary md:px-7"
+                            {/* CTA Buttons per slide */}
+                            <motion.div
+                                variants={itemVariants}
+                                className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto justify-center"
+                            >
+                                {slide.buttons.map((button, btnIndex) => (
+                                    <motion.button
+                                        key={btnIndex}
+                                        variants={buttonVariants}
+                                        whileHover={{ scale: 1.05 }}
+                                        whileTap={{ scale: 0.95 }}
+                                        className={`px-6 py-3 rounded-full shadow-lg transition-colors font-semibold min-w-[140px] ${button.className}`}
+                                        onClick={button.onClick}
                                     >
-                                        Explore Courses
-                                    </button>
+                                        {button.text}
+                                    </motion.button>
+                                ))}
+                            </motion.div>
+                        </motion.div>
+                    </div>
+                ))}
+            </Carousel>
 
-                                    <button
-                                        type="button"
-                                        className="rounded-xl border border-slate-300 bg-white px-6 py-3.5 text-sm font-semibold text-slate-700 transition-all duration-300 hover:border-slate-900 hover:text-slate-900 md:px-7"
-                                    >
-                                        Find a Tutor
-                                    </button>
-                                </div>
-
-                                {/* Trust Stats */}
-                                <div className="mt-10 flex flex-wrap items-center gap-6 border-t border-slate-200 pt-6">
-                                    <div>
-                                        <p className="text-xl font-bold text-slate-900">100+</p>
-                                        <p className="text-xs text-slate-500">
-                                            Learning Resources
-                                        </p>
-                                    </div>
-
-                                    <div className="h-8 w-px bg-slate-200" />
-
-                                    <div>
-                                        <p className="text-xl font-bold text-slate-900">50+</p>
-                                        <p className="text-xs text-slate-500">Expert Tutors</p>
-                                    </div>
-
-                                    <div className="h-8 w-px bg-slate-200" />
-
-                                    <div>
-                                        <p className="text-xl font-bold text-slate-900">1K+</p>
-                                        <p className="text-xs text-slate-500">Active Learners</p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            {/* Right Visual */}
-                            <div className="order-1 flex items-center justify-center lg:order-2">
-                                <div className="relative w-full max-w-xl">
-                                    {/* Main Image Card */}
-                                    <div className="relative overflow-hidden rounded-[2rem] bg-white p-3 shadow-2xl shadow-slate-900/10">
-                                        <div className="relative aspect-[4/3] overflow-hidden rounded-[1.5rem]">
-                                            <img
-                                                src={slide.image}
-                                                alt={slide.title}
-                                                className="h-full w-full object-cover transition-transform duration-700 hover:scale-105"
-                                            />
-
-                                            {/* Image Gradient */}
-                                            <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
-                                        </div>
-                                    </div>
-
-                                    {/* Floating Learning Card */}
-                                    <div className="absolute -bottom-5 -left-4 rounded-2xl border border-slate-100 bg-white p-4 shadow-xl sm:-left-8">
-                                        <div className="flex items-center gap-3">
-                                            <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-primary/10 text-primary">
-                                                <FaArrowUp />
-                                            </div>
-
-                                            <div>
-                                                <p className="text-xs text-slate-500">
-                                                    Keep learning
-                                                </p>
-                                                <p className="text-sm font-bold text-slate-900">
-                                                    Grow your skills
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    {/* Floating Course Card */}
-                                    <div className="absolute -right-3 -top-5 rounded-2xl border border-slate-100 bg-white px-4 py-3 shadow-xl sm:-right-6">
-                                        <p className="text-xs text-slate-500">Popular</p>
-                                        <p className="mt-1 text-sm font-bold text-slate-900">
-                                            Featured Courses
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    ))}
-                </Carousel>
-            </div>
+            {/* Scroll indicator */}
+            <motion.button
+                className="absolute bottom-4 left-1/2 -translate-x-1/2 text-white z-10"
+                onClick={scrollToNext}
+                aria-label="Scroll to next section"
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 1, duration: 0.6 }}
+                whileHover={{ y: -5 }}
+            >
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="h-8 w-8 animate-bounce"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                >
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                </svg>
+            </motion.button>
         </section>
     );
 };
