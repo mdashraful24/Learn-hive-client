@@ -9,15 +9,18 @@ import StarRating from "./StarRating";
 
 const Testimonials = () => {
     const [reviews, setReviews] = useState([]);
+    const [error, setError] = useState(null);
 
     useEffect(() => {
         fetch(`${import.meta.env.VITE_API_URL}/reviews`)
             .then((res) => res.json())
             .then((data) => {
                 setReviews(data);
+                setError(null);
             })
             .catch((error) => {
                 console.error("Error fetching reviews:", error);
+                setError("Failed to load reviews. Please try again later.");
             });
     }, []);
 
@@ -30,7 +33,11 @@ const Testimonials = () => {
                 Hear from our satisfied users about their experiences with us.
             </p>
 
-            {reviews.length > 0 ? (
+            {error ? (
+                <div className="text-red-600 bg-red-100 max-w-sm md:max-w-lg mx-auto text-center py-3 text-lg font-semibold rounded-lg">
+                    Error loading reviews. Please try again later.
+                </div>
+            ) : reviews.length > 0 ? (
                 <Swiper
                     navigation={false}
                     autoplay={{
@@ -78,10 +85,8 @@ const Testimonials = () => {
                     ))}
                 </Swiper>
             ) : (
-                <div className="text-center mt-16">
-                    <p className="text-lg text-gray-700">
-                        No feedback available at the moment. Check back later!
-                    </p>
+                <div className="text-blue-600 bg-blue-100 max-w-sm md:max-w-xl mx-auto text-center py-3 text-lg font-semibold rounded-lg">
+                    No feedback available at the moment. <br className="block md:hidden" /> Please, check back later!
                 </div>
             )}
         </div>
@@ -168,10 +173,10 @@ export default Testimonials;
 //                                     </div>
 
 //                                     {/* Rating */}
-//                                     <Rating 
-//                                     style={{ maxWidth: 120 }} 
-//                                     value={review.rating} 
-//                                     readOnly 
+//                                     <Rating
+//                                     style={{ maxWidth: 120 }}
+//                                     value={review.rating}
+//                                     readOnly
 //                                     />
 //                                 </div>
 //                             </div>

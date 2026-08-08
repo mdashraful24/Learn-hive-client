@@ -1,5 +1,5 @@
 import { Helmet } from "react-helmet-async";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import useAuth from '../../hooks/useAuth';
 import { useForm } from 'react-hook-form';
 import { toast } from 'react-toastify';
@@ -16,11 +16,13 @@ const SignUp = () => {
     const axiosPublic = useAxiosPublic();
     const { setUser, createUser, updateUserProfile } = useAuth();
     const [showPassWord, setShowPassword] = useState(false);
+    const [loading, setLoading] = useState(false);
     const navigate = useNavigate();
     const { register, handleSubmit, reset, watch, formState: { errors } } = useForm();
 
     // Submit Form
     const onSubmit = async (data) => {
+        setLoading(true);
         const imageFile = data.image[0];
 
         // Upload image to Cloudinary
@@ -61,6 +63,7 @@ const SignUp = () => {
                                     toast.success("Successfully Signed Up", {
                                         position: "top-center"
                                     });
+                                    setLoading(false);
                                     navigate("/");
                                 }
                             });
@@ -69,6 +72,7 @@ const SignUp = () => {
                         toast.error("Email has already been used.", {
                             position: "top-center"
                         });
+                        setLoading(false);
                     });
             }
         } catch (error) {
@@ -76,11 +80,36 @@ const SignUp = () => {
             toast.error("Something went wrong! Please try again.", {
                 position: "top-right"
             });
+            setLoading(false);
         }
     };
 
+    // Phone number validation function
+    const validatePhoneNumber = (value) => {
+        if (!value) return "Phone number is required";
+
+        // Remove all spaces, hyphens, parentheses, and plus sign for validation
+        const cleanNumber = value.replace(/[\s\-()]/g, '');
+
+        // Check if it's a valid phone number format
+        // Supports: +1234567890, 1234567890, +1-234-567-8900, (123) 456-7890, etc.
+        const phoneRegex = /^\+?[\d\s\-()]{7,20}$/;
+
+        if (!phoneRegex.test(value)) {
+            return "Please enter a valid phone number";
+        }
+
+        // Check if it has at least 7 digits
+        const digitCount = value.replace(/\D/g, '').length;
+        if (digitCount < 7) {
+            return "Phone number must have at least 7 digits";
+        }
+
+        return true;
+    };
+
     return (
-        <div className='mt-10 pb-16 px-3'>
+        <div className='min-h-[80vh] mt-10 pb-16 px-3'>
             {/* Helmet */}
             <Helmet>
                 <title>Sign Up | LearnHive</title>
@@ -101,8 +130,10 @@ const SignUp = () => {
                         <input
                             type="text" {...register("name", { required: true })}
                             name="name"
-                            placeholder="Type here your full name" 
-                            className={`block w-full px-3 py-2 border ${errors.email ? 'border-red-500' : 'border-gray-300'} rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-150 ease-in-out`} />
+                            placeholder="Enter your full name"
+                            className={`block w-full px-3 py-2 border ${errors.name ? 'border-red-500' : 'border-gray-300'} rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-150 ease-in-out`}
+                            disabled={loading}
+                        />
                         {errors.name && <span className="text-sm text-red-600 mt-1">Name is required</span>}
                     </div>
 
@@ -114,13 +145,15 @@ const SignUp = () => {
                         <input
                             type="email" {...register("email", { required: true })}
                             name="email"
-                            placeholder="Type here your email" 
-                            className={`block w-full px-3 py-2 border ${errors.email ? 'border-red-500' : 'border-gray-300'} rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-150 ease-in-out`} />
+                            placeholder="Enter your email"
+                            className={`block w-full px-3 py-2 border ${errors.email ? 'border-red-500' : 'border-gray-300'} rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-150 ease-in-out`}
+                            disabled={loading}
+                        />
                         {errors.email && <span className="text-sm text-red-600 mt-1">Email is required</span>}
                     </div>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-2 md:gap-5">
-                        {/* Phone Number */}
+                        {/* Phone Number - Updated */}
                         <div className="form-control">
                             <label className="label font-semibold">
                                 <span className="label-text">Phone Number<span className="text-base text-red-500">*</span></span>
@@ -129,20 +162,12 @@ const SignUp = () => {
                                 type="tel"
                                 {...register("phone", {
                                     required: "Phone number is required",
-                                    validate: {
-                                        minLength: (value) =>
-                                            value.length >= 6 || "Phone number must be at least 6 digits",
-                                        maxLength: (value) =>
-                                            value.length <= 11 || "Phone number cannot exceed 11 digits",
-                                    },
-                                    pattern: {
-                                        value: /^[0-9]+$/,
-                                        message: "Phone number can only contain digits",
-                                    },
+                                    validate: validatePhoneNumber
                                 })}
                                 name="phone"
-                                placeholder="Type here your phone number"
-                                className={`block w-full px-3 py-2 border ${errors.email ? 'border-red-500' : 'border-gray-300'} rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-150 ease-in-out`}
+                                placeholder="Enter your phone number"
+                                className={`block w-full px-3 py-2 border ${errors.phone ? 'border-red-500' : 'border-gray-300'} rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-150 ease-in-out`}
+                                disabled={loading}
                             />
                             {errors.phone && (
                                 <span className="text-sm text-red-600 mt-1">{errors.phone.message}</span>
@@ -159,6 +184,7 @@ const SignUp = () => {
                                 {...register("image", { required: "Profile photo is required" })}
                                 name="image"
                                 className="file-input file-input-bordered h-[2.5rem] border-black rounded-md focus:outline-none"
+                                disabled={loading}
                             />
                             {errors.image && (
                                 <span className="text-sm text-red-600 mt-1">{errors.image.message}</span>
@@ -186,26 +212,52 @@ const SignUp = () => {
                             })}
                             name="password"
                             placeholder="Type here strong password"
-                            className={`block w-full px-3 py-2 border ${errors.email ? 'border-red-500' : 'border-gray-300'} rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-150 ease-in-out`}
+                            className={`block w-full px-3 py-2 border ${errors.password ? 'border-red-500' : 'border-gray-300'} rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-150 ease-in-out`}
+                            disabled={loading}
                         />
                         <button
                             type="button"
                             onClick={() => setShowPassword(!showPassWord)}
-                            className="absolute right-4 top-[53px]"
+                            className={`absolute right-4 top-[53px] ${loading ? 'opacity-50 cursor-not-allowed' : ''}`}
+                            disabled={loading}
                         >
                             {showPassWord ? <FaEyeSlash /> : <FaEye />}
                         </button>
                         {errors.password && <span className="text-sm text-red-600 mt-1">{errors.password.message}</span>}
                     </div>
 
-                    {/* Button */}
+                    {/* Button with Loading State */}
                     <div className="form-control mt-6">
-                        <input
-                            className="btn w-full text-white font-medium bg-gradient-to-r from-blue-600 to-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-300 shadow-md transition-all duration-200 border-none rounded-md"
+                        <button
                             type="submit"
-                            value="Sign Up" />
+                            disabled={loading}
+                            className={`btn w-full text-white font-medium bg-gradient-to-r from-blue-600 to-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-300 shadow-md transition-all duration-200 border-none rounded-md ${loading ? 'opacity-70 cursor-not-allowed' : 'hover:from-blue-700 hover:to-blue-800'}`}
+                        >
+                            {loading ? (
+                                <span className="flex items-center justify-center gap-2 text-white">
+                                    <svg className="animate-spin h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                                    </svg>
+                                    Signing Up...
+                                </span>
+                            ) : (
+                                "Sign Up"
+                            )}
+                        </button>
                     </div>
                 </form>
+
+                {/* Sign Up Link */}
+                <p className="text-center text-sm mt-3">
+                    Already have an account?{" "}
+                    <Link
+                        to="/login"
+                        className="font-semibold text-blue-500 hover:text-blue-400 transition duration-150 ease-in-out"
+                    >
+                        Login
+                    </Link>
+                </p>
             </div>
         </div>
     );

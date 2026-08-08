@@ -2,16 +2,32 @@ import logo from '../../../assets/logo.png';
 import alt from '../../../assets/auth/profile.png';
 import { useState, useEffect, useRef } from "react";
 import { Link, NavLink, useNavigate } from "react-router-dom";
+import { MdSpaceDashboard } from "react-icons/md";
 import { toast } from "react-toastify";
 import useAuth from "../../../hooks/useAuth";
 import DarkMode from '../DarkMode/DarkMode';
+import useAxiosSecure from '../../../hooks/useAxiosSecure';
+import { useQuery } from "@tanstack/react-query";
 
 const Navbar = () => {
     const { user, logOut } = useAuth();
+    const axiosSecure = useAxiosSecure();
     const [menuOpen, setMenuOpen] = useState(false);
     const [profileDropdownOpen, setProfileDropdownOpen] = useState(false);
     const profileDropdownRef = useRef(null);
     const navigate = useNavigate();
+
+    const { data: userInfo, isLoading, error } = useQuery({
+        queryKey: ["user", user?.email],
+        queryFn: async () => {
+            if (user?.email) {
+                const res = await axiosSecure.get(`/users/${user.email}`);
+                return res.data;
+            }
+            return null;
+        },
+        enabled: !!user?.email,
+    });
 
     // Close the profile dropdown when the user changes
     useEffect(() => {
@@ -75,6 +91,11 @@ const Navbar = () => {
                     </NavLink>
                 </li>
             )}
+            <li>
+                <NavLink to="/contact" onClick={() => setMenuOpen(false)}>
+                    Contact Us
+                </NavLink>
+            </li>
             {user && (
                 <li>
                     <NavLink to="/dashboard" onClick={() => setMenuOpen(false)}>
@@ -86,19 +107,19 @@ const Navbar = () => {
     );
 
     return (
-        <div className="sticky top-0 z-50 bg-gradient-to-r from-blue-600 to-blue-500 shadow-lg">
+        <div className="sticky top-0 z-50 bg-gradient-to-r from-blue-600 to-blue-700 shadow-lg">
             <div className="navbar gap-3 container mx-auto">
-                <div className="navbar-start">
+                <div className="navbar-start gap-2">
                     <div className="dropdown">
                         <div
                             tabIndex={0}
                             role="button"
-                            className="btn btn-ghost md:hidden pl-0"
+                            className="btn btn-ghost lg:hidden pl-0"
                             onClick={() => setMenuOpen(!menuOpen)}
                         >
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
-                                className="h-5 w-5 text-white"
+                                className="h-6 w-6 text-white"
                                 fill="none"
                                 viewBox="0 0 24 24"
                                 stroke="currentColor"
@@ -126,50 +147,90 @@ const Navbar = () => {
                             onClick={scrollToHome}
                             className="flex items-center gap-2"
                         >
-                            <img src={logo} alt="siteLogo" className="w-8 md:w-12" />
-                            <h2 className="block md:hidden lg:block text-lg md:text-3xl font-extrabold text-white">LearnHive</h2>
+                            <img src={logo} alt="siteLogo" className="w-9 lg:w-12" />
+                            <h2 className="text-lg lg:text-3xl font-extrabold text-white">LearnHive</h2>
                         </button>
                     </div>
                 </div>
-                <div className="navbar-center hidden md:flex">
-                    <ul className="menu menu-horizontal px-1 text-white">
+                <div className="navbar-center hidden lg:flex">
+                    <ul className="menu menu-horizontal text-[1rem] px-1 text-white font-medium">
                         {links}
                     </ul>
                 </div>
                 <div className="navbar-end">
                     {user ? (
-                        <div className="relative dropdown-container" ref={profileDropdownRef}>
+                        <div className="relative" ref={profileDropdownRef}>
+                            {/* Profile Image Trigger */}
                             <img
-                                className="rounded-full w-10 h-10 object-cover cursor-pointer hover:bg-gray-300 p-0.5"
+                                className="rounded-full w-10 h-10 object-cover cursor-pointer border-2 border-white hover:border-gray-300 transition-all duration-200"
                                 src={user?.photoURL || alt}
                                 alt="User profile"
                                 referrerPolicy="no-referrer"
                                 onClick={() => setProfileDropdownOpen(!profileDropdownOpen)}
                             />
+
+                            {/* Profile Dropdown */}
                             {profileDropdownOpen && (
-                                <div className="absolute -right-2 mt-2 w-36 shadow-lg z-10 bg-base-200 rounded-lg">
-                                    <div className="py-2 px-3 text-center">
-                                        <p className="font-semibold text-sm cursor-not-allowed">
-                                            {user?.displayName || "User"}
-                                        </p>
+                                <div className="absolute -right-8 mt-2 w-72 shadow-xl z-10 bg-base-200 rounded-lg overflow-hidden">
+                                    {/* User Info Section */}
+                                    <div className="px-4 py-3">
+                                        <div className="flex items-center gap-3">
+                                            <img
+                                                className="rounded-full w-14 h-14 object-cover border-2 border-gray-300"
+                                                src={user?.photoURL || alt}
+                                                alt="User profile"
+                                                referrerPolicy="no-referrer"
+                                            />
+                                            <div className="text-sm flex-1 min-w-0">
+                                                <p className="font-semibold truncate">
+                                                    {user?.displayName || "User"}
+                                                </p>
+                                                <p className="text-sm truncate">
+                                                    {user?.email || "No email"}
+                                                </p>
+                                                <span className="text-xs font-medium text-blue-500 uppercase">
+                                                    {isLoading ? (
+                                                        <span className="inline-block w-12 h-3 animate-pulse rounded"></span>
+                                                    ) : (
+                                                        userInfo?.role || "Student"
+                                                    )}
+                                                </span>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <ul className="dropdown-menu text-center">
-                                        <li>
-                                            <button
-                                                className="block w-full py-2 rounded-b-lg hover:text-white hover:font-medium hover:bg-red-700"
-                                                onClick={handleSignOut}
-                                            >
-                                                Log out
-                                            </button>
-                                        </li>
-                                    </ul>
+
+                                    {/* Menu Items */}
+                                    <div>
+                                        {/* <Link
+                                            to="/dashboard"
+                                            className="block px-4 py-2 font-medium hover:text-black hover:bg-gray-200 transition-colors duration-150"
+                                            onClick={() => setProfileDropdownOpen(false)}
+                                        >
+                                            <span className='flex items-center gap-2'>
+                                                <MdSpaceDashboard />
+                                                Dashboard
+                                            </span>
+                                        </Link> */}
+                                        {/* <hr className="border-gray-100" /> */}
+                                        <button
+                                            className="block w-full text-left px-4 py-2 font-medium text-red-600 hover:bg-red-100 transition-colors duration-150"
+                                            onClick={handleSignOut}
+                                        >
+                                            <span className="flex items-center gap-2">
+                                                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
+                                                </svg>
+                                                Logout
+                                            </span>
+                                        </button>
+                                    </div>
                                 </div>
                             )}
                         </div>
                     ) : (
                         <Link
                             to="/login"
-                                className="btn btn-sm bg-blue-900 hover:bg-blue-950 text-white hover:dark:text-white border-none"
+                            className="btn btn-sm bg-blue-900 hover:bg-blue-950 text-white hover:dark:text-white border-none"
                         >
                             Sign In
                         </Link>

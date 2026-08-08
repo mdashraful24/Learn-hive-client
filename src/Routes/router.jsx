@@ -32,6 +32,7 @@ import ApproveJob from "../pages/Dashboard/ApproveJob/ApproveJob";
 import AboutUs from "../pages/AboutUs/AboutUs";
 import AdminProfile from "../pages/Dashboard/AdminProfile/AdminProfile";
 import OrderPage from "../pages/Dashboard/OrderPage/OrderPage";
+import Contacts from "../pages/Contacts/Contacts";
 
 
 export const router = createBrowserRouter([
@@ -72,6 +73,10 @@ export const router = createBrowserRouter([
             {
                 path: "signup",
                 element: <SignUp></SignUp>
+            },
+            {
+                path: "contact",
+                element: <Contacts></Contacts>
             }
         ]
     },

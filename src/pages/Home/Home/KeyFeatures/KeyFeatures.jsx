@@ -1,9 +1,8 @@
-import React from "react";
 import { Parallax } from "react-parallax";
 import { useQuery } from "@tanstack/react-query";
 import { FaChalkboardTeacher, FaUserGraduate, FaUsers, FaChartLine, FaAward, FaGlobe } from "react-icons/fa";
-import features from "../../../assets/home/image.jpg";
-import useAxiosPublic from "../../../hooks/useAxiosPublic";
+import features from "../../../../assets/home/image.jpg";
+import useAxiosPublic from "../../../../hooks/useAxiosPublic";
 
 const icons = {
     FaChalkboardTeacher: <FaChalkboardTeacher size={64} />,
@@ -32,7 +31,7 @@ const KeyFeatures = () => {
             strength={300}
             bgImageAlt="Key Features Background"
         >
-            <div className="bg-black bg-opacity-60 py-12">
+            <div className="bg-black bg-opacity-80 py-14 lg:py-20">
                 <div className="text-center">
                     <div className="text-white px-3 md:px-5 lg:px-0">
                         <h2 className="text-2xl md:text-4xl font-extrabold mb-5">Key Features</h2>
@@ -45,12 +44,17 @@ const KeyFeatures = () => {
                     <div className="container mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-8 px-2 md:px-3 lg:px-2.5">
                         {isLoading ? (
                             <div className="col-span-1 md:col-span-2 lg:col-span-3 flex justify-center items-center py-12">
-                                {/* <div className="w-12 h-12 border-4 border-gray-200 rounded-full animate-spin"></div> */}
                                 <div className="w-12 h-12 border-4 border-blue-400 border-t-transparent rounded-full animate-spin"></div>
                             </div>
-                        ) : (
+                        ) : isError ? (
+                            <div className="col-span-1 md:col-span-2 lg:col-span-3">
+                                <div className="text-red-600 bg-red-100 max-w-sm md:max-w-lg mx-auto text-center py-3 text-lg font-semibold rounded-lg">
+                                    Failed to load features. Please try again later.
+                                </div>
+                            </div>
+                        ) : featuresData.length > 0 ? (
                             featuresData.map((feature) => (
-                                <div key={feature._id} className="bg-base-200 bg-opacity-90 p-8 rounded-xl shadow-lg hover:scale-105 transform transition duration-300 ease-in-out">
+                                <div key={feature._id} className="bg-base-100 bg-opacity-90 p-8 rounded-xl shadow-lg hover:scale-105 transform transition duration-300 ease-in-out">
                                     <div className="flex items-center justify-center mb-6">
                                         {icons[feature.icon] || <FaGlobe size={64} />}
                                     </div>
@@ -58,15 +62,14 @@ const KeyFeatures = () => {
                                     <p className="md:text-lg">{feature.description}</p>
                                 </div>
                             ))
+                        ) : (
+                            <div className="col-span-1 md:col-span-2 lg:col-span-3">
+                                <div className="text-blue-600 bg-blue-100 max-w-sm md:max-w-xl mx-auto text-center py-3 text-lg font-semibold rounded-lg">
+                                    No key features available at the moment. <br className="block md:hidden" /> Please, check back later!
+                                </div>
+                            </div>
                         )}
                     </div>
-
-                    {/* Error Message at Bottom */}
-                    {isError && (
-                        <div className="text-red-500 text-center py-12 text-lg font-semibold">
-                            Oops! Unable to load key features. Please try again later.
-                        </div>
-                    )}
                 </div>
             </div>
         </Parallax>
