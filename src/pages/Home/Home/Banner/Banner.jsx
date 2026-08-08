@@ -186,7 +186,7 @@ const Banner = () => {
                 {slides.map((slide, index) => (
                     <div
                         key={index}
-                        className="relative h-[60vh] md:h-[70vh] flex items-center justify-center"
+                        className="relative h-[60vh] lg:h-[70vh] flex items-center justify-center"
                     >
                         <img
                             src={slide.image}

@@ -29,7 +29,7 @@ const ClassDetails = () => {
                     setAssignments(response.data.assignments);
                 }
             } catch (error) {
-                console.error("Error fetching assignments:", error);
+                // console.error("Error fetching assignments:", error);
             }
         };
         fetchAssignments();
@@ -70,7 +70,7 @@ const ClassDetails = () => {
                 reset();
             }
         } catch (error) {
-            console.error("Error adding assignment:", error);
+            // console.error("Error adding assignment:", error);
             Swal.fire({
                 icon: "error",
                 title: "Failed to add the assignment!",
