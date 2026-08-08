@@ -1,39 +1,164 @@
 import logo from '../../../../src/assets/logo.png'
+import { FaMapMarkerAlt, FaEnvelope, FaFacebook, FaLinkedin, FaGithub, FaTwitter, FaInstagram, FaYoutube } from "react-icons/fa";
+import { MdOutlineArrowForward } from "react-icons/md";
 
 const Footer = () => {
     return (
-        <div className="p-10 pb-3 bg-black">
-            <footer className="footer grid grid-cols-1 md:grid-cols-3 justify-items-center gap-8 container mx-auto">
-                <footer className="container mx-auto text-base-content flex flex-col justify-center items-center -mt-3">
-                    <div className="flex items-center gap-2 text-gray-300">
-                        <img src={logo} alt="siteLogo" className="w-12" />
-                        <h2 className="text-3xl font-extrabold">LearnHive</h2>
+        <footer className="bg-black">
+            {/* Main Footer */}
+            <div className="container mx-auto px-6 py-10">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+                    {/* Brand Section */}
+                    <div className="space-y-4">
+                        <div className="flex items-center gap-3">
+                            <img src={logo} alt="LearnHive" className="w-12 h-12 object-contain" />
+                            <h2 className="text-3xl font-bold bg-gradient-to-r from-blue-400 to-blue-500 bg-clip-text text-transparent">
+                                LearnHive
+                            </h2>
+                        </div>
+                        <p className="text-gray-300 leading-relaxed max-w-sm">
+                            At LearnHive we help students with the essential study preparation they need
+                            to clear their exam and provide tutors with the performance they deserve.
+                        </p>
                     </div>
-                    <p className="text-center text-gray-400">At LearnHive we help students with the essential study preparation they need to clear their exam and provide tutors with the performance they deserve.</p>
-                </footer>
 
-                {/* 1 nav */}
-                <nav className='flex flex-col items-center text-gray-400'>
-                    <h6 className="text-lg uppercase font-bold text-gray-300">Quick Links</h6>
-                    <a className=" link link-hover text-base hover:text-blue-500">Home</a>
-                    <a className="link link-hover text-base hover:text-blue-500">Blog</a>
-                    <a className="link link-hover text-base hover:text-blue-500">FAQs</a>
-                    <a className="link link-hover text-base hover:text-blue-500">Contact Us</a>
-                </nav>
-                {/* 2 nav */}
-                <nav className='flex flex-col items-center text-gray-400'>
-                    <h6 className="text-lg uppercase font-bold text-gray-300">Media</h6>
-                    <a className="link link-hover text-base hover:text-blue-500" href='https://www.facebook.com/ashraful.islam.ratul.455820?mibextid=ZbWKwL'
-                        target="_blank">Facebook</a>
-                    <a className="link link-hover text-base hover:text-blue-500" href="https://www.linkedin.com/in/ashraful-islam-ratul" target="_blank">LinkedIn</a>
-                    <a className="link link-hover text-base hover:text-blue-500" href="https://github.com/mdashraful24" target="_blank">GitHub</a>
-                </nav>
-            </footer>
-            <div className="text-sm text-center text-gray-400 pt-6">
-                <p>&copy; {new Date().getFullYear()} LearnHive. All rights reserved.</p>
-                <p>Designed, Developed and Maintained by Ashraful Islam Ratul</p>
+                    {/* Quick Links */}
+                    <div>
+                        <h3 className="text-lg font-semibold text-white mb-6 relative">
+                            Quick Links
+                            <span className="absolute -bottom-2 left-0 w-10 h-0.5 bg-blue-500"></span>
+                        </h3>
+                        <ul className="space-y-3">
+                            <li>
+                                <a href="/" className="flex items-center gap-2 text-gray-300 hover:text-blue-400 transition-colors duration-300 group">
+                                    <span>Home</span>
+                                    <MdOutlineArrowForward className="text-blue-500 opacity-0 group-hover:opacity-100 transition-all duration-300" />
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/aboutUs" className="flex items-center gap-2 text-gray-300 hover:text-blue-400 transition-colors duration-300 group">
+                                    <span>About Us</span>
+                                    <MdOutlineArrowForward className="text-blue-500 opacity-0 group-hover:opacity-100 transition-all duration-300" />
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/allClasses" className="flex items-center gap-2 text-gray-300 hover:text-blue-400 transition-colors duration-300 group">
+                                    <span>All Classes</span>
+                                    <MdOutlineArrowForward className="text-blue-500 opacity-0 group-hover:opacity-100 transition-all duration-300" />
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/contact" className="flex items-center gap-2 text-gray-300 hover:text-blue-400 transition-colors duration-300 group">
+                                    <span>Contact Us</span>
+                                    <MdOutlineArrowForward className="text-blue-500 opacity-0 group-hover:opacity-100 transition-all duration-300" />
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    {/* Contact Info */}
+                    <div>
+                        <h3 className="text-lg font-semibold text-white mb-6 relative">
+                            Contact Info
+                            <span className="absolute -bottom-2 left-0 w-10 h-0.5 bg-blue-500"></span>
+                        </h3>
+                        <div className="space-y-4">
+                            <div className="flex items-start gap-3 group">
+                                <div className="p-2 bg-gray-800 rounded-lg group-hover:bg-blue-600 transition-colors duration-300">
+                                    <FaMapMarkerAlt className="text-blue-500 group-hover:text-white transition-colors duration-300" />
+                                </div>
+                                <div>
+                                    <p className="text-sm text-gray-400">Location</p>
+                                    <p className="text-gray-300">Dhaka, Bangladesh</p>
+                                </div>
+                            </div>
+                            <div className="flex items-start gap-3 group">
+                                <div className="p-2 bg-gray-800 rounded-lg group-hover:bg-blue-600 transition-colors duration-300">
+                                    <FaEnvelope className="text-blue-500 group-hover:text-white transition-colors duration-300" />
+                                </div>
+                                <div>
+                                    <p className="text-sm text-gray-400">Email</p>
+                                    <a href="mailto:mdashrafulislam2882@gmail.com"
+                                        className="text-gray-300 hover:text-blue-400 transition-colors duration-300 break-all">
+                                        mdashrafulislam2882@gmail.com
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* Social Media Section - Improved */}
+                    <div>
+                        <h3 className="text-lg font-semibold text-white mb-6 relative">
+                            Follow Us
+                            <span className="absolute -bottom-2 left-0 w-10 h-0.5 bg-blue-500"></span>
+                        </h3>
+                        <p className="text-gray-300 text-sm mb-4">Connect with us on social media</p>
+                        <div className="grid grid-cols-3 gap-3">
+                            <a href="https://www.facebook.com/ashraful.islam.ratul.455820"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="flex flex-col items-center gap-1 p-3 bg-gray-800 rounded-lg hover:bg-blue-600 transition-all duration-300 group">
+                                <FaFacebook className="text-2xl text-blue-500 group-hover:text-white transition-colors duration-300" />
+                                <span className="text-xs text-white transition-colors duration-300">Facebook</span>
+                            </a>
+                            <a href="https://www.linkedin.com/in/ashraful-islam-ratul"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="flex flex-col items-center gap-1 p-3 bg-gray-800 rounded-lg hover:bg-blue-700 transition-all duration-300 group">
+                                <FaLinkedin className="text-2xl text-blue-400 group-hover:text-white transition-colors duration-300" />
+                                <span className="text-xs text-white transition-colors duration-300">LinkedIn</span>
+                            </a>
+                            <a href="https://github.com/mdashraful24"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="flex flex-col items-center gap-1 p-3 bg-gray-800 rounded-lg hover:bg-gray-600 transition-all duration-300 group">
+                                <FaGithub className="text-2xl text-gray-400 group-hover:text-white transition-colors duration-300" />
+                                <span className="text-xs text-white transition-colors duration-300">GitHub</span>
+                            </a>
+                            {/* <a href="#"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="flex flex-col items-center gap-1 p-3 bg-gray-800 rounded-lg hover:bg-blue-400 transition-all duration-300 hover:scale-105 group">
+                                <FaTwitter className="text-2xl text-blue-300 group-hover:text-white transition-colors duration-300" />
+                                <span className="text-xs text-gray-500 group-hover:text-white transition-colors duration-300">Twitter</span>
+                            </a>
+                            <a href="#"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="flex flex-col items-center gap-1 p-3 bg-gray-800 rounded-lg hover:bg-pink-600 transition-all duration-300 hover:scale-105 group">
+                                <FaInstagram className="text-2xl text-pink-500 group-hover:text-white transition-colors duration-300" />
+                                <span className="text-xs text-gray-500 group-hover:text-white transition-colors duration-300">Instagram</span>
+                            </a>
+                            <a href="#"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="flex flex-col items-center gap-1 p-3 bg-gray-800 rounded-lg hover:bg-red-600 transition-all duration-300 hover:scale-105 group">
+                                <FaYoutube className="text-2xl text-red-500 group-hover:text-white transition-colors duration-300" />
+                                <span className="text-xs text-gray-500 group-hover:text-white transition-colors duration-300">YouTube</span>
+                            </a> */}
+                        </div>
+                    </div>
+                </div>
             </div>
-        </div>
+
+            {/* Bottom Bar */}
+            <div className="border-t border-gray-800">
+                <div className="container mx-auto px-6 py-6">
+                    <div className="flex flex-col md:flex-row justify-between items-center gap-4">
+                        <p className="text-sm text-gray-500">
+                            &copy; {new Date().getFullYear()} LearnHive. All rights reserved.
+                        </p>
+                        <p className="text-sm text-gray-500">
+                            Designed, Developed & Maintained by
+                            <span className="text-blue-400 ml-1 hover:text-blue-300 transition-colors duration-300">
+                                Ashraful Islam Ratul
+                            </span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </footer>
     );
 };
 

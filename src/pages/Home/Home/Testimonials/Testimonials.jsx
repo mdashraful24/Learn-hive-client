@@ -2,7 +2,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Autoplay } from "swiper/modules";
 import { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faQuoteLeft } from "@fortawesome/free-solid-svg-icons";
+import { faQuoteLeft, faQuoteRight } from "@fortawesome/free-solid-svg-icons";
 import "swiper/css";
 import "swiper/css/navigation";
 import StarRating from "./StarRating";
@@ -26,7 +26,7 @@ const Testimonials = () => {
 
     return (
         <div className="container mx-auto mb-20 md:mb-24 px-2 md:px-3 lg:px-2.5">
-            <h2 className="text-2xl md:text-4xl font-extrabold text-center mb-4">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-center mb-4">
                 What Our Users Say
             </h2>
             <p className="md:text-lg text-center mb-12">
@@ -75,6 +75,7 @@ const Testimonials = () => {
                                         <p className="text-sm sm:text-base md:text-lg">
                                             {review.description}
                                         </p>
+                                        <FontAwesomeIcon icon={faQuoteRight} />
                                     </div>
 
                                     {/* Star Rating */}

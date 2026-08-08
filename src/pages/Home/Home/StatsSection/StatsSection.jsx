@@ -7,16 +7,16 @@ const StatsSection = () => {
 
     return (
         <div className='mb-20 md:mb-24 px-2 md:px-3 lg:px-2.5'>
-            <div className="text-center mb-8 md:mb-14">
-                <h2 className="text-2xl md:text-4xl font-extrabold">Website Overview</h2>
-                <p className="mt-4 md:text-lg">
+            <div className="text-center mb-12">
+                <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold">Website Overview</h2>
+                <p className="mt-4 md:text-lg max-w-3xl mx-auto">
                     Here’s a quick glance at the current statistics of our platform, showing the number of users, classes, enrollments, and instructors.
                 </p>
             </div>
 
-            <div className="max-w-5xl mx-auto flex flex-col-reverse md:flex-row items-center justify-center gap-10">
+            <div className="container mx-auto w-full max-w-7xl flex flex-col-reverse md:flex-row items-center justify-center gap-10">
                 {/* stats */}
-                <div className="w-full lg:max-w-lg grid grid-cols-1 gap-5 md:gap-10">
+                <div className="w-full lg:max-w-xl grid grid-cols-1 gap-5 md:gap-10">
                     {/* Total Users Card */}
                     <div className="bg-gradient-to-r from-blue-600 to-blue-500 text-white p-4 rounded-xl shadow-md hover:shadow-xl flex justify-center items-center gap-5 transform hover:scale-105 transition duration-500 ease-in-out">
                         <FaUsers className="text-xl lg:text-4xl" />

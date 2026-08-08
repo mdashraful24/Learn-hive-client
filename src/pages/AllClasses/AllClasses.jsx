@@ -43,12 +43,12 @@ const AllClasses = () => {
             </Helmet>
 
             {/* Hero */}
-            <div className="max-w-6xl mx-auto mb-8 text-center">
-                <h2 className="text-3xl md:text-4xl font-bold mb-5">
+            <div className="max-w-6xl mx-auto mb-10 text-center">
+                <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-5">
                     Explore Our Approved Classes 📚
                 </h2>
-                <p>
-                    Upgrade your skills with expert-led courses
+                <p className="max-w-2xl mx-auto md:text-lg">
+                    LearnHive is transforming education by offering personalized learning experiences that empower students and educators alike.
                 </p>
             </div>
 

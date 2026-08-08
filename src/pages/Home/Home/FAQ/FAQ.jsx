@@ -79,7 +79,7 @@ const FAQ = () => {
                 <title>FAQ | LearnHive</title>
                 <meta name="description" content="Frequently asked questions about LearnHive platform, enrollment, payments, refunds and trial periods." />
             </Helmet>
-            <h2 className="text-3xl md:text-4xl font-extrabold text-center mb-8">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-center mb-12">
                 Frequently Asked Questions
             </h2>
             <div

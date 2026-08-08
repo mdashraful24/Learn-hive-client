@@ -5,8 +5,8 @@ const Introduction = () => {
         <section className="relative mt-8 md:mt-10 container mx-auto mb-20 md:mb-28 px-2 md:px-3 lg:px-2.5">
             <div className="text-center">
                 {/* Header Section */}
-                <h2 className="text-2xl md:text-4xl font-extrabold mb-3">About Us</h2>
-                <p className="md:text-lg mb-8">
+                <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold mb-3">About Us</h2>
+                <p className="max-w-3xl mx-auto md:text-lg mb-8">
                     LearnHive is transforming education by offering personalized learning experiences that empower students and educators alike.
                 </p>
 
