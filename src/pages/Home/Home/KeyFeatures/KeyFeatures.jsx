@@ -31,10 +31,10 @@ const KeyFeatures = () => {
             strength={300}
             bgImageAlt="Key Features Background"
         >
-            <div className="bg-black bg-opacity-80 py-14 lg:py-20">
+            <div className="bg-black bg-opacity-80 py-20">
                 <div className="text-center">
                     <div className="text-white px-3 md:px-5 lg:px-0">
-                        <h2 className="text-2xl md:text-4xl font-extrabold mb-5">Key Features</h2>
+                        <h2 className="text-2xl md:text-4xl lg:text-5xl font-extrabold mb-5">Key Features</h2>
                         <p className="lg:w-1/2 md:text-lg mx-auto mb-12">
                             Discover the powerful features that make LearnHive a leading platform for online education. We offer tools and resources to help you learn and grow.
                         </p>

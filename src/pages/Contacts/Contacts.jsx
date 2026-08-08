@@ -40,7 +40,7 @@ const Contacts = () => {
     return (
         <div className="container mx-auto min-h-[65vh] mt-7 md:mt-10 mb-16 px-2 md:px-3 lg:px-2.5">
             <div>
-                <h1 className="text-2xl md:text-4xl text-center font-extrabold mb-10">Contact Us</h1>
+                <h1 className="text-3xl md:text-4xl lg:text-5xl text-center font-extrabold mb-10">Contact Us</h1>
             </div>
             <div>
                 {/* Contact Form & Message */}

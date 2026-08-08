@@ -36,7 +36,7 @@ const Welcome = () => {
                         px-6 py-12 text-center
                         shadow-lg
                         transition-all duration-1000 ease-out
-                        md:px-12 md:py-16
+                        md:px-12 md:py-16 border
                         ${isVisible
                             ? "translate-y-0 opacity-100"
                             : "translate-y-10 opacity-0"
@@ -54,7 +54,7 @@ const Welcome = () => {
                             Learn • Grow • Succeed
                         </span>
 
-                        <h2 className="mb-5 text-3xl font-extrabold tracking-tight sm:text-4xl md:text-5xl">
+                        <h2 className="mb-5 text-3xl font-extrabold tracking-tight md:text-4xl lg:text-5xl">
                             Welcome to{" "}
                             <span className="text-blue-600">
                                 LearnHive
