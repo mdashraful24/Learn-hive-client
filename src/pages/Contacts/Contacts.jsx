@@ -1,8 +1,12 @@
 import { useRef, useState } from "react";
 import emailjs from "@emailjs/browser";
 import { FaMapMarkerAlt, FaEnvelope, FaLinkedin, FaGithub, FaFacebook } from "react-icons/fa";
+import { Helmet } from "react-helmet-async";
 
 const Contacts = () => {
+    // Scroll to the top when the component mounts
+    window.scrollTo(0, 0);
+
     const form = useRef();
     const [status, setStatus] = useState("");
     const [isSending, setIsSending] = useState(false);
@@ -39,6 +43,10 @@ const Contacts = () => {
 
     return (
         <div className="container mx-auto min-h-[65vh] mt-7 md:mt-10 mb-16 px-2 md:px-3 lg:px-2.5">
+            <Helmet>
+                <title>Contact Us | LearnHive</title>
+            </Helmet>
+
             <div>
                 <h1 className="text-3xl md:text-4xl lg:text-5xl text-center font-extrabold mb-10">Contact Us</h1>
             </div>
