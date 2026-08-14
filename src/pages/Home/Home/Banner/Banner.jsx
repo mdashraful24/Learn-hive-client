@@ -3,7 +3,7 @@ import { Carousel } from "react-responsive-carousel";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 
-import img1 from "../../../../assets/banner/banner1.jpg";
+import img1 from "../../../../assets/banner/banner9.jpg";
 import img2 from "../../../../assets/banner/banner3.jpg";
 import img3 from "../../../../assets/banner/banner6.jpg";
 import useAuth from "../../../../hooks/useAuth";

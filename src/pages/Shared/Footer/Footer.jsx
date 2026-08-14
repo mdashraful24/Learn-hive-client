@@ -1,6 +1,7 @@
 import logo from '../../../../src/assets/logo.png'
 import { FaMapMarkerAlt, FaEnvelope, FaFacebook, FaLinkedin, FaGithub, FaTwitter, FaInstagram, FaYoutube } from "react-icons/fa";
 import { MdOutlineArrowForward } from "react-icons/md";
+import { Link } from 'react-router-dom';
 
 const Footer = () => {
     return (
@@ -28,30 +29,48 @@ const Footer = () => {
                             Quick Links
                             <span className="absolute -bottom-2 left-0 w-10 h-0.5 bg-blue-500"></span>
                         </h3>
+
                         <ul className="space-y-3">
                             <li>
-                                <a href="/" className="flex items-center gap-2 text-gray-300 hover:text-blue-400 transition-colors duration-300 group">
-                                    <span>Home</span>
-                                    <MdOutlineArrowForward className="text-blue-500 opacity-0 group-hover:opacity-100 transition-all duration-300" />
-                                </a>
-                            </li>
-                            <li>
-                                <a href="/aboutUs" className="flex items-center gap-2 text-gray-300 hover:text-blue-400 transition-colors duration-300 group">
-                                    <span>About Us</span>
-                                    <MdOutlineArrowForward className="text-blue-500 opacity-0 group-hover:opacity-100 transition-all duration-300" />
-                                </a>
-                            </li>
-                            <li>
-                                <a href="/allClasses" className="flex items-center gap-2 text-gray-300 hover:text-blue-400 transition-colors duration-300 group">
+                                <Link
+                                    to="/allClasses"
+                                    className="flex items-center gap-2 text-gray-300 hover:text-blue-400 transition-colors duration-300 group"
+                                >
                                     <span>All Classes</span>
                                     <MdOutlineArrowForward className="text-blue-500 opacity-0 group-hover:opacity-100 transition-all duration-300" />
-                                </a>
+                                </Link>
                             </li>
+
                             <li>
-                                <a href="/contact" className="flex items-center gap-2 text-gray-300 hover:text-blue-400 transition-colors duration-300 group">
+                                <Link
+                                    to="/contact"
+                                    className="flex items-center gap-2 text-gray-300 hover:text-blue-400 transition-colors duration-300 group"
+                                >
                                     <span>Contact Us</span>
                                     <MdOutlineArrowForward className="text-blue-500 opacity-0 group-hover:opacity-100 transition-all duration-300" />
-                                </a>
+                                </Link>
+                            </li>
+
+                            {/* Privacy Policy */}
+                            <li>
+                                <Link
+                                    to="/privacy-policy"
+                                    className="flex items-center gap-2 text-gray-300 hover:text-blue-400 transition-colors duration-300 group"
+                                >
+                                    <span>Privacy Policy</span>
+                                    <MdOutlineArrowForward className="text-blue-500 opacity-0 group-hover:opacity-100 transition-all duration-300" />
+                                </Link>
+                            </li>
+
+                            {/* Terms & Conditions */}
+                            <li>
+                                <Link
+                                    to="/terms-and-conditions"
+                                    className="flex items-center gap-2 text-gray-300 hover:text-blue-400 transition-colors duration-300 group"
+                                >
+                                    <span>Terms & Conditions</span>
+                                    <MdOutlineArrowForward className="text-blue-500 opacity-0 group-hover:opacity-100 transition-all duration-300" />
+                                </Link>
                             </li>
                         </ul>
                     </div>
@@ -146,14 +165,14 @@ const Footer = () => {
             <div className="border-t border-gray-800">
                 <div className="container mx-auto px-6 py-6">
                     <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-                        <p className="text-sm text-gray-500">
+                        <p className="text-sm text-gray-400">
                             &copy; {new Date().getFullYear()} LearnHive. All rights reserved.
                         </p>
-                        <p className="text-sm text-gray-500">
+                        <p className="text-sm text-gray-400">
                             Designed, Developed & Maintained by
-                            <span className="text-blue-400 ml-1 hover:text-blue-300 transition-colors duration-300">
+                            <Link to="https://ashraful-islam-ratul.netlify.app" target="_blank" rel="noopener noreferrer" className="text-blue-400 ml-1 hover:text-blue-300 transition-colors duration-300">
                                 Ashraful Islam Ratul
-                            </span>
+                            </Link>
                         </p>
                     </div>
                 </div>

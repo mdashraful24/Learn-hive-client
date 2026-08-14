@@ -56,7 +56,7 @@ const Progress = () => {
                 <img
                     src={data.image}
                     alt={data.title}
-                    className="w-full h-60 md:h-96 rounded-lg shadow-md"
+                    className="w-full h-60 md:h-96 lg:h-[35rem] rounded-lg shadow-md"
                 />
             </div>
 
