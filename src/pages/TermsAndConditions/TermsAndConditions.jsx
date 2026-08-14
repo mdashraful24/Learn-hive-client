@@ -1,8 +1,16 @@
 import React from "react";
+import { Helmet } from "react-helmet-async";
 
 const TermsAndConditions = () => {
+    // Scroll to the top when the component mounts
+    window.scrollTo(0, 0);
+
     return (
         <main className="container mx-auto min-h-screen mt-7 md:mt-10 mb-16 px-2 md:px-3 lg:px-2.5">
+            <Helmet>
+                <title>Terms & Conditions | LearnHive</title>
+            </Helmet>
+
             <div className="mx-auto max-w-5xl">
                 {/* Header */}
                 <div className="mb-12 text-center">

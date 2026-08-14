@@ -246,7 +246,7 @@ const Banner = () => {
 
             {/* Scroll indicator */}
             <motion.button
-                className="absolute bottom-4 left-1/2 -translate-x-1/2 text-white z-10"
+                className="absolute bottom-4 left-1/2 cursor-default -translate-x-1/2 text-white z-10"
                 onClick={scrollToNext}
                 aria-label="Scroll to next section"
                 initial={{ opacity: 0, y: 10 }}
