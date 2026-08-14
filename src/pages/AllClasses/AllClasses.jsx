@@ -12,7 +12,7 @@ const AllClasses = () => {
     const axiosPublic = useAxiosPublic();
     const [currentPage, setCurrentPage] = useState(1);
     const [sortOrder, setSortOrder] = useState("");
-    const classesPerPage = 20;
+    const classesPerPage = 9;
 
     const { data: approvedClasses = {}, isLoading, isError } = useQuery({
         queryKey: ["approvedClasses", currentPage, sortOrder],
@@ -126,7 +126,7 @@ const AllClasses = () => {
 
                                             <Link to={`/details/${classItem._id}`}>
                                                 <button className="bg-blue-600 hover:bg-blue-700 text-white px-3 py-2 rounded-lg transition">
-                                                    Enroll
+                                                    See More
                                                 </button>
                                             </Link>
                                         </div>

@@ -50,14 +50,12 @@ const DetailsPage = () => {
                     </p>
 
                     {/* Pay Button */}
-                    {isStudent &&
-                        <Link
-                            to={`/payment/${_id}`}
-                            className="btn btn-primary w-full bg-blue-500 hover:bg-blue-600 text-white rounded-lg mt-6"
-                        >
-                            Pay Now
-                        </Link>
-                    }
+                    <Link
+                        to={`/payment/${_id}`}
+                        className="btn btn-primary w-full bg-blue-500 hover:bg-blue-600 text-white rounded-lg mt-6"
+                    >
+                        Pay Now
+                    </Link>
                 </div>
             </div>
         </div>

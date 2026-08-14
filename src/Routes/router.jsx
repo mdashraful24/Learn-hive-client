@@ -33,6 +33,8 @@ import AboutUs from "../pages/AboutUs/AboutUs";
 import AdminProfile from "../pages/Dashboard/AdminProfile/AdminProfile";
 import OrderPage from "../pages/Dashboard/OrderPage/OrderPage";
 import Contacts from "../pages/Contacts/Contacts";
+import PrivacyPolicy from "../pages/PrivacyPolicy/PrivacyPolicy";
+import TermsAndConditions from "../pages/TermsAndConditions/TermsAndConditions";
 
 
 export const router = createBrowserRouter([
@@ -54,7 +56,8 @@ export const router = createBrowserRouter([
             },
             {
                 path: "details/:id",
-                element: <PrivateRoute><DetailsPage></DetailsPage></PrivateRoute>,
+                element: <DetailsPage></DetailsPage>,
+                // element: <PrivateRoute><DetailsPage></DetailsPage></PrivateRoute>,
                 loader: ({ params }) => fetch(`${import.meta.env.VITE_API_URL}/all-classes/${params.id}`)
             },
             {
@@ -77,6 +80,14 @@ export const router = createBrowserRouter([
             {
                 path: "contact",
                 element: <Contacts></Contacts>
+            },
+            {
+                path: "privacy-policy",
+                element: <PrivacyPolicy></PrivacyPolicy>
+            },
+            {
+                path: "terms-and-conditions",
+                element: <TermsAndConditions></TermsAndConditions>
             }
         ]
     },
