@@ -11,6 +11,7 @@ const CheckoutForm = ({ price, paymentDetails }) => {
     const [transactionId, setTransactionId] = useState('');
     const [isProcessing, setIsProcessing] = useState(false);
     const [isCardValid, setIsCardValid] = useState(false); // New state to track card validity
+    const [isEnrolled, setIsEnrolled] = useState(false);
 
     const stripe = useStripe();
     const elements = useElements();
@@ -119,6 +120,7 @@ const CheckoutForm = ({ price, paymentDetails }) => {
                     price,
                     transactionId: paymentIntent.id,
                     date: new Date(),
+                    courseId: paymentDetails._id,
                     ...paymentDetails,
                     totalEnrolment: (paymentDetails.totalEnrolment || 0) + 1,
                     status: 'pending',
@@ -136,21 +138,43 @@ const CheckoutForm = ({ price, paymentDetails }) => {
                     navigate('/dashboard/myEnroll-class');
                 }
             }
-        } catch (error) {
-            const errorMsg = "An unexpected error occurred. Please try again.";
-            setErrorMessage(errorMsg);
-            Swal.fire({
-                icon: "error",
-                title: "Payment Error",
-                text: errorMsg,
-            });
-        } finally {
-            setIsProcessing(false);
-        }
-    };
+    } catch (error) {
+        const errorMsg = error?.response?.data?.message || "An unexpected error occurred. Please try again.";
+        setErrorMessage(errorMsg);
+        Swal.fire({
+            icon: "error",
+            title: "Payment Error",
+            text: errorMsg,
+        });
+    } finally {
+        setIsProcessing(false);
+    }
+};
+
+// Check if the student is already enrolled before payment
+useEffect(() => {
+    axiosSecure.get(`/is-enrolled/${paymentDetails._id}`, {
+        params: { email: user?.email }
+    })
+        .then(res => {
+            if (res.data?.enrolled) {
+                setIsEnrolled(true);
+                setErrorMessage("You are already enrolled in this course.");
+            }
+        })
+        .catch(() => {
+            setErrorMessage("Unable to verify enrollment. Please try again.");
+        });
+}, [axiosSecure, paymentDetails._id]);
 
     return (
         <form onSubmit={handleSubmit}>
+            {isEnrolled ? (
+                <div className="text-center min-h-60 flex flex-col justify-center items-center gap-3">
+                    <p className="text-red-500 text-lg font-semibold">You are already enrolled in this course.</p>
+                </div>
+            ) : (
+                <>
             <CardElement
                 options={{
                     style: {
@@ -172,7 +196,7 @@ const CheckoutForm = ({ price, paymentDetails }) => {
                 <button
                     className={`btn w-full lg:w-2/3 bg-blue-600 hover:bg-blue-700 text-white flex justify-center ${isProcessing ? "opacity-50 cursor-not-allowed" : ""}`}
                     type="submit"
-                    disabled={!stripe || !clientSecret || isProcessing || !isCardValid}
+                    disabled={!stripe || !clientSecret || isProcessing || !isCardValid || isEnrolled}
                 //     <button
                 //     className={`btn w-full lg:w-2/3 bg-blue-600 hover:bg-blue-700 text-white flex justify-center ${isProcessing ? "opacity-50 cursor-not-allowed" : ""} disabled:opacity-90 disabled:bg-blue-600 disabled:text-white`}
                 //     type="submit"
@@ -191,6 +215,8 @@ const CheckoutForm = ({ price, paymentDetails }) => {
                     </p>
                 )} */}
             </div>
+                </>
+            )}
         </form>
     );
 };

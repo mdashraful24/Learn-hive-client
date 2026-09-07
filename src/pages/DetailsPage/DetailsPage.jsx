@@ -1,6 +1,6 @@
 import { useLoaderData } from "react-router-dom";
 import { Link } from "react-router-dom";
-import useCount from "../../hooks/useCount";
+import useCourseEnrollment from "../../hooks/useCourseEnrollment";
 import { Helmet } from "react-helmet-async";
 import useStudent from "../../hooks/useStudent";
 
@@ -9,8 +9,8 @@ const DetailsPage = () => {
     window.scrollTo(0, 0);
 
     const [isStudent] = useStudent();
-    const { totalEnrollment } = useCount();
     const { _id, title, name, price, description, image } = useLoaderData();
+    const { courseEnrollment } = useCourseEnrollment(_id);
 
     return (
         <div className="min-h-screen md:max-w-3xl lg:max-w-2xl mx-auto px-2 md:px-3 lg:px-2.5 pt-10 pb-20">
@@ -39,7 +39,7 @@ const DetailsPage = () => {
                         <strong>Description:</strong> {description}
                     </p>
                     <p className="mb-2">
-                        <strong>Enrollments:</strong> {totalEnrollment ?? 'N/A'}
+                        <strong>Enrollments:</strong> {courseEnrollment}
                     </p>
                     <p className="font-semibold">
                         Price:

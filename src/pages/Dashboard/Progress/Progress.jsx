@@ -1,14 +1,14 @@
 import { useLoaderData } from "react-router-dom";
-import useCount from "../../../hooks/useCount";
+import useCourseEnrollment from "../../../hooks/useCourseEnrollment";
 import { useState, useEffect } from "react";
 import ReactPaginate from "react-paginate";
 import { Helmet } from "react-helmet-async";
 
 const Progress = () => {
-    const { totalEnrollment } = useCount();
     const [data, setData] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
     const loaderData = useLoaderData();
+    const { courseEnrollment } = useCourseEnrollment(loaderData?._id);
     const [currentPage, setCurrentPage] = useState(0);
     const itemsPerPage = 10;
 
@@ -74,7 +74,7 @@ const Progress = () => {
             {data.assignments.length > 0 ? (
                 <>
                     <p className="mb-2">
-                        <strong>Enrollments:</strong> {totalEnrollment ?? 'N/A'}
+                        <strong>Enrollments:</strong> {courseEnrollment}
                     </p>
                     <p className="mb-3">
                         <strong>Total Assignments:</strong>{" "}

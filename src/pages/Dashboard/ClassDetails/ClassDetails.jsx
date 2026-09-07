@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import { FaPlus } from "react-icons/fa";
-import useCount from "../../../hooks/useCount";
+import useCourseEnrollment from "../../../hooks/useCourseEnrollment";
 import { Helmet } from "react-helmet-async";
 
 const ClassDetails = () => {
@@ -12,8 +12,8 @@ const ClassDetails = () => {
     const axiosSecure = useAxiosSecure();
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [assignments, setAssignments] = useState([]);
-    const { totalEnrollment, totalSubmissions } = useCount();
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
+    const { courseEnrollment } = useCourseEnrollment(classData?._id);
 
     if (!classData) {
         return <div>Loading...</div>;
@@ -94,7 +94,7 @@ const ClassDetails = () => {
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                     <div className="text-center">
                         <p className="">Total Enrollments</p>
-                        <h4 className="text-2xl font-bold">{totalEnrollment ?? 'N/A'}</h4>
+                        <h4 className="text-2xl font-bold">{courseEnrollment}</h4>
                     </div>
                     <div className="text-center">
                         <p className="">Total Assignments</p>
