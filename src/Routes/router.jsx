@@ -35,6 +35,7 @@ import OrderPage from "../pages/Dashboard/OrderPage/OrderPage";
 import Contacts from "../pages/Contacts/Contacts";
 import PrivacyPolicy from "../pages/PrivacyPolicy/PrivacyPolicy";
 import TermsAndConditions from "../pages/TermsAndConditions/TermsAndConditions";
+import DashboardOverview from "../pages/Dashboard/DashboardOverview/DashboardOverview";
 
 
 export const router = createBrowserRouter([
@@ -95,6 +96,10 @@ export const router = createBrowserRouter([
         path: "dashboard",
         element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
         children: [
+            {
+                index: true,
+                element: <DashboardOverview></DashboardOverview>
+            },
             // admin panel
             {
                 path: "request",

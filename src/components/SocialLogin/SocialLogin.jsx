@@ -3,6 +3,7 @@ import { toast } from "react-toastify";
 import useAuth from "../../hooks/useAuth";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
 import google from '../../assets/auth/google.png'
+import { getRoleHome } from "../../utils/roleHome";
 
 const SocialLogin = () => {
     const { googleSignIn } = useAuth();
@@ -25,10 +26,11 @@ const SocialLogin = () => {
                     joinedDate: new Date().toISOString()
                 };
                 axiosPublic.post('/users', userInfo)
-                    .then(res => {
+                    .then(async (res) => {
                         // console.log(res.data);
                         toast.success("Successfully Signed In with Google");
-                        navigate(from, { replace: true });
+                        const roleHome = await getRoleHome(result.user);
+                        navigate(from && from !== "/" ? from : roleHome, { replace: true });
                     })
                     .catch(error => {
                         // console.error("Google Sign-In Error:", error);

@@ -1,63 +1,87 @@
-import { FaBoxOpen, FaUsers, FaChalkboardTeacher } from 'react-icons/fa';
-import stats from '../../../../assets/home/stats.jpeg';
+import { FaUsers, FaBookOpen, FaGraduationCap, FaChalkboardTeacher } from 'react-icons/fa';
 import useCount from '../../../../hooks/useCount';
 
 const StatsSection = () => {
-    const { totalUsers, totalClasses, totalEnrollment, totalTeachers } = useCount();
+    const { totalUsers, totalClasses, totalEnrollment, totalTeachers, isLoading } = useCount();
+
+    const stats = [
+        {
+            label: 'Total Users',
+            value: totalUsers,
+            icon: <FaUsers />,
+            accent: 'from-blue-500 to-blue-700',
+        },
+        {
+            label: 'Total Classes',
+            value: totalClasses,
+            icon: <FaBookOpen />,
+            accent: 'from-indigo-500 to-indigo-700',
+        },
+        {
+            label: 'Total Enrollments',
+            value: totalEnrollment,
+            icon: <FaGraduationCap />,
+            accent: 'from-emerald-500 to-emerald-700',
+        },
+        {
+            label: 'Total Instructors',
+            value: totalTeachers,
+            icon: <FaChalkboardTeacher />,
+            accent: 'from-amber-500 to-amber-600',
+        },
+    ];
 
     return (
         <div className='mb-20 md:mb-24 px-2 md:px-3 lg:px-2.5'>
+            {/* Heading */}
             <div className="text-center mb-12">
+                <span className="inline-block px-4 py-1 mb-4 text-xs md:text-sm font-semibold tracking-wide uppercase rounded-full bg-blue-100 text-blue-700 dark:bg-blue-900/40 dark:text-blue-300">
+                    Our Impact
+                </span>
                 <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold">Website Overview</h2>
-                <p className="mt-4 md:text-lg max-w-3xl mx-auto">
-                    Here’s a quick glance at the current statistics of our platform, showing the number of users, classes, enrollments, and instructors.
+                <p className="mt-4 md:text-lg max-w-3xl mx-auto opacity-80">
+                    Here&apos;s a quick glance at the current statistics of our platform — users, classes, enrollments, and instructors.
                 </p>
             </div>
 
-            <div className="container mx-auto w-full max-w-7xl flex flex-col-reverse md:flex-row items-center justify-center gap-10">
-                {/* stats */}
-                <div className="w-full lg:max-w-xl grid grid-cols-1 gap-5 md:gap-10">
-                    {/* Total Users Card */}
-                    <div className="bg-gradient-to-r from-blue-600 to-blue-500 text-white p-4 rounded-xl shadow-md hover:shadow-xl flex justify-center items-center gap-5 transform hover:scale-105 transition duration-500 ease-in-out">
-                        <FaUsers className="text-xl lg:text-4xl" />
-                        <div>
-                            <h2 className="text-xl lg:text-4xl font-bold">Total Users: {totalUsers ?? 'N/A'}</h2>
-                        </div>
-                    </div>
+            {/* Stat cards */}
+            <div className="container mx-auto w-full max-w-7xl grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 md:gap-6">
+                {stats.map((stat) => (
+                    <div
+                        key={stat.label}
+                        className="group relative overflow-hidden rounded-2xl border border-base-300 bg-base-100 p-6 shadow-sm transition-all duration-300 ease-in-out hover:-translate-y-1.5 hover:shadow-2xl hover:border-transparent"
+                    >
+                        {/* Accent bar */}
+                        <div className={`absolute inset-x-0 top-0 h-1.5 bg-gradient-to-r ${stat.accent}`} />
 
-                    {/* Total Classes Card */}
-                    <div className="bg-gradient-to-r from-blue-700 to-blue-600 text-white p-4 rounded-xl shadow-md hover:shadow-xl flex justify-center items-center gap-5 transform hover:scale-105 transition duration-500 ease-in-out">
-                        <FaUsers className="text-xl lg:text-4xl" />
-                        <div>
-                            <h2 className="text-xl lg:text-4xl font-bold">Total Classes: {totalClasses ?? 'N/A'}</h2>
-                        </div>
-                    </div>
+                        {/* Soft accent glow */}
+                        <div className={`pointer-events-none absolute -right-8 -top-8 h-28 w-28 rounded-full bg-gradient-to-br ${stat.accent} opacity-10 blur-2xl transition-opacity duration-300 group-hover:opacity-25`} />
 
-                    {/* Total Enrollment Card */}
-                    <div className="bg-gradient-to-r from-blue-800 to-blue-600 text-white p-4 rounded-xl shadow-md hover:shadow-xl flex justify-center items-center gap-5 transform hover:scale-105 transition duration-500 ease-in-out">
-                        <FaBoxOpen className="text-xl lg:text-4xl" />
-                        <div>
-                            <h2 className="text-xl lg:text-4xl font-bold">Total Enrollment: {totalEnrollment ?? 'N/A'}</h2>
+                        {/* Watermark icon */}
+                        <div className="pointer-events-none absolute -bottom-1 right-2 text-6xl opacity-[0.06]">
+                            {stat.icon}
                         </div>
-                    </div>
 
-                    {/* Total Instructors Card */}
-                    <div className="bg-gradient-to-r from-blue-900 to-blue-700 text-white p-4 rounded-xl shadow-md hover:shadow-xl flex justify-center items-center gap-5 transform hover:scale-105 transition duration-500 ease-in-out">
-                        <FaChalkboardTeacher className="text-xl lg:text-4xl" />
-                        <div>
-                            <h2 className="text-xl lg:text-4xl font-bold">Total Instructors: {totalTeachers ?? 'N/A'}</h2>
+                        {/* Icon tile */}
+                        <div className={`relative inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br ${stat.accent} text-2xl text-white shadow-lg transition-transform duration-300 group-hover:scale-110 group-hover:-rotate-3`}>
+                            {stat.icon}
                         </div>
-                    </div>
-                </div>
 
-                {/* Right side image */}
-                <div className="max-w-md lg:w-1/2">
-                    <img
-                        src={stats}
-                        alt="Educational Image"
-                        className="rounded-xl shadow-md hover:shadow-lg w-full h-auto"
-                    />
-                </div>
+                        {/* Value */}
+                        <h3 className="relative mt-5 text-3xl md:text-4xl font-extrabold tabular-nums">
+                            {isLoading ? (
+                                <span className="inline-block h-8 w-16 animate-pulse rounded bg-base-300 align-middle" />
+                            ) : (
+                                (stat.value ?? 0).toLocaleString()
+                            )}
+                        </h3>
+
+                        {/* Label */}
+                        <p className="relative mt-1 text-xs md:text-sm font-semibold uppercase tracking-wide opacity-60">
+                            {stat.label} 
+                        </p>
+                    </div>
+                ))}
             </div>
         </div>
     );

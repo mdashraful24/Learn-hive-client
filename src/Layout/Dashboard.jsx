@@ -2,7 +2,7 @@ import { FaFirstOrder, FaHome, FaListAlt, FaListUl, FaUserCircle } from 'react-i
 import { FaCodePullRequest, FaUsers } from "react-icons/fa6";
 import { GiTeacher } from 'react-icons/gi';
 import { MdSettingsApplications } from "react-icons/md";
-import { NavLink, Outlet, useLocation } from "react-router-dom";
+import { NavLink, Outlet } from "react-router-dom";
 import { IoIosAddCircle } from 'react-icons/io';
 import { GoSidebarExpand } from "react-icons/go";
 import useAdmin from '../hooks/useAdmin';
@@ -10,7 +10,6 @@ import useTeacher from '../hooks/useTeacher';
 import useStudent from '../hooks/useStudent';
 import { useState, useEffect, useRef } from 'react';
 import { Helmet } from 'react-helmet-async';
-import DashboardStats from '../pages/Dashboard/DashboardStats/DashboardStats';
 import DashboardDark from '../pages/Dashboard/DashboardDark/DashboardDark';
 import useAuth from '../hooks/useAuth';
 import DarkMode from '../pages/Shared/DarkMode/DarkMode';
@@ -28,11 +27,9 @@ const Dashboard = () => {
     const [isStudent] = useStudent();
     const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
     const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-    const [showWelcome, setShowWelcome] = useState(true);
     const [profileDropdownOpen, setProfileDropdownOpen] = useState(false);
     const profileDropdownRef = useRef(null);
 
-    const location = useLocation();
     const navigate = useNavigate();
 
     const { data: userInfo, isLoading, error } = useQuery({
@@ -46,12 +43,6 @@ const Dashboard = () => {
         },
         enabled: !!user?.email,
     });
-
-    useEffect(() => {
-        if (location.pathname !== "/dashboard") {
-            setShowWelcome(false);
-        }
-    }, [location]);
 
     // Close profile dropdown when clicking outside
     useEffect(() => {
@@ -109,6 +100,12 @@ const Dashboard = () => {
 
                 {/* Dashboard menus */}
                 <ul className="menu text-white">
+                    <li>
+                        <NavLink to="/dashboard" end onClick={() => setIsSidebarOpen(false)}>
+                            <FaHome />
+                            {!isSidebarCollapsed && "Overview"}
+                        </NavLink>
+                    </li>
                     {isAdmin ? (
                         <>
                             <li>
@@ -285,20 +282,7 @@ const Dashboard = () => {
                     </div>
                 </div>
 
-                {/* Welcome message and dashboard stats */}
-                {showWelcome && (
-                    <div className="mt-7 text-center px-5 overflow-auto">
-                        <div className='mb-10'>
-                            <h1 className="text-xl md:text-4xl font-extrabold mb-4">Welcome to the Dashboard!</h1>
-                            <p>We're glad to have you here. Explore the features using the sidebar.</p>
-                        </div>
-                        {/* Stat */}
-                        <div>
-                            <DashboardStats />
-                        </div>
-                    </div>
-                )}
-
+                {/* Routed dashboard content (overview + panels) */}
                 <div className="overflow-x-auto flex-1 px-3 md:px-5">
                     <Outlet />
                 </div>

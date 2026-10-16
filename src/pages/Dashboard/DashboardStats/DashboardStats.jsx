@@ -1,71 +1,132 @@
-import { FaUsers, FaBoxOpen, FaTruck, FaFileAlt } from 'react-icons/fa';
+import { FaUsers, FaFileAlt } from 'react-icons/fa';
 import { BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid, PieChart, Pie, Legend } from 'recharts';
 import { SiGoogleclassroom } from "react-icons/si";
 import { MdClass } from "react-icons/md";
 import useCount from '../../../hooks/useCount';
 
 const colors = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042', 'red', 'green'];
-// const COLORS = ['#0088FE', '#FFBB28', '#FF8042', 'green'];
+
+// Custom shape for the bar chart
+const getPath = (x, y, width, height) => {
+    return `M${x},${y + height}C${x + width / 3},${y + height} ${x + width / 2},${y + height / 3}
+      ${x + width / 2}, ${y}
+      C${x + width / 2},${y + height / 3} ${x + (2 * width) / 3},${y + height} ${x + width}, ${y + height}
+      Z`;
+};
+
+const TriangleBar = (props) => {
+    const { fill, x, y, width, height } = props;
+    return <path d={getPath(x, y, width, height)} stroke="none" fill={fill} />;
+};
+
+// Custom shape for the pie chart
+const RADIAN = Math.PI / 180;
+const renderCustomizedLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, percent }) => {
+    const radius = innerRadius + (outerRadius - innerRadius) * 0.5;
+    const x = cx + radius * Math.cos(-midAngle * RADIAN);
+    const y = cy + radius * Math.sin(-midAngle * RADIAN);
+
+    return (
+        <text x={x} y={y} fill="white" textAnchor={x > cx ? 'start' : 'end'} dominantBaseline="central">
+            {`${(percent * 100).toFixed(0)}%`}
+        </text>
+    );
+};
+
+// Reusable charts (bar + pie). Data is passed in so every role can chart its own scope.
+export const DashboardCharts = ({ barChartData = [], pieChartData = [] }) => {
+    const hasPieData = pieChartData.some((d) => d.value > 0);
+
+    return (
+        <div className="flex flex-col-reverse lg:flex-row justify-center items-center container mx-auto">
+            {/* Bar Chart */}
+            <div className="mb-10 w-full sm:w-[320px] md:w-[700px] lg:w-[700px] overflow-auto">
+                <BarChart
+                    width={700}
+                    height={410}
+                    data={barChartData}
+                    margin={{
+                        top: 20,
+                        right: -20,
+                        left: -20,
+                        bottom: 5,
+                    }}
+                >
+                    <CartesianGrid strokeDasharray="3 3" />
+                    <XAxis dataKey="category" />
+                    <YAxis allowDecimals={false} />
+                    <Bar dataKey="quantity" fill="#8884d8" shape={<TriangleBar />} label={{ position: 'top' }}>
+                        {barChartData.map((entry, index) => (
+                            <Cell key={`cell-${index}`} fill={colors[index % 6]} />
+                        ))}
+                    </Bar>
+                </BarChart>
+            </div>
+
+            {/* Pie Chart */}
+            <div className="mb-10 w-full sm:w-[320px] md:w-[700px] lg:w-[700px] overflow-auto flex justify-center items-center">
+                {hasPieData ? (
+                    <PieChart width={700} height={400}>
+                        <Pie
+                            data={pieChartData}
+                            cx="50%"
+                            cy="50%"
+                            labelLine={false}
+                            label={renderCustomizedLabel}
+                            outerRadius={150}
+                            fill="#8884d8"
+                            dataKey="value"
+                        >
+                            {pieChartData.map((entry, index) => (
+                                <Cell key={`cell-${index}`} fill={colors[index % colors.length]} />
+                            ))}
+                        </Pie>
+                        <Legend />
+                    </PieChart>
+                ) : (
+                    <p className="text-center opacity-70 py-20">No chart data yet.</p>
+                )}
+            </div>
+        </div>
+    );
+};
 
 const DashboardStats = () => {
-    const { totalAssignments, totalClasses, totalUsers, totalTeachers, totalStudents, totalEnrollment, totalSubmissions, totalReviews } = useCount();
+    const {
+        totalAssignments,
+        totalClasses,
+        totalUsers,
+        totalTeachers,
+        totalStudents,
+        totalEnrollment,
+        totalReviews,
+    } = useCount();
 
     // Stats for cards
     const stats = {
         users: totalUsers || 0,
         classes: totalClasses || 0,
         enrollment: totalEnrollment || 0,
-        submissions: totalSubmissions || 0,
         reviews: totalReviews || 0,
     };
 
-    // Data for the bar chart
+    // Platform-wide chart data (admin)
     const barChartData = [
-        { category: 'Classes', quantity: totalClasses },
-        { category: 'Users', quantity: totalUsers },
-        { category: 'Teachers', quantity: totalTeachers },
-        { category: 'Students', quantity: totalStudents },
-        { category: 'Assignments', quantity: totalAssignments },
-        { category: 'Submissions', quantity: totalSubmissions },
-        { category: 'Reviews', quantity: totalReviews },
+        { category: 'Classes', quantity: totalClasses || 0 },
+        { category: 'Users', quantity: totalUsers || 0 },
+        { category: 'Teachers', quantity: totalTeachers || 0 },
+        { category: 'Students', quantity: totalStudents || 0 },
+        { category: 'Assignments', quantity: totalAssignments || 0 },
+        { category: 'Reviews', quantity: totalReviews || 0 },
     ];
 
-    // Data for the pie chart
     const pieChartData = [
-        { name: 'Users', value: totalUsers },
-        { name: 'Teachers', value: totalTeachers },
-        { name: 'Students', value: totalStudents },
-        { name: 'Classes', value: totalClasses },
-        { name: 'Assignments', value: totalAssignments },
-        { name: 'Submissions', value: totalSubmissions },
+        { name: 'Users', value: totalUsers || 0 },
+        { name: 'Teachers', value: totalTeachers || 0 },
+        { name: 'Students', value: totalStudents || 0 },
+        { name: 'Classes', value: totalClasses || 0 },
+        { name: 'Assignments', value: totalAssignments || 0 },
     ];
-
-    // Custom shape for the bar chart
-    const getPath = (x, y, width, height) => {
-        return `M${x},${y + height}C${x + width / 3},${y + height} ${x + width / 2},${y + height / 3}
-          ${x + width / 2}, ${y}
-          C${x + width / 2},${y + height / 3} ${x + (2 * width) / 3},${y + height} ${x + width}, ${y + height}
-          Z`;
-    };
-
-    const TriangleBar = (props) => {
-        const { fill, x, y, width, height } = props;
-        return <path d={getPath(x, y, width, height)} stroke="none" fill={fill} />;
-    };
-
-    // Custom shape for the pie chart
-    const RADIAN = Math.PI / 180;
-    const renderCustomizedLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, percent }) => {
-        const radius = innerRadius + (outerRadius - innerRadius) * 0.5;
-        const x = cx + radius * Math.cos(-midAngle * RADIAN);
-        const y = cy + radius * Math.sin(-midAngle * RADIAN);
-
-        return (
-            <text x={x} y={y} fill="white" textAnchor={x > cx ? 'start' : 'end'} dominantBaseline="central">
-                {`${(percent * 100).toFixed(0)}%`}
-            </text>
-        );
-    };
 
     return (
         <div>
@@ -109,53 +170,7 @@ const DashboardStats = () => {
             </div>
 
             {/* Charts Section */}
-            <div className="flex flex-col-reverse lg:flex-row justify-center items-center container mx-auto">
-                {/* Bar Chart */}
-                <div className="mb-10 w-full sm:w-[320px] md:w-[700px] lg:w-[700px] overflow-auto">
-                    <BarChart
-                        width={700}
-                        height={410}
-                        data={barChartData}
-                        margin={{
-                            top: 20,
-                            right: -20,
-                            left: -20,
-                            bottom: 5,
-                        }}
-                    >
-                        <CartesianGrid strokeDasharray="3 3" />
-                        <XAxis dataKey="category" />
-                        <YAxis />
-                        <Bar dataKey="quantity" fill="#8884d8" shape={<TriangleBar />} label={{ position: 'top' }}>
-                            {barChartData.map((entry, index) => (
-                                <Cell key={`cell-${index}`} fill={colors[index % 6]} />
-                            ))}
-                        </Bar>
-                    </BarChart>
-                </div>
-
-                {/* Pie Chart */}
-                <div className="mb-10 w-full sm:w-[320px] md:w-[700px] lg:w-[700px] overflow-auto">
-                    <PieChart width={700} height={400}>
-                        <Pie
-                            data={pieChartData}
-                            cx="50%"
-                            cy="50%"
-                            labelLine={false}
-                            label={renderCustomizedLabel}
-                            outerRadius={150}
-                            fill="#8884d8"
-                            dataKey="value"
-                        >
-                            {pieChartData.map((entry, index) => (
-                                <Cell key={`cell-${index}`} fill={colors[index % colors.length]} />
-                            ))}
-                        </Pie>
-                        <Legend />
-                    </PieChart>
-                </div>
-            </div>
-
+            <DashboardCharts barChartData={barChartData} pieChartData={pieChartData} />
         </div>
     );
 };

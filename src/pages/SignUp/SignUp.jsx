@@ -6,6 +6,7 @@ import { toast } from 'react-toastify';
 import useAxiosPublic from '../../hooks/useAxiosPublic';
 import { useState } from 'react';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
+import { ROLE_HOME } from '../../utils/roleHome';
 
 // Cloudinary configuration
 const uploadPreset = import.meta.env.VITE_CLOUDINARY_UPLOAD_PRESET;
@@ -64,7 +65,8 @@ const SignUp = () => {
                                         position: "top-center"
                                     });
                                     setLoading(false);
-                                    navigate("/");
+                                    // New users are always students -> land on their dashboard panel
+                                    navigate(ROLE_HOME.student, { replace: true });
                                 }
                             });
                     })

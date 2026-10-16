@@ -7,6 +7,7 @@ import useAuth from "../../hooks/useAuth";
 import Swal from "sweetalert2";
 import { toast } from "react-toastify";
 import SocialLogin from "../../components/SocialLogin/SocialLogin";
+import { getRoleHome, ROLE_HOME } from "../../utils/roleHome";
 
 const Login = () => {
     window.scrollTo(0, 0);
@@ -17,6 +18,9 @@ const Login = () => {
     const navigate = useNavigate();
     const location = useLocation();
     const from = location.state?.from?.pathname || "/";
+
+    // Honor the intended page if present, otherwise fall back to the role-based dashboard home
+    const getLoginTarget = (roleHome) => (from && from !== "/" ? from : roleHome);
 
     const {
         register,
@@ -41,7 +45,8 @@ const Login = () => {
                 showConfirmButton: false,
                 timer: 1500,
             });
-            navigate(from, { replace: true });
+            const roleHome = ROLE_HOME[role?.toLowerCase()] || "/";
+            navigate(getLoginTarget(roleHome), { replace: true });
         } catch (err) {
             setError({ login: "Please check your email or password." });
             toast.error("Login Failed. Please try again.");
@@ -66,7 +71,8 @@ const Login = () => {
                 showConfirmButton: false,
                 timer: 1500,
             });
-            navigate(from, { replace: true });
+            const roleHome = await getRoleHome(user);
+            navigate(getLoginTarget(roleHome), { replace: true });
         } catch (err) {
             setError({ login: "Please check your email or password." });
             toast.error("Login Failed. Please try again.");
